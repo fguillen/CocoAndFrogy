@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=3 uid="uid://du4540b2qruuw"]
+
+[ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_bx2p8"]
+[ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://frogy.png" id="2_480im"]
+[ext_resource type="Texture2D" uid="uid://b4g64fgkvcmpe" path="res://tongue.png" id="3_cs5np"]
+[ext_resource type="Texture2D" uid="uid://btuhn0g384lcs" path="res://monster.png" id="4_71qaw"]
+[ext_resource type="Texture2D" uid="uid://cxhwr2vl5f6ma" path="res://grosshopper.png" id="5_k7esu"]
+[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://fly.png" id="6_kt45s"]
+[ext_resource type="PackedScene" uid="uid://cghxv634s6cvd" path="res://test/line.tscn" id="7_17etx"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -101.0
+offset_top = -76.0
+offset_right = 1214.0
+offset_bottom = 2046.0
+
+[node name="Lines" type="Node2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="Line" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(4, 56)
+
+[node name="Line2" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(392, 176)
+
+[node name="Line3" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(56, 312)
+
+[node name="Line4" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(256, 448)
+
+[node name="Line5" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(116, 608)
+
+[node name="Line6" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(460, 792)
+
+[node name="Line7" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(264, 980)
+
+[node name="Line8" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(468, 1168)
+
+[node name="Line9" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(252, 1348)
+
+[node name="Line10" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(520, 1496)
+
+[node name="Line11" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(388, 1664)
+
+[node name="Line12" parent="Lines" instance=ExtResource("7_17etx")]
+position = Vector2(652, 1800)
+
+[node name="Coco" type="Sprite2D" parent="."]
+position = Vector2(570, 1820)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_bx2p8")
+
+[node name="Frogy" type="Sprite2D" parent="."]
+position = Vector2(549, 1696)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_480im")
+
+[node name="Tongue" type="Sprite2D" parent="."]
+position = Vector2(598, 243)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_cs5np")
+
+[node name="Monster" type="Sprite2D" parent="."]
+position = Vector2(589, 93)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_71qaw")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-4, 146)
+
+[node name="Grosshopper" type="Sprite2D" parent="Node2D"]
+position = Vector2(348.75, 708.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_k7esu")
+
+[node name="Fly" type="Sprite2D" parent="Node2D"]
+position = Vector2(247.75, 919.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kt45s")
+
+[node name="Fly2" type="Sprite2D" parent="Node2D"]
+position = Vector2(447.75, 919.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kt45s")
+
+[node name="Grosshopper2" type="Sprite2D" parent="Node2D"]
+position = Vector2(770.5, 708.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_k7esu")
+
+[node name="Grosshopper3" type="Sprite2D" parent="Node2D"]
+position = Vector2(575, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_k7esu")
+
+[node name="Fly3" type="Sprite2D" parent="Node2D"]
+position = Vector2(669.5, 919.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kt45s")
+
+[node name="Fly4" type="Sprite2D" parent="Node2D"]
+position = Vector2(869.5, 919.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kt45s")
+
+[node name="Fly5" type="Sprite2D" parent="Node2D"]
+position = Vector2(247.75, 535.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kt45s")
+
+[node name="Fly6" type="Sprite2D" parent="Node2D"]
+position = Vector2(447.75, 535.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kt45s")
+
+[node name="Fly7" type="Sprite2D" parent="Node2D"]
+position = Vector2(669.5, 535.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kt45s")
+
+[node name="Fly8" type="Sprite2D" parent="Node2D"]
+position = Vector2(869.5, 535.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kt45s")
