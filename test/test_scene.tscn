@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://du4540b2qruuw"]
 
-[ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_bx2p8"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://frogy.png" id="2_480im"]
 [ext_resource type="Texture2D" uid="uid://b4g64fgkvcmpe" path="res://tongue.png" id="3_cs5np"]
 [ext_resource type="Texture2D" uid="uid://btuhn0g384lcs" path="res://monster.png" id="4_71qaw"]
 [ext_resource type="Texture2D" uid="uid://cxhwr2vl5f6ma" path="res://grosshopper.png" id="5_k7esu"]
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://fly.png" id="6_kt45s"]
 [ext_resource type="PackedScene" uid="uid://cghxv634s6cvd" path="res://test/line.tscn" id="7_17etx"]
+[ext_resource type="PackedScene" uid="uid://cpy6wn3hy4bai" path="res://test/character.tscn" id="7_gugrx"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -54,11 +54,6 @@ position = Vector2(388, 1664)
 
 [node name="Line12" parent="Lines" instance=ExtResource("7_17etx")]
 position = Vector2(652, 1800)
-
-[node name="Coco" type="Sprite2D" parent="."]
-position = Vector2(570, 1820)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_bx2p8")
 
 [node name="Frogy" type="Sprite2D" parent="."]
 position = Vector2(549, 1696)
@@ -132,3 +127,15 @@ texture = ExtResource("6_kt45s")
 position = Vector2(869.5, 535.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_kt45s")
+
+[node name="Character" parent="." instance=ExtResource("7_gugrx")]
+position = Vector2(566, 1837)
+
+[node name="Sprite2D" parent="Character/Visuals" index="0"]
+scale = Vector2(0.5, 0.5)
+
+[node name="MovementManager" parent="Character" index="1"]
+speed = 2000
+acceleration = 20000
+
+[editable path="Character"]

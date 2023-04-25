@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://test/movement_manager.gd" id="1_xk8lv"]
 [ext_resource type="Script" path="res://test/input_manager.gd" id="2_n02go"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Character" type="CharacterBody2D"]
 
 [node name="Visuals" type="Node2D" parent="."]
 
