@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpwjub5d83qbr"]
+
+[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
+[ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5doon"]
+resource_local_to_scene = true
+size = Vector2(120, 145)
+
+[node name="Brick" type="StaticBody2D" groups=["bricks"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_yivv7")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_wpish")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 7.5)
+shape = SubResource("RectangleShape2D_5doon")

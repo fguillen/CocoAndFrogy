@@ -1,17 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjbalpfjkxbrv"]
+[gd_scene load_steps=8 format=3 uid="uid://cjbalpfjkxbrv"]
 
 [ext_resource type="Script" path="res://test/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://frogy.png" id="1_ciw1k"]
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="3_7cwmp"]
 [ext_resource type="Script" path="res://actors/components/bouncing_manager.gd" id="4_hwckh"]
 [ext_resource type="PackedScene" uid="uid://cm5yp03y3eyox" path="res://actors/components/collision_debugger.tscn" id="5_twseo"]
+[ext_resource type="Script" path="res://actors/frogy/bricks_impacter.gd" id="6_4qjhy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
 
 [node name="Frogy" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["frogy"]]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 13
 script = ExtResource("1_2fmqe")
 movement_manager = NodePath("MovementManager")
 
@@ -37,5 +38,9 @@ movement_manager = NodePath("../MovementManager")
 
 [node name="CollisionDebugger" parent="." instance=ExtResource("5_twseo")]
 
+[node name="BricksImpacter" type="Node" parent="."]
+script = ExtResource("6_4qjhy")
+
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="CollisionDebugger" method="on_collision_found"]
+[connection signal="collision_found" from="MovementManager" to="BricksImpacter" method="on_collision_found"]

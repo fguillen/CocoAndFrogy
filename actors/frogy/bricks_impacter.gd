@@ -1,8 +1,8 @@
 # -- 01 @tool
 # -- 02 class_name
-class_name Character
+class_name BricksImpacter
 # -- 03 extends
-extends CharacterBody2D
+extends Node
 
 # -- 04 # docstring
 #
@@ -10,8 +10,6 @@ extends CharacterBody2D
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
-@export var movement_manager: MovementManager
-
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
@@ -23,4 +21,9 @@ extends CharacterBody2D
 # -- 16 public methods
 # -- 17 private methods
 # -- 18 signal listeners
+func on_collision_found(collision: KinematicCollision2D):
+	if collision.get_collider().is_in_group("bricks"):
+		collision.get_collider().impact()
+		
 # -- 19 subclasses
+

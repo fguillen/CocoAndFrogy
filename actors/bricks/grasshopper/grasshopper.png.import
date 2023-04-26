@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci7lhdro3pmtj"
-path="res://.godot/imported/fly.png-86f3a7ed880213509f51dcb693c16e90.ctex"
+uid="uid://cxhwr2vl5f6ma"
+path="res://.godot/imported/grasshopper.png-ad343ed9fcc7f242dcfa063fef161708.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fly.png"
-dest_files=["res://.godot/imported/fly.png-86f3a7ed880213509f51dcb693c16e90.ctex"]
+source_file="res://actors/bricks/grasshopper/grasshopper.png"
+dest_files=["res://.godot/imported/grasshopper.png-ad343ed9fcc7f242dcfa063fef161708.ctex"]
 
 [params]
 

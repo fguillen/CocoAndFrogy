@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://du4540b2qruuw"]
+[gd_scene load_steps=8 format=3 uid="uid://c65x61w87rvs2"]
 
 [ext_resource type="Texture2D" uid="uid://b4g64fgkvcmpe" path="res://tongue.png" id="3_cs5np"]
 [ext_resource type="Texture2D" uid="uid://btuhn0g384lcs" path="res://monster.png" id="4_71qaw"]
-[ext_resource type="Texture2D" uid="uid://cxhwr2vl5f6ma" path="res://grosshopper.png" id="5_k7esu"]
-[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://fly.png" id="6_kt45s"]
 [ext_resource type="PackedScene" uid="uid://cghxv634s6cvd" path="res://test/line.tscn" id="7_17etx"]
 [ext_resource type="PackedScene" uid="uid://cpy6wn3hy4bai" path="res://test/character.tscn" id="7_gugrx"]
 [ext_resource type="PackedScene" uid="uid://cjbalpfjkxbrv" path="res://test/frogy.tscn" id="7_valc3"]
+[ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="8_7x01t"]
+[ext_resource type="PackedScene" uid="uid://dkwu2n1ck0gnf" path="res://actors/bricks/grasshopper/grasshopper_brick.tscn" id="8_isik4"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -65,66 +65,8 @@ position = Vector2(589, 93)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_71qaw")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-4, 146)
-
-[node name="Grosshopper" type="Sprite2D" parent="Node2D"]
-position = Vector2(348.75, 708.25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_k7esu")
-
-[node name="Fly" type="Sprite2D" parent="Node2D"]
-position = Vector2(247.75, 919.25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_kt45s")
-
-[node name="Fly2" type="Sprite2D" parent="Node2D"]
-position = Vector2(447.75, 919.25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_kt45s")
-
-[node name="Grosshopper2" type="Sprite2D" parent="Node2D"]
-position = Vector2(770.5, 708.25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_k7esu")
-
-[node name="Grosshopper3" type="Sprite2D" parent="Node2D"]
-position = Vector2(575, 324)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_k7esu")
-
-[node name="Fly3" type="Sprite2D" parent="Node2D"]
-position = Vector2(669.5, 919.25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_kt45s")
-
-[node name="Fly4" type="Sprite2D" parent="Node2D"]
-position = Vector2(869.5, 919.25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_kt45s")
-
-[node name="Fly5" type="Sprite2D" parent="Node2D"]
-position = Vector2(247.75, 535.5)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_kt45s")
-
-[node name="Fly6" type="Sprite2D" parent="Node2D"]
-position = Vector2(447.75, 535.5)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_kt45s")
-
-[node name="Fly7" type="Sprite2D" parent="Node2D"]
-position = Vector2(669.5, 535.5)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_kt45s")
-
-[node name="Fly8" type="Sprite2D" parent="Node2D"]
-position = Vector2(869.5, 535.5)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_kt45s")
-
 [node name="Frogy2" parent="." instance=ExtResource("7_valc3")]
-position = Vector2(566, 737)
+position = Vector2(566, 1324)
 
 [node name="Character" parent="." instance=ExtResource("7_gugrx")]
 position = Vector2(566, 1837)
@@ -140,5 +82,40 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(57, -122)
 polygon = PackedVector2Array(1019, 122, 1027, 2039, 1155, 2042, 1110, -34, -192, -48, -172, 2116, -59, 2116, -59, 107)
+
+[node name="Bricks" type="Node2D" parent="."]
+
+[node name="Brick" parent="Bricks" instance=ExtResource("8_7x01t")]
+position = Vector2(241, 676)
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("8_7x01t")]
+position = Vector2(447, 676)
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("8_7x01t")]
+position = Vector2(657, 676)
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("8_7x01t")]
+position = Vector2(867, 676)
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("8_7x01t")]
+position = Vector2(867, 1057)
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("8_7x01t")]
+position = Vector2(677, 1057)
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("8_7x01t")]
+position = Vector2(448, 1057)
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("8_7x01t")]
+position = Vector2(248, 1057)
+
+[node name="GrasshopperBrick" parent="Bricks" instance=ExtResource("8_isik4")]
+position = Vector2(571, 470)
+
+[node name="GrasshopperBrick2" parent="Bricks" instance=ExtResource("8_isik4")]
+position = Vector2(348, 857)
+
+[node name="GrasshopperBrick3" parent="Bricks" instance=ExtResource("8_isik4")]
+position = Vector2(764, 857)
 
 [editable path="Character"]
