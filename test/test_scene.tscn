@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c65x61w87rvs2"]
+[gd_scene load_steps=8 format=3 uid="uid://bbv03q7vobcyr"]
 
 [ext_resource type="Texture2D" uid="uid://b4g64fgkvcmpe" path="res://tongue.png" id="3_cs5np"]
 [ext_resource type="Texture2D" uid="uid://btuhn0g384lcs" path="res://monster.png" id="4_71qaw"]
-[ext_resource type="PackedScene" uid="uid://cghxv634s6cvd" path="res://test/line.tscn" id="7_17etx"]
+[ext_resource type="PackedScene" uid="uid://psc4grtiu1sw" path="res://environment/wavy_line.tscn" id="7_17etx"]
 [ext_resource type="PackedScene" uid="uid://cpy6wn3hy4bai" path="res://test/character.tscn" id="7_gugrx"]
 [ext_resource type="PackedScene" uid="uid://cjbalpfjkxbrv" path="res://test/frogy.tscn" id="7_valc3"]
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="8_7x01t"]
@@ -20,40 +20,51 @@ offset_bottom = 2046.0
 position = Vector2(0, 4)
 
 [node name="Line" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(4, 56)
+speed_min = 100
 
 [node name="Line2" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(392, 176)
+position = Vector2(0, 102)
+speed_min = 100
 
 [node name="Line3" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(56, 312)
+position = Vector2(-6, 249)
+speed_min = 100
 
 [node name="Line4" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(256, 448)
+position = Vector2(0, 382)
+speed_min = 100
 
 [node name="Line5" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(116, 608)
+position = Vector2(0, 535)
+speed_min = 100
 
 [node name="Line6" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(460, 792)
+position = Vector2(0, 704)
+speed_min = 100
 
 [node name="Line7" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(264, 980)
+position = Vector2(0, 874)
+speed_min = 100
 
 [node name="Line8" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(468, 1168)
+position = Vector2(0, 1063)
+speed_min = 100
 
 [node name="Line9" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(252, 1348)
+position = Vector2(0, 1250)
+speed_min = 100
 
 [node name="Line10" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(520, 1496)
+position = Vector2(0, 1414)
+speed_min = 100
 
 [node name="Line11" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(388, 1664)
+position = Vector2(0, 1564)
+speed_min = 100
 
 [node name="Line12" parent="Lines" instance=ExtResource("7_17etx")]
-position = Vector2(652, 1800)
+position = Vector2(0, 1717)
+speed_min = 100
 
 [node name="Tongue" type="Sprite2D" parent="."]
 position = Vector2(598, 243)

@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://psc4grtiu1sw"]
+
+[ext_resource type="Script" path="res://environment/wavy_line.gd" id="1_sfufc"]
+[ext_resource type="Texture2D" uid="uid://1lavoo71vl1i" path="res://environment/lines.png" id="2_oi41c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cscgh"]
+atlas = ExtResource("2_oi41c")
+region = Rect2(0, 0, 4712, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h6id"]
+atlas = ExtResource("2_oi41c")
+region = Rect2(0, 0, 4712, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04wix"]
+atlas = ExtResource("2_oi41c")
+region = Rect2(0, 223, 4712, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emtig"]
+atlas = ExtResource("2_oi41c")
+region = Rect2(0, 704, 4712, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srkg7"]
+atlas = ExtResource("2_oi41c")
+region = Rect2(0, 1762, 4712, 279)
+
+[node name="WavyLine" type="Node2D"]
+script = ExtResource("1_sfufc")
+speed_min = 20
+speed_max = 40
+
+[node name="LineDemostration" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_cscgh")
+centered = false
+
+[node name="LinesCollection" type="Node2D" parent="."]
+visible = false
+
+[node name="Line" type="Sprite2D" parent="LinesCollection"]
+position = Vector2(0, 378)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_1h6id")
+centered = false
+
+[node name="Line2" type="Sprite2D" parent="LinesCollection"]
+position = Vector2(0, 534)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_04wix")
+centered = false
+
+[node name="Line3" type="Sprite2D" parent="LinesCollection"]
+position = Vector2(-10, 912)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_emtig")
+centered = false
+
+[node name="Line4" type="Sprite2D" parent="LinesCollection"]
+position = Vector2(0, 731)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_srkg7")
+centered = false
