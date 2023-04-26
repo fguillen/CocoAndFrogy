@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbv03q7vobcyr"]
+[gd_scene load_steps=7 format=3 uid="uid://bbv03q7vobcyr"]
 
-[ext_resource type="Texture2D" uid="uid://b4g64fgkvcmpe" path="res://tongue.png" id="3_cs5np"]
-[ext_resource type="Texture2D" uid="uid://btuhn0g384lcs" path="res://monster.png" id="4_71qaw"]
 [ext_resource type="PackedScene" uid="uid://psc4grtiu1sw" path="res://environment/wavy_line.tscn" id="7_17etx"]
 [ext_resource type="PackedScene" uid="uid://cpy6wn3hy4bai" path="res://test/character.tscn" id="7_gugrx"]
+[ext_resource type="PackedScene" uid="uid://1cvy0e82agle" path="res://actors/monster/monster.tscn" id="7_tftdb"]
 [ext_resource type="PackedScene" uid="uid://cjbalpfjkxbrv" path="res://test/frogy.tscn" id="7_valc3"]
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="8_7x01t"]
 [ext_resource type="PackedScene" uid="uid://dkwu2n1ck0gnf" path="res://actors/bricks/grasshopper/grasshopper_brick.tscn" id="8_isik4"]
@@ -66,16 +65,6 @@ speed_min = 100
 position = Vector2(0, 1717)
 speed_min = 100
 
-[node name="Tongue" type="Sprite2D" parent="."]
-position = Vector2(598, 243)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_cs5np")
-
-[node name="Monster" type="Sprite2D" parent="."]
-position = Vector2(589, 93)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_71qaw")
-
 [node name="Frogy2" parent="." instance=ExtResource("7_valc3")]
 position = Vector2(566, 1324)
 
@@ -128,5 +117,8 @@ position = Vector2(348, 857)
 
 [node name="GrasshopperBrick3" parent="Bricks" instance=ExtResource("8_isik4")]
 position = Vector2(764, 857)
+
+[node name="Monster2" parent="." instance=ExtResource("7_tftdb")]
+position = Vector2(580, 0)
 
 [editable path="Character"]

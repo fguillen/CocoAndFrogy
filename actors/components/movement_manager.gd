@@ -72,7 +72,7 @@ func _set_direction(value: Vector2):
 	direction = value.normalized()
 	
 	if previous_direction != direction:
-		print("MovementManager.direction_changed: ", previous_direction, ", ", direction)
+		# print("MovementManager.direction_changed: ", previous_direction, ", ", direction)
 		direction_changed.emit(direction)
 		
 # -- 18 signal listeners

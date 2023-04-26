@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dleqlc680ccff"]
+
+[ext_resource type="Texture2D" uid="uid://d2q1jsakv2bd4" path="res://actors/components/collision_debugger/arrow.png" id="1_mlrbi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 100, 0, 0, 100)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Line2D"]
+offset_left = -4.0
+offset_top = 42.0
+offset_right = 87.0
+offset_bottom = 50.0
+texture = ExtResource("1_mlrbi")
+patch_margin_left = 1
+patch_margin_top = 3
+patch_margin_right = 4
+patch_margin_bottom = 3

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://1cvy0e82agle"]
+
+[ext_resource type="Script" path="res://actors/monster/monster.gd" id="2_3tbnj"]
+[ext_resource type="Texture2D" uid="uid://btuhn0g384lcs" path="res://monster.png" id="3_c2be2"]
+[ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="3_d4daw"]
+[ext_resource type="Script" path="res://actors/monster/noise_wavy_movement.gd" id="4_l6c1p"]
+[ext_resource type="PackedScene" uid="uid://cnwmb3o7yvowf" path="res://actors/components/easy_noise/easy_noise.tscn" id="5_qmhu1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hxwk"]
+size = Vector2(385, 78)
+
+[node name="Monster" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["coco"]]
+position = Vector2(142, 0)
+collision_mask = 8
+script = ExtResource("2_3tbnj")
+movement_manager = NodePath("MovementManager")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, 81)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_c2be2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 5)
+shape = SubResource("RectangleShape2D_5hxwk")
+
+[node name="MovementManager" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_d4daw")]
+speed = 100
+acceleration = 300
+decceleration = 400
+character = NodePath("..")
+
+[node name="NoiseWavyMovement" type="Node2D" parent="." node_paths=PackedStringArray("movement_manager", "easy_noise")]
+script = ExtResource("4_l6c1p")
+movement_manager = NodePath("../MovementManager")
+easy_noise = NodePath("EasyNoise")
+min_x = 150
+max_x = 900
+
+[node name="EasyNoise" parent="NoiseWavyMovement" instance=ExtResource("5_qmhu1")]
+frequency = 2.0
+fractal_lacunarity = 1.5
+fractal_gain = 5.0
+noise_speed = 0.1
