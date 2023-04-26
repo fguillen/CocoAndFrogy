@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpy6wn3hy4bai"]
+[gd_scene load_steps=6 format=3 uid="uid://cpy6wn3hy4bai"]
 
 [ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
+[ext_resource type="Script" path="res://test/coco.gd" id="1_m36m7"]
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="2_hpak8"]
 [ext_resource type="PackedScene" path="res://actors/components/input_manager.tscn" id="3_quaaq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hxwk"]
 size = Vector2(385, 78)
 
-[node name="Character" type="CharacterBody2D" groups=["coco"]]
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["coco"]]
 collision_mask = 8
+script = ExtResource("1_m36m7")
+movement_manager = NodePath("MovementManager")
 
 [node name="Visuals" type="Node2D" parent="."]
 
