@@ -25,7 +25,6 @@ extends Node
 # -- 17 private methods
 # -- 18 signal listeners
 func on_collision_found(collision: KinematicCollision2D):
-	print("XXX: collision: ", collision.get_collider().get_groups())
 	var normal = collision.get_normal()
 	
 	if collision.get_collider().is_in_group("coco"):		
@@ -42,7 +41,7 @@ func on_collision_found(collision: KinematicCollision2D):
 				## Tilt the normal near the edge
 				# Calculate the distance between the collision point and the center of the paddle
 				var distance = collision.get_position() - collision.get_collider().global_position
-				var amount = distance.x / 96.0
+				var amount = distance.x / 193
 				normal = normal.rotated(deg_to_rad(max_normal_angle) * amount)
 				new_direction = new_direction.bounce(normal)
 				
