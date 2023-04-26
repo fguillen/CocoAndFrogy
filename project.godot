@@ -22,6 +22,13 @@ window/size/window_width_override=540
 window/size/window_height_override=960
 window/stretch/mode="viewport"
 
+[layer_names]
+
+2d_physics/layer_1="coco"
+2d_physics/layer_2="frogy"
+2d_physics/layer_3="brick"
+2d_physics/layer_4="wall"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

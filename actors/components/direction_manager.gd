@@ -1,24 +1,19 @@
 # -- 01 @tool
 # -- 02 class_name
-class_name MovementManager
+class_name DirectionManager
 # -- 03 extends
 extends Node
 
 # -- 04 # docstring
 #
 # -- 05 signals
+signal direction_changed(direction: Vector2)
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
-@export var speed := 100
-@export var acceleration := 50
-@export var decceleration := 80
-@export var character: CharacterBody2D
-@export var input: InputManager
-
-
 # -- 09 public variables
-
+var direction := Vector2.ZERO : set = _set_direction
 
 # -- 10 private variables
 # -- 11 onready variables
@@ -27,12 +22,16 @@ extends Node
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
-func _physics_process(delta):
-	var desired_velocity = speed * input.direction
-	character.velocity = character.velocity.move_toward(desired_velocity, acceleration * delta)
-	character.move_and_slide()
 # -- 16 public methods
 # -- 17 private methods
+func _set_direction(value: Vector2):
+	var previous_direction = Vector2(direction)
+	direction = value.normalized()
+	
+	if previous_direction != direction:
+		direction_changed.emit(direction)
+		
+	
 # -- 18 signal listeners
 # -- 19 subclasses
 

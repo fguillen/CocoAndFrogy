@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjbalpfjkxbrv"]
+
+[ext_resource type="Script" path="res://test/frogy.gd" id="1_2fmqe"]
+[ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://frogy.png" id="1_ciw1k"]
+[ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="3_7cwmp"]
+[ext_resource type="Script" path="res://actors/components/bouncing_manager.gd" id="4_hwckh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
+radius = 57.0
+
+[node name="Frogy" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["frogy"]]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_2fmqe")
+movement_manager = NodePath("MovementManager")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ciw1k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a3lg5")
+
+[node name="MovementManager" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_7cwmp")]
+speed = 1000
+infinite_acceleration = true
+character = NodePath("..")
+collision_mode = "Collide"
+
+[node name="BouncingManager" type="Node" parent="." node_paths=PackedStringArray("character", "movement_manager")]
+script = ExtResource("4_hwckh")
+character = NodePath("..")
+movement_manager = NodePath("../MovementManager")
+
+[connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
