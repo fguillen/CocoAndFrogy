@@ -29,19 +29,26 @@ signal died()
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func impact():
-	hurt.emit()
 	health -= 1
-	animation_state_machine.travel("hurt")
 	
 	if health <= 0:
 		_die()
+	else:
+		hurt.emit()
+		animation_state_machine.travel("hurt")
 	
 		
 # -- 17 private methods
 func _die():
+	set_process(false)
 	died.emit()
-	queue_free()
+	animation_state_machine.travel("die")
 	
 # -- 18 signal listeners
 # -- 19 subclasses
 
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "die":
+		queue_free()

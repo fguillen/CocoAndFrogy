@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dpwjub5d83qbr"]
+[gd_scene load_steps=18 format=3 uid="uid://dpwjub5d83qbr"]
 
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
 [ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
@@ -45,6 +45,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0.5, 0.5)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Sprite2D:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_yef2m"]
 resource_name = "idle"
@@ -65,7 +101,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mamw3"]
 resource_name = "hurt"
-length = 0.5
+length = 0.26
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -74,7 +110,7 @@ tracks/0/path = NodePath("Visuals:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.45),
+"times": PackedFloat32Array(0, 0.09, 0.16, 0.23, 0.26),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.057, 1.139), Vector2(1, 1), Vector2(1.057, 1.139), Vector2(1, 1)]
@@ -86,18 +122,75 @@ tracks/1/path = NodePath("Visuals:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.15, 0.32, 0.35),
+"times": PackedFloat32Array(0, 0.014, 0.05, 0.17, 0.19),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.0872665, 0.0872665, -0.0872665, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_5kf1o"]
+resource_name = "die"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.48, 0.45), Vector2(0.48, 0.45), Vector2(0.55, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.08, 0.13, 0.18, 0.23, 0.27, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o25ww"]
 _data = {
 "RESET": SubResource("Animation_s74jn"),
+"die": SubResource("Animation_5kf1o"),
 "hurt": SubResource("Animation_mamw3"),
 "idle": SubResource("Animation_yef2m")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_67p3r"]
+animation = &"die"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pjfq8"]
 animation = &"hurt"
@@ -114,13 +207,17 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wfllo"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jase1"]
-states/Start/position = Vector2(337, 68)
+states/Start/position = Vector2(342, 59)
+states/die/node = SubResource("AnimationNodeAnimation_67p3r")
+states/die/position = Vector2(709, 100)
 states/hurt/node = SubResource("AnimationNodeAnimation_pjfq8")
 states/hurt/position = Vector2(549, 254)
 states/idle/node = SubResource("AnimationNodeAnimation_leggm")
 states/idle/position = Vector2(565, 59)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2vpps"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_oecw7"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_eacw6")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2vpps"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_oecw7"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_eacw6"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_wfllo")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6shlp"]
 
@@ -134,6 +231,7 @@ script = ExtResource("1_yivv7")
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_wpish")
+offset = Vector2(10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 7.5)
@@ -150,3 +248,5 @@ tree_root = SubResource("AnimationNodeStateMachine_jase1")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6shlp")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
