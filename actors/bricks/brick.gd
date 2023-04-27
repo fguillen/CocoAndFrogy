@@ -21,11 +21,16 @@ signal died()
 # -- 11 onready variables
 @onready var animation_player = $AnimationPlayer
 @onready var animation_state_machine: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
+func _ready(): 
+	animation_tree.active = true
+	
+	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func impact():
@@ -45,10 +50,10 @@ func _die():
 	animation_state_machine.travel("die")
 	
 # -- 18 signal listeners
-# -- 19 subclasses
+func _on_animation_tree_animation_finished(anim_name):
+	print("XXX: _on_animation_tree_animation_finished: ", anim_name)
 
-
-
-func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "die":
 		queue_free()
+		
+# -- 19 subclasses

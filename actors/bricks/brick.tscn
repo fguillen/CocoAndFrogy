@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpwjub5d83qbr"]
+[gd_scene load_steps=19 format=3 uid="uid://dpwjub5d83qbr"]
 
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
 [ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
+[ext_resource type="PackedScene" uid="uid://d1avawwmgi02c" path="res://effects/explosion/explosion_effect.tscn" id="3_sbe6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5doon"]
 resource_local_to_scene = true
@@ -246,7 +247,10 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_jase1")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6shlp")
 
+[node name="ExplosionEffect" parent="." instance=ExtResource("3_sbe6f")]
+scale = Vector2(0.956, 0.956)
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
