@@ -9,6 +9,7 @@
 size = Vector2(385, 78)
 
 [node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["coco"]]
+y_sort_enabled = true
 collision_mask = 8
 script = ExtResource("1_m36m7")
 movement_manager = NodePath("MovementManager")
@@ -16,6 +17,7 @@ movement_manager = NodePath("MovementManager")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_jbxnx")
 
