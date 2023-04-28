@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://df2wtupy0t72n"]
+
+[ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
+[ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
+[ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="2_hpak8"]
+[ext_resource type="PackedScene" path="res://actors/components/input_manager.tscn" id="3_quaaq"]
+[ext_resource type="Script" path="res://actors/coco/bump_manager.gd" id="5_mqgta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hxwk"]
+size = Vector2(385, 78)
+
+[sub_resource type="Animation" id="Animation_igayi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_a5tka"]
+resource_name = "bump"
+length = 0.13
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.1, 0.13),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, 20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.11, 0.13),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.51, 0.48), Vector2(0.51, 0.48), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rulpw"]
+_data = {
+"RESET": SubResource("Animation_igayi"),
+"bump": SubResource("Animation_a5tka")
+}
+
+[node name="Coco" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["coco"]]
+y_sort_enabled = true
+collision_mask = 10
+script = ExtResource("1_m36m7")
+movement_manager = NodePath("MovementManager")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jbxnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 5)
+shape = SubResource("RectangleShape2D_5hxwk")
+
+[node name="MovementManager" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_hpak8")]
+max_speed = 4000
+decceleration = 4000
+character = NodePath("..")
+collision_mode = "Collide"
+
+[node name="InputManager" parent="." instance=ExtResource("3_quaaq")]
+
+[node name="BumpManager" type="Node2D" parent="."]
+script = ExtResource("5_mqgta")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_rulpw")
+}
+
+[connection signal="bump_received" from="InputManager" to="BumpManager" method="on_bump_input_received"]
+[connection signal="direction_changed" from="InputManager" to="MovementManager" method="on_direction_changed"]

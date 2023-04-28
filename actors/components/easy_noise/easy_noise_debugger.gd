@@ -48,8 +48,8 @@ func _draw():
 	draw_line(Vector2(0, origin_y + easy_noise.output_max), Vector2(_screen_size.x, origin_y + easy_noise.output_max), Color.DARK_GRAY, 2.0)
 	
 	for i in _values.size():
-		var position = Vector2(i * points_distance, origin_y + _values[i])
-		draw_circle(position, point_radius, Color.DARK_SEA_GREEN)
+		var point_position = Vector2(i * points_distance, origin_y + _values[i])
+		draw_circle(point_position, point_radius, Color.DARK_SEA_GREEN)
 
 	
 # -- 16 public methods

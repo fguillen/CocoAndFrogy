@@ -20,8 +20,13 @@ extends Character
 func _ready():
 	movement_manager.direction = Vector2.DOWN
 	
+	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func boost(factor: float):
+	movement_manager.speed *= factor
+	
+	
 # -- 17 private methods
 # -- 18 signal listeners
 # -- 19 subclasses

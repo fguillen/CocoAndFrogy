@@ -35,7 +35,7 @@ func _ready():
 
 
 # -- 15 remaining built-in virtual methods
-func _process(delta):
+func _process(_delta):
 #	print("XXX: noise_value: ", noise_value)
 	var desired_position_x = easy_noise.noise_value
 	_desired_position = Vector2(desired_position_x, character.global_position.y)
