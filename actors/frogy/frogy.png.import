@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgyn4hloj7bdw"
-path="res://.godot/imported/frogy.png-4115fb82b5b289b11dead1db07873180.ctex"
+path="res://.godot/imported/frogy.png-f113c807c63e9d8acb4867b9e938d0d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://frogy.png"
-dest_files=["res://.godot/imported/frogy.png-4115fb82b5b289b11dead1db07873180.ctex"]
+source_file="res://actors/frogy/frogy.png"
+dest_files=["res://.godot/imported/frogy.png-f113c807c63e9d8acb4867b9e938d0d8.ctex"]
 
 [params]
 
