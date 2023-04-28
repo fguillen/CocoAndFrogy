@@ -42,36 +42,47 @@ func _filter_flat_direction_angle(direction: Vector2) -> Vector2:
 		result = Vector2.RIGHT.rotated(180 - _min_angle_rad)
 	
 	return result
+	
 
-# -- 18 signal listeners
-func on_collision_found(collision: KinematicCollision2D):
+func _collision_with_coco(collision: KinematicCollision2D) -> Vector2:
 	var normal = collision.get_normal()
 	var new_direction := Vector2(movement_manager.direction)
 	
-	# Collision with Coco
-	if collision.get_collider().is_in_group("coco"):		
-		# Collision from the top, most of the cases
-		if normal.dot(Vector2.UP) > 0.0:
-			# Paddle is moving
-			if collision.get_collider().velocity.length() > 0:
-				new_direction.y = -new_direction.y
-				new_direction.x += collision.get_collider().movement_manager.direction.x * 0.6
-				
-			# Paddle is no moving
-			else:
-				## Tilt the normal near the edge
-				# Calculate the distance between the collision point and the center of the paddle
-				var distance = collision.get_position() - collision.get_collider().global_position
-				var amount = distance.x / 193
-				normal = normal.rotated(_min_angle_rad * amount)
-				new_direction = new_direction.bounce(normal)
+	# Collision from the top, most of the cases
+	if normal.dot(Vector2.UP) > 0.0:
+		# Paddle is moving
+		if collision.get_collider().velocity.length() > 0:
+			new_direction.y = -new_direction.y
+			new_direction.x += collision.get_collider().movement_manager.direction.x * 0.6
+			
+		# Paddle is no moving
+		else:
+			## Tilt the normal near the edge
+			# Calculate the distance between the collision point and the center of the paddle
+			var distance = collision.get_position() - collision.get_collider().global_position
+			var amount = distance.x / 193
+			normal = normal.rotated(_min_angle_rad * amount)
+			new_direction = new_direction.bounce(normal)
+
+	return  new_direction
 	
-	# Collision with no Coco
+
+func _collision_with_other(collision: KinematicCollision2D) -> Vector2:	
+	var normal = collision.get_normal()		
+	return movement_manager.direction.bounce(normal)
+
+
+# -- 18 signal listeners
+func on_collision_found(collision: KinematicCollision2D):
+	var direction_result := Vector2.ZERO
+	
+	if collision.get_collider().is_in_group("coco"):		
+		direction_result = _collision_with_coco(collision)
 	else: 
-		new_direction = movement_manager.direction.bounce(normal)
+		direction_result = _collision_with_other(collision)
 		
-	new_direction = _filter_flat_direction_angle(new_direction)
-	movement_manager.direction = new_direction
+	direction_result = _filter_flat_direction_angle(direction_result)
+	movement_manager.direction = direction_result
 	
 # -- 19 subclasses
 
