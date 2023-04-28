@@ -11,43 +11,67 @@ extends Node
 # -- 08 exported variables
 @export var character: CharacterBody2D
 @export var movement_manager: MovementManager
-@export var max_normal_angle: float = 15.0
+@export var min_angle := 40.0
 
 # -- 09 public variables
 # -- 10 private variables
+var _min_angle_rad: float
+
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
+func _ready():
+	_min_angle_rad = deg_to_rad(min_angle)
+	
+	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 # -- 17 private methods
+func _filter_flat_direction_angle(direction: Vector2) -> Vector2:
+	var result = direction
+	
+	if direction.angle() < 0 and direction.angle() > -_min_angle_rad:
+		result = Vector2.RIGHT.rotated(-_min_angle_rad)
+	elif direction.angle() > 0 and direction.angle() < _min_angle_rad:
+		result = Vector2.RIGHT.rotated(_min_angle_rad)
+	elif direction.angle() > -180 and direction.angle() < -180 - _min_angle_rad:
+		result = Vector2.RIGHT.rotated(-180 - _min_angle_rad)
+	elif direction.angle() < 180 and direction.angle() > 180 - _min_angle_rad:
+		result = Vector2.RIGHT.rotated(180 - _min_angle_rad)
+	
+	return result
+
 # -- 18 signal listeners
 func on_collision_found(collision: KinematicCollision2D):
 	var normal = collision.get_normal()
+	var new_direction := Vector2(movement_manager.direction)
 	
+	# Collision with Coco
 	if collision.get_collider().is_in_group("coco"):		
 		# Collision from the top, most of the cases
 		if normal.dot(Vector2.UP) > 0.0:
-			var new_direction := Vector2(movement_manager.direction)
-											
 			# Paddle is moving
 			if collision.get_collider().velocity.length() > 0:
 				new_direction.y = -new_direction.y
 				new_direction.x += collision.get_collider().movement_manager.direction.x * 0.6
 				
+			# Paddle is no moving
 			else:
 				## Tilt the normal near the edge
 				# Calculate the distance between the collision point and the center of the paddle
 				var distance = collision.get_position() - collision.get_collider().global_position
 				var amount = distance.x / 193
-				normal = normal.rotated(deg_to_rad(max_normal_angle) * amount)
+				normal = normal.rotated(_min_angle_rad * amount)
 				new_direction = new_direction.bounce(normal)
-				
-			movement_manager.direction = new_direction
 	
+	# Collision with no Coco
 	else: 
-		movement_manager.direction = movement_manager.direction.bounce(normal)
+		new_direction = movement_manager.direction.bounce(normal)
+		
+	new_direction = _filter_flat_direction_angle(new_direction)
+	movement_manager.direction = new_direction
+	
 # -- 19 subclasses
 

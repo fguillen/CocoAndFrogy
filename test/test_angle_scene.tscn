@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://4yjm54bey51g"]
+
+[ext_resource type="Script" path="res://test/test_angle_scene.gd" id="1_4gspj"]
+[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_itoja"]
+
+[node name="TestAngleScene" type="Node2D"]
+script = ExtResource("1_4gspj")
+
+[node name="Fly1" type="Sprite2D" parent="."]
+position = Vector2(545, 786)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_itoja")
+
+[node name="Fly2" type="Sprite2D" parent="."]
+position = Vector2(392, 328)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_itoja")
