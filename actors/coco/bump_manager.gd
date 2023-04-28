@@ -31,11 +31,9 @@ var _frogy_bump_position := Vector2.ZERO
 func _process(_delta):
 	queue_redraw()
 	
+	
 func _draw():
 	draw_circle(_frogy_bump_position - global_position, 10.0, Color.CORAL)
-	
-	
-
 	
 	
 # -- 16 public methods
@@ -59,6 +57,11 @@ func bump():
 			GroupsUtils.frogy.boost(boost_factor_perfect)
 		elif distance <= bump_distant_max:
 			print("XXX boost_factor_no_perfect")
+			if GroupsUtils.frogy.movement_manager.direction.dot(Vector2.DOWN) > 0.0:
+				print("XXX too_early")
+			else: 
+				print("XXX too_late")
+			
 			GroupsUtils.frogy.boost(boost_factor_no_perfect)
 		else: 
 			print("XXX too_far")
