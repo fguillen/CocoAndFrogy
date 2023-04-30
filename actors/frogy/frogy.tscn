@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=17 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
+[ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="2_3noaw"]
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="3_7cwmp"]
 [ext_resource type="Script" path="res://actors/components/bouncing_manager.gd" id="4_hwckh"]
 [ext_resource type="PackedScene" uid="uid://cm5yp03y3eyox" path="res://actors/components/collision_debugger.tscn" id="5_twseo"]
@@ -51,6 +52,14 @@ _data = {
 "bounce": SubResource("Animation_ox13s")
 }
 
+[sub_resource type="Curve" id="Curve_wc1tw"]
+_data = [Vector2(0, 1), 0.0, 0.010209, 0, 0, Vector2(0.550447, 0.78397), -0.37248, -0.37248, 0, 0, Vector2(1, 0), -3.05371, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_217si"]
+offsets = PackedFloat32Array(0, 0.603636, 1)
+colors = PackedColorArray(0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.65098, 0)
+
 [node name="Frogy" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["frogy"]]
 collision_layer = 2
 collision_mask = 13
@@ -90,6 +99,15 @@ libraries = {
 }
 
 [node name="Effects" type="Node" parent="."]
+
+[node name="Trail2D" type="Line2D" parent="Effects"]
+z_index = -1
+width = 110.0
+width_curve = SubResource("Curve_wc1tw")
+gradient = SubResource("Gradient_217si")
+texture_mode = 2
+script = ExtResource("2_3noaw")
+length = 8
 
 [node name="BounceAnimationEffect" type="Node" parent="Effects" node_paths=PackedStringArray("animation_player", "visuals")]
 script = ExtResource("7_3lf7g")
