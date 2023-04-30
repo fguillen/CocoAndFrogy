@@ -18,7 +18,8 @@ extends Node2D
 
 # -- 09 public variables
 # -- 10 private variables
-var _frogy_bump_position := Vector2.ZERO
+var _bump_frogy_position := Vector2.ZERO
+var _bump_collision_position := Vector2.ZERO
 
 # -- 11 onready variables
 @onready var animation_player = %AnimationPlayer
@@ -33,7 +34,8 @@ func _process(_delta):
 	
 	
 func _draw():
-	draw_circle(_frogy_bump_position - global_position, 10.0, Color.CORAL)
+	draw_circle(to_local(_bump_frogy_position), 10.0, Color.CORAL)
+	draw_circle(to_local(_bump_collision_position), 10.0, Color.GREEN_YELLOW)
 	
 	
 # -- 16 public methods
@@ -45,26 +47,25 @@ func bump():
 	var space_state = frogy.get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(frogy.global_position, frogy.global_position + (Vector2.DOWN * bump_distant_max * 2))
 	var result = space_state.intersect_ray(query)
-	print("XXX result: ", result)
 	
 	if result.has("collider") and result.collider.is_in_group("coco"):
 		var distance = frogy.global_position.distance_to(result.position)
-		print("XXX bump in range: ", distance)
-		_frogy_bump_position = frogy.global_position
+		_bump_frogy_position = frogy.global_position
+		_bump_collision_position = result.position
 		
 		if distance <= bump_distant_perfect:
-			print("XXX boost_factor_perfect")
+			print("Bump boost_factor_perfect")
 			GroupsUtils.frogy.boost(boost_factor_perfect)
 		elif distance <= bump_distant_max:
-			print("XXX boost_factor_no_perfect")
+			print("Bump boost_factor_no_perfect")
 			if GroupsUtils.frogy.movement_manager.direction.dot(Vector2.DOWN) > 0.0:
-				print("XXX too_early")
+				print("Bump too_early")
 			else: 
-				print("XXX too_late")
+				print("Bump too_late")
 			
 			GroupsUtils.frogy.boost(boost_factor_no_perfect)
 		else: 
-			print("XXX too_far")
+			print("Bump too_far")
 		
 		
 	
