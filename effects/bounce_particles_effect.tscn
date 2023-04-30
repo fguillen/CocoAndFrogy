@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://6q5tp048wk3s"]
+
+[ext_resource type="Texture2D" uid="uid://cm6s2dka8p8cj" path="res://effects/explosion/explosion_particle_03.png" id="1_wfncg"]
+[ext_resource type="Script" path="res://effects/bounce_particles_effect.gd" id="2_ulxge"]
+
+[sub_resource type="Curve" id="Curve_42ncf"]
+_data = [Vector2(0, 0.554962), 0.0, 0.0, 0, 0, Vector2(0.0805571, 1), 0.08142, 0.08142, 0, 0, Vector2(1, 0), -2.79542, 0.0, 0, 0]
+point_count = 3
+
+[node name="BounceParticlesEffect" type="CPUParticles2D"]
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.83
+randomness = 0.07
+texture = ExtResource("1_wfncg")
+gravity = Vector2(0, 0)
+initial_velocity_min = 180.12
+initial_velocity_max = 242.23
+angular_velocity_min = 125.22
+angular_velocity_max = 572.42
+damping_min = 93.78
+damping_max = 100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_42ncf")
+script = ExtResource("2_ulxge")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

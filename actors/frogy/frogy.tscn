@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=18 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://actors/frogy/bounce_animation_effect.gd" id="7_3lf7g"]
 [ext_resource type="Script" path="res://test/rotate_node_effect.gd" id="8_58dwt"]
 [ext_resource type="Script" path="res://actors/frogy/scale_by_velocity.gd" id="9_2dlar"]
+[ext_resource type="PackedScene" uid="uid://6q5tp048wk3s" path="res://effects/bounce_particles_effect.tscn" id="11_jprwf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
@@ -124,8 +125,11 @@ script = ExtResource("9_2dlar")
 movement_manager = NodePath("../../MovementManager")
 node = NodePath("../../Visuals/Sprite2D")
 
+[node name="BounceParticlesEffect" parent="Effects" instance=ExtResource("11_jprwf")]
+
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="CollisionDebugger" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="BricksImpacter" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="Effects/BounceAnimationEffect" method="on_collision"]
+[connection signal="collision_found" from="MovementManager" to="Effects/BounceParticlesEffect" method="perform"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/RotateNodeEffect" method="on_direction_changed"]
