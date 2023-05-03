@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	$Marker2D.global_position = get_global_mouse_position()
+	print(\"$Marker2D.global_position: \", $Marker2D.global_position)
 
 
 func _on_slider_value_changed(value: float) -> void:
@@ -49,9 +50,12 @@ shadow_color = Color(0, 0, 0, 0.611765)
 shadow_offset = Vector2(2, 2)
 
 [node name="Test" type="Node2D"]
+position = Vector2(3, 13)
 script = SubResource("GDScript_62opy")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(280, 343)
+gizmo_extents = 201.6
 
 [node name="Trail2D" type="Line2D" parent="Marker2D"]
 unique_name_in_owner = true
