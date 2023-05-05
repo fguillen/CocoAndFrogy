@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://djjttvn3vr14t"]
+
+[ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
+[ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_whclb"]
+[ext_resource type="PackedScene" uid="uid://dv2fe0trni1n5" path="res://environment/clouds_01.tscn" id="3_7wkae"]
+[ext_resource type="PackedScene" uid="uid://cjsupsgoe5um5" path="res://environment/clouds_02.tscn" id="3_565kp"]
+[ext_resource type="Texture2D" uid="uid://vjltfx4oqcjy" path="res://assets/ground_01.png" id="3_uvg8y"]
+[ext_resource type="Texture2D" uid="uid://cujrx4rhddwst" path="res://assets/vegetables_01.png" id="4_w1ol4"]
+[ext_resource type="Texture2D" uid="uid://kewii7qnwrlb" path="res://assets/ground_02.png" id="5_27any"]
+[ext_resource type="Texture2D" uid="uid://cmesieyuieo82" path="res://assets/vegetables_02.png" id="6_xqato"]
+[ext_resource type="Texture2D" uid="uid://cvog4gocwjgsf" path="res://assets/foreground_01.png" id="7_x8jhi"]
+[ext_resource type="Texture2D" uid="uid://bfivnydmbttus" path="res://assets/frame.png" id="8_4h3vp"]
+
+[node name="ComposiionScene" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -64.0
+offset_top = -30.0
+offset_right = 1110.0
+offset_bottom = 1957.0
+color = Color(1, 1, 0.8, 1)
+
+[node name="Ski01" type="Sprite2D" parent="."]
+position = Vector2(471, 839)
+texture = ExtResource("1_tlfj7")
+
+[node name="Ski02" type="Sprite2D" parent="."]
+position = Vector2(471, 839)
+texture = ExtResource("2_whclb")
+
+[node name="Clouds_02" parent="." instance=ExtResource("3_565kp")]
+position = Vector2(503, 1148)
+
+[node name="Clouds_01" parent="." instance=ExtResource("3_7wkae")]
+position = Vector2(536, 1292)
+
+[node name="Ground01" type="Sprite2D" parent="."]
+position = Vector2(573, 1639)
+texture = ExtResource("3_uvg8y")
+
+[node name="Vegetables01" type="Sprite2D" parent="."]
+position = Vector2(477, 1458)
+texture = ExtResource("4_w1ol4")
+
+[node name="Ground02" type="Sprite2D" parent="."]
+position = Vector2(491, 1764)
+texture = ExtResource("5_27any")
+
+[node name="Vegetables02" type="Sprite2D" parent="."]
+position = Vector2(437, 1487)
+texture = ExtResource("6_xqato")
+
+[node name="Foreground01" type="Sprite2D" parent="."]
+position = Vector2(542, 1843)
+texture = ExtResource("7_x8jhi")
+
+[node name="Frame" type="Sprite2D" parent="."]
+position = Vector2(535, 984)
+texture = ExtResource("8_4h3vp")

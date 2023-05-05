@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjsupsgoe5um5"]
+
+[ext_resource type="Texture2D" uid="uid://c8dw0klndg3ps" path="res://assets/clouds_02/clouds_02_01.png" id="1_u30we"]
+[ext_resource type="Texture2D" uid="uid://s34rdioed4vr" path="res://assets/clouds_02/clouds_02_02.png" id="2_kxe2y"]
+[ext_resource type="Texture2D" uid="uid://81l6dlrcaej1" path="res://assets/clouds_02/clouds_02_03.png" id="3_ms7ti"]
+[ext_resource type="Texture2D" uid="uid://bcbomp53lo2fc" path="res://assets/clouds_02/clouds_02_04.png" id="4_7fqr1"]
+[ext_resource type="Texture2D" uid="uid://chynal3i6rbvk" path="res://assets/clouds_02/clouds_02_05.png" id="5_nki8e"]
+[ext_resource type="Texture2D" uid="uid://bfey8rgwtjbyj" path="res://assets/clouds_02/clouds_02_06.png" id="6_et4vj"]
+[ext_resource type="Texture2D" uid="uid://csfx24fr4n8id" path="res://assets/clouds_02/clouds_02_07.png" id="7_ce6tw"]
+
+[sub_resource type="Animation" id="Animation_ogk1v"]
+resource_name = "move"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_u30we"), ExtResource("2_kxe2y"), ExtResource("3_ms7ti"), ExtResource("4_7fqr1"), ExtResource("5_nki8e"), ExtResource("6_et4vj"), ExtResource("7_ce6tw"), ExtResource("6_et4vj"), ExtResource("5_nki8e"), ExtResource("4_7fqr1"), ExtResource("3_ms7ti"), ExtResource("2_kxe2y")]
+}
+
+[sub_resource type="Animation" id="Animation_01w0b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_u30we")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yv6m6"]
+_data = {
+"RESET": SubResource("Animation_01w0b"),
+"move": SubResource("Animation_ogk1v")
+}
+
+[node name="Clouds_02" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u30we")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move"
+libraries = {
+"": SubResource("AnimationLibrary_yv6m6")
+}
