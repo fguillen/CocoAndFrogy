@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=13 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
 [ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_whclb"]
@@ -10,50 +10,68 @@
 [ext_resource type="Texture2D" uid="uid://cmesieyuieo82" path="res://assets/vegetables_02.png" id="6_xqato"]
 [ext_resource type="Texture2D" uid="uid://cvog4gocwjgsf" path="res://assets/foreground_01.png" id="7_x8jhi"]
 [ext_resource type="Texture2D" uid="uid://bfivnydmbttus" path="res://assets/frame.png" id="8_4h3vp"]
+[ext_resource type="PackedScene" uid="uid://8rlt50bjqrnr" path="res://actors/frogy/frogy.tscn" id="11_ggtky"]
+[ext_resource type="PackedScene" uid="uid://b6ha4rdfqdob1" path="res://actors/coco/coco.tscn" id="11_xi2mx"]
 
 [node name="ComposiionScene" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Environment"]
 offset_left = -64.0
 offset_top = -30.0
 offset_right = 1110.0
 offset_bottom = 1957.0
 color = Color(1, 1, 0.8, 1)
 
-[node name="Ski01" type="Sprite2D" parent="."]
+[node name="Ski01" type="Sprite2D" parent="Environment"]
 position = Vector2(471, 839)
 texture = ExtResource("1_tlfj7")
 
-[node name="Ski02" type="Sprite2D" parent="."]
+[node name="Ski02" type="Sprite2D" parent="Environment"]
 position = Vector2(471, 839)
 texture = ExtResource("2_whclb")
 
-[node name="Clouds_02" parent="." instance=ExtResource("3_565kp")]
+[node name="Clouds_02" parent="Environment" instance=ExtResource("3_565kp")]
 position = Vector2(503, 1148)
 
-[node name="Clouds_01" parent="." instance=ExtResource("3_7wkae")]
+[node name="Clouds_01" parent="Environment" instance=ExtResource("3_7wkae")]
 position = Vector2(536, 1292)
 
-[node name="Ground01" type="Sprite2D" parent="."]
+[node name="Ground01" type="Sprite2D" parent="Environment"]
 position = Vector2(573, 1639)
 texture = ExtResource("3_uvg8y")
 
-[node name="Vegetables01" type="Sprite2D" parent="."]
+[node name="Vegetables01" type="Sprite2D" parent="Environment"]
 position = Vector2(477, 1458)
 texture = ExtResource("4_w1ol4")
 
-[node name="Ground02" type="Sprite2D" parent="."]
+[node name="Ground02" type="Sprite2D" parent="Environment"]
 position = Vector2(491, 1764)
 texture = ExtResource("5_27any")
 
-[node name="Vegetables02" type="Sprite2D" parent="."]
+[node name="Vegetables02" type="Sprite2D" parent="Environment"]
 position = Vector2(437, 1487)
 texture = ExtResource("6_xqato")
 
-[node name="Foreground01" type="Sprite2D" parent="."]
+[node name="Foreground01" type="Sprite2D" parent="Environment"]
 position = Vector2(542, 1843)
 texture = ExtResource("7_x8jhi")
 
-[node name="Frame" type="Sprite2D" parent="."]
+[node name="Frame" type="Sprite2D" parent="Environment"]
 position = Vector2(535, 984)
 texture = ExtResource("8_4h3vp")
+
+[node name="Frogy" parent="." instance=ExtResource("11_ggtky")]
+position = Vector2(503, 1245)
+
+[node name="Coco" parent="." instance=ExtResource("11_xi2mx")]
+position = Vector2(486, 1714)
+
+[node name="Walls" type="StaticBody2D" parent="." groups=["walls"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(57, -122)
+polygon = PackedVector2Array(1019, 122, 1027, 2039, 1155, 2042, 1110, -34, -192, -48, -172, 2116, -59, 2116, -59, 107)

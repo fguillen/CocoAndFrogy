@@ -8,6 +8,7 @@ extends Node2D
 #
 # -- 05 signals
 signal bump_message(text: String)
+signal bumped()
 
 
 # -- 06 enums
@@ -25,7 +26,7 @@ var _bump_frogy_position := Vector2.ZERO
 var _bump_collision_position := Vector2.ZERO
 
 # -- 11 onready variables
-@onready var animation_player = %AnimationPlayer
+@onready var animation_player_bump: AnimationPlayer = $AnimationPlayerBump
 
 #
 # -- 12 optional built-in virtual _init method
@@ -43,7 +44,7 @@ func _draw():
 	
 # -- 16 public methods
 func bump():
-	animation_player.play("bump")
+#	animation_player_bump.play("bump")
 	
 	# Calculate if frogy is in area
 	var frogy = GroupsUtils.frogy
@@ -71,7 +72,7 @@ func bump():
 	else: 
 		bump_message.emit("No way")
 		
-		
+	bumped.emit()
 	
 	
 # -- 17 private methods

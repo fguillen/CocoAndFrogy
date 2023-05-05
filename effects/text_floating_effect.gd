@@ -75,6 +75,9 @@ func _destination_transform() -> MiniTransform:
 
 
 func _set_text(value: String):
+	if not label:
+		return 
+		
 	label.text = text
 	
 	
