@@ -7,6 +7,9 @@ extends Node2D
 # -- 04 # docstring
 #
 # -- 05 signals
+signal bump_message(text: String)
+
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -54,18 +57,19 @@ func bump():
 		_bump_collision_position = result.position
 		
 		if distance <= bump_distant_perfect:
-			print("Bump boost_factor_perfect")
+			bump_message.emit("Perfect")
 			GroupsUtils.frogy.boost(boost_factor_perfect)
 		elif distance <= bump_distant_max:
-			print("Bump boost_factor_no_perfect")
 			if GroupsUtils.frogy.movement_manager.direction.dot(Vector2.DOWN) > 0.0:
-				print("Bump too_early")
+				bump_message.emit("Too Early")
 			else: 
-				print("Bump too_late")
+				bump_message.emit("Too Late")
 			
 			GroupsUtils.frogy.boost(boost_factor_no_perfect)
 		else: 
-			print("Bump too_far")
+			bump_message.emit("Too Far")
+	else: 
+		bump_message.emit("No way")
 		
 		
 	

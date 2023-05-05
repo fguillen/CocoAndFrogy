@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0xcqunq2srm3"]
+
+[ext_resource type="Script" path="res://effects/text_floating_effect.gd" id="1_4l0ef"]
+
+[node name="TextFloatingEffect" type="Node2D"]
+script = ExtResource("1_4l0ef")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(600, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.976471, 0.960784, 0.92549, 1)
+theme_override_colors/font_outline_color = Color(0.427451, 0.435294, 0.34902, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 80
+text = "Text test"
+horizontal_alignment = 1
+vertical_alignment = 1

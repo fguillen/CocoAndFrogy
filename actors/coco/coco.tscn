@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://df2wtupy0t72n"]
+[gd_scene load_steps=11 format=3 uid="uid://df2wtupy0t72n"]
 
 [ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
 [ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="2_hpak8"]
 [ext_resource type="PackedScene" path="res://actors/components/input_manager.tscn" id="3_quaaq"]
 [ext_resource type="Script" path="res://actors/coco/bump_manager.gd" id="5_mqgta"]
+[ext_resource type="PackedScene" uid="uid://b0xcqunq2srm3" path="res://effects/text_floating_effect.tscn" id="6_2sdkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hxwk"]
 size = Vector2(385, 78)
@@ -105,5 +106,14 @@ libraries = {
 "": SubResource("AnimationLibrary_rulpw")
 }
 
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="TextFloatingEffect" parent="Effects" instance=ExtResource("6_2sdkg")]
+offset_left = -601.0
+offset_top = -165.0
+offset_right = 599.0
+offset_bottom = -65.0
+
 [connection signal="bump_received" from="InputManager" to="BumpManager" method="on_bump_input_received"]
 [connection signal="direction_changed" from="InputManager" to="MovementManager" method="on_direction_changed"]
+[connection signal="bump_message" from="BumpManager" to="Effects/TextFloatingEffect" method="perform"]

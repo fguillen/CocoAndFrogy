@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://t4fnqfcts68g"]
+
+[ext_resource type="FontFile" uid="uid://dvjdap1osrug5" path="res://assets/LondrinaSolid-Regular.ttf" id="1_023s6"]
+
+[resource]
+default_font = ExtResource("1_023s6")

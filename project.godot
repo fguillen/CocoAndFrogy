@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/trail_2d/plugin.cfg")
 
+[gui]
+
+theme/custom="res://assets/theme.tres"
+
 [input]
 
 bump={
