@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=16 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
 [ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_whclb"]
@@ -12,6 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://bfivnydmbttus" path="res://assets/frame.png" id="8_4h3vp"]
 [ext_resource type="PackedScene" uid="uid://8rlt50bjqrnr" path="res://actors/frogy/frogy.tscn" id="11_ggtky"]
 [ext_resource type="PackedScene" uid="uid://b6ha4rdfqdob1" path="res://actors/coco/coco.tscn" id="11_xi2mx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
+size = Vector2(138, 1957)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v06q"]
+size = Vector2(138, 1957)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imguq"]
+size = Vector2(1376, 149)
 
 [node name="ComposiionScene" type="Node2D"]
 
@@ -72,6 +81,14 @@ position = Vector2(486, 1714)
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(57, -122)
-polygon = PackedVector2Array(1019, 122, 1027, 2039, 1155, 2042, 1110, -34, -192, -48, -172, 2116, -59, 2116, -59, 107)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-61, 968.5)
+shape = SubResource("RectangleShape2D_oav07")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1142, 967)
+shape = SubResource("RectangleShape2D_6v06q")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(542, -69)
+shape = SubResource("RectangleShape2D_imguq")
