@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://h2mjp4bbcukc"]
+[gd_scene load_steps=9 format=3 uid="uid://h2mjp4bbcukc"]
 
+[ext_resource type="Texture2D" uid="uid://c51eitc20yuqa" path="res://assets/coco/coco_01.png" id="4_m8kvy"]
 [ext_resource type="PackedScene" uid="uid://psc4grtiu1sw" path="res://environment/wavy_line.tscn" id="7_17etx"]
 [ext_resource type="PackedScene" uid="uid://b6ha4rdfqdob1" path="res://actors/coco/coco.tscn" id="7_gugrx"]
 [ext_resource type="PackedScene" uid="uid://1cvy0e82agle" path="res://actors/monster/monster.tscn" id="7_tftdb"]
@@ -74,6 +75,10 @@ position = Vector2(566, 1324)
 
 [node name="Character" parent="." instance=ExtResource("7_gugrx")]
 position = Vector2(566, 1837)
+
+[node name="Sprite2D" parent="Character/Visuals" index="0"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_m8kvy")
 
 [node name="MovementManager" parent="Character" index="2"]
 max_speed = 150.0

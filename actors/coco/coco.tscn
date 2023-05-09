@@ -50,7 +50,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0.5)]
+"values": [Vector2(0.7, 0.7)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -62,7 +62,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_jbxnx")]
+"values": [ExtResource("19_f0yv3")]
 }
 
 [sub_resource type="Animation" id="Animation_5xu7j"]
@@ -159,7 +159,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5da7p"]
 resource_name = "bump"
-length = 0.2
+length = 0.25
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -168,7 +168,7 @@ tracks/0/path = NodePath("../Visuals:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.07, 0.14, 0.2),
+"times": PackedFloat32Array(0, 0.06, 0.084, 0.168, 0.24),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -50), Vector2(0, 30), Vector2(0, 0)]
@@ -180,7 +180,7 @@ tracks/1/path = NodePath("../Visuals:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.05, 0.15, 0.2),
+"times": PackedFloat32Array(0, 0.024, 0.06, 0.18, 0.24),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1.2), Vector2(1.2, 0.8), Vector2(1, 1)]
@@ -251,8 +251,8 @@ movement_manager = NodePath("MovementManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 y_sort_enabled = true
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_jbxnx")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("19_f0yv3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.5, 14)
