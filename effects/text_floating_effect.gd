@@ -35,9 +35,9 @@ func _ready():
 
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func perform(text: String):
+func perform(text_to_show: String):
 	var instance = _replicate()
-	instance.text = text
+	instance.text = text_to_show
 	instance.visible = true
 	instance.animate()
 	
@@ -68,16 +68,17 @@ func _replicate() -> Variant:
 func _destination_transform() -> MiniTransform:
 	var distance = randf_range(0.0, max_distance)
 	var direction = Vector2.UP.rotated(randf_range(-_max_angle_rad, _max_angle_rad))
-	var position = global_position + (direction * distance)
-	var rotation = direction.angle() + deg_to_rad(90.0)
+	var destination_position = global_position + (direction * distance)
+	var destination_rotation = direction.angle() + deg_to_rad(90.0)
 	
-	return MiniTransform.new(position, rotation)
+	return MiniTransform.new(destination_position, destination_rotation)
 
 
 func _set_text(value: String):
 	if not label:
 		return 
-		
+	
+	text = value
 	label.text = text
 	
 	
@@ -86,8 +87,8 @@ func _set_text(value: String):
 class MiniTransform:
 	var position: Vector2
 	var rotation: float
-
-	func _init(position, rotation):
-		self.position = position
-		self.rotation = rotation
+	
+	func _init(ini_position, ini_rotation):
+		position = ini_position
+		rotation = ini_rotation
 

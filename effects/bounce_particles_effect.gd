@@ -21,12 +21,12 @@ extends CPUParticles2D
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform(collision: KinematicCollision2D):
-	var position = collision.get_position()
-	var rotation = collision.get_normal().angle()
+	var collision_position = collision.get_position()
+	var collision_rotation = collision.get_normal().angle()
 	
 	var instance: CPUParticles2D = _replicate()
-	instance.global_position = position
-	instance.global_rotation = rotation
+	instance.global_position = collision_position
+	instance.global_rotation = collision_rotation
 	instance.emitting = true
 	instance.timer.start(instance.lifetime + 1.0)
 	

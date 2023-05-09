@@ -42,6 +42,7 @@ func on_change_direction(direction: Vector2):
 	
 	
 func on_bumped():
-	_state_machine.travel("bump")
+	pass
+#	_state_machine.travel("bump")
 # -- 19 subclasses
 

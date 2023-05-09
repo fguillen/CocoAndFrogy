@@ -44,10 +44,14 @@ func _draw():
 	
 # -- 16 public methods
 func bump():
-#	animation_player_bump.play("bump")
+	animation_player_bump.play("bump")
 	
 	# Calculate if frogy is in area
 	var frogy = GroupsUtils.frogy
+	if not frogy: 
+		push_warning("Froggy not found")
+		return
+		
 	var space_state = frogy.get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(frogy.global_position, frogy.global_position + (Vector2.DOWN * bump_distant_max * 2))
 	var result = space_state.intersect_ray(query)

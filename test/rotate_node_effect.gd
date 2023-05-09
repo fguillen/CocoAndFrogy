@@ -32,8 +32,8 @@ func _set_rotation():
 	
 	
 # -- 18 signal listeners
-func on_direction_changed(direction: Vector2):
-	self.direction = direction
+func on_direction_changed(new_direction: Vector2):
+	direction = new_direction
 	
 	
 # -- 19 subclasses

@@ -13,8 +13,8 @@ signal collision_found(collision: KinematicCollision2D)
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
-@export var max_speed := 150
-@export var speed := 100 : set = _set_speed
+@export var max_speed := 150.0
+@export var speed := 100.0 : set = _set_speed
 @export var acceleration := 50
 @export var infinite_acceleration := false
 @export var decceleration := 80
@@ -77,7 +77,7 @@ func _set_direction(value: Vector2):
 		direction_changed.emit(direction)
 
 
-func _set_speed(value: int):
+func _set_speed(value: float):
 	if value > max_speed:
 		print("MovememtManager._set_speed() clamped %d -> %d" % [value, max_speed])
 		
@@ -85,8 +85,8 @@ func _set_speed(value: int):
 	
 		
 # -- 18 signal listeners
-func on_direction_changed(direction: Vector2):
-	self.direction = direction
+func on_direction_changed(new_direction: Vector2):
+	direction = new_direction
 
 # -- 19 subclasses
 
