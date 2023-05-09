@@ -1,30 +1,30 @@
 [gd_scene load_steps=4 format=3 uid="uid://6q5tp048wk3s"]
 
-[ext_resource type="Texture2D" uid="uid://cm6s2dka8p8cj" path="res://effects/explosion/explosion_particle_03.png" id="1_wfncg"]
+[ext_resource type="Texture2D" uid="uid://cay42v48ylgpl" path="res://assets/bump/bump_spritesheet.png" id="1_1j0te"]
 [ext_resource type="Script" path="res://effects/bounce_particles_effect.gd" id="2_ulxge"]
 
-[sub_resource type="Curve" id="Curve_42ncf"]
-_data = [Vector2(0, 0.554962), 0.0, 0.0, 0, 0, Vector2(0.0805571, 1), 0.08142, 0.08142, 0, 0, Vector2(1, 0), -2.79542, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c1bnd"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 7
+particles_anim_loop = false
 
 [node name="BounceParticlesEffect" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_c1bnd")
 emitting = false
-amount = 4
-lifetime = 0.5
+amount = 2
+lifetime = 0.3
 one_shot = true
-explosiveness = 0.83
-randomness = 0.07
-texture = ExtResource("1_wfncg")
+explosiveness = 0.95
+randomness = 0.2
+texture = ExtResource("1_1j0te")
+particle_flag_align_y = true
 gravity = Vector2(0, 0)
-initial_velocity_min = 180.12
-initial_velocity_max = 242.23
-angular_velocity_min = 125.22
-angular_velocity_max = 572.42
-damping_min = 93.78
-damping_max = 100.0
-scale_amount_min = 0.1
-scale_amount_max = 0.2
-scale_amount_curve = SubResource("Curve_42ncf")
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_max = 2.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 script = ExtResource("2_ulxge")
 
 [node name="Timer" type="Timer" parent="."]
