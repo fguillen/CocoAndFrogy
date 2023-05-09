@@ -8,6 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://bfey8rgwtjbyj" path="res://assets/clouds_02/clouds_02_06.png" id="6_et4vj"]
 [ext_resource type="Texture2D" uid="uid://csfx24fr4n8id" path="res://assets/clouds_02/clouds_02_07.png" id="7_ce6tw"]
 
+[sub_resource type="Animation" id="Animation_01w0b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_u30we")]
+}
+
 [sub_resource type="Animation" id="Animation_ogk1v"]
 resource_name = "move"
 length = 1.2
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("1_u30we"), ExtResource("2_kxe2y"), ExtResource("3_ms7ti"), ExtResource("4_7fqr1"), ExtResource("5_nki8e"), ExtResource("6_et4vj"), ExtResource("7_ce6tw"), ExtResource("6_et4vj"), ExtResource("5_nki8e"), ExtResource("4_7fqr1"), ExtResource("3_ms7ti"), ExtResource("2_kxe2y")]
-}
-
-[sub_resource type="Animation" id="Animation_01w0b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_u30we")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yv6m6"]

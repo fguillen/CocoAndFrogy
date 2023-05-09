@@ -19,10 +19,6 @@ position = Vector2(566, 1324)
 [node name="Character" parent="." instance=ExtResource("3_xcddv")]
 position = Vector2(566, 1837)
 
-[node name="MovementManager" parent="Character" index="2"]
-speed = 1000
-acceleration = 100000
-
 [node name="AnimationTree" parent="Character/AnimationManager" index="0"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_krgll")
 
