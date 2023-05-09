@@ -26,7 +26,6 @@ var _bump_frogy_position := Vector2.ZERO
 var _bump_collision_position := Vector2.ZERO
 
 # -- 11 onready variables
-@onready var animation_player_bump: AnimationPlayer = $AnimationPlayerBump
 
 #
 # -- 12 optional built-in virtual _init method
@@ -44,8 +43,6 @@ func _draw():
 	
 # -- 16 public methods
 func bump():
-	animation_player_bump.play("bump")
-	
 	# Calculate if frogy is in area
 	var frogy = GroupsUtils.frogy
 	if not frogy: 

@@ -15,6 +15,7 @@ var _state_machine: AnimationNodeStateMachinePlayback
 
 # -- 11 onready variables
 @onready var animation_tree: AnimationTree = %AnimationTree
+@onready var animation_player_bump: AnimationPlayer = $AnimationPlayerBump
 
 #
 # -- 12 optional built-in virtual _init method
@@ -42,7 +43,7 @@ func on_change_direction(direction: Vector2):
 	
 	
 func on_bumped():
-	pass
+	animation_player_bump.play("bump")
 #	_state_machine.travel("bump")
 # -- 19 subclasses
 

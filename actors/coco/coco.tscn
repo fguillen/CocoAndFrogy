@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b6ha4rdfqdob1"]
+[gd_scene load_steps=47 format=3 uid="uid://b6ha4rdfqdob1"]
 
 [ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
 [ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
@@ -25,56 +25,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hxwk"]
 size = Vector2(439, 96)
-
-[sub_resource type="Animation" id="Animation_hlbn0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Visuals:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_5da7p"]
-resource_name = "bump"
-length = 0.2
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Visuals:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.07, 0.14, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -50), Vector2(0, 30), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Visuals:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.05, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1.2), Vector2(1.2, 0.8), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_drgc8"]
-_data = {
-"RESET": SubResource("Animation_hlbn0"),
-"bump": SubResource("Animation_5da7p")
-}
 
 [sub_resource type="Animation" id="Animation_igayi"]
 length = 0.001
@@ -113,35 +63,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("1_jbxnx")]
-}
-
-[sub_resource type="Animation" id="Animation_a5tka"]
-resource_name = "bump"
-length = 0.2
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:offset")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03, 0.14, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 30), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Sprite2D:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.51, 0.48), Vector2(0.51, 0.48), Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_5xu7j"]
@@ -215,18 +136,61 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rulpw"]
 _data = {
 "RESET": SubResource("Animation_igayi"),
-"bump": SubResource("Animation_a5tka"),
 "look_left": SubResource("Animation_5xu7j"),
 "look_right": SubResource("Animation_xfipw"),
 "turn_left": SubResource("Animation_l2j4q"),
 "turn_right": SubResource("Animation_pvqae")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dg6bv"]
-animation = &"bump"
+[sub_resource type="Animation" id="Animation_hlbn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Visuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4520x"]
-animation = &"bump"
+[sub_resource type="Animation" id="Animation_5da7p"]
+resource_name = "bump"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Visuals:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.07, 0.14, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -50), Vector2(0, 30), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Visuals:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.05, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1.2), Vector2(1.2, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_drgc8"]
+_data = {
+"RESET": SubResource("Animation_hlbn0"),
+"bump": SubResource("Animation_5da7p")
+}
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lr6oc"]
 animation = &"look_left"
@@ -258,18 +222,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cgwoq"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fvl4p"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_egvqs"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ykfww"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sai3x"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ucr6p"]
 switch_mode = 1
 
@@ -277,10 +229,6 @@ switch_mode = 1
 switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_32kex"]
-states/bump/node = SubResource("AnimationNodeAnimation_4520x")
-states/bump/position = Vector2(594, 268)
-"states/bump /node" = SubResource("AnimationNodeAnimation_dg6bv")
-"states/bump /position" = Vector2(680, 42)
 states/look_left/node = SubResource("AnimationNodeAnimation_lr6oc")
 states/look_left/position = Vector2(542, 67)
 states/look_right/node = SubResource("AnimationNodeAnimation_o38tc")
@@ -289,7 +237,7 @@ states/turn_left/node = SubResource("AnimationNodeAnimation_nne47")
 states/turn_left/position = Vector2(372, 67)
 states/turn_right/node = SubResource("AnimationNodeAnimation_a422s")
 states/turn_right/position = Vector2(380, 158)
-transitions = ["Start", "turn_left", SubResource("AnimationNodeStateMachineTransition_freap"), "turn_left", "look_left", SubResource("AnimationNodeStateMachineTransition_v7w3m"), "turn_right", "look_right", SubResource("AnimationNodeStateMachineTransition_sddoi"), "Start", "turn_right", SubResource("AnimationNodeStateMachineTransition_3lgr0"), "look_right", "turn_left", SubResource("AnimationNodeStateMachineTransition_w276l"), "look_left", "turn_right", SubResource("AnimationNodeStateMachineTransition_cgwoq"), "look_right", "bump", SubResource("AnimationNodeStateMachineTransition_fvl4p"), "bump", "look_right", SubResource("AnimationNodeStateMachineTransition_egvqs"), "look_left", "bump ", SubResource("AnimationNodeStateMachineTransition_ykfww"), "bump ", "look_left", SubResource("AnimationNodeStateMachineTransition_sai3x"), "turn_left", "turn_right", SubResource("AnimationNodeStateMachineTransition_ucr6p"), "turn_right", "turn_left", SubResource("AnimationNodeStateMachineTransition_oh1y0")]
+transitions = ["Start", "turn_left", SubResource("AnimationNodeStateMachineTransition_freap"), "turn_left", "look_left", SubResource("AnimationNodeStateMachineTransition_v7w3m"), "turn_right", "look_right", SubResource("AnimationNodeStateMachineTransition_sddoi"), "Start", "turn_right", SubResource("AnimationNodeStateMachineTransition_3lgr0"), "look_right", "turn_left", SubResource("AnimationNodeStateMachineTransition_w276l"), "look_left", "turn_right", SubResource("AnimationNodeStateMachineTransition_cgwoq"), "turn_left", "turn_right", SubResource("AnimationNodeStateMachineTransition_ucr6p"), "turn_right", "turn_left", SubResource("AnimationNodeStateMachineTransition_oh1y0")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ic23m"]
 
@@ -323,26 +271,27 @@ collision_mode = "Collide"
 [node name="BumpManager" type="Node2D" parent="."]
 script = ExtResource("5_mqgta")
 
-[node name="AnimationPlayerBump" type="AnimationPlayer" parent="BumpManager"]
-libraries = {
-"": SubResource("AnimationLibrary_drgc8")
-}
+[node name="AnimationManager" type="Node" parent="."]
+script = ExtResource("22_nnq4m")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager"]
 unique_name_in_owner = true
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_rulpw")
 }
 
-[node name="AnimationManager" type="Node" parent="."]
-script = ExtResource("22_nnq4m")
+[node name="AnimationPlayerBump" type="AnimationPlayer" parent="AnimationManager"]
+root_node = NodePath("../../BumpManager")
+libraries = {
+"": SubResource("AnimationLibrary_drgc8")
+}
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationManager"]
 unique_name_in_owner = true
 tree_root = SubResource("AnimationNodeStateMachine_32kex")
-anim_player = NodePath("../../AnimationPlayer")
+anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ic23m")
-script = ExtResource("22_nnq4m")
 
 [node name="Effects" type="Node2D" parent="."]
 
