@@ -296,6 +296,7 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ic23m")
 [node name="Effects" type="Node2D" parent="."]
 
 [node name="TextFloatingEffect" parent="Effects" instance=ExtResource("6_2sdkg")]
+position = Vector2(0, -99)
 
 [connection signal="direction_changed" from="MovementManager" to="AnimationManager" method="on_change_direction"]
 [connection signal="bump_received" from="InputManager" to="BumpManager" method="on_bump_input_received"]

@@ -12,12 +12,15 @@ extends Node2D
 @export var life_time := 2.0
 @export var max_angle := 45.0 
 @export var max_distance := 200
+@export var speed := 100.0
 @export var text := "Text test": set = _set_text
 
 
 # -- 09 public variables
 # -- 10 private variables
 var _max_angle_rad: float
+#var _position_ini: Vector2
+#var _position_end: Vector2
 
 
 # -- 11 onready variables
@@ -33,6 +36,11 @@ func _ready():
 	_max_angle_rad = deg_to_rad(max_angle)
 
 
+#func _draw():
+#	draw_circle(to_local(_position_ini), 10.0, Color.CADET_BLUE)
+#	draw_circle(to_local(_position_end), 10.0, Color.CORAL)
+
+
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform(text_to_show: String):
@@ -46,14 +54,16 @@ func perform(text_to_show: String):
 	
 
 func animate():
-	var destination_transform = _destination_transform()
+	var destination_transform = _calculate_destination()
+#	_position_end = destination_transform.position
+	queue_redraw()
 	
 	global_rotation = destination_transform.rotation
 	
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", destination_transform.position, 1.0)
-	
-	
+	tween.tween_property(self, "global_position", destination_transform.position, global_position.distance_to(destination_transform.position) / speed)
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_ease(Tween.EASE_OUT)
 	
 	
 # -- 17 private methods	
@@ -61,12 +71,12 @@ func _replicate() -> Variant:
 	var instance = self.duplicate()
 	get_tree().get_current_scene().add_child(instance)
 	instance.global_position = global_position
-	print("XXX1: global_position: ", global_position)
+#	instance._position_ini = global_position
 	return instance
 	
 	
-func _destination_transform() -> MiniTransform:
-	var distance = randf_range(0.0, max_distance)
+func _calculate_destination() -> MiniTransform:
+	var distance = randf_range(max_distance/2.0, max_distance)
 	var direction = Vector2.UP.rotated(randf_range(-_max_angle_rad, _max_angle_rad))
 	var destination_position = global_position + (direction * distance)
 	var destination_rotation = direction.angle() + deg_to_rad(90.0)
