@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=28 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
+[ext_resource type="Script" path="res://environment/parallax_background.gd" id="1_ueekc"]
 [ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_whclb"]
 [ext_resource type="PackedScene" uid="uid://dv2fe0trni1n5" path="res://environment/clouds_01.tscn" id="3_7wkae"]
 [ext_resource type="PackedScene" uid="uid://cjsupsgoe5um5" path="res://environment/clouds_02.tscn" id="3_565kp"]
@@ -38,51 +39,75 @@ size = Vector2(1376, 149)
 [node name="EnvironmentBack" type="Node2D" parent="."]
 z_index = -10
 
-[node name="ColorRect" type="ColorRect" parent="EnvironmentBack"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="EnvironmentBack"]
+script = ExtResource("1_ueekc")
+
+[node name="ColorRect" type="ColorRect" parent="EnvironmentBack/ParallaxBackground"]
 offset_left = -64.0
 offset_top = -30.0
 offset_right = 1110.0
 offset_bottom = 1957.0
 color = Color(1, 1, 0.8, 1)
 
-[node name="Ski01" type="Sprite2D" parent="EnvironmentBack"]
+[node name="Sky01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
+motion_scale = Vector2(0.004, 0.004)
+
+[node name="Ski01" type="Sprite2D" parent="EnvironmentBack/ParallaxBackground/Sky01ParallaxLayer"]
 position = Vector2(471, 839)
 texture = ExtResource("1_tlfj7")
 
-[node name="Ski02" type="Sprite2D" parent="EnvironmentBack"]
+[node name="Skay02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
+motion_scale = Vector2(0.005, 0.005)
+
+[node name="Ski02" type="Sprite2D" parent="EnvironmentBack/ParallaxBackground/Skay02ParallaxLayer"]
 position = Vector2(471, 839)
 texture = ExtResource("2_whclb")
 
-[node name="Clouds_02" parent="EnvironmentBack" instance=ExtResource("3_565kp")]
+[node name="Clouds01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
+motion_scale = Vector2(0.02, 0.02)
+
+[node name="Clouds_02" parent="EnvironmentBack/ParallaxBackground/Clouds01ParallaxLayer" instance=ExtResource("3_565kp")]
 position = Vector2(503, 1148)
 
-[node name="Clouds_01" parent="EnvironmentBack" instance=ExtResource("3_7wkae")]
+[node name="Clouds02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
+motion_scale = Vector2(0.03, 0.03)
+
+[node name="Clouds_01" parent="EnvironmentBack/ParallaxBackground/Clouds02ParallaxLayer" instance=ExtResource("3_7wkae")]
 position = Vector2(536, 1292)
 
-[node name="Ground01" type="Sprite2D" parent="EnvironmentBack"]
+[node name="GroundParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+
+[node name="Ground01" type="Sprite2D" parent="EnvironmentBack/ParallaxBackground/GroundParallaxLayer"]
 position = Vector2(573, 1639)
 texture = ExtResource("3_uvg8y")
 
-[node name="VegetablesBack" type="Node2D" parent="EnvironmentBack"]
-position = Vector2(397, 1591)
+[node name="Vegetables01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
 
-[node name="VegetableBack01" parent="EnvironmentBack/VegetablesBack" instance=ExtResource("6_w4cht")]
-position = Vector2(-206, 54)
+[node name="VegetableBack05" parent="EnvironmentBack/ParallaxBackground/Vegetables01ParallaxLayer" instance=ExtResource("10_3mqng")]
+position = Vector2(364, 1461)
 
-[node name="VegetableBack02" parent="EnvironmentBack/VegetablesBack" instance=ExtResource("7_hhk13")]
-position = Vector2(86, 70)
+[node name="VegetableBack06" parent="EnvironmentBack/ParallaxBackground/Vegetables01ParallaxLayer" instance=ExtResource("11_j3qwv")]
+position = Vector2(691, 1474)
 
-[node name="VegetableBack03" parent="EnvironmentBack/VegetablesBack" instance=ExtResource("8_kjf1w")]
-position = Vector2(184, 57)
+[node name="Vegetables02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
+motion_scale = Vector2(0.15, 0.15)
 
-[node name="VegetableBack04" parent="EnvironmentBack/VegetablesBack" instance=ExtResource("9_jkh7v")]
-position = Vector2(397, 70)
+[node name="VegetableBack03" parent="EnvironmentBack/ParallaxBackground/Vegetables02ParallaxLayer" instance=ExtResource("8_kjf1w")]
+position = Vector2(586, 1504)
 
-[node name="VegetableBack05" parent="EnvironmentBack/VegetablesBack" instance=ExtResource("10_3mqng")]
-position = Vector2(-41, 44)
+[node name="VegetableBack04" parent="EnvironmentBack/ParallaxBackground/Vegetables02ParallaxLayer" instance=ExtResource("9_jkh7v")]
+position = Vector2(799, 1517)
 
-[node name="VegetableBack06" parent="EnvironmentBack/VegetablesBack" instance=ExtResource("11_j3qwv")]
-position = Vector2(286, 57)
+[node name="Vegetables03ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
+motion_scale = Vector2(0.18, 0.18)
+
+[node name="VegetableBack01" parent="EnvironmentBack/ParallaxBackground/Vegetables03ParallaxLayer" instance=ExtResource("6_w4cht")]
+position = Vector2(191, 1546)
+
+[node name="VegetableBack02" parent="EnvironmentBack/ParallaxBackground/Vegetables03ParallaxLayer" instance=ExtResource("7_hhk13")]
+position = Vector2(483, 1562)
 
 [node name="Ground02" type="Sprite2D" parent="EnvironmentBack"]
 position = Vector2(491, 1764)

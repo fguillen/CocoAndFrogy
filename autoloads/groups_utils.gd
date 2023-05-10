@@ -11,7 +11,7 @@ extends Node
 # 08. exported variables
 # 09. public variables
 var frogy: Frogy : get = _get_frogy
-var codo: Coco : get = _get_coco
+var coco: Coco : get = _get_coco
 var entities_layer: Node2D : get = _get_entities_layer
 var foreground_layer: Node2D : get = _get_foreground_layer
 

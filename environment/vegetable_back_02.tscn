@@ -10,4 +10,5 @@ region = Rect2(325.934, 25.532, 89.3101, 251.825)
 [node name="VegetableBack02" instance=ExtResource("1_vnv2y")]
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(-6, -118)
 texture = SubResource("AtlasTexture_lg0p3")
