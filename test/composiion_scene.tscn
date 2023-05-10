@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=18 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
 [ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_whclb"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bfivnydmbttus" path="res://assets/frame.png" id="8_4h3vp"]
 [ext_resource type="PackedScene" uid="uid://8rlt50bjqrnr" path="res://actors/frogy/frogy.tscn" id="11_ggtky"]
 [ext_resource type="PackedScene" uid="uid://b6ha4rdfqdob1" path="res://actors/coco/coco.tscn" id="11_xi2mx"]
+[ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="13_ymu78"]
+[ext_resource type="PackedScene" uid="uid://dkwu2n1ck0gnf" path="res://actors/bricks/grasshopper/grasshopper_brick.tscn" id="14_2ok84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
 size = Vector2(138, 1957)
@@ -93,3 +95,39 @@ shape = SubResource("RectangleShape2D_6v06q")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
 position = Vector2(542, -69)
 shape = SubResource("RectangleShape2D_imguq")
+
+[node name="Bricks" type="Node2D" parent="."]
+position = Vector2(0, -144)
+
+[node name="Brick" parent="Bricks" instance=ExtResource("13_ymu78")]
+position = Vector2(241, 676)
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("13_ymu78")]
+position = Vector2(447, 676)
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("13_ymu78")]
+position = Vector2(657, 676)
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("13_ymu78")]
+position = Vector2(867, 676)
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("13_ymu78")]
+position = Vector2(867, 1057)
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("13_ymu78")]
+position = Vector2(677, 1057)
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("13_ymu78")]
+position = Vector2(448, 1057)
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("13_ymu78")]
+position = Vector2(248, 1057)
+
+[node name="GrasshopperBrick" parent="Bricks" instance=ExtResource("14_2ok84")]
+position = Vector2(571, 470)
+
+[node name="GrasshopperBrick2" parent="Bricks" instance=ExtResource("14_2ok84")]
+position = Vector2(348, 857)
+
+[node name="GrasshopperBrick3" parent="Bricks" instance=ExtResource("14_2ok84")]
+position = Vector2(764, 857)
