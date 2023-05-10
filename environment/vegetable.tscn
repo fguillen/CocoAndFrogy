@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://01ga7j4civ2b"]
+
+[ext_resource type="Texture2D" uid="uid://cmesieyuieo82" path="res://assets/vegetables_02.png" id="1_l7lpx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb6hp"]
+atlas = ExtResource("1_l7lpx")
+region = Rect2(50.6639, 260.594, 153.73, 409.948)
+
+[node name="Vegetable" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -186)
+texture = SubResource("AtlasTexture_nb6hp")

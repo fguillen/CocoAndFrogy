@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://biey47xajkipj"]
+
+[ext_resource type="PackedScene" uid="uid://01ga7j4civ2b" path="res://environment/vegetable.tscn" id="1_c7bhw"]
+
+[node name="VegetableFront01" instance=ExtResource("1_c7bhw")]

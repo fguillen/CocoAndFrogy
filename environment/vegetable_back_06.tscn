@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpdm3ahetr17d"]
+
+[ext_resource type="PackedScene" uid="uid://01ga7j4civ2b" path="res://environment/vegetable.tscn" id="1_2acao"]
+[ext_resource type="Texture2D" uid="uid://cujrx4rhddwst" path="res://assets/vegetables_01.png" id="2_envvp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x73tt"]
+atlas = ExtResource("2_envvp")
+region = Rect2(560.5, 129.848, 23.2863, 30.9033)
+
+[node name="VegetableBack06" instance=ExtResource("1_2acao")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_x73tt")
