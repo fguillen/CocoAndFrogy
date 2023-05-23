@@ -6,6 +6,8 @@ extends Node
 # -- 04 # docstring
 #
 # -- 05 signals
+signal bounced(collision: KinematicCollision2D)
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -78,11 +80,14 @@ func on_collision_found(collision: KinematicCollision2D):
 	
 	if collision.get_collider().is_in_group("coco"):		
 		direction_result = _collision_with_coco(collision)
-	else: 
+	elif collision.get_collider().is_in_group("bricks") or collision.get_collider().is_in_group("walls"): 
 		direction_result = _collision_with_other(collision)
+	else: 
+		return
 		
 	direction_result = _filter_flat_direction_angle(direction_result)
 	movement_manager.direction = direction_result
+	bounced.emit(collision)
 	
 # -- 19 subclasses
 

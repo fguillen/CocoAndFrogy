@@ -48,6 +48,7 @@ bump={
 2d_physics/layer_2="frogy"
 2d_physics/layer_3="brick"
 2d_physics/layer_4="wall"
+2d_physics/layer_5="wall_death"
 
 [rendering]
 

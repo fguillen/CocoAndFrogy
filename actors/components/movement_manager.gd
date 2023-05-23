@@ -28,6 +28,9 @@ var direction := Vector2.ZERO : set = _set_direction
 
 
 # -- 10 private variables
+var _stoped := false
+
+
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
@@ -35,11 +38,22 @@ var direction := Vector2.ZERO : set = _set_direction
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 func _physics_process(delta):
+	if _stoped: 
+		return
+		
 	_accelerate_deccelerate(delta)
 	_move(delta)
 			
 	
 # -- 16 public methods
+func stop():
+	_stoped = true
+	
+	
+func resume():
+	_stoped = false
+	
+	
 # -- 17 private methods
 func _accelerate_deccelerate(delta: float):
 	var desired_velocity = speed * direction

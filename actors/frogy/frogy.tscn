@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=20 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
 [ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="2_3noaw"]
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="3_7cwmp"]
 [ext_resource type="Script" path="res://actors/components/bouncing_manager.gd" id="4_hwckh"]
+[ext_resource type="Script" path="res://actors/frogy/death_manager.gd" id="5_r5ak0"]
 [ext_resource type="PackedScene" uid="uid://cm5yp03y3eyox" path="res://actors/components/collision_debugger.tscn" id="5_twseo"]
 [ext_resource type="Script" path="res://actors/frogy/bricks_impacter.gd" id="6_4qjhy"]
 [ext_resource type="Script" path="res://actors/frogy/bounce_animation_effect.gd" id="7_3lf7g"]
@@ -64,7 +65,7 @@ colors = PackedColorArray(0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.
 
 [node name="Frogy" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["frogy"]]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 29
 script = ExtResource("1_2fmqe")
 movement_manager = NodePath("MovementManager")
 
@@ -89,6 +90,9 @@ collision_mode = "Collide"
 script = ExtResource("4_hwckh")
 character = NodePath("..")
 movement_manager = NodePath("../MovementManager")
+
+[node name="DeathManager" type="Node" parent="."]
+script = ExtResource("5_r5ak0")
 
 [node name="CollisionDebugger" parent="." instance=ExtResource("5_twseo")]
 
@@ -136,7 +140,7 @@ animation_player = NodePath("../../AnimationPlayer")
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="CollisionDebugger" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="BricksImpacter" method="on_collision_found"]
-[connection signal="collision_found" from="MovementManager" to="Effects/BounceAnimationEffect" method="bounce"]
-[connection signal="collision_found" from="MovementManager" to="Effects/BounceParticlesEffect" method="perform"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/RotateNodeEffect" method="on_direction_changed"]
+[connection signal="bounced" from="BouncingManager" to="Effects/BounceAnimationEffect" method="bounce"]
+[connection signal="bounced" from="BouncingManager" to="Effects/BounceParticlesEffect" method="perform"]
 [connection signal="collision_found" from="BricksImpacter" to="Effects/HitStopEffect" method="perform" binds= [0.1]]

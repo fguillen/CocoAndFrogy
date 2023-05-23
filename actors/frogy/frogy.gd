@@ -17,6 +17,8 @@ signal boosted()
 var _attached_to: Node2D
 
 # -- 11 onready variables
+@onready var collision_shape_2d = $CollisionShape2D
+
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
