@@ -50,6 +50,12 @@ func bump():
 		push_warning("Froggy not found")
 		return
 		
+	if frogy._attached_to:
+		bumped.emit()
+		bumped_achieved.emit()
+		frogy.detach()
+		return
+		
 	var space_state = frogy.get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(frogy.global_position, frogy.global_position + (Vector2.DOWN * bump_distant_max * 2))
 	var result = space_state.intersect_ray(query)
@@ -61,16 +67,16 @@ func bump():
 		
 		if distance <= bump_distant_perfect:
 			bump_message.emit("Perfect")
-			GroupsUtils.frogy.boost(boost_factor_perfect)
+			frogy.boost(boost_factor_perfect)
 			bumped_achieved.emit()
 			
 		elif distance <= bump_distant_max:
-			if GroupsUtils.frogy.movement_manager.direction.dot(Vector2.DOWN) > 0.0:
+			if frogy.movement_manager.direction.dot(Vector2.DOWN) > 0.0:
 				bump_message.emit("Too Early")
 			else: 
 				bump_message.emit("Too Late")
 			
-			GroupsUtils.frogy.boost(boost_factor_no_perfect)
+			frogy.boost(boost_factor_no_perfect)
 			bumped_achieved.emit()
 		else: 
 			bump_message.emit("Too Far")

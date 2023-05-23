@@ -247,6 +247,10 @@ collision_mask = 10
 script = ExtResource("1_m36m7")
 movement_manager = NodePath("MovementManager")
 
+[node name="FrogyHandler" type="Marker2D" parent="."]
+position = Vector2(0, -103)
+gizmo_extents = 34.0
+
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]

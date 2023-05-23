@@ -13,10 +13,15 @@ extends Character
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
+@onready var frogy_handler: Node2D = $FrogyHandler
+
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
+func _ready():
+	Global.coco_ready(self)
+	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 # -- 17 private methods

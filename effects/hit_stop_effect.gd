@@ -15,6 +15,8 @@ extends Node
 
 # -- 09 public variables
 # -- 10 private variables
+var _is_animation_player_paused := false
+
 # -- 11 onready variables
 @onready var timer = $Timer
 
@@ -32,8 +34,9 @@ func perform(time: float):
 		node.set_process(false)
 		node.set_physics_process(false)
 	
-	if animation_player:
+	if animation_player and animation_player.is_playing():
 		animation_player.pause()
+		_is_animation_player_paused = true
 		
 	timer.start(time)
 	
@@ -45,7 +48,7 @@ func _on_timer_timeout():
 		node.set_process(true)
 		node.set_physics_process(true)
 	
-	if animation_player:
+	if _is_animation_player_paused:
 		animation_player.play()
 # -- 19 subclasses
 
