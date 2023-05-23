@@ -1,12 +1,15 @@
 # -- 01 @tool
 # -- 02 class_name
 class_name BricksImpacter
+
 # -- 03 extends
 extends Node
 
 # -- 04 # docstring
 #
 # -- 05 signals
+signal collision_found()
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -24,6 +27,7 @@ extends Node
 func on_collision_found(collision: KinematicCollision2D):
 	if collision.get_collider().is_in_group("bricks"):
 		collision.get_collider().impact()
+		collision_found.emit()
 		
 # -- 19 subclasses
 

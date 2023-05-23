@@ -7,6 +7,8 @@ extends Character
 # -- 04 # docstring
 #
 # -- 05 signals
+signal boosted()
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -19,12 +21,14 @@ extends Character
 # -- 14 built-in virtual _ready method
 func _ready():
 	movement_manager.direction = Vector2.DOWN
-	
+		
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func boost(factor: float):
 	movement_manager.speed *= factor
+	boosted.emit()
+	
 	
 	
 # -- 17 private methods

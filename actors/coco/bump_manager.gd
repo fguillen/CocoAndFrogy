@@ -8,6 +8,7 @@ extends Node2D
 #
 # -- 05 signals
 signal bump_message(text: String)
+signal bumped_achieved()
 signal bumped()
 
 
@@ -61,6 +62,8 @@ func bump():
 		if distance <= bump_distant_perfect:
 			bump_message.emit("Perfect")
 			GroupsUtils.frogy.boost(boost_factor_perfect)
+			bumped_achieved.emit()
+			
 		elif distance <= bump_distant_max:
 			if GroupsUtils.frogy.movement_manager.direction.dot(Vector2.DOWN) > 0.0:
 				bump_message.emit("Too Early")
@@ -68,6 +71,7 @@ func bump():
 				bump_message.emit("Too Late")
 			
 			GroupsUtils.frogy.boost(boost_factor_no_perfect)
+			bumped_achieved.emit()
 		else: 
 			bump_message.emit("Too Far")
 	else: 
