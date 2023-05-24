@@ -25,12 +25,10 @@ signal collision_found(collision: KinematicCollision2D)
 
 # -- 09 public variables
 var direction := Vector2.ZERO : set = _set_direction
-
+var initial_speed: float
 
 # -- 10 private variables
 var _stoped := false
-var _initial_speed: float
-
 
 # -- 11 onready variables
 #
@@ -38,7 +36,7 @@ var _initial_speed: float
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
-	_initial_speed = speed
+	initial_speed = speed
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -60,7 +58,7 @@ func resume():
 	
 
 func reset():
-	speed = _initial_speed
+	speed = initial_speed
 	
 	
 # -- 17 private methods

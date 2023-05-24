@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=24 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bb66i7ypf3x22" path="res://effects/hit_stop_effect.tscn" id="12_8wh8b"]
 [ext_resource type="PackedScene" uid="uid://bp5pino13h6nm" path="res://effects/death_effect.tscn" id="14_b8v4m"]
 [ext_resource type="PackedScene" uid="uid://eux0priaj10i" path="res://effects/appear_effect.tscn" id="15_ip5qy"]
+[ext_resource type="Script" path="res://actors/frogy/decceleration_effect.gd" id="16_xkcyd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
@@ -125,6 +126,7 @@ shape = SubResource("CircleShape2D_a3lg5")
 [node name="MovementManager" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_7cwmp")]
 max_speed = 2500.0
 speed = 1000.0
+acceleration = 0
 infinite_acceleration = true
 character = NodePath("..")
 collision_mode = "Collide"
@@ -188,6 +190,10 @@ z_index = 10
 [node name="AppearEffect" parent="Effects" node_paths=PackedStringArray("node_to_hide_1", "node_to_hide_2") instance=ExtResource("15_ip5qy")]
 node_to_hide_1 = NodePath("../../Visuals")
 node_to_hide_2 = NodePath("../Trail2D")
+
+[node name="DeccelerationEffect" type="Node" parent="Effects" node_paths=PackedStringArray("movement_manager")]
+script = ExtResource("16_xkcyd")
+movement_manager = NodePath("../../MovementManager")
 
 [connection signal="boosted" from="." to="Effects/HitStopEffect" method="perform" binds= [0.2]]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]

@@ -18,7 +18,7 @@ signal bumped()
 @export var bump_distant_perfect := 80
 @export var bump_distant_max := 120
 @export var boost_factor_perfect := 1.5
-@export var boost_factor_no_perfect := 1.0
+@export var boost_factor_no_perfect := 1.2
 
 
 # -- 09 public variables
