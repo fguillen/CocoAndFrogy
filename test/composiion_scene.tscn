@@ -121,7 +121,7 @@ texture = ExtResource("5_27any")
 position = Vector2(503, 1245)
 
 [node name="Coco" parent="." instance=ExtResource("11_xi2mx")]
-position = Vector2(486, 1714)
+position = Vector2(529, 1659)
 
 [node name="Walls" type="StaticBody2D" parent="." groups=["walls"]]
 collision_layer = 8

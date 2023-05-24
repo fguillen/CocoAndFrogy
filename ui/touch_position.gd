@@ -25,12 +25,12 @@ var event_position := Vector2.ZERO
 func _input(event):
 	var previous_position = event_position
 	
-	if event is InputEventScreenTouch and event.pressed == true:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		event_position = event.position
-	elif event is InputEventMouseButton:
-		event_position = event.position
-	elif event is InputEventMouseMotion:
-		event_position = event.position
+#	elif event is InputEventMouseButton:
+#		event_position = event.position
+#	elif event is InputEventMouseMotion:
+#		event_position = event.position
 	
 	if event_position != previous_position:
 		position_changed.emit(event_position)

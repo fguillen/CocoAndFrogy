@@ -266,6 +266,7 @@ shape = SubResource("RectangleShape2D_5hxwk")
 [node name="MovementManager" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_hpak8")]
 max_speed = 1500.0
 speed = 1000.0
+direction_scale = Vector2(1, 0)
 acceleration = 100000
 decceleration = 4000
 character = NodePath("..")
@@ -277,6 +278,9 @@ collision_mode = "Collide"
 
 [node name="BumpManager" type="Node2D" parent="."]
 script = ExtResource("5_mqgta")
+
+[node name="Timer" type="Timer" parent="BumpManager"]
+one_shot = true
 
 [node name="AnimationManager" type="Node" parent="."]
 script = ExtResource("22_nnq4m")
@@ -312,3 +316,4 @@ position = Vector2(0, -99)
 [connection signal="direction_changed" from="InputManagerTouch" to="MovementManager" method="on_direction_changed"]
 [connection signal="bump_message" from="BumpManager" to="Effects/TextFloatingEffect" method="perform"]
 [connection signal="bumped" from="BumpManager" to="AnimationManager" method="on_bumped"]
+[connection signal="timeout" from="BumpManager/Timer" to="BumpManager" method="_on_timer_timeout"]

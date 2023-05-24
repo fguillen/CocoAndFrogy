@@ -15,6 +15,7 @@ signal collision_found(collision: KinematicCollision2D)
 # -- 08 exported variables
 @export var max_speed := 150.0
 @export var speed := 100.0 : set = _set_speed
+@export var direction_scale := Vector2(1.0, 1.0)
 @export var acceleration := 50
 @export var infinite_acceleration := false
 @export var decceleration := 80
@@ -92,6 +93,7 @@ func _move(delta):
 func _set_direction(value: Vector2):
 	var previous_direction = Vector2(direction)
 	direction = value.normalized()
+	direction *= direction_scale
 	
 	if previous_direction != direction:
 		# print("MovementManager.direction_changed: ", previous_direction, ", ", direction)

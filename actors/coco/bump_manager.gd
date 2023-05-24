@@ -15,6 +15,7 @@ signal bumped()
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
+@export var cooldown_time := 0.3
 @export var bump_distant_perfect := 80
 @export var bump_distant_max := 120
 @export var boost_factor_perfect := 1.5
@@ -25,25 +26,26 @@ signal bumped()
 # -- 10 private variables
 var _bump_frogy_position := Vector2.ZERO
 var _bump_collision_position := Vector2.ZERO
+var _cooling_down := false
 
 # -- 11 onready variables
+@onready var _timer = $Timer
+
 
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
-func _process(_delta):
-	queue_redraw()
-	
-	
-func _draw():
-	draw_circle(to_local(_bump_frogy_position), 10.0, Color.CORAL)
-	draw_circle(to_local(_bump_collision_position), 10.0, Color.GREEN_YELLOW)
-	
-	
 # -- 16 public methods
 func bump():
+	# cooling down section
+	if _cooling_down:
+		return
+	
+	_cooling_down = true
+	_timer.start(cooldown_time)
+	
 	# Calculate if frogy is in area
 	var frogy = GroupsUtils.frogy
 	if not frogy: 
@@ -91,6 +93,12 @@ func bump():
 func on_bump_input_received():
 	bump()
 	
+func _on_timer_timeout():
+	_cooling_down = false
+	
 
 # -- 19 subclasses
+
+
+
 
