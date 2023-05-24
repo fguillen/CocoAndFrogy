@@ -6,7 +6,8 @@ extends Node
 # -- 04 # docstring
 #
 # -- 05 signals
-signal death()
+signal death_started()
+signal death_finished()
 
 
 # -- 06 enums
@@ -29,12 +30,15 @@ signal death()
 # -- 17 private methods
 func _die():
 	print("DeathManager._die()")
+	death_started.emit()
+	
 	movement_manager.stop()
 	collision_shape_2d.disabled = true
 	animation_player.play("die")
 	
 	await get_tree().create_timer(2).timeout
-	death.emit()
+	death_finished.emit()
+	
 	
 # -- 18 signal listeners
 func on_collision_found(collision: KinematicCollision2D):

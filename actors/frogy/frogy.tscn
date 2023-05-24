@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=22 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://actors/frogy/scale_by_velocity.gd" id="9_2dlar"]
 [ext_resource type="PackedScene" uid="uid://6q5tp048wk3s" path="res://effects/bounce_particles_effect.tscn" id="11_jprwf"]
 [ext_resource type="PackedScene" uid="uid://bb66i7ypf3x22" path="res://effects/hit_stop_effect.tscn" id="12_8wh8b"]
+[ext_resource type="PackedScene" uid="uid://bp5pino13h6nm" path="res://effects/death_effect.tscn" id="14_b8v4m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
@@ -148,7 +149,7 @@ libraries = {
 "": SubResource("AnimationLibrary_g2rdt")
 }
 
-[node name="Effects" type="Node" parent="."]
+[node name="Effects" type="Node2D" parent="."]
 
 [node name="Trail2D" type="Line2D" parent="Effects"]
 z_index = -1
@@ -180,6 +181,9 @@ node = NodePath("../../Visuals/Sprite2D")
 node = NodePath("../../MovementManager")
 animation_player = NodePath("../../AnimationPlayer")
 
+[node name="DeathEffect" parent="Effects" instance=ExtResource("14_b8v4m")]
+z_index = 10
+
 [connection signal="boosted" from="." to="Effects/HitStopEffect" method="perform" binds= [0.2]]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="DeathManager" method="on_collision_found"]
@@ -188,4 +192,5 @@ animation_player = NodePath("../../AnimationPlayer")
 [connection signal="direction_changed" from="MovementManager" to="Effects/RotateNodeEffect" method="on_direction_changed"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceAnimationEffect" method="bounce"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceParticlesEffect" method="perform"]
+[connection signal="death_started" from="DeathManager" to="Effects/DeathEffect" method="perform"]
 [connection signal="collision_found" from="BricksImpacter" to="Effects/HitStopEffect" method="perform" binds= [0.1]]
