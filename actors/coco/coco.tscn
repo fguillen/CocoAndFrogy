@@ -1,9 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://b6ha4rdfqdob1"]
+[gd_scene load_steps=48 format=3 uid="uid://b6ha4rdfqdob1"]
 
 [ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
 [ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="2_hpak8"]
-[ext_resource type="PackedScene" path="res://actors/components/input_manager.tscn" id="3_quaaq"]
+[ext_resource type="PackedScene" uid="uid://fyn0qn1m3yyb" path="res://actors/components/input_manager.tscn" id="3_quaaq"]
+[ext_resource type="PackedScene" uid="uid://bmu6tua0mbef0" path="res://actors/components/input_manager_touch.tscn" id="5_2fr3h"]
 [ext_resource type="Script" path="res://actors/coco/bump_manager.gd" id="5_mqgta"]
 [ext_resource type="PackedScene" uid="uid://b0xcqunq2srm3" path="res://effects/text_floating_effect.tscn" id="6_2sdkg"]
 [ext_resource type="Texture2D" uid="uid://del4ecko6l3qa" path="res://assets/coco/coco_14.png" id="6_fj6qd"]
@@ -272,6 +273,8 @@ collision_mode = "Collide"
 
 [node name="InputManager" parent="." instance=ExtResource("3_quaaq")]
 
+[node name="InputManagerTouch" parent="." instance=ExtResource("5_2fr3h")]
+
 [node name="BumpManager" type="Node2D" parent="."]
 script = ExtResource("5_mqgta")
 
@@ -305,5 +308,7 @@ position = Vector2(0, -99)
 [connection signal="direction_changed" from="MovementManager" to="AnimationManager" method="on_change_direction"]
 [connection signal="bump_received" from="InputManager" to="BumpManager" method="on_bump_input_received"]
 [connection signal="direction_changed" from="InputManager" to="MovementManager" method="on_direction_changed"]
+[connection signal="bump_received" from="InputManagerTouch" to="BumpManager" method="on_bump_input_received"]
+[connection signal="direction_changed" from="InputManagerTouch" to="MovementManager" method="on_direction_changed"]
 [connection signal="bump_message" from="BumpManager" to="Effects/TextFloatingEffect" method="perform"]
 [connection signal="bumped" from="BumpManager" to="AnimationManager" method="on_bumped"]
