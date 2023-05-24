@@ -7,27 +7,33 @@ extends Node
 #
 # -- 05 signals
 signal death()
+
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
+@export var movement_manager: MovementManager
+@export var collision_shape_2d: CollisionShape2D
+@export var animation_player: AnimationPlayer
+
+
 # -- 09 public variables
 # -- 10 private variables
-var _frogy: Frogy
-
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
-func _ready():
-	_frogy = owner
-	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 # -- 17 private methods
 func _die():
-	_frogy.movement_manager.stop()
-	_frogy.collision_shape_2d.disabled = true
+	print("DeathManager._die()")
+	movement_manager.stop()
+	collision_shape_2d.disabled = true
+	animation_player.play("die")
+	
+	await get_tree().create_timer(2).timeout
 	death.emit()
 	
 # -- 18 signal listeners

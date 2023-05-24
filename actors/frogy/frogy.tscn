@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=21 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -31,6 +31,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ox13s"]
 resource_name = "bounce"
@@ -49,10 +61,39 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(0.6, 1.4), Vector2(1.2, 0.8), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_vglx3"]
+resource_name = "die"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.325, 0.55, 0.775, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(0.8, 1.2), Vector2(1.2, 0.8), Vector2(0.8, 1.2), Vector2(1.2, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(0, 200)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2rdt"]
 _data = {
 "RESET": SubResource("Animation_vqpsu"),
-"bounce": SubResource("Animation_ox13s")
+"bounce": SubResource("Animation_ox13s"),
+"die": SubResource("Animation_vglx3")
 }
 
 [sub_resource type="Curve" id="Curve_wc1tw"]
@@ -91,8 +132,11 @@ script = ExtResource("4_hwckh")
 character = NodePath("..")
 movement_manager = NodePath("../MovementManager")
 
-[node name="DeathManager" type="Node" parent="."]
+[node name="DeathManager" type="Node" parent="." node_paths=PackedStringArray("movement_manager", "collision_shape_2d", "animation_player")]
 script = ExtResource("5_r5ak0")
+movement_manager = NodePath("../MovementManager")
+collision_shape_2d = NodePath("../CollisionShape2D")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionDebugger" parent="." instance=ExtResource("5_twseo")]
 
@@ -138,6 +182,7 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [connection signal="boosted" from="." to="Effects/HitStopEffect" method="perform" binds= [0.2]]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
+[connection signal="collision_found" from="MovementManager" to="DeathManager" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="CollisionDebugger" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="BricksImpacter" method="on_collision_found"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/RotateNodeEffect" method="on_direction_changed"]
