@@ -6,6 +6,9 @@ extends Node
 # -- 04 # docstring
 #
 # -- 05 signals
+signal coco_ready_finished()
+signal frogy_ready_finished()
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -14,8 +17,6 @@ var coco: Coco
 var frogy: Frogy
 
 # -- 10 private variables
-var _is_frogy_set := false
-
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
@@ -25,19 +26,15 @@ var _is_frogy_set := false
 # -- 16 public methods
 func coco_ready(_coco: Coco):
 	self.coco = _coco
-	_check_if_setup_frogy()
+	coco_ready_finished.emit()
 	
 
 func frogy_ready(_frogy: Frogy):
 	self.frogy = _frogy
-	_check_if_setup_frogy()
+	frogy_ready_finished.emit()
 	
 	
 # -- 17 private methods
-func _check_if_setup_frogy():
-	if coco and frogy and not _is_frogy_set:
-		frogy.attached_to(coco.frogy_handler)
-		
 # -- 18 signal listeners
 # -- 19 subclasses
 

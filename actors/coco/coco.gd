@@ -20,7 +20,9 @@ extends Character
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
+	print("XXX 2: ", frogy_handler.global_position)
 	Global.coco_ready(self)
+	
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods

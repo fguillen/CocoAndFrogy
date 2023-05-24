@@ -29,6 +29,7 @@ var direction := Vector2.ZERO : set = _set_direction
 
 # -- 10 private variables
 var _stoped := false
+var _initial_speed: float
 
 
 # -- 11 onready variables
@@ -36,6 +37,10 @@ var _stoped := false
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
+func _ready():
+	_initial_speed = speed
+	
+	
 # -- 15 remaining built-in virtual methods
 func _physics_process(delta):
 	if _stoped: 
@@ -52,6 +57,10 @@ func stop():
 	
 func resume():
 	_stoped = false
+	
+
+func reset():
+	speed = _initial_speed
 	
 	
 # -- 17 private methods

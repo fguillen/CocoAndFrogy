@@ -36,7 +36,18 @@ func _die():
 	collision_shape_2d.disabled = true
 	animation_player.play("die")
 	
-	await get_tree().create_timer(2).timeout
+	await animation_player.animation_finished
+	
+	animation_player.play("RESET")
+	print("XXX: RESET ", GroupsUtils.frogy.get_node("Visuals").position)
+	
+	await animation_player.animation_finished
+	
+	print("XXX: RESET2 ", GroupsUtils.frogy.get_node("Visuals").position)
+	movement_manager.resume()
+	movement_manager.reset()
+	collision_shape_2d.disabled = false
+	
 	death_finished.emit()
 	
 	

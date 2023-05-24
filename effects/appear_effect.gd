@@ -9,6 +9,8 @@ extends Node2D
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
+@export var node_visuals: Node2D
+
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
@@ -22,8 +24,20 @@ extends Node2D
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform():
-	sprite_2d.visible = true
+	node_visuals.visible = false
+	
+	var coco: Coco = GroupsUtils.coco
+	if not coco.frogy_handler:
+		await Global.coco_ready_finished
+		coco = GroupsUtils.coco
+	
+	GroupsUtils.frogy.attached_to(GroupsUtils.coco.frogy_handler)
+	
 	animation_player.play("show")
+
+	
+func show_visuals():
+	node_visuals.visible = true
 	
 # -- 17 private methods
 # -- 18 signal listeners

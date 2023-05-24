@@ -41,6 +41,7 @@ func detach():
 		return
 		
 	_attached_to = null
+	movement_manager.direction = Vector2.UP
 	movement_manager.set_physics_process(true)
 	
 	
