@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Coco & Frogy"
+run/main_scene="res://test/composiion_scene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 
 [autoload]
@@ -24,6 +25,7 @@ window/size/viewport_width=1080
 window/size/viewport_height=1920
 window/size/window_width_override=540
 window/size/window_height_override=960
+window/handheld/orientation=1
 window/stretch/mode="viewport"
 
 [editor_plugins]
@@ -52,5 +54,6 @@ bump={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
+renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
