@@ -9,7 +9,8 @@ extends Node2D
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
-@export var node_visuals: Node2D
+@export var node_to_hide_1: Node2D
+@export var node_to_hide_2: Node2D
 
 # -- 09 public variables
 # -- 10 private variables
@@ -24,7 +25,10 @@ extends Node2D
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform():
-	node_visuals.visible = false
+	if node_to_hide_1:
+		node_to_hide_1.visible = false
+	if node_to_hide_2:
+		node_to_hide_2.visible = false 
 	
 	var coco: Coco = GroupsUtils.coco
 	if not coco.frogy_handler:
@@ -37,7 +41,10 @@ func perform():
 
 	
 func show_visuals():
-	node_visuals.visible = true
+	if node_to_hide_1:
+		node_to_hide_1.visible = true
+	if node_to_hide_2:
+		node_to_hide_2.visible = true 
 	
 # -- 17 private methods
 # -- 18 signal listeners

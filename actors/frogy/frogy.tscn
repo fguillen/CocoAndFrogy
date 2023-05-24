@@ -185,8 +185,9 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="DeathEffect" parent="Effects" instance=ExtResource("14_b8v4m")]
 z_index = 10
 
-[node name="AppearEffect" parent="Effects" node_paths=PackedStringArray("node_visuals") instance=ExtResource("15_ip5qy")]
-node_visuals = NodePath("../../Visuals")
+[node name="AppearEffect" parent="Effects" node_paths=PackedStringArray("node_to_hide_1", "node_to_hide_2") instance=ExtResource("15_ip5qy")]
+node_to_hide_1 = NodePath("../../Visuals")
+node_to_hide_2 = NodePath("../Trail2D")
 
 [connection signal="boosted" from="." to="Effects/HitStopEffect" method="perform" binds= [0.2]]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]
