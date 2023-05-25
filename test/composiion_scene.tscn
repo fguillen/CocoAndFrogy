@@ -47,6 +47,7 @@ size = Vector2(1188, 74)
 z_index = -10
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="EnvironmentBack"]
+follow_viewport_enabled = true
 script = ExtResource("1_ueekc")
 
 [node name="ColorRect" type="ColorRect" parent="EnvironmentBack/ParallaxBackground"]
