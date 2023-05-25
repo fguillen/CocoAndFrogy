@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cxjicg2qopfbi"]
+[gd_scene load_steps=51 format=3 uid="uid://cxjicg2qopfbi"]
 
 [ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
 [ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
@@ -23,7 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://c51eitc20yuqa" path="res://assets/coco/coco_01.png" id="19_f0yv3"]
 [ext_resource type="Texture2D" uid="uid://d1417rgjwelp2" path="res://assets/coco/coco_15.png" id="21_vw5h5"]
 [ext_resource type="Script" path="res://actors/coco/animation_manager.gd" id="22_nnq4m"]
-[ext_resource type="PackedScene" path="res://effects/lean_towards_direction_effect.tscn" id="24_qa5ke"]
+[ext_resource type="PackedScene" uid="uid://w331wjf5af75" path="res://effects/lean_towards_direction_effect.tscn" id="24_qa5ke"]
+[ext_resource type="PackedScene" uid="uid://dlus5sud1rv0v" path="res://effects/oscilator_towards_direction_effect.tscn" id="25_rpa6g"]
+[ext_resource type="Script" path="res://effects/oscilator_towards_direction_effect.gd" id="26_0q3j8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hxwk"]
 size = Vector2(439, 96)
@@ -311,12 +313,19 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ic23m")
 position = Vector2(0, -99)
 
 [node name="LeanTowardsDirectionEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("24_qa5ke")]
+process_mode = 4
 target = NodePath("../../Visuals")
-max_angle = 5.0
-lean_speed = 50.0
+
+[node name="OscilatorTowardsDirectionEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("25_rpa6g")]
+script = ExtResource("26_0q3j8")
+target = NodePath("../../Visuals")
+intensity = 2.0
+spring = 150.0
+damp = 200.0
 
 [connection signal="direction_changed" from="MovementManager" to="AnimationManager" method="on_change_direction"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/LeanTowardsDirectionEffect" method="on_direction_changed"]
+[connection signal="direction_changed" from="MovementManager" to="Effects/OscilatorTowardsDirectionEffect" method="on_direction_changed"]
 [connection signal="bump_received" from="InputManager" to="BumpManager" method="on_bump_input_received"]
 [connection signal="direction_changed" from="InputManager" to="MovementManager" method="on_direction_changed"]
 [connection signal="bump_received" from="InputManagerTouch" to="BumpManager" method="on_bump_input_received"]
