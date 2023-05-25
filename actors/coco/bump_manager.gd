@@ -74,9 +74,9 @@ func bump():
 			
 		elif distance <= bump_distant_max:
 			if frogy.movement_manager.direction.dot(Vector2.DOWN) > 0.0:
-				bump_message.emit("Too Early")
+				bump_message.emit("Bit Early")
 			else: 
-				bump_message.emit("Too Late")
+				bump_message.emit("Bit Late")
 			
 			frogy.boost(boost_factor_no_perfect)
 			bumped_achieved.emit()
