@@ -21,7 +21,6 @@ extends Node
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 func _physics_process(delta):
-	print("XXX: movement_manager.speed: ", movement_manager.speed)
 	movement_manager.speed = lerp(movement_manager.speed, movement_manager.initial_speed, decceleration_rate * delta)
 	
 	
