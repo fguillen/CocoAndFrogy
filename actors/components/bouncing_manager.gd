@@ -66,11 +66,12 @@ func _collision_with_coco(collision: KinematicCollision2D) -> Vector2:
 			normal = normal.rotated(_min_angle_rad * amount)
 			new_direction = new_direction.bounce(normal)
 
-	return  new_direction
+	return new_direction
 	
 
 func _collision_with_other(collision: KinematicCollision2D) -> Vector2:	
-	var normal = collision.get_normal()		
+	var normal = collision.get_normal()
+	
 	return movement_manager.direction.bounce(normal)
 
 
@@ -80,8 +81,15 @@ func on_collision_found(collision: KinematicCollision2D):
 	
 	if collision.get_collider().is_in_group("coco"):		
 		direction_result = _collision_with_coco(collision)
-	elif collision.get_collider().is_in_group("bricks") or collision.get_collider().is_in_group("walls"): 
+		GlobalEvents.emit_impact_with_coco_occurred()
+		
+	elif collision.get_collider().is_in_group("bricks"):
 		direction_result = _collision_with_other(collision)
+		GlobalEvents.emit_impact_with_brick_occurred()
+		
+	elif collision.get_collider().is_in_group("walls"): 
+		direction_result = _collision_with_other(collision)
+		
 	else: 
 		return
 		

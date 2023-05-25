@@ -31,6 +31,7 @@ signal death_finished()
 func _die():
 	print("DeathManager._die()")
 	death_started.emit()
+	GlobalEvents.emit_frogy_died()
 	
 	movement_manager.stop()
 	collision_shape_2d.disabled = true

@@ -13,5 +13,8 @@ fractal_lacunarity = 1.0
 [node name="ShakeEffect" type="Node" node_paths=PackedStringArray("target")]
 script = ExtResource("1_4voqt")
 target = NodePath("")
-max_offset = Vector2(20, 20)
+frequency = 100.0
 noise = SubResource("FastNoiseLite_3qyc2")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

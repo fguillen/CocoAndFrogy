@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_w5qtc"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="2_ae8ex"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_65p6o"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f1s6y"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -26,10 +26,11 @@ position = Vector2(516, 666)
 texture = ExtResource("1_w5qtc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(519, 695)
+anchor_mode = 0
 
 [node name="ShakeEffect" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_ae8ex")]
-target = NodePath("../Sprite2D")
-noise = SubResource("FastNoiseLite_65p6o")
+target = NodePath("../Camera2D")
+frequency = 100.0
+noise = SubResource("FastNoiseLite_f1s6y")
 
 [connection signal="pressed" from="Button" to="ShakeEffect" method="perform" binds= [1.0]]
