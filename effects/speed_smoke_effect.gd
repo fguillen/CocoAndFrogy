@@ -27,8 +27,8 @@ func on_speed_changed(speed: float):
 		emitting = false
 		
 
-func on_direction_changed(direction: Vector2):
-	global_rotation = direction.angle()
+func on_direction_changed(new_direction: Vector2):
+	global_rotation = new_direction.angle()
 		
 	
 	
