@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=31 format=3 uid="uid://djjttvn3vr14t"]
 
+[ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
 [ext_resource type="Script" path="res://environment/parallax_background.gd" id="1_ueekc"]
 [ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_whclb"]
@@ -39,6 +40,8 @@ size = Vector2(1376, 149)
 size = Vector2(1188, 74)
 
 [node name="ComposiionScene" type="Node2D"]
+
+[node name="Camera" parent="." instance=ExtResource("1_pvwu1")]
 
 [node name="EnvironmentBack" type="Node2D" parent="."]
 z_index = -10

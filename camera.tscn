@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3mh2452jmoyf"]
+
+[ext_resource type="Script" path="res://camera.gd" id="1_ltjst"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="2_x46hk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dbmf7"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[node name="Camera2D" type="Camera2D"]
+script = ExtResource("1_ltjst")
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("2_x46hk")]
+target = NodePath("../..")
+noise = SubResource("FastNoiseLite_dbmf7")
+
+[connection signal="shaked" from="." to="Effects/ShakeEffect" method="perform"]

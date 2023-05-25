@@ -4,7 +4,9 @@
 extends Node
 
 # -- 04 # docstring
-# Inspired by: https://kidscancode.org/godot_recipes/3.x/2d/screen_shake/index.html
+# Inspired by: 
+#  - https://kidscancode.org/godot_recipes/3.x/2d/screen_shake/index.html
+#  - https://github.com/firebelley/godot-addons/blob/master/node_library/scripts/shaky_camera_2d.gd
 
 #
 # -- 05 signals
@@ -16,19 +18,19 @@ extends Node
 
 @export_group("Shake")
 @export var decay = 0.8  # How quickly the shaking stops [0, 1].
+@export var use_exponential_decay: bool = false
 @export var max_offset = Vector2(100, 75)  # Maximum hor/ver shake in pixels.
-@export var max_rotation = 0.1  # Maximum rotation in radians (use sparingly).
-@export var trauma_power := 2 # Trauma exponent. Use [2, 3].
 	
 @export_group("Noise")
-@export var noise: Noise
-@export var speed := 1
-	
+@export var noise: FastNoiseLite
+@export var frequency_multiplier: float = 100
+
 
 # -- 09 public variables
 # -- 10 private variables
-var _noise_offset := 0.0
-var _trauma = 0.0  # Current shake strength.
+var _noise_offset: float = 0
+var _current_shake_percentage = 0;
+var _current_direction_rotation = 0
 
 
 # -- 11 onready variables
@@ -44,26 +46,35 @@ func _ready():
 
 # -- 15 remaining built-in virtual methods
 func _process(delta):
-	if _trauma:
-		_trauma = max(_trauma - (decay * delta), 0)
+	if _current_shake_percentage > 0:
 		_shake(delta)
 		
 		
 # -- 16 public methods
-func trauma(value: float): # From 0.0 to 1.0
-	_trauma = value
+func perform(percent: float): # From 0.0 to 1.0
+	_current_shake_percentage = clamp(_current_shake_percentage + percent, 0, 1)
 	
 	
 # -- 17 private methods
 func _shake(delta):
-	var amount = pow(_trauma, trauma_power)
-	_noise_offset += (speed * delta)
-	target.rotation = max_rotation * amount * noise.get_noise_2d(_noise_offset, 0)
-	target.offset.x = max_offset.x * amount * noise.get_noise_2d(_noise_offset, 1000)
-	target.offset.y = max_offset.y * amount * noise.get_noise_2d(_noise_offset, 3000)
+	_noise_offset = wrapf(_noise_offset + delta, 0, 1000) * frequency_multiplier
+	var noise_x = noise.get_noise_2d(_noise_offset , 0)
+	var noise_y = noise.get_noise_2d(_noise_offset, 1000)
+	var noise_rotation = noise.get_noise_2d(_noise_offset, 2000)
 	
-	print("XXX: _noise_offset: %.3f, offset_x: %.3f, max: %.3f, noise: %.10f" % [_noise_offset, target.offset.x, max_offset.x, noise.get_noise_2d(_noise_offset, 0)])
+	var offset_x = noise_x * max_offset.x * _current_shake_percentage
+	var offset_y = noise_y * max_offset.y * _current_shake_percentage
+	var offset = Vector2(offset_x, offset_y) 
+		
+	if use_exponential_decay:
+		offset *= _current_shake_percentage
+		
+	target.offset = offset
+	
+	# decay
+	_current_shake_percentage = max(_current_shake_percentage - (decay * delta), 0)
 	
 # -- 18 signal listeners
 # -- 19 subclasses
 
+	
