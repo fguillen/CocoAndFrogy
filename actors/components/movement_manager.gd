@@ -8,6 +8,7 @@ extends Node
 #
 # -- 05 signals
 signal direction_changed(direction: Vector2)
+signal speed_changed(speed: float)
 signal collision_found(collision: KinematicCollision2D)
 
 # -- 06 enums
@@ -59,7 +60,7 @@ func resume():
 	
 
 func reset():
-	speed = initial_speed
+	self.speed = initial_speed
 	
 	
 # -- 17 private methods
@@ -101,10 +102,15 @@ func _set_direction(value: Vector2):
 
 
 func _set_speed(value: float):
+	var previous_speed = speed
+	
 	if value > max_speed:
 		print("MovememtManager._set_speed() clamped %d -> %d" % [value, max_speed])
 		
 	speed = min(value, max_speed)
+	
+	if previous_speed != speed:
+		speed_changed.emit(speed)
 	
 		
 # -- 18 signal listeners

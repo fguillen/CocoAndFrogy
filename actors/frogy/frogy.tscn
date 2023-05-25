@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=25 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bp5pino13h6nm" path="res://effects/death_effect.tscn" id="14_b8v4m"]
 [ext_resource type="PackedScene" uid="uid://eux0priaj10i" path="res://effects/appear_effect.tscn" id="15_ip5qy"]
 [ext_resource type="Script" path="res://actors/frogy/decceleration_effect.gd" id="16_xkcyd"]
+[ext_resource type="PackedScene" uid="uid://b7mau6sauoypc" path="res://effects/speed_smoke_effect.tscn" id="17_q5jot"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
@@ -195,6 +196,9 @@ node_to_hide_2 = NodePath("../Trail2D")
 script = ExtResource("16_xkcyd")
 movement_manager = NodePath("../../MovementManager")
 
+[node name="SpeedSmokeEffect" parent="Effects" instance=ExtResource("17_q5jot")]
+z_index = -1
+
 [connection signal="boosted" from="." to="Effects/HitStopEffect" method="perform" binds= [0.2]]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
@@ -202,6 +206,8 @@ movement_manager = NodePath("../../MovementManager")
 [connection signal="collision_found" from="MovementManager" to="CollisionDebugger" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="BricksImpacter" method="on_collision_found"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/RotateNodeEffect" method="on_direction_changed"]
+[connection signal="direction_changed" from="MovementManager" to="Effects/SpeedSmokeEffect" method="on_direction_changed"]
+[connection signal="speed_changed" from="MovementManager" to="Effects/SpeedSmokeEffect" method="on_speed_changed"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceAnimationEffect" method="bounce"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceParticlesEffect" method="perform"]
 [connection signal="death_finished" from="DeathManager" to="Effects/AppearEffect" method="perform"]
