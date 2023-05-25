@@ -319,9 +319,9 @@ target = NodePath("../../Visuals")
 [node name="OscilatorTowardsDirectionEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("25_rpa6g")]
 script = ExtResource("26_0q3j8")
 target = NodePath("../../Visuals")
-intensity = 2.0
-spring = 150.0
-damp = 200.0
+intensity = 0.5
+spring = 500.0
+damp = 5.0
 
 [connection signal="direction_changed" from="MovementManager" to="AnimationManager" method="on_change_direction"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/LeanTowardsDirectionEffect" method="on_direction_changed"]

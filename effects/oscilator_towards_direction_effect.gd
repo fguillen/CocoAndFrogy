@@ -10,9 +10,9 @@ extends Node
 # -- 07 constants
 # -- 08 exported variables
 @export var target: Node2D
-@export var intensity: float = 2.0
-@export var spring: float = 150.0
-@export var damp: float = 10.0
+@export var intensity: float = 0.5
+@export var spring: float = 500.0
+@export var damp: float = 5.0
 #@export var speed: float = 10.0 
 
 
@@ -33,11 +33,11 @@ var _velocity: float = 0.0
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 func _process(delta):
-	_velocity = _actual_horizontal_direction * intensity
+	_velocity += _actual_horizontal_direction * intensity
 	var force = (-spring * _displacement) + (damp * _velocity)
 	_velocity -= force * delta
 	_displacement -= _velocity * delta
-	target.rotation = _displacement
+	target.rotation = -_displacement
 	
 	
 # -- 16 public methods
