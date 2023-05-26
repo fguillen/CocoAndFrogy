@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wu0vd3ic1ob"]
+[gd_scene load_steps=13 format=3 uid="uid://wu0vd3ic1ob"]
 
 [ext_resource type="Shader" path="res://test/color_abberation.gdshader" id="1_65mla"]
 [ext_resource type="Texture2D" uid="uid://c8dw0klndg3ps" path="res://assets/clouds_02/clouds_02_01.png" id="1_cw82m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c0p2cndficdmm" path="res://assets/clouds_01/clouds_01_01.png" id="2_wvb8h"]
 [ext_resource type="Texture2D" uid="uid://drequhkfhvddg" path="res://assets/coco/coco_02.png" id="4_f67fd"]
 [ext_resource type="Texture2D" uid="uid://dwb4oh4kemfvr" path="res://assets/coco/coco_04.png" id="5_rt67c"]
+[ext_resource type="Shader" path="res://test/cmyk_halftone.gdshader" id="8_vrdl7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oif01"]
 shader = ExtResource("1_vqfpi")
@@ -25,6 +26,9 @@ shader = ExtResource("1_vqfpi")
 shader_parameter/brightness = 4.724
 shader_parameter/contrast = 0.5
 shader_parameter/saturation = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glnku"]
+shader = ExtResource("8_vrdl7")
 
 [node name="SceneTestShader" type="Node2D"]
 
@@ -54,6 +58,7 @@ position = Vector2(478, 1044)
 texture = ExtResource("2_q7rvb")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_hw7u6")
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,6 +71,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_8pe00")
 offset_left = -18.0
 offset_top = 346.0
@@ -74,3 +80,8 @@ offset_bottom = 1314.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_glnku")
+offset_right = 1138.0
+offset_bottom = 1939.0
