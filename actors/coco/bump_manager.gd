@@ -2,7 +2,7 @@
 # -- 02 class_name
 class_name BumpManager
 # -- 03 extends
-extends Node2D
+extends Node
 
 # -- 04 # docstring
 #

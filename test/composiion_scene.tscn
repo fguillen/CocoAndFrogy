@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bf3cqqsb0w2xh" path="res://environment/vegetable_back_05.tscn" id="10_3mqng"]
 [ext_resource type="PackedScene" uid="uid://8rlt50bjqrnr" path="res://actors/frogy/frogy.tscn" id="11_ggtky"]
 [ext_resource type="PackedScene" uid="uid://bpdm3ahetr17d" path="res://environment/vegetable_back_06.tscn" id="11_j3qwv"]
-[ext_resource type="PackedScene" uid="uid://cxjicg2qopfbi" path="res://actors/coco/coco.tscn" id="11_xi2mx"]
+[ext_resource type="PackedScene" uid="uid://dxtvkmwjy1fs8" path="res://actors/coco/coco.tscn" id="11_xi2mx"]
 [ext_resource type="PackedScene" uid="uid://biey47xajkipj" path="res://environment/vegetable_front_01.tscn" id="12_iivfa"]
 [ext_resource type="PackedScene" uid="uid://dxswaxn55u0cv" path="res://environment/vegetable_front_02.tscn" id="13_o0bcp"]
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="13_ymu78"]

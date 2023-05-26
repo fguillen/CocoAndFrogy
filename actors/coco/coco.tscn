@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3]
+[gd_scene load_steps=57 format=3 uid="uid://dxtvkmwjy1fs8"]
 
 [ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
 [ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
@@ -6,11 +6,12 @@
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="2_hpak8"]
 [ext_resource type="PackedScene" uid="uid://fyn0qn1m3yyb" path="res://actors/components/input_manager.tscn" id="3_quaaq"]
 [ext_resource type="PackedScene" uid="uid://bmu6tua0mbef0" path="res://actors/components/input_manager_touch.tscn" id="5_2fr3h"]
-[ext_resource type="Script" path="res://actors/coco/bump_manager.gd" id="5_mqgta"]
 [ext_resource type="PackedScene" uid="uid://b0xcqunq2srm3" path="res://effects/text_floating_effect.tscn" id="6_2sdkg"]
 [ext_resource type="Texture2D" uid="uid://del4ecko6l3qa" path="res://assets/coco/coco_14.png" id="6_fj6qd"]
 [ext_resource type="Texture2D" uid="uid://bqnq2cjigxivh" path="res://assets/coco/coco_13.png" id="7_4a7en"]
+[ext_resource type="PackedScene" uid="uid://d2xjkqddjfubh" path="res://actors/coco/bump_manager.tscn" id="7_wv04i"]
 [ext_resource type="Texture2D" uid="uid://bkp2pq811wg7f" path="res://assets/coco/coco_12.png" id="8_l38ie"]
+[ext_resource type="PackedScene" uid="uid://bqfupbqlbpeju" path="res://actors/components/dash_manager.tscn" id="8_m7n7e"]
 [ext_resource type="Texture2D" uid="uid://cvag8po3y0vtg" path="res://assets/coco/coco_11.png" id="9_7akyx"]
 [ext_resource type="Texture2D" uid="uid://d05scbp2buva" path="res://assets/coco/coco_10.png" id="10_ud8ix"]
 [ext_resource type="Texture2D" uid="uid://car6c2dvqpf4w" path="res://assets/coco/coco_09.png" id="11_1dhqg"]
@@ -26,9 +27,10 @@
 [ext_resource type="Script" path="res://actors/coco/animation_manager.gd" id="22_nnq4m"]
 [ext_resource type="Script" path="res://actors/coco/effects_manager.gd" id="24_ktap8"]
 [ext_resource type="PackedScene" uid="uid://w331wjf5af75" path="res://effects/lean_towards_direction_effect.tscn" id="24_qa5ke"]
-[ext_resource type="PackedScene" uid="uid://dlus5sud1rv0v" path="res://effects/oscillator_towards_direction_effect.tscn" id="25_rpa6g"]
-[ext_resource type="Script" path="res://effects/oscillator_towards_direction_effect.gd" id="26_0q3j8"]
+[ext_resource type="PackedScene" uid="uid://dlus5sud1rv0v" path="res://effects/oscillator_towards_direction_effect.tscn" id="27_2kk1s"]
 [ext_resource type="PackedScene" uid="uid://dl28skw65bhlw" path="res://effects/deform_effect.tscn" id="28_le3f5"]
+[ext_resource type="Script" path="res://effects/oscillator_towards_direction_effect.gd" id="28_qyybc"]
+[ext_resource type="PackedScene" uid="uid://bvvv5mp4xovsk" path="res://effects/ghost_effect.tscn" id="31_n8rcs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_608r4"]
 resource_local_to_scene = true
@@ -256,6 +258,7 @@ transitions = ["Start", "turn_left", SubResource("AnimationNodeStateMachineTrans
 
 [node name="Coco" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["coco"]]
 y_sort_enabled = true
+position = Vector2(360, 249)
 collision_mask = 10
 script = ExtResource("1_m36m7")
 movement_manager = NodePath("MovementManager")
@@ -289,11 +292,9 @@ collision_mode = "Collide"
 
 [node name="InputManagerTouch" parent="." instance=ExtResource("5_2fr3h")]
 
-[node name="BumpManager" type="Node2D" parent="."]
-script = ExtResource("5_mqgta")
+[node name="BumpManager" parent="." instance=ExtResource("7_wv04i")]
 
-[node name="Timer" type="Timer" parent="BumpManager"]
-one_shot = true
+[node name="DashManager" parent="." instance=ExtResource("8_m7n7e")]
 
 [node name="AnimationManager" type="Node" parent="."]
 script = ExtResource("22_nnq4m")
@@ -327,8 +328,8 @@ position = Vector2(0, -99)
 process_mode = 4
 target = NodePath("../../Visuals")
 
-[node name="OscilatorTowardsDirectionEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("25_rpa6g")]
-script = ExtResource("26_0q3j8")
+[node name="OscilatorTowardsDirectionEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("27_2kk1s")]
+script = ExtResource("28_qyybc")
 target = NodePath("../../Visuals")
 intensity = 0.5
 spring = 500.0
@@ -339,15 +340,22 @@ target = NodePath("../../Visuals/Sprite2D")
 bulge = 0.2
 durantion = 0.1
 
+[node name="GhostEffect" parent="Effects" instance=ExtResource("31_n8rcs")]
+
+[node name="Sprite2D" parent="Effects/GhostEffect" index="0"]
+z_index = -1
+scale = Vector2(0.7, 0.7)
+
 [connection signal="direction_changed" from="MovementManager" to="AnimationManager" method="on_change_direction"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/LeanTowardsDirectionEffect" method="on_direction_changed"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/OscilatorTowardsDirectionEffect" method="on_direction_changed"]
-[connection signal="direction_changed" from="MovementManager" to="Effects/DeformEffect" method="perform" unbinds=1]
-[connection signal="bump_received" from="InputManager" to="BumpManager" method="on_bump_input_received"]
 [connection signal="direction_changed" from="InputManager" to="MovementManager" method="on_direction_changed"]
-[connection signal="bump_received" from="InputManagerTouch" to="BumpManager" method="on_bump_input_received"]
 [connection signal="direction_changed" from="InputManagerTouch" to="MovementManager" method="on_direction_changed"]
-[connection signal="bump_message" from="BumpManager" to="Effects/TextFloatingEffect" method="perform"]
-[connection signal="bumped" from="BumpManager" to="AnimationManager" method="on_bumped"]
-[connection signal="timeout" from="BumpManager/Timer" to="BumpManager" method="_on_timer_timeout"]
+[connection signal="dash_finished" from="DashManager" to="MovementManager" method="speed_burst_end"]
+[connection signal="dash_finished" from="DashManager" to="InputManager" method="set_process" binds= [true]]
+[connection signal="dash_started" from="DashManager" to="MovementManager" method="speed_burst_ini"]
+[connection signal="dash_started" from="DashManager" to="Effects/GhostEffect" method="perform" unbinds=1]
+[connection signal="dash_started_no_arguments" from="DashManager" to="InputManager" method="set_process" binds= [false]]
 [connection signal="impact_frogy_coco_ocurred" from="Effects" to="Effects/DeformEffect" method="perform"]
+
+[editable path="Effects/GhostEffect"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2xjkqddjfubh"]
+
+[ext_resource type="Script" path="res://actors/coco/bump_manager.gd" id="1_p0eqg"]
+
+[node name="BumpManager" type="Node"]
+script = ExtResource("1_p0eqg")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

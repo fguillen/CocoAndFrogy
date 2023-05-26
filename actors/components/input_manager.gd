@@ -8,6 +8,7 @@ extends Node
 #
 # -- 05 signals
 signal bump_received()
+signal dash_received()
 signal direction_changed(direction: Vector2)
 
 
@@ -32,6 +33,10 @@ func _process(_delta):
 	
 	if _get_bump():
 		bump_received.emit()
+		
+	if _get_dash():
+		dash_received.emit()
+		
 	
 # -- 16 public methods
 # -- 17 private methods
@@ -42,6 +47,10 @@ func _get_input_vector() -> Vector2:
 
 func _get_bump() -> bool:
 	return Input.is_action_just_pressed("bump")
+
+
+func _get_dash() -> bool:
+	return Input.is_action_just_pressed("dash")
 	
 # -- 18 signal listeners
 # -- 19 subclasses

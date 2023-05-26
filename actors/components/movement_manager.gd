@@ -30,7 +30,8 @@ var direction := Vector2.ZERO : set = _set_direction
 var initial_speed: float
 
 # -- 10 private variables
-var _stoped := false
+var _is_stoped := false
+var _is_bursting := false
 
 # -- 11 onready variables
 #
@@ -43,7 +44,7 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 func _physics_process(delta):
-	if _stoped: 
+	if _is_stoped: 
 		return
 		
 	_accelerate_deccelerate(delta)
@@ -52,19 +53,31 @@ func _physics_process(delta):
 	
 # -- 16 public methods
 func stop():
-	_stoped = true
+	_is_stoped = true
 	
 	
 func resume():
-	_stoped = false
+	_is_stoped = false
 	
 
 func reset():
 	self.speed = initial_speed
 	
 	
+func speed_burst_ini(value: float):
+	_is_bursting = true
+	character.velocity = value * direction
+	
+	
+func speed_burst_end():
+	_is_bursting = false
+	
+	
 # -- 17 private methods
 func _accelerate_deccelerate(delta: float):
+	if _is_bursting:
+		return
+		
 	var desired_velocity = speed * direction
 	
 	# If moving
