@@ -132,50 +132,7 @@ void vertex() {
 void fragment() {
 	vec2 sample_uv;
 	vec4 sample_color = vec4(0.0);
-	if (object_space) {
-		// Object based multi sampling using the canvas_global_transform and camera_global_transform
-		// Get the UVs of the pixels corners
-		float camera_x_basis_length = length(vec2(camera_global_transform[0][0], -camera_global_transform[0][1]));
-		float camera_y_basis_length = length(vec2(-camera_global_transform[1][0], camera_global_transform[1][1]));
-		vec2 tl_g_pos = world_p + vec2(0.5 / camera_x_basis_length, 0.5 / camera_y_basis_length);
-		vec2 tr_g_pos = world_p + vec2(0.5 / camera_x_basis_length, -0.5 / camera_y_basis_length);
-		vec2 bl_g_pos = world_p + vec2(-0.5 / camera_x_basis_length, 0.5 / camera_y_basis_length);
-		vec2 br_g_pos = world_p + vec2(-0.5 / camera_x_basis_length, -0.5 / camera_y_basis_length);
-		
-		mat4 inv_canvas = inverse(canvas_global_transform);
-		vec2 texture_res = vec2(textureSize(TEXTURE,0));
-		vec2 tl_uv = (inv_canvas * vec4(tl_g_pos, 0.0, 1.0)).xy / texture_res - vec2(-0.5);
-		vec2 tr_uv = (inv_canvas * vec4(tr_g_pos, 0.0, 1.0)).xy / texture_res - vec2(-0.5);
-		vec2 bl_uv = (inv_canvas * vec4(bl_g_pos, 0.0, 1.0)).xy / texture_res - vec2(-0.5);
-		vec2 br_uv = (inv_canvas * vec4(br_g_pos, 0.0, 1.0)).xy / texture_res - vec2(-0.5);
-		
-		// Dynamic amount of samples based on the amount of CMYK dot pixels that fit within the current fragment.
-		vec2 p_uv_1 = tl_uv * texture_res;
-		vec2 p_uv_2 = tr_uv * texture_res;
-		vec2 p_uv_4 = bl_uv * texture_res;
-		vec2 p_uv_3 = br_uv * texture_res;
-		float area_term_1 = ((p_uv_1.x * p_uv_2.y) - (p_uv_2.x * p_uv_1.y));
-		float area_term_2 = ((p_uv_2.x * p_uv_3.y) - (p_uv_3.x * p_uv_2.y));
-		float area_term_3 = ((p_uv_3.x * p_uv_4.y) - (p_uv_4.x * p_uv_3.y));
-		float area_term_4 = ((p_uv_4.x * p_uv_1.y) - (p_uv_1.x * p_uv_4.y));
-		float pixel_area = abs(area_term_1 + area_term_2 + area_term_3 + area_term_4) / 2.0;
-		float pixel_area_sqrt = clamp(sqrt(pixel_area), 1.0, 10.0);
-		
-		int samples = int(ceil(pixel_area_sqrt * pattern_scaling * sampling_quality));
-		int sqrt_samples = int(ceil(sqrt(float(samples))));
-		// Sample 'samples' amount of times with even spacing within those pixel corners
-		samples = sqrt_samples * sqrt_samples;
-		for (int x = 0; x < sqrt_samples; x++) {
-			float x_progress = float(x) / (float(sqrt_samples - 1));
-			for (int y = 0; y < sqrt_samples; y++) {
-				float y_progress = float(y) / (float(sqrt_samples - 1));
-				sample_uv = vec2(x_progress, y_progress);
-				sample_color = sample_color + (one_pass(tl_uv, tr_uv, bl_uv, br_uv, sample_uv, TEXTURE)
-				/ float(samples));
-			}
-		}
-	}
-	else {
+
 		// This is screen space multi sampling
 		// Get the SCREEN_UVs of the pixels corners
 		vec2 tl_s_uv = (FRAGCOORD.xy + vec2(0.5, 0.5)) * SCREEN_PIXEL_SIZE;
@@ -195,6 +152,6 @@ void fragment() {
 				/ float(samples));
 			}
 		}
-	}
+
 	COLOR = sample_color;
 }
