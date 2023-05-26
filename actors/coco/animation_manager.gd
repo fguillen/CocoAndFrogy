@@ -46,4 +46,3 @@ func on_bumped():
 	animation_player_bump.play("bump")
 #	_state_machine.travel("bump")
 # -- 19 subclasses
-

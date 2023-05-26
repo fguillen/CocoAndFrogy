@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://wu0vd3ic1ob"]
+
+[ext_resource type="Shader" path="res://test/color_abberation.gdshader" id="1_65mla"]
+[ext_resource type="Texture2D" uid="uid://c8dw0klndg3ps" path="res://assets/clouds_02/clouds_02_01.png" id="1_cw82m"]
+[ext_resource type="Shader" path="res://test/test.gdshader" id="1_vqfpi"]
+[ext_resource type="Texture2D" uid="uid://c51eitc20yuqa" path="res://assets/coco/coco_01.png" id="2_q7rvb"]
+[ext_resource type="Texture2D" uid="uid://c0p2cndficdmm" path="res://assets/clouds_01/clouds_01_01.png" id="2_wvb8h"]
+[ext_resource type="Texture2D" uid="uid://drequhkfhvddg" path="res://assets/coco/coco_02.png" id="4_f67fd"]
+[ext_resource type="Texture2D" uid="uid://dwb4oh4kemfvr" path="res://assets/coco/coco_04.png" id="5_rt67c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oif01"]
+shader = ExtResource("1_vqfpi")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hw7u6"]
+resource_local_to_scene = true
+shader = ExtResource("1_65mla")
+shader_parameter/levels = 6
+shader_parameter/spread = 0.028
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pe00"]
+shader = ExtResource("1_vqfpi")
+shader_parameter/brightness = 4.724
+shader_parameter/contrast = 0.5
+shader_parameter/saturation = 0.5
+
+[node name="SceneTestShader" type="Node2D"]
+
+[node name="Clouds0201" type="Sprite2D" parent="."]
+position = Vector2(457, 324)
+texture = ExtResource("1_cw82m")
+
+[node name="Clouds0101" type="Sprite2D" parent="."]
+position = Vector2(1112, 395)
+texture = ExtResource("2_wvb8h")
+
+[node name="Coco02" type="Sprite2D" parent="."]
+position = Vector2(659, 829)
+texture = ExtResource("2_q7rvb")
+
+[node name="Coco03" type="Sprite2D" parent="."]
+position = Vector2(316, 914)
+texture = ExtResource("4_f67fd")
+
+[node name="Coco04" type="Sprite2D" parent="."]
+position = Vector2(608, 970)
+texture = ExtResource("5_rt67c")
+
+[node name="Coco01" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oif01")
+position = Vector2(478, 1044)
+texture = ExtResource("2_q7rvb")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_hw7u6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = 72.0
+offset_right = 1146.0
+offset_bottom = 2053.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8pe00")
+offset_left = -18.0
+offset_top = 346.0
+offset_right = 1116.0
+offset_bottom = 1314.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false

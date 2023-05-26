@@ -41,7 +41,10 @@ var _cooling_down := false
 func bump():
 	# cooling down section
 	if _cooling_down:
+		print("XXX: bump cooling down")
 		return
+		
+	print("XXX: bump running")
 	
 	_cooling_down = true
 	_timer.start(cooldown_time)
@@ -53,6 +56,7 @@ func bump():
 		return
 		
 	if frogy._attached_to:
+		print("XXX: frogy attached")
 		bumped.emit()
 		bumped_achieved.emit()
 		frogy.detach()
