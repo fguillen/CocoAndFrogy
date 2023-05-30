@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=31 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://ddpd3x6doacdu" path="res://environment/vegetable_front_04.tscn" id="15_bvct5"]
 [ext_resource type="Script" path="res://environment/wall_death.gd" id="16_fydbq"]
 [ext_resource type="PackedScene" uid="uid://b2ewbis3ifr1b" path="res://environment/vegetable_front_05.tscn" id="16_hbsdw"]
-[ext_resource type="Shader" path="res://test/cmyk_halftone_2.gdshader" id="27_l0l3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
 size = Vector2(138, 1957)
@@ -39,15 +38,6 @@ size = Vector2(1376, 149)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj4gh"]
 size = Vector2(1188, 74)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nojlc"]
-shader = ExtResource("27_l0l3y")
-shader_parameter/dot_amount = 300
-shader_parameter/noise_amount = 0.1
-shader_parameter/dot_noise_amount = 3.0
-shader_parameter/dot_scale = 1.1
-shader_parameter/gamma = 0.1
-shader_parameter/error_fraction = Vector3(0, 0, 0)
 
 [node name="ComposiionScene" type="Node2D"]
 
@@ -238,11 +228,3 @@ scale = Vector2(0.7, 0.7)
 position = Vector2(542, 1935)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_x8jhi")
-
-[node name="ColorRect4" type="ColorRect" parent="."]
-z_index = 100
-material = SubResource("ShaderMaterial_nojlc")
-offset_left = -45.0
-offset_top = -80.0
-offset_right = 1114.0
-offset_bottom = 2137.0
