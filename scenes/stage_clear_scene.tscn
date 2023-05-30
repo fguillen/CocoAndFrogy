@@ -1,0 +1,245 @@
+[gd_scene load_steps=7 format=3 uid="uid://db68hv73lc5v3"]
+
+[ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_f8m8j"]
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_tuuey"]
+[ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_x25fh"]
+
+[sub_resource type="Animation" id="Animation_dg3y4"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ski02:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1.56917, 1.46409, 1),
+"update": 0,
+"values": [Vector2(404, 161), Vector2(600, 161), Vector2(404, 161)]
+}
+
+[sub_resource type="Animation" id="Animation_k5g02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ski02:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(404, 161)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vul6"]
+_data = {
+"RESET": SubResource("Animation_k5g02"),
+"idle": SubResource("Animation_dg3y4")
+}
+
+[node name="Node2D" type="Node2D"]
+rotation = -0.00209449
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Ski01" type="Sprite2D" parent="Background"]
+position = Vector2(384, 1323)
+rotation = 3.14159
+scale = Vector2(1, 1.39564)
+texture = ExtResource("1_f8m8j")
+
+[node name="Ski02" type="Sprite2D" parent="Background"]
+position = Vector2(404, 161)
+texture = ExtResource("2_x25fh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_7vul6")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Title"]
+layout_mode = 2
+theme = ExtResource("1_tuuey")
+theme_override_font_sizes/font_size = 200
+text = "Stage Clear"
+horizontal_alignment = 1
+
+[node name="Body" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+modulate = Color(0.2, 0.203922, 0.203922, 1)
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+
+[node name="TimeStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "Time"
+
+[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "10000"
+horizontal_alignment = 2
+
+[node name="EarlyBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "Early Bumps"
+
+[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "100"
+horizontal_alignment = 2
+
+[node name="LateBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "Late Bumps"
+
+[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "100"
+horizontal_alignment = 2
+
+[node name="PerfectBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "Perfect Bumps"
+
+[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "100"
+horizontal_alignment = 2
+
+[node name="BallBouncesStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "Ball Bounces"
+
+[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "100"
+horizontal_alignment = 2
+
+[node name="Score" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "Score"
+
+[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+text = "100"
+horizontal_alignment = 2
+
+[node name="FinalScore" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+theme_override_font_sizes/font_size = 120
+text = "Final Score"
+
+[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_tuuey")
+theme_override_font_sizes/font_size = 120
+text = "100"
+horizontal_alignment = 2
+
+[node name="Controls" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 50
+
+[node name="Button" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls"]
+layout_mode = 2
+theme = ExtResource("1_tuuey")
+text = "Next"
