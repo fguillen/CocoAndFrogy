@@ -203,4 +203,7 @@ text = "Next"
 
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
+frequency = 300.0
 noise = SubResource("FastNoiseLite_meie8")
+
+[connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]

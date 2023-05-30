@@ -6,7 +6,7 @@ extends Node2D
 # -- 04 # docstring
 #
 # -- 05 signals
-signal stats_animated()
+signal stats_number_animated()
 
 # -- 06 enums
 # -- 07 constants
@@ -62,7 +62,7 @@ func _animate_numbers():
 	for number in numbers:
 		number.label_show(1000)
 		await number.animation_finished
-		
+		stats_number_animated.emit()
 		
 # -- 18 signal listeners
 # -- 19 subclasses
