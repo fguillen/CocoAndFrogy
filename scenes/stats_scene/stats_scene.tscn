@@ -1,12 +1,27 @@
 [gd_scene load_steps=12 format=3 uid="uid://db68hv73lc5v3"]
 
-[ext_resource type="Script" path="res://scenes/stage_clear_scene.gd" id="1_7rgjh"]
+[ext_resource type="Script" path="res://scenes/stats_scene/stats_scene.gd" id="1_7rgjh"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_f8m8j"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_tuuey"]
 [ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_x25fh"]
 [ext_resource type="PackedScene" uid="uid://c6350tcnthofh" path="res://scenes/stats_scene/stats_title.tscn" id="5_00c1i"]
 [ext_resource type="PackedScene" uid="uid://cnqeoqxisixkt" path="res://scenes/stats_scene/stats_number.tscn" id="5_it5o2"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="7_f17px"]
+
+[sub_resource type="Animation" id="Animation_k5g02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ski02:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(404, 161)]
+}
 
 [sub_resource type="Animation" id="Animation_dg3y4"]
 resource_name = "idle"
@@ -25,28 +40,13 @@ tracks/0/keys = {
 "values": [Vector2(404, 161), Vector2(600, 161), Vector2(404, 161)]
 }
 
-[sub_resource type="Animation" id="Animation_k5g02"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ski02:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(404, 161)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vul6"]
 _data = {
 "RESET": SubResource("Animation_k5g02"),
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_p65dr"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_meie8"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -54,7 +54,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[node name="StageClearScene" type="Node2D"]
+[node name="StatsScene" type="Node2D"]
 rotation = -0.00209449
 script = ExtResource("1_7rgjh")
 label_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsTitle")])
@@ -203,4 +203,4 @@ text = "Next"
 
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
-noise = SubResource("FastNoiseLite_p65dr")
+noise = SubResource("FastNoiseLite_meie8")
