@@ -19,8 +19,6 @@ extends Node
 # -- 09 public variables
 # -- 10 private variables
 var _actual_horizontal_direction: float = 0.0
-var _actual_angle: float = 0.0
-
 var _displacement: float = 0.0
 var _velocity: float = 0.0
 

@@ -14,9 +14,10 @@ signal died()
 # -- 07 constants
 # -- 08 exported variables
 @export var health := 2
-
+@export var auto_start := true
 
 # -- 09 public variables
+
 # -- 10 private variables
 # -- 11 onready variables
 @onready var animation_player = $AnimationPlayer
@@ -28,11 +29,15 @@ signal died()
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready(): 
-	animation_tree.active = true
+	_setup.call_deferred()
 	
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func start():
+	animation_tree.active = true
+	
+	
 func impact():
 	health -= 1
 	
@@ -44,10 +49,18 @@ func impact():
 	
 		
 # -- 17 private methods
+func _setup():
+	if auto_start:
+		start()
+	
+	
+	
 func _die():
 	set_process(false)
 	died.emit()
 	animation_state_machine.travel("die")
+
+	
 	
 # -- 18 signal listeners
 func _on_animation_tree_animation_finished(anim_name):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=32 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://ddpd3x6doacdu" path="res://environment/vegetable_front_04.tscn" id="15_bvct5"]
 [ext_resource type="Script" path="res://environment/wall_death.gd" id="16_fydbq"]
 [ext_resource type="PackedScene" uid="uid://b2ewbis3ifr1b" path="res://environment/vegetable_front_05.tscn" id="16_hbsdw"]
+[ext_resource type="Script" path="res://environment/bricks_manager.gd" id="18_27s7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
 size = Vector2(138, 1957)
@@ -155,6 +156,7 @@ shape = SubResource("RectangleShape2D_uj4gh")
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)
+script = ExtResource("18_27s7g")
 
 [node name="Brick" parent="Bricks" instance=ExtResource("13_ymu78")]
 position = Vector2(241, 676)
