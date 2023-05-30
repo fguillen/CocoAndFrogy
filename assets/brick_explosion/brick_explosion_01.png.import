@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm6s2dka8p8cj"
-path="res://.godot/imported/explosion_particle_03.png-c7d33685a9d9c0d1edbe252149752848.ctex"
+uid="uid://b5dvnwvyr1jus"
+path="res://.godot/imported/brick_explosion_01.png-3748dda0e0bcf1997ba20bb6d6090dbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://effects/explosion/explosion_particle_03.png"
-dest_files=["res://.godot/imported/explosion_particle_03.png-c7d33685a9d9c0d1edbe252149752848.ctex"]
+source_file="res://assets/brick_explosion/brick_explosion_01.png"
+dest_files=["res://.godot/imported/brick_explosion_01.png-3748dda0e0bcf1997ba20bb6d6090dbb.ctex"]
 
 [params]
 

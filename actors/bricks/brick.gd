@@ -8,6 +8,7 @@ extends StaticBody2D
 #
 # -- 05 signals
 signal hurt()
+signal dying()
 signal died()
 
 # -- 06 enums
@@ -57,7 +58,7 @@ func _setup():
 	
 func _die():
 	set_process(false)
-	died.emit()
+	dying.emit()
 	animation_state_machine.travel("die")
 
 	
@@ -67,6 +68,7 @@ func _on_animation_tree_animation_finished(anim_name):
 	print("XXX: _on_animation_tree_animation_finished: ", anim_name)
 
 	if anim_name == "die":
+		died.emit()
 		queue_free()
 		
 

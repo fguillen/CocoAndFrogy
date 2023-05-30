@@ -33,7 +33,7 @@ func _show_bricks():
 	var tween = create_tween()
 	for brick in bricks:
 		tween.tween_callback(_show_brick.bind(brick))
-		tween.tween_interval(0.2)
+		tween.tween_interval(0.1)
 
 
 func _show_brick(brick: Brick):

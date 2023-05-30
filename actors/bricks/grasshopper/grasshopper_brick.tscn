@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkwu2n1ck0gnf"]
+[gd_scene load_steps=5 format=3 uid="uid://dkwu2n1ck0gnf"]
 
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_45dvw"]
 [ext_resource type="Texture2D" uid="uid://cxhwr2vl5f6ma" path="res://actors/bricks/grasshopper/grasshopper.png" id="2_ale0j"]
@@ -6,6 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8gx7"]
 resource_local_to_scene = true
 size = Vector2(383, 145)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_4fsgr"]
 
 [node name="GrasshopperBrick" instance=ExtResource("1_45dvw")]
 
@@ -15,3 +17,6 @@ texture = ExtResource("2_ale0j")
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0.5, 30.5)
 shape = SubResource("RectangleShape2D_b8gx7")
+
+[node name="AnimationTree" parent="." index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_4fsgr")
