@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnqeoqxisixkt"]
+
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_vh3sp"]
+[ext_resource type="Script" path="res://scenes/stats_scene/stats_number.gd" id="2_bie8m"]
+[ext_resource type="PackedScene" uid="uid://brwv0kmvk53ku" path="res://effects/animate_number_effect.tscn" id="3_fwior"]
+
+[node name="StatsNumber" type="Label"]
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_vh3sp")
+text = "0"
+horizontal_alignment = 2
+script = ExtResource("2_bie8m")
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="AnimateNumberEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("3_fwior")]
+target = NodePath("../..")

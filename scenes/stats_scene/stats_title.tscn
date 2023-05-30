@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6350tcnthofh"]
+
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_7p4ny"]
+[ext_resource type="Script" path="res://scenes/stats_scene/stats_title.gd" id="2_h8t3m"]
+
+[node name="StatsTitle" type="Label"]
+size_flags_horizontal = 3
+tooltip_text = "Time"
+theme = ExtResource("1_7p4ny")
+text = "Time"
+script = ExtResource("2_h8t3m")

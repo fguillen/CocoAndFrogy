@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://db68hv73lc5v3"]
+[gd_scene load_steps=12 format=3 uid="uid://db68hv73lc5v3"]
 
+[ext_resource type="Script" path="res://scenes/stage_clear_scene.gd" id="1_7rgjh"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_f8m8j"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_tuuey"]
 [ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_x25fh"]
+[ext_resource type="PackedScene" uid="uid://c6350tcnthofh" path="res://scenes/stats_scene/stats_title.tscn" id="5_00c1i"]
+[ext_resource type="PackedScene" uid="uid://cnqeoqxisixkt" path="res://scenes/stats_scene/stats_number.tscn" id="5_it5o2"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="7_f17px"]
 
 [sub_resource type="Animation" id="Animation_dg3y4"]
 resource_name = "idle"
@@ -42,8 +46,19 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p65dr"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[node name="StageClearScene" type="Node2D"]
 rotation = -0.00209449
+script = ExtResource("1_7rgjh")
+label_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsTitle")])
+number_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsNumber")])
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -108,130 +123,70 @@ layout_mode = 2
 [node name="TimeStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine"]
+[node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine" instance=ExtResource("5_00c1i")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-text = "Time"
 
-[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine"]
+[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine" instance=ExtResource("5_it5o2")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-text = "10000"
-horizontal_alignment = 2
 
 [node name="EarlyBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine"]
+[node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine" instance=ExtResource("5_00c1i")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
 text = "Early Bumps"
 
-[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine"]
+[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine" instance=ExtResource("5_it5o2")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-text = "100"
-horizontal_alignment = 2
 
 [node name="LateBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine"]
+[node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine" instance=ExtResource("5_00c1i")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
 text = "Late Bumps"
 
-[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine"]
+[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine" instance=ExtResource("5_it5o2")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-text = "100"
-horizontal_alignment = 2
 
 [node name="PerfectBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine"]
+[node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine" instance=ExtResource("5_00c1i")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
 text = "Perfect Bumps"
 
-[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine"]
+[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine" instance=ExtResource("5_it5o2")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-text = "100"
-horizontal_alignment = 2
 
 [node name="BallBouncesStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine"]
+[node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine" instance=ExtResource("5_00c1i")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
 text = "Ball Bounces"
 
-[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine"]
+[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine" instance=ExtResource("5_it5o2")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-text = "100"
-horizontal_alignment = 2
 
 [node name="Score" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score"]
+[node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score" instance=ExtResource("5_00c1i")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
 text = "Score"
 
-[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score"]
+[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score" instance=ExtResource("5_it5o2")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-text = "100"
-horizontal_alignment = 2
 
 [node name="FinalScore" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore"]
+[node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore" instance=ExtResource("5_00c1i")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-theme_override_font_sizes/font_size = 120
-text = "Final Score"
 
-[node name="Number" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore"]
+[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore" instance=ExtResource("5_it5o2")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Time"
-theme = ExtResource("1_tuuey")
-theme_override_font_sizes/font_size = 120
-text = "100"
-horizontal_alignment = 2
 
 [node name="Controls" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -243,3 +198,9 @@ theme_override_constants/margin_right = 50
 layout_mode = 2
 theme = ExtResource("1_tuuey")
 text = "Next"
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
+target = NodePath("../../CanvasLayer")
+noise = SubResource("FastNoiseLite_p65dr")
