@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dpwjub5d83qbr"]
+[gd_scene load_steps=22 format=3 uid="uid://dpwjub5d83qbr"]
 
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
 [ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
@@ -181,14 +181,46 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0.5, 0.5), Vector2(0.51, 0.54), Vector2(0.48, 0.55)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wv1k1"]
+resource_name = "appear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.175, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.6, 0.6), Vector2(0.4, 0.4), Vector2(0.5, 0.5)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o25ww"]
 _data = {
 "RESET": SubResource("Animation_s74jn"),
+"appear": SubResource("Animation_wv1k1"),
 "die": SubResource("Animation_5kf1o"),
 "hurt": SubResource("Animation_mamw3"),
 "idle": SubResource("Animation_yef2m")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r44vo"]
+animation = &"appear"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_67p3r"]
 animation = &"die"
@@ -199,9 +231,6 @@ animation = &"hurt"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_leggm"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2vpps"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oecw7"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eacw6"]
@@ -210,19 +239,29 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wfllo"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s0fix"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hs076"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jase1"]
-states/Start/position = Vector2(342, 59)
+states/Start/position = Vector2(258, 59)
+states/appear/node = SubResource("AnimationNodeAnimation_r44vo")
+states/appear/position = Vector2(415, 59)
 states/die/node = SubResource("AnimationNodeAnimation_67p3r")
 states/die/position = Vector2(709, 100)
 states/hurt/node = SubResource("AnimationNodeAnimation_pjfq8")
 states/hurt/position = Vector2(549, 254)
 states/idle/node = SubResource("AnimationNodeAnimation_leggm")
 states/idle/position = Vector2(565, 59)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2vpps"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_oecw7"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_eacw6"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_wfllo")]
+transitions = ["idle", "hurt", SubResource("AnimationNodeStateMachineTransition_oecw7"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_eacw6"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_wfllo"), "Start", "appear", SubResource("AnimationNodeStateMachineTransition_s0fix"), "appear", "idle", SubResource("AnimationNodeStateMachineTransition_hs076")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6shlp"]
 
 [node name="Brick" type="StaticBody2D" groups=["bricks"]]
+position = Vector2(440, 334)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_yivv7")
@@ -247,6 +286,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_jase1")
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6shlp")
 
 [node name="ExplosionEffect" parent="." instance=ExtResource("3_sbe6f")]
