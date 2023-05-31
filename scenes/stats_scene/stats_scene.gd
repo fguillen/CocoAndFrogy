@@ -20,6 +20,10 @@ signal stats_number_animated()
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
+@onready var stats_title_label = %StatsTitle
+@onready var next_button = %NextButton
+
+
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
@@ -34,8 +38,14 @@ func _ready():
 func _animate():
 	_hide_labels()
 	_hide_numbers()
+	_hide_next_button()
+	
+	await _animate_stats_title_label()
 	await _animate_labels()
-	_animate_numbers()
+	await _animate_numbers()
+	await get_tree().create_timer(1.0).timeout
+	
+	_animate_next_button()
 	
 	
 func _hide_labels():
@@ -46,23 +56,38 @@ func _hide_labels():
 func _hide_numbers():
 	for number in numbers:
 		number.self_modulate.a = 0.0
-		
+
+
+func _hide_next_button():
+	next_button.self_modulate.a = 0.0
+	
+
+func _animate_stats_title_label():
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var original_position_y = stats_title_label.global_position.y
+	tween.tween_property(stats_title_label, "global_position:y", original_position_y, 0.2).from(-375.0)
+	await tween.finished
+	
 		
 func _animate_labels():
-	var tween = get_tree().create_tween()
-	
 	for label in labels:
-		tween.tween_callback(label.label_show)
-		tween.tween_interval(0.25)
-		
-	await tween.finished
-		
+		label.label_show()
+		await label.animation_finished
+			
 		
 func _animate_numbers():	
 	for number in numbers:
 		number.label_show(1000)
 		await number.animation_finished
 		stats_number_animated.emit()
+
+
+func _animate_next_button():
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var original_position_y = next_button.global_position.y
+	tween.tween_property(next_button, "global_position:y", original_position_y, 0.2).from(get_viewport_rect().size.y + 300)
+	tween.parallel().tween_property(next_button, "self_modulate:a", 1.0, 0.2).from(0.0)
+	await tween.finished
 		
 # -- 18 signal listeners
 # -- 19 subclasses

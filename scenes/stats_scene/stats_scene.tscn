@@ -46,7 +46,7 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_meie8"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7rxh4"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -57,8 +57,8 @@ fractal_lacunarity = 1.0
 [node name="StatsScene" type="Node2D"]
 rotation = -0.00209449
 script = ExtResource("1_7rgjh")
-label_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsTitle")])
-number_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsNumber")])
+label_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsTitle")])
+number_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsNumber")])
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -104,7 +104,8 @@ layout_mode = 2
 modulate = Color(0.929412, 0.403922, 0.054902, 1)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Title"]
+[node name="StatsTitle" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Title"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_tuuey")
 theme_override_font_sizes/font_size = 200
@@ -184,9 +185,12 @@ layout_mode = 2
 
 [node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore" instance=ExtResource("5_00c1i")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "Final Score"
 
 [node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore" instance=ExtResource("5_it5o2")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 120
 
 [node name="Controls" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -194,7 +198,8 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 50
 
-[node name="Button" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls"]
+[node name="NextButton" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_tuuey")
 text = "Next"
@@ -204,6 +209,13 @@ text = "Next"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_meie8")
+noise = SubResource("FastNoiseLite_7rxh4")
+
+[node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
+target = NodePath("../../CanvasLayer")
+duration = 1.0
+frequency = 400.0
+noise = SubResource("FastNoiseLite_7rxh4")
 
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
+[connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsNumber" to="Effects/ShakeEffectBig" method="perform"]

@@ -6,6 +6,7 @@ extends Label
 # -- 04 # docstring
 #
 # -- 05 signals
+signal animation_finished()
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -27,6 +28,8 @@ func label_show():
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "position:x", original_position_x, 0.25).from(-get_viewport_rect().size.x)
 	tween.parallel().tween_property(self, "self_modulate:a", 1.0, 0.25).from(0.0)
+	await tween.finished
+	animation_finished.emit()
 
 	
 # -- 17 private methods
