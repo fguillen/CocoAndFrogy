@@ -41,7 +41,7 @@ func _remove_life():
 	
 	
 # -- 18 signal listeners
-func _on_score_changed(previous: int, actual: int):
+func _on_score_changed(_previous: int, actual: int):
 	animate_number_effect.perform(actual)
 # -- 19 subclasses
 
