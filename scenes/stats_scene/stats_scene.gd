@@ -29,13 +29,13 @@ signal stats_number_animated()
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
-	_animate.call_deferred()
+	_show.call_deferred()
 	
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 # -- 17 private methods
-func _animate():
+func _show():
 	_hide_labels()
 	_hide_numbers()
 	_hide_next_button()
@@ -77,7 +77,7 @@ func _animate_labels():
 		
 func _animate_numbers():	
 	for number in numbers:
-		number.label_show(1000)
+		number.label_show()
 		await number.animation_finished
 		stats_number_animated.emit()
 

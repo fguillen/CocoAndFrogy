@@ -11,7 +11,13 @@ signal impact_with_brick_occurred()
 signal frogy_died()
 signal brick_ready(brick: Brick)
 signal brick_queued(brick: Brick)
+signal level_started()
 signal level_clear()
+signal bump_early_performed()
+signal bump_late_performed()
+signal bump_perfect_performed()
+signal bounce_performed()
+
 
 # -- 06 enums
 # -- 07 constants
@@ -45,10 +51,31 @@ func emit_brick_ready(brick: Brick):
 
 func emit_brick_queued(brick: Brick):
 	brick_queued.emit(brick)
-	
+
+
+func emit_level_started():
+	level_started.emit()
+		
 	
 func emit_level_clear():
 	level_clear.emit()
+	
+	
+func emit_bump_early_performed():
+	bump_early_performed.emit()
+	
+	
+func emit_bump_late_performed():
+	bump_late_performed.emit()
+	
+	
+func emit_bump_perfect_performed():
+	bump_perfect_performed.emit()
+	
+	
+func emit_bounce_performed():
+	bounce_performed.emit()
+	
 	
 
 # -- 17 private methods

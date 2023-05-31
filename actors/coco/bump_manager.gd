@@ -71,12 +71,15 @@ func bump():
 			bump_message.emit("Perfect")
 			frogy.boost(boost_factor_perfect)
 			bumped_achieved.emit()
+			GlobalEvents.emit_bump_perfect_performed()
 			
 		elif distance <= bump_distant_max:
 			if frogy.movement_manager.direction.dot(Vector2.DOWN) > 0.0:
 				bump_message.emit("Bit Early")
+				GlobalEvents.emit_bump_early_performed()
 			else: 
 				bump_message.emit("Bit Late")
+				GlobalEvents.emit_bump_late_performed()
 			
 			frogy.boost(boost_factor_no_perfect)
 			bumped_achieved.emit()

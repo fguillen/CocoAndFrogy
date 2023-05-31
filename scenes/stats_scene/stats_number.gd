@@ -12,6 +12,8 @@ signal animation_finished()
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
+@export var stats_property: String
+
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
@@ -27,7 +29,9 @@ func label_hide():
 	self_modulate.a = 0.0
 	
 	
-func label_show(value: int):
+func label_show():
+	var value = StatsManager.get_stat_by_name(stats_property)
+	
 	var original_position_x = position.x
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "position:x", original_position_x, 0.25).from(get_viewport_rect().size.x)

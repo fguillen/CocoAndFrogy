@@ -82,13 +82,16 @@ func on_collision_found(collision: KinematicCollision2D):
 	if collision.get_collider().is_in_group("coco"):		
 		direction_result = _collision_with_coco(collision)
 		GlobalEvents.emit_impact_with_coco_occurred()
+		GlobalEvents.emit_bounce_performed()
 		
 	elif collision.get_collider().is_in_group("bricks"):
 		direction_result = _collision_with_other(collision)
 		GlobalEvents.emit_impact_with_brick_occurred()
+		GlobalEvents.emit_bounce_performed()
 		
 	elif collision.get_collider().is_in_group("walls"): 
 		direction_result = _collision_with_other(collision)
+		GlobalEvents.emit_bounce_performed()
 		
 	else: 
 		return

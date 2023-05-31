@@ -15,6 +15,7 @@ signal finished()
 # -- 08 exported variables
 @export var target: Label
 @export var duration := 0.5
+@export var time_format := false
 
 # -- 09 public variables
 # -- 10 private variables
@@ -34,7 +35,11 @@ func perform(to: int):
 	
 # -- 17 private methods
 func _update_number(number: int):
-	target.text = str(number)
+	if time_format:
+		var time_dictionary = Time.get_time_dict_from_unix_time(number)
+		target.text = "%02d:%02d" % [time_dictionary.minute, time_dictionary.second]
+	else:
+		target.text = str(number)
 	
 # -- 18 signal listeners
 # -- 19 subclasses

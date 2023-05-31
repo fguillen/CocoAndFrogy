@@ -23,6 +23,7 @@ var bricks: Array[Brick]
 func _ready():
 	GlobalEvents.brick_ready.connect(_add_brick)
 	GlobalEvents.brick_queued.connect(_remove_brick)
+	GlobalEvents.emit_level_started()
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -37,7 +38,7 @@ func _remove_brick(brick: Brick):
 	
 	if bricks.is_empty():
 		GlobalEvents.emit_level_clear()
-		SceneSwitcher.switch_to("composiion_scene")
+		SceneSwitcher.switch_to("stats_scene/stats_scene")
 
 # -- 18 signal listeners
 # -- 19 subclasses

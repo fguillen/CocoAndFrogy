@@ -46,7 +46,7 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ldqr4"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i0chn"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -54,7 +54,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6x3rb"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vs3kp"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -66,7 +66,7 @@ fractal_lacunarity = 1.0
 rotation = -0.00209449
 script = ExtResource("1_7rgjh")
 label_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsTitle")])
-number_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsNumber")])
+number_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTimeNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsEarlyBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsLateBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsPerfectBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsBouncesNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsScoreNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsFinalScoreNumber")])
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -135,8 +135,14 @@ layout_mode = 2
 [node name="StatsTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine" instance=ExtResource("5_00c1i")]
 layout_mode = 2
 
-[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine" instance=ExtResource("5_it5o2")]
+[node name="StatsTimeNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine" instance=ExtResource("5_it5o2")]
+unique_name_in_owner = true
 layout_mode = 2
+text = "00:00"
+stats_property = "time"
+
+[node name="AnimateNumberEffect" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTimeNumber/Effects" index="0"]
+time_format = true
 
 [node name="EarlyBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -145,8 +151,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Early Bumps"
 
-[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine" instance=ExtResource("5_it5o2")]
+[node name="StatsEarlyBumpsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine" instance=ExtResource("5_it5o2")]
+unique_name_in_owner = true
 layout_mode = 2
+stats_property = "bumps_early"
 
 [node name="LateBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -155,8 +163,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Late Bumps"
 
-[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine" instance=ExtResource("5_it5o2")]
+[node name="StatsLateBumpsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine" instance=ExtResource("5_it5o2")]
+unique_name_in_owner = true
 layout_mode = 2
+stats_property = "bumps_late"
 
 [node name="PerfectBumpsStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -165,8 +175,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Perfect Bumps"
 
-[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine" instance=ExtResource("5_it5o2")]
+[node name="StatsPerfectBumpsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine" instance=ExtResource("5_it5o2")]
+unique_name_in_owner = true
 layout_mode = 2
+stats_property = "bumps_perfect"
 
 [node name="BallBouncesStatsLine" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -175,8 +187,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Ball Bounces"
 
-[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine" instance=ExtResource("5_it5o2")]
+[node name="StatsBouncesNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine" instance=ExtResource("5_it5o2")]
+unique_name_in_owner = true
 layout_mode = 2
+stats_property = "bounces"
 
 [node name="Score" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -185,8 +199,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Score"
 
-[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score" instance=ExtResource("5_it5o2")]
+[node name="StatsScoreNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score" instance=ExtResource("5_it5o2")]
+unique_name_in_owner = true
 layout_mode = 2
+stats_property = "score"
 
 [node name="FinalScore" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -196,9 +212,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 120
 text = "Final Score"
 
-[node name="StatsNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore" instance=ExtResource("5_it5o2")]
+[node name="StatsFinalScoreNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore" instance=ExtResource("5_it5o2")]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
+stats_property = "final_score"
 
 [node name="Controls" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -217,13 +235,15 @@ text = "Next"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_ldqr4")
+noise = SubResource("FastNoiseLite_i0chn")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_6x3rb")
+noise = SubResource("FastNoiseLite_vs3kp")
 
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
-[connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsNumber" to="Effects/ShakeEffectBig" method="perform"]
+[connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsFinalScoreNumber" to="Effects/ShakeEffectBig" method="perform"]
+
+[editable path="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTimeNumber"]
