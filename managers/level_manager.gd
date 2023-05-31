@@ -37,7 +37,7 @@ func _remove_brick(brick: Brick):
 	
 	if bricks.is_empty():
 		GlobalEvents.emit_level_clear()
-		SceneSwitcher.switch_to("XXX")
+		SceneSwitcher.switch_to("composiion_scene")
 
 # -- 18 signal listeners
 # -- 19 subclasses
