@@ -17,7 +17,7 @@ var bumps_perfect := 0
 var bounces := 0
 var time := 0
 var score := 0
-var final_score := 0
+var total_score := 0
 
 
 # -- 10 private variables
@@ -39,8 +39,8 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func get_stat_by_name(name: String) -> int:
-	match (name):
+func get_stat_by_name(stat_name: String) -> int:
+	match (stat_name):
 		"bricks_destroyed":
 			return bricks_destroyed
 		"bumps_early":
@@ -55,8 +55,8 @@ func get_stat_by_name(name: String) -> int:
 			return time
 		"score":
 			return score
-		"final_score":
-			return final_score
+		"total_score":
+			return total_score
 		_:
 			assert(false, "StatsManager.get_stat_by_name(), name no supported: '%s'" % name)
 			return 0
@@ -103,7 +103,7 @@ func _calculate_stats():
 		bumps_late + \
 		bumps_perfect
 	
-	final_score += score
+	total_score += score
 	
 	
 # -- 18 signal listeners

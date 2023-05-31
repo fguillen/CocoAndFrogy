@@ -34,8 +34,12 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func next():
+	SceneSwitcher.switch_to("composiion_scene")
+	
 # -- 17 private methods
 func _show():
+	_hide_stats_title_label()
 	_hide_labels()
 	_hide_numbers()
 	_hide_next_button()
@@ -46,6 +50,9 @@ func _show():
 	await get_tree().create_timer(1.0).timeout
 	
 	_animate_next_button()
+	
+func _hide_stats_title_label():
+	stats_title_label.self_modulate.a = 0.0
 	
 	
 func _hide_labels():
@@ -66,6 +73,7 @@ func _animate_stats_title_label():
 	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var original_position_y = stats_title_label.global_position.y
 	tween.tween_property(stats_title_label, "global_position:y", original_position_y, 0.2).from(-375.0)
+	tween.parallel().tween_property(stats_title_label, "self_modulate:a", 1.0, 0.2).from(0.0)
 	await tween.finished
 	
 		

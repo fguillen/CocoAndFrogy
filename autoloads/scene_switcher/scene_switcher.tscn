@@ -236,6 +236,7 @@ _data = {
 }
 
 [node name="SceneSwitcher" type="CanvasLayer"]
+process_mode = 3
 layer = 100
 script = ExtResource("1_xxhsh")
 

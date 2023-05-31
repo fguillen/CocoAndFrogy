@@ -23,12 +23,14 @@ extends Node
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func switch_to(scene_name):
+	get_tree().paused = true
 	_start_animations()
 	animation_player.play("curtain_close")
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file("res://scenes/%s.tscn" % scene_name)
 	animation_player.play("curtain_open")
 	await animation_player.animation_finished
+	get_tree().paused = false
 	_stop_animations()
 	
 	
