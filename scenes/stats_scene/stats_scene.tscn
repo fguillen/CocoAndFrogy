@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://db68hv73lc5v3"]
+[gd_scene load_steps=13 format=3 uid="uid://db68hv73lc5v3"]
 
 [ext_resource type="Script" path="res://scenes/stats_scene/stats_scene.gd" id="1_7rgjh"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_f8m8j"]
@@ -46,7 +46,15 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7rxh4"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ldqr4"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6x3rb"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -209,13 +217,13 @@ text = "Next"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_7rxh4")
+noise = SubResource("FastNoiseLite_ldqr4")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_7rxh4")
+noise = SubResource("FastNoiseLite_6x3rb")
 
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
 [connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/FinalScore/StatsNumber" to="Effects/ShakeEffectBig" method="perform"]

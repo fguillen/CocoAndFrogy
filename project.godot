@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.0", "GL Compatibility")
 GroupsUtils="*res://autoloads/groups_utils.gd"
 Global="*res://autoloads/global.gd"
 GlobalEvents="*res://autoloads/global_events.gd"
+SceneSwitcher="*res://autoloads/scene_switcher/scene_switcher.tscn"
 
 [display]
 

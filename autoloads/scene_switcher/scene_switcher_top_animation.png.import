@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buxx6t4icxoms"
-path="res://.godot/imported/scene_switcher_top_animation.png-cc54c76abeb76dd853478ad660e3c118.ctex"
+path="res://.godot/imported/scene_switcher_top_animation.png-db3d1d0b5caf3e5e2c5c05f96426de41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scene_switcher_top_animation.png"
-dest_files=["res://.godot/imported/scene_switcher_top_animation.png-cc54c76abeb76dd853478ad660e3c118.ctex"]
+source_file="res://autoloads/scene_switcher/scene_switcher_top_animation.png"
+dest_files=["res://.godot/imported/scene_switcher_top_animation.png-db3d1d0b5caf3e5e2c5c05f96426de41.ctex"]
 
 [params]
 

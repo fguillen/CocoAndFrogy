@@ -38,7 +38,6 @@ func perform():
 	
 # -- 17 private methods
 func _spawn():
-	print("XXX: GhostEffect._spawn()")
 	var sprite_duplicated = sprite.duplicate()
 	get_tree().get_current_scene().add_child(sprite_duplicated)
 	sprite_duplicated.global_position = global_position

@@ -32,6 +32,8 @@ signal died()
 func _ready(): 
 	_setup.call_deferred()
 	
+	GlobalEvents.emit_brick_ready(self)
+	
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
@@ -65,14 +67,11 @@ func _die():
 	
 # -- 18 signal listeners
 func _on_animation_tree_animation_finished(anim_name):
-	print("XXX: _on_animation_tree_animation_finished: ", anim_name)
 
 	if anim_name == "die":
 		died.emit()
+		GlobalEvents.emit_brick_queued(self)
 		queue_free()
 		
-
-func _on_animation_player_animation_finished(anim_name):
-	print("XXX: _on_animation_player_animation_finished: ", anim_name)
 		
 # -- 19 subclasses

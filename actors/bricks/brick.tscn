@@ -265,6 +265,8 @@ position = Vector2(440, 334)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_yivv7")
+health = null
+auto_start = null
 
 [node name="Visuals" type="Node2D" parent="."]
 

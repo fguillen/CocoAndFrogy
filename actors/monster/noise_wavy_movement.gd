@@ -36,10 +36,8 @@ func _ready():
 
 # -- 15 remaining built-in virtual methods
 func _process(_delta):
-#	print("XXX: noise_value: ", noise_value)
 	var desired_position_x = easy_noise.noise_value
 	_desired_position = Vector2(desired_position_x, character.global_position.y)
-#	print("XXX: _desired_position_x: ", _desired_position_x)
 	
 	if _desired_position.distance_to(character.global_position) < 10:
 		movement_manager.direction = Vector2.ZERO

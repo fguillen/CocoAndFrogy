@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=33 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://b2ewbis3ifr1b" path="res://environment/vegetable_front_05.tscn" id="16_hbsdw"]
 [ext_resource type="Script" path="res://environment/bricks_manager.gd" id="18_27s7g"]
 [ext_resource type="PackedScene" uid="uid://b77aigryso4i5" path="res://actors/bricks/fly/fly_brick.tscn" id="20_t8jla"]
+[ext_resource type="PackedScene" uid="uid://bmx77lbk2ub2e" path="res://managers/level_manager.tscn" id="28_kc8nu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
 size = Vector2(138, 1957)
@@ -41,6 +42,8 @@ size = Vector2(1376, 149)
 size = Vector2(1188, 74)
 
 [node name="ComposiionScene" type="Node2D"]
+
+[node name="LevelManager" parent="." instance=ExtResource("28_kc8nu")]
 
 [node name="Camera" parent="." instance=ExtResource("1_pvwu1")]
 

@@ -9,6 +9,9 @@ extends Node
 signal impact_with_coco_occurred()
 signal impact_with_brick_occurred()
 signal frogy_died()
+signal brick_ready(brick: Brick)
+signal brick_queued(brick: Brick)
+signal level_clear()
 
 # -- 06 enums
 # -- 07 constants
@@ -34,6 +37,19 @@ func emit_impact_with_brick_occurred():
 	
 func emit_frogy_died():
 	frogy_died.emit()
+	
+	
+func emit_brick_ready(brick: Brick):
+	brick_ready.emit(brick)
+
+
+func emit_brick_queued(brick: Brick):
+	brick_queued.emit(brick)
+	
+	
+func emit_level_clear():
+	level_clear.emit()
+	
 
 # -- 17 private methods
 # -- 18 signal listeners

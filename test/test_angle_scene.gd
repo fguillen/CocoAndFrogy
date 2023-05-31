@@ -25,7 +25,6 @@ func _process(delta):
 	fly_2.global_position = mouse_position
 	
 	var angle = fly_1.global_position.direction_to(fly_2.global_position).angle()
-	print("XXX: angle: ", rad_to_deg(angle))
 	
 	
 # -- 16 public methods
