@@ -164,36 +164,50 @@ script = ExtResource("18_27s7g")
 
 [node name="GrasshopperBrick" parent="Bricks" instance=ExtResource("14_2ok84")]
 position = Vector2(571, 470)
+health = 2
+auto_start = true
 
 [node name="FlyBrick" parent="Bricks" instance=ExtResource("20_t8jla")]
 position = Vector2(241, 676)
+auto_start = true
 
 [node name="FlyBrick2" parent="Bricks" instance=ExtResource("20_t8jla")]
 position = Vector2(447, 676)
+auto_start = true
 
 [node name="FlyBrick3" parent="Bricks" instance=ExtResource("20_t8jla")]
 position = Vector2(657, 676)
+auto_start = true
 
 [node name="FlyBrick4" parent="Bricks" instance=ExtResource("20_t8jla")]
 position = Vector2(867, 676)
+auto_start = true
 
 [node name="GrasshopperBrick2" parent="Bricks" instance=ExtResource("14_2ok84")]
 position = Vector2(348, 857)
+health = 2
+auto_start = true
 
 [node name="GrasshopperBrick3" parent="Bricks" instance=ExtResource("14_2ok84")]
 position = Vector2(764, 857)
+health = 2
+auto_start = true
 
 [node name="FlyBrick5" parent="Bricks" instance=ExtResource("20_t8jla")]
 position = Vector2(867, 1057)
+auto_start = true
 
 [node name="FlyBrick6" parent="Bricks" instance=ExtResource("20_t8jla")]
 position = Vector2(677, 1057)
+auto_start = true
 
 [node name="FlyBrick7" parent="Bricks" instance=ExtResource("20_t8jla")]
 position = Vector2(448, 1057)
+auto_start = true
 
 [node name="FlyBrick8" parent="Bricks" instance=ExtResource("20_t8jla")]
 position = Vector2(248, 1057)
+auto_start = true
 
 [node name="EnvironmentFront" type="Node2D" parent="."]
 z_index = 10

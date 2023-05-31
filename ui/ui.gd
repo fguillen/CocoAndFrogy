@@ -11,6 +11,8 @@ extends CanvasLayer
 # -- 08 exported variables
 @export var ui_life_paths: Array[NodePath]
 @onready var ui_lifes = ui_life_paths.map(get_node)
+@onready var points_label = %Label
+@onready var animate_number_effect = $AnimateNumberEffect
 
 
 # -- 09 public variables
@@ -22,6 +24,7 @@ extends CanvasLayer
 # -- 14 built-in virtual _ready method
 func _ready():
 	GlobalEvents.frogy_died.connect(_remove_life)
+	GlobalEvents.score_changed.connect(_on_score_changed)
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -38,5 +41,7 @@ func _remove_life():
 	
 	
 # -- 18 signal listeners
+func _on_score_changed(previous: int, actual: int):
+	animate_number_effect.perform(actual)
 # -- 19 subclasses
 

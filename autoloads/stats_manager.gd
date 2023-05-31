@@ -16,7 +16,7 @@ var bumps_late := 0
 var bumps_perfect := 0
 var bounces := 0
 var time := 0
-var score := 0
+var score := 0 : set = _set_score
 var total_score := 0
 
 
@@ -74,37 +74,40 @@ func _reset():
 	_started_time = Time.get_unix_time_from_system()
 	
 	
-func _increase_bricks_destroyed(_brick: Brick):
+func _increase_bricks_destroyed(brick: Brick):
 	bricks_destroyed += 1
+	score += brick.score
 	
 	
 func _increase_bumps_early():
 	bumps_early += 1
+	score += 5
 	
 	
 func _increase_bumps_late():
 	bumps_late += 1
+	score += 5
 	
 	
 func _increase_bumps_perfect():
 	bumps_perfect += 1
+	score += 10
 	
 
 func _increase_bounces():
 	bounces += 1
+	score += 1
 	
 	
 func _calculate_stats():
 	time = int(Time.get_unix_time_from_system() - _started_time)
-	score = \
-		bounces + \
-		bricks_destroyed + \
-		bumps_early + \
-		bumps_late + \
-		bumps_perfect
-	
 	total_score += score
-	
+
+
+func _set_score(value: int):
+	var previous_score = score
+	score = value
+	GlobalEvents.emit_score_changed(previous_score, score)
 	
 # -- 18 signal listeners
 # -- 19 subclasses

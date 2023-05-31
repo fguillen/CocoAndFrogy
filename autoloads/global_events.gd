@@ -18,7 +18,7 @@ signal bump_late_performed()
 signal bump_perfect_performed()
 signal bounce_performed()
 signal game_over()
-
+signal score_changed(previous: int, actual: int)
 
 # -- 06 enums
 # -- 07 constants
@@ -80,6 +80,10 @@ func emit_bounce_performed():
 	
 func emit_game_over():
 	game_over.emit()
+	
+
+func emit_score_changed(previous: int, actual: int):
+	score_changed.emit(previous, actual)
 	
 	
 

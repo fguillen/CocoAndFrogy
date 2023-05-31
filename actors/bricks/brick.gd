@@ -15,6 +15,7 @@ signal died()
 # -- 07 constants
 # -- 08 exported variables
 @export var health := 2
+@export var score := 5
 @export var auto_start := true
 
 # -- 09 public variables

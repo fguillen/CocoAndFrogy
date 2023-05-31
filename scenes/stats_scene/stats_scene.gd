@@ -96,6 +96,7 @@ func _animate_next_button():
 	tween.tween_property(next_button, "global_position:y", original_position_y, 0.2).from(get_viewport_rect().size.y + 300)
 	tween.parallel().tween_property(next_button, "self_modulate:a", 1.0, 0.2).from(0.0)
 	await tween.finished
+	next_button.grab_focus()
 		
 # -- 18 signal listeners
 # -- 19 subclasses
