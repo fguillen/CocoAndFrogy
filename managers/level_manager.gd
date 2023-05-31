@@ -15,6 +15,8 @@ extends Node
 var bricks: Array[Brick]
 
 # -- 10 private variables
+var _lifes := 3
+
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
@@ -23,6 +25,8 @@ var bricks: Array[Brick]
 func _ready():
 	GlobalEvents.brick_ready.connect(_add_brick)
 	GlobalEvents.brick_queued.connect(_remove_brick)
+	GlobalEvents.frogy_died.connect(_remove_life)
+	
 	GlobalEvents.emit_level_started()
 	
 	
@@ -39,6 +43,15 @@ func _remove_brick(brick: Brick):
 	if bricks.is_empty():
 		GlobalEvents.emit_level_clear()
 		SceneSwitcher.switch_to("stats_scene/stats_scene")
+		
+		
+func _remove_life():
+	_lifes -= 1
+	
+	if _lifes <= 0:
+		GlobalEvents.emit_game_over()
+		
+		
 
 # -- 18 signal listeners
 # -- 19 subclasses

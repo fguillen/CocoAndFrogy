@@ -1,8 +1,23 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://t4fnqfcts68g"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://t4fnqfcts68g"]
 
 [ext_resource type="FontFile" uid="uid://dvjdap1osrug5" path="res://assets/LondrinaSolid-Regular.ttf" id="1_023s6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hi02"]
+bg_color = Color(0.929412, 0.403922, 0.054902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flsf7"]
+bg_color = Color(0.2, 0.203922, 0.203922, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 0.8, 1)
+anti_aliasing = false
 
 [resource]
 default_font = ExtResource("1_023s6")
 Button/font_sizes/font_size = 100
 Label/font_sizes/font_size = 100
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_0hi02")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_flsf7")
+ProgressBar/styles/fill = null

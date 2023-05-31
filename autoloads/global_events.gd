@@ -17,6 +17,7 @@ signal bump_early_performed()
 signal bump_late_performed()
 signal bump_perfect_performed()
 signal bounce_performed()
+signal game_over()
 
 
 # -- 06 enums
@@ -75,6 +76,10 @@ func emit_bump_perfect_performed():
 	
 func emit_bounce_performed():
 	bounce_performed.emit()
+	
+	
+func emit_game_over():
+	game_over.emit()
 	
 	
 

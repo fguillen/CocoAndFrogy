@@ -65,6 +65,9 @@ func _collision_with_coco(collision: KinematicCollision2D) -> Vector2:
 			var amount = distance.x / 193
 			normal = normal.rotated(_min_angle_rad * amount)
 			new_direction = new_direction.bounce(normal)
+			
+	else: 
+		new_direction = movement_manager.direction.bounce(normal)
 
 	return new_direction
 	

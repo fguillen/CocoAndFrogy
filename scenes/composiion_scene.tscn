@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=34 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://environment/bricks_manager.gd" id="18_27s7g"]
 [ext_resource type="PackedScene" uid="uid://b77aigryso4i5" path="res://actors/bricks/fly/fly_brick.tscn" id="20_t8jla"]
 [ext_resource type="PackedScene" uid="uid://bmx77lbk2ub2e" path="res://managers/level_manager.tscn" id="28_kc8nu"]
+[ext_resource type="PackedScene" uid="uid://baq303h7ydbfg" path="res://ui/ui.tscn" id="29_wih55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
 size = Vector2(138, 1957)
@@ -36,7 +37,7 @@ size = Vector2(138, 1957)
 size = Vector2(138, 1957)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imguq"]
-size = Vector2(1376, 149)
+size = Vector2(1376, 135.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj4gh"]
 size = Vector2(1188, 74)
@@ -144,7 +145,7 @@ position = Vector2(1142, 967)
 shape = SubResource("RectangleShape2D_6v06q")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
-position = Vector2(542, -69)
+position = Vector2(540, 18.25)
 shape = SubResource("RectangleShape2D_imguq")
 
 [node name="WallDeath" type="StaticBody2D" parent="." groups=["wall_death"]]
@@ -233,6 +234,8 @@ scale = Vector2(0.7, 0.7)
 position = Vector2(542, 1935)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_x8jhi")
+
+[node name="UI" parent="." instance=ExtResource("29_wih55")]
 
 [connection signal="dying" from="Bricks/GrasshopperBrick" to="Bricks/GrasshopperBrick/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
 [connection signal="dying" from="Bricks/GrasshopperBrick2" to="Bricks/GrasshopperBrick2/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
