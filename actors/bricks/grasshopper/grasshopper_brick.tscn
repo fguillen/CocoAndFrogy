@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkwu2n1ck0gnf"]
+[gd_scene load_steps=9 format=3 uid="uid://dkwu2n1ck0gnf"]
 
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_45dvw"]
 [ext_resource type="Texture2D" uid="uid://cxhwr2vl5f6ma" path="res://actors/bricks/grasshopper/grasshopper.png" id="2_ale0j"]
+[ext_resource type="AudioStream" uid="uid://cxg1ac1nc0vs5" path="res://assets/sounds/grasshopper_01.wav" id="3_k1r48"]
+[ext_resource type="AudioStream" uid="uid://dtggxgbiba6y7" path="res://assets/sounds/grasshopper_02.wav" id="4_238s5"]
+[ext_resource type="AudioStream" uid="uid://fia4rmpx3e5h" path="res://assets/sounds/grasshopper_03.wav" id="5_rdfh4"]
+[ext_resource type="AudioStream" uid="uid://ckosg27d5isdb" path="res://assets/sounds/grasshopper_04.wav" id="6_mrtg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8gx7"]
 resource_local_to_scene = true
@@ -20,3 +24,6 @@ shape = SubResource("RectangleShape2D_b8gx7")
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_4fsgr")
+
+[node name="ImpactSoundEffect" parent="Effects" index="1"]
+samples = Array[AudioStream]([ExtResource("3_k1r48"), ExtResource("4_238s5"), ExtResource("5_rdfh4"), ExtResource("6_mrtg8")])

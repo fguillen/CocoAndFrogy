@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=28 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -17,6 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://eux0priaj10i" path="res://effects/appear_effect.tscn" id="15_ip5qy"]
 [ext_resource type="Script" path="res://actors/frogy/decceleration_effect.gd" id="16_xkcyd"]
 [ext_resource type="PackedScene" uid="uid://b7mau6sauoypc" path="res://effects/speed_smoke_effect.tscn" id="17_q5jot"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="18_t2aqb"]
+[ext_resource type="AudioStream" uid="uid://b5ic5vd3h2ebj" path="res://assets/sounds/frogy_bouncing.wav" id="19_j8iuc"]
+[ext_resource type="AudioStream" uid="uid://d2apij8wcjem7" path="res://assets/sounds/frogy_speed_up.wav" id="20_me2fj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
@@ -199,6 +202,14 @@ movement_manager = NodePath("../../MovementManager")
 [node name="SpeedSmokeEffect" parent="Effects" instance=ExtResource("17_q5jot")]
 z_index = -1
 
+[node name="CocoBounceSoundEffect" parent="Effects" instance=ExtResource("18_t2aqb")]
+random_pitch = true
+samples = Array[AudioStream]([ExtResource("19_j8iuc")])
+
+[node name="SpeedUpSoundEffect" parent="Effects" instance=ExtResource("18_t2aqb")]
+stream = ExtResource("20_me2fj")
+loop = true
+
 [connection signal="boosted" from="." to="Effects/HitStopEffect" method="perform" binds= [0.2]]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
@@ -210,6 +221,10 @@ z_index = -1
 [connection signal="speed_changed" from="MovementManager" to="Effects/SpeedSmokeEffect" method="on_speed_changed"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceAnimationEffect" method="bounce"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceParticlesEffect" method="perform"]
+[connection signal="bounced_on_coco" from="BouncingManager" to="Effects/CocoBounceSoundEffect" method="perform"]
+[connection signal="bounced_on_other" from="BouncingManager" to="Effects/CocoBounceSoundEffect" method="perform"]
 [connection signal="death_finished" from="DeathManager" to="Effects/AppearEffect" method="perform"]
 [connection signal="death_started" from="DeathManager" to="Effects/DeathEffect" method="perform"]
 [connection signal="collision_found" from="BricksImpacter" to="Effects/HitStopEffect" method="perform" binds= [0.1]]
+[connection signal="emit_finished" from="Effects/SpeedSmokeEffect" to="Effects/SpeedUpSoundEffect" method="finish"]
+[connection signal="emit_started" from="Effects/SpeedSmokeEffect" to="Effects/SpeedUpSoundEffect" method="perform"]

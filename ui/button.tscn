@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx1cc3bi8pjqc"]
+
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_5c7xe"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="2_aay41"]
+[ext_resource type="AudioStream" uid="uid://y03r4dva0jah" path="res://assets/sounds/button.wav" id="3_7y11t"]
+
+[node name="NextButton" type="Button"]
+theme = ExtResource("1_5c7xe")
+text = "Next"
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="SoundEffect" parent="Effects" instance=ExtResource("2_aay41")]
+stream = ExtResource("3_7y11t")
+
+[connection signal="pressed" from="." to="Effects/SoundEffect" method="perform"]

@@ -7,6 +7,9 @@ extends Node
 #
 # -- 05 signals
 signal bounced(collision: KinematicCollision2D)
+signal bounced_on_coco()
+signal bounced_on_brick()
+signal bounced_on_other()
 
 # -- 06 enums
 # -- 07 constants
@@ -86,15 +89,18 @@ func on_collision_found(collision: KinematicCollision2D):
 		direction_result = _collision_with_coco(collision)
 		GlobalEvents.emit_impact_with_coco_occurred()
 		GlobalEvents.emit_bounce_performed()
+		bounced_on_coco.emit()
 		
 	elif collision.get_collider().is_in_group("bricks"):
 		direction_result = _collision_with_other(collision)
 		GlobalEvents.emit_impact_with_brick_occurred()
 		GlobalEvents.emit_bounce_performed()
+		bounced_on_brick.emit()
 		
 	elif collision.get_collider().is_in_group("walls"): 
 		direction_result = _collision_with_other(collision)
 		GlobalEvents.emit_bounce_performed()
+		bounced_on_other.emit()
 		
 	else: 
 		return

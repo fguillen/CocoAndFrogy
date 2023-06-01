@@ -44,11 +44,11 @@ func start():
 	
 func impact():
 	health -= 1
+	hurt.emit()
 	
 	if health <= 0:
 		_die()
 	else:
-		hurt.emit()
 		animation_state_machine.travel("hurt")
 	
 		
@@ -68,7 +68,6 @@ func _die():
 	
 # -- 18 signal listeners
 func _on_animation_tree_animation_finished(anim_name):
-
 	if anim_name == "die":
 		died.emit()
 		GlobalEvents.emit_brick_queued(self)

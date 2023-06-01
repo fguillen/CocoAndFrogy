@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://db68hv73lc5v3"]
+[gd_scene load_steps=17 format=3 uid="uid://db68hv73lc5v3"]
 
 [ext_resource type="Script" path="res://scenes/stats_scene/stats_scene.gd" id="1_7rgjh"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_f8m8j"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://c6350tcnthofh" path="res://scenes/stats_scene/stats_title.tscn" id="5_00c1i"]
 [ext_resource type="PackedScene" uid="uid://cnqeoqxisixkt" path="res://scenes/stats_scene/stats_number.tscn" id="5_it5o2"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="7_f17px"]
+[ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button.tscn" id="7_pluhc"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="8_ms0k7"]
+[ext_resource type="AudioStream" uid="uid://cq8fxtf84winb" path="res://assets/sounds/stats_shake.wav" id="9_7mx6g"]
+[ext_resource type="AudioStream" uid="uid://ma4uajanoyiq" path="res://assets/sounds/stats_shake_02.wav" id="10_re2mn"]
 
 [sub_resource type="Animation" id="Animation_k5g02"]
 length = 0.001
@@ -46,7 +50,7 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_o2lrn"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_24wa8"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -54,7 +58,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_yokxj"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6io42"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -224,27 +228,34 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 50
 
-[node name="NextButton" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls"]
+[node name="NextButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls" instance=ExtResource("7_pluhc")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("1_tuuey")
-text = "Next"
 
 [node name="Effects" type="Node2D" parent="."]
 
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_o2lrn")
+noise = SubResource("FastNoiseLite_24wa8")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_yokxj")
+noise = SubResource("FastNoiseLite_6io42")
 
+[node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_ms0k7")]
+stream = ExtResource("10_re2mn")
+random_pitch = true
+
+[node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("8_ms0k7")]
+stream = ExtResource("9_7mx6g")
+random_pitch = true
+
+[connection signal="stats_label_animated" from="." to="Effects/ShakeLabelSoundEffect" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
+[connection signal="stats_number_animated" from="." to="Effects/ShakeNumberSoundEffect" method="perform"]
 [connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTotalScoreNumber" to="Effects/ShakeEffectBig" method="perform"]
-[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls/NextButton" to="." method="next"]
 
 [editable path="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTimeNumber"]

@@ -9,7 +9,7 @@ extends CPUParticles2D
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
-#@export var reparent := false
+@export var reparent_on_ready := false
 
 
 # -- 09 public variables
@@ -20,7 +20,7 @@ extends CPUParticles2D
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
-	if reparent:
+	if reparent_on_ready:
 		reparent.call_deferred(get_tree().current_scene, true)
 		
 # -- 15 remaining built-in virtual methods

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://by67tdsqe0tsr"]
+
+[ext_resource type="PackedScene" uid="uid://dkwu2n1ck0gnf" path="res://actors/bricks/grasshopper/grasshopper_brick.tscn" id="1_qrqso"]
+
+[node name="GrasshopperTest" type="Node2D"]
+
+[node name="GrasshopperBrick" parent="." instance=ExtResource("1_qrqso")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="GrasshopperBrick" method="impact"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dxtvkmwjy1fs8"]
+[gd_scene load_steps=59 format=3 uid="uid://dxtvkmwjy1fs8"]
 
 [ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
 [ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
@@ -31,6 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://dl28skw65bhlw" path="res://effects/deform_effect.tscn" id="28_le3f5"]
 [ext_resource type="Script" path="res://effects/oscillator_towards_direction_effect.gd" id="28_qyybc"]
 [ext_resource type="PackedScene" uid="uid://bvvv5mp4xovsk" path="res://effects/ghost_effect.tscn" id="31_n8rcs"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="32_qhgs2"]
+[ext_resource type="AudioStream" uid="uid://i4h725xw5sbt" path="res://assets/sounds/coco_bump.wav" id="33_ypj67"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_608r4"]
 resource_local_to_scene = true
@@ -346,6 +348,10 @@ durantion = 0.1
 z_index = -1
 scale = Vector2(0.7, 0.7)
 
+[node name="BumpSoundEffect" parent="Effects" instance=ExtResource("32_qhgs2")]
+stream = ExtResource("33_ypj67")
+random_pitch = true
+
 [connection signal="direction_changed" from="MovementManager" to="AnimationManager" method="on_change_direction"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/LeanTowardsDirectionEffect" method="on_direction_changed"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/OscilatorTowardsDirectionEffect" method="on_direction_changed"]
@@ -355,6 +361,7 @@ scale = Vector2(0.7, 0.7)
 [connection signal="direction_changed" from="InputManagerTouch" to="MovementManager" method="on_direction_changed"]
 [connection signal="bump_message" from="BumpManager" to="Effects/TextFloatingEffect" method="perform"]
 [connection signal="bumped" from="BumpManager" to="AnimationManager" method="on_bumped"]
+[connection signal="bumped" from="BumpManager" to="Effects/BumpSoundEffect" method="perform"]
 [connection signal="dash_finished" from="DashManager" to="MovementManager" method="speed_burst_end"]
 [connection signal="dash_finished" from="DashManager" to="InputManager" method="set_process" binds= [true]]
 [connection signal="dash_started" from="DashManager" to="MovementManager" method="speed_burst_ini"]

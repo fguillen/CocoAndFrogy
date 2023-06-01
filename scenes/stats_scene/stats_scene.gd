@@ -7,6 +7,7 @@ extends Node2D
 #
 # -- 05 signals
 signal stats_number_animated()
+signal stats_label_animated()
 
 # -- 06 enums
 # -- 07 constants
@@ -81,6 +82,7 @@ func _animate_labels():
 	for label in labels:
 		label.label_show()
 		await label.animation_finished
+		stats_label_animated.emit()
 			
 		
 func _animate_numbers():	

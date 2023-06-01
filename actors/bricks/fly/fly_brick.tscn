@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b77aigryso4i5"]
+[gd_scene load_steps=5 format=3 uid="uid://b77aigryso4i5"]
 
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_ymx10"]
+[ext_resource type="AudioStream" uid="uid://d4bxfpgft2v72" path="res://assets/sounds/fly_01.wav" id="2_0ceym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2vnx"]
 resource_local_to_scene = true
@@ -16,3 +17,7 @@ shape = SubResource("RectangleShape2D_a2vnx")
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_0nlny")
+
+[node name="ImpactSoundEffect" parent="Effects" index="1"]
+random_pitch = true
+samples = Array[AudioStream]([ExtResource("2_0ceym")])

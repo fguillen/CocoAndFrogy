@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://cs7cs38m3vb18"
+path="res://.godot/imported/frogy_bounces_on_coco.sfxr-c48887ee9fdba878bd7d1f80acc272b6.sample"
+
+[deps]
+
+source_file="res://assets/sounds/frogy_bounces_on_coco.sfxr"
+dest_files=["res://.godot/imported/frogy_bounces_on_coco.sfxr-c48887ee9fdba878bd7d1f80acc272b6.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

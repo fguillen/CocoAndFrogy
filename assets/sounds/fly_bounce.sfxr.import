@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://b2jjk1ecq3yqf"
+path="res://.godot/imported/fly_bounce.sfxr-13b621df201f23803d027c5c4f46bf79.sample"
+
+[deps]
+
+source_file="res://assets/sounds/fly_bounce.sfxr"
+dest_files=["res://.godot/imported/fly_bounce.sfxr-13b621df201f23803d027c5c4f46bf79.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

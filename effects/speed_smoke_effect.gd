@@ -6,6 +6,9 @@ extends CPUParticles2D
 # -- 04 # docstring
 #
 # -- 05 signals
+signal emit_started()
+signal emit_finished()
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -21,10 +24,12 @@ extends CPUParticles2D
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func on_speed_changed(speed: float):
-	if speed > speed_threshold:
+	if speed > speed_threshold and not emitting:
 		emitting = true
-	else:
+		emit_started.emit()
+	elif speed <= speed_threshold and emitting:
 		emitting = false
+		emit_finished.emit()
 		
 
 func on_direction_changed(new_direction: Vector2):

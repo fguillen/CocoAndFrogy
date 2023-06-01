@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dpwjub5d83qbr"]
+[gd_scene load_steps=24 format=3 uid="uid://dpwjub5d83qbr"]
 
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
 [ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
 [ext_resource type="PackedScene" uid="uid://c5h5fjah1nhda" path="res://effects/brick_explosion_particles_effect.tscn" id="3_m1uqe"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="4_wg5ix"]
+[ext_resource type="AudioStream" uid="uid://cfen3we5cntav" path="res://assets/sounds/brick_explosion.wav" id="5_pm3wv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5doon"]
 resource_local_to_scene = true
@@ -101,7 +103,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5kf1o"]
 resource_name = "die"
-length = 0.5
+length = 0.45
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -265,8 +267,6 @@ position = Vector2(440, 334)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_yivv7")
-health = null
-auto_start = null
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -293,7 +293,17 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6shlp")
 [node name="Effects" type="Node2D" parent="."]
 
 [node name="BrickExplosionParticlesEffect" parent="Effects" instance=ExtResource("3_m1uqe")]
+reparent_on_ready = true
+
+[node name="ImpactSoundEffect" parent="Effects" instance=ExtResource("4_wg5ix")]
+
+[node name="ExplosionSoundEffect" parent="Effects" instance=ExtResource("4_wg5ix")]
+stream = ExtResource("5_pm3wv")
+random_pitch = true
+reparent_on_ready = true
 
 [connection signal="died" from="." to="Effects/BrickExplosionParticlesEffect" method="perform"]
+[connection signal="died" from="." to="Effects/ExplosionSoundEffect" method="perform"]
+[connection signal="hurt" from="." to="Effects/ImpactSoundEffect" method="perform"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
