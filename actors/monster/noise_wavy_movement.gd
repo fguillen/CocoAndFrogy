@@ -46,10 +46,6 @@ func _process(_delta):
 
 	queue_redraw()
 	
-
-func _draw():
-	pass
-	# draw_circle(_desired_position - global_position, 10, Color.RED)
 	
 	
 # -- 16 public methods

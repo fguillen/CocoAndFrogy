@@ -48,7 +48,7 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a8eug"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jgmwh"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -56,7 +56,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_m31nm"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0f6xw"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -178,13 +178,13 @@ text = "Main Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_g8t1j")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_a8eug")
+noise = SubResource("FastNoiseLite_jgmwh")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_g8t1j")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_m31nm")
+noise = SubResource("FastNoiseLite_0f6xw")
 
 [node name="GameOverSoundEffect" parent="Effects" instance=ExtResource("8_5fxuu")]
 stream = ExtResource("9_f3cvw")

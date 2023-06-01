@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=28 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="3_7cwmp"]
 [ext_resource type="Script" path="res://actors/components/bouncing_manager.gd" id="4_hwckh"]
 [ext_resource type="Script" path="res://actors/frogy/death_manager.gd" id="5_r5ak0"]
-[ext_resource type="PackedScene" uid="uid://cm5yp03y3eyox" path="res://actors/components/collision_debugger.tscn" id="5_twseo"]
 [ext_resource type="Script" path="res://actors/frogy/bricks_impacter.gd" id="6_4qjhy"]
 [ext_resource type="Script" path="res://actors/frogy/bounce_animation_effect.gd" id="7_3lf7g"]
 [ext_resource type="Script" path="res://test/rotate_node_effect.gd" id="8_58dwt"]
@@ -147,8 +146,6 @@ movement_manager = NodePath("../MovementManager")
 collision_shape_2d = NodePath("../CollisionShape2D")
 animation_player = NodePath("../AnimationPlayer")
 
-[node name="CollisionDebugger" parent="." instance=ExtResource("5_twseo")]
-
 [node name="BricksImpacter" type="Node" parent="."]
 script = ExtResource("6_4qjhy")
 
@@ -213,12 +210,12 @@ loop = true
 
 [node name="DeadSoundEffect" parent="Effects" instance=ExtResource("18_t2aqb")]
 stream = ExtResource("21_avugy")
+volume_db = -8.0
 
 [connection signal="boosted" from="." to="Effects/HitStopEffect" method="perform" binds= [0.2]]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="DeathManager" method="on_collision_found"]
-[connection signal="collision_found" from="MovementManager" to="CollisionDebugger" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="BricksImpacter" method="on_collision_found"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/RotateNodeEffect" method="on_direction_changed"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/SpeedSmokeEffect" method="on_direction_changed"]

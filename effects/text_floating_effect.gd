@@ -36,11 +36,6 @@ func _ready():
 	_max_angle_rad = deg_to_rad(max_angle)
 
 
-#func _draw():
-#	draw_circle(to_local(_position_ini), 10.0, Color.CADET_BLUE)
-#	draw_circle(to_local(_position_end), 10.0, Color.CORAL)
-
-
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform(text_to_show: String):
@@ -54,10 +49,7 @@ func perform(text_to_show: String):
 	
 
 func animate():
-	var destination_transform = _calculate_destination()
-#	_position_end = destination_transform.position
-	queue_redraw()
-	
+	var destination_transform = _calculate_destination()	
 	global_rotation = destination_transform.rotation
 	
 	var tween = create_tween()

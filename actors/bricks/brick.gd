@@ -7,6 +7,7 @@ extends StaticBody2D
 # -- 04 # docstring
 #
 # -- 05 signals
+signal appeared()
 signal hurt()
 signal dying()
 signal died()
@@ -68,7 +69,10 @@ func _die():
 	
 # -- 18 signal listeners
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name == "die":
+	if anim_name == "appear":
+		appeared.emit()
+		
+	elif anim_name == "die":
 		died.emit()
 		GlobalEvents.emit_brick_queued(self)
 		queue_free()

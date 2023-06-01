@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpwjub5d83qbr"]
+[gd_scene load_steps=25 format=3 uid="uid://dpwjub5d83qbr"]
 
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
 [ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
 [ext_resource type="PackedScene" uid="uid://c5h5fjah1nhda" path="res://effects/brick_explosion_particles_effect.tscn" id="3_m1uqe"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="4_wg5ix"]
 [ext_resource type="AudioStream" uid="uid://cfen3we5cntav" path="res://assets/sounds/brick_explosion.wav" id="5_pm3wv"]
+[ext_resource type="AudioStream" uid="uid://cj4hyh3w46meg" path="res://assets/sounds/brick_appears.wav" id="6_tv0sl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5doon"]
 resource_local_to_scene = true
@@ -302,6 +303,11 @@ stream = ExtResource("5_pm3wv")
 random_pitch = true
 reparent_on_ready = true
 
+[node name="AppearedSoundEffect" parent="Effects" instance=ExtResource("4_wg5ix")]
+stream = ExtResource("6_tv0sl")
+random_pitch = true
+
+[connection signal="appeared" from="." to="Effects/AppearedSoundEffect" method="perform"]
 [connection signal="died" from="." to="Effects/BrickExplosionParticlesEffect" method="perform"]
 [connection signal="died" from="." to="Effects/ExplosionSoundEffect" method="perform"]
 [connection signal="hurt" from="." to="Effects/ImpactSoundEffect" method="perform"]

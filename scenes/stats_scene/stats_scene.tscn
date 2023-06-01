@@ -50,7 +50,7 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_24wa8"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_knwrq"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -58,7 +58,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6io42"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ropkh"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -237,13 +237,13 @@ layout_mode = 2
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_24wa8")
+noise = SubResource("FastNoiseLite_knwrq")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_6io42")
+noise = SubResource("FastNoiseLite_ropkh")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_ms0k7")]
 stream = ExtResource("10_re2mn")
@@ -257,5 +257,6 @@ random_pitch = true
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeNumberSoundEffect" method="perform"]
 [connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTotalScoreNumber" to="Effects/ShakeEffectBig" method="perform"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls/NextButton" to="." method="next"]
 
 [editable path="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTimeNumber"]
