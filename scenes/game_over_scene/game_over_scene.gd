@@ -6,6 +6,7 @@ extends Node2D
 # -- 04 # docstring
 #
 # -- 05 signals
+signal title_animation_finished()
 signal stats_number_animated()
 
 # -- 06 enums
@@ -77,6 +78,7 @@ func _animate_title_label():
 	tween.tween_property(title_label, "global_position:y", original_position_y, 0.5).from(-375.0)
 	tween.parallel().tween_property(title_label, "self_modulate:a", 1.0, 0.5).from(0.0)
 	await tween.finished
+	title_animation_finished.emit()
 	
 		
 func _animate_labels():
