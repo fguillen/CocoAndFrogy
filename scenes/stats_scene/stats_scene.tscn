@@ -46,7 +46,7 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_uu1k1"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o2lrn"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -54,7 +54,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_dmies"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yokxj"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -235,13 +235,13 @@ text = "Next"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_uu1k1")
+noise = SubResource("FastNoiseLite_o2lrn")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_dmies")
+noise = SubResource("FastNoiseLite_yokxj")
 
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
 [connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTotalScoreNumber" to="Effects/ShakeEffectBig" method="perform"]

@@ -17,6 +17,7 @@ anti_aliasing = false
 [resource]
 default_font = ExtResource("1_023s6")
 Button/font_sizes/font_size = 100
+Label/constants/line_spacing = 0
 Label/font_sizes/font_size = 100
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_0hi02")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_flsf7")
