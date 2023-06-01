@@ -46,7 +46,7 @@ _data = {
 "idle": SubResource("Animation_dg3y4")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2l08t"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5l6vg"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -54,7 +54,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wr7of"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vrypd"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -119,7 +119,7 @@ layout_mode = 2
 theme = ExtResource("4_xyivh")
 theme_override_font_sizes/font_size = 180
 text = "Frogy
-is Death"
+is Dead"
 horizontal_alignment = 1
 
 [node name="Body" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
@@ -176,13 +176,13 @@ text = "Main Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_g8t1j")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_2l08t")
+noise = SubResource("FastNoiseLite_5l6vg")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_g8t1j")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_wr7of")
+noise = SubResource("FastNoiseLite_vrypd")
 
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
 [connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTotalScoreNumber" to="Effects/ShakeEffectBig" method="perform"]

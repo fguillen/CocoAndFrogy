@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://bpumenhwr8k2e"]
+[gd_scene load_steps=33 format=3 uid="uid://bpumenhwr8k2e"]
 
 [ext_resource type="PackedScene" uid="uid://bmx77lbk2ub2e" path="res://managers/level_manager.tscn" id="1_7vs0n"]
+[ext_resource type="PackedScene" uid="uid://baq303h7ydbfg" path="res://ui/ui.tscn" id="1_snjnh"]
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="2_sk1f6"]
 [ext_resource type="Script" path="res://environment/parallax_background.gd" id="3_xc38u"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="4_1ucll"]
@@ -41,6 +42,8 @@ size = Vector2(1376, 149)
 size = Vector2(1188, 74)
 
 [node name="TestSceneEasy" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_snjnh")]
 
 [node name="LevelManager" parent="." instance=ExtResource("1_7vs0n")]
 
