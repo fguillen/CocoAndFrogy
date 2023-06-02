@@ -65,7 +65,7 @@ func _collision_with_coco(collision: KinematicCollision2D) -> Vector2:
 			## Tilt the normal near the edge
 			# Calculate the distance between the collision point and the center of the paddle
 			var distance = collision.get_position() - collision.get_collider().global_position
-			var amount = distance.x / (450 / 2) # coco's size
+			var amount = distance.x / (450 / 2.0) # coco's size
 			normal = normal.rotated(_min_angle_rad * amount)
 			new_direction = new_direction.bounce(normal)
 			

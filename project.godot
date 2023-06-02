@@ -21,6 +21,7 @@ Global="*res://autoloads/global.gd"
 GlobalEvents="*res://autoloads/global_events.gd"
 SceneSwitcher="*res://autoloads/scene_switcher/scene_switcher.tscn"
 StatsManager="*res://autoloads/stats_manager.gd"
+LevelManager="*res://autoloads/level_manager.tscn"
 
 [display]
 

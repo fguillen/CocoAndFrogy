@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmx77lbk2ub2e"]
+
+[ext_resource type="Script" path="res://autoloads/level_manager.gd" id="1_ow3q7"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="2_xmmh6"]
+[ext_resource type="AudioStream" uid="uid://bojo5kfbm7lxi" path="res://assets/sounds/level_clear.ogg" id="3_hqd2y"]
+[ext_resource type="AudioStream" uid="uid://divbjlofbt0f6" path="res://assets/sounds/game_over.ogg" id="3_sojw2"]
+
+[node name="LevelManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_ow3q7")
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="LevelClearSoundEffect" parent="Effects" instance=ExtResource("2_xmmh6")]
+stream = ExtResource("3_hqd2y")
+
+[node name="GameOverSoundEffect" parent="Effects" instance=ExtResource("2_xmmh6")]
+stream = ExtResource("3_sojw2")
+
+[connection signal="game_over" from="." to="Effects/GameOverSoundEffect" method="perform"]
+[connection signal="level_cleared" from="." to="Effects/LevelClearSoundEffect" method="perform"]

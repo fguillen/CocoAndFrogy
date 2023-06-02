@@ -1,13 +1,15 @@
 # -- 01 @tool
 # -- 02 class_name
-class_name LavelManager
-
 # -- 03 extends
 extends Node
 
 # -- 04 # docstring
 #
 # -- 05 signals
+signal level_cleared()
+signal game_over()
+
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -43,6 +45,7 @@ func _remove_brick(brick: Brick):
 	if bricks.is_empty():
 		GlobalEvents.emit_level_clear()
 		await get_tree().create_timer(0.5).timeout
+		level_cleared.emit()
 		SceneSwitcher.switch_to("stats_scene/stats_scene")
 		
 		
@@ -52,6 +55,7 @@ func _remove_life():
 	if _lifes <= 0:
 		GlobalEvents.emit_game_over()
 		await get_tree().create_timer(0.5).timeout
+		game_over.emit()
 		SceneSwitcher.switch_to("game_over_scene/game_over_scene")
 		
 		
