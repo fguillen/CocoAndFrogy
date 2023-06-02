@@ -41,7 +41,7 @@ size = Vector2(1376, 135.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj4gh"]
 size = Vector2(1188, 74)
 
-[node name="ComposiionScene" type="Node2D"]
+[node name="Level01Scene" type="Node2D"]
 
 [node name="Camera" parent="." instance=ExtResource("1_pvwu1")]
 

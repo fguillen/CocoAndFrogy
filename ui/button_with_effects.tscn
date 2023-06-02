@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="2_aay41"]
 [ext_resource type="AudioStream" uid="uid://y03r4dva0jah" path="res://assets/sounds/button.wav" id="3_7y11t"]
 
-[node name="NextButton" type="Button"]
+[node name="ButtonWithEffects" type="Button"]
 theme = ExtResource("1_5c7xe")
 text = "Next"
 

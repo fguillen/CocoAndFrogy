@@ -45,7 +45,7 @@ func _input(event):
 	
 # -- 16 public methods
 func next():
-	SceneSwitcher.switch_to("composiion_scene")
+	SceneSwitcher.switch_to("level_01_scene")
 	
 # -- 17 private methods
 func _show():
