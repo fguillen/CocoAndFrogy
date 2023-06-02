@@ -11,6 +11,8 @@ signal animation_finished()
 # -- 07 constants
 # -- 08 exported variables
 # -- 09 public variables
+var tween : Tween
+
 # -- 10 private variables
 # -- 11 onready variables
 #
@@ -23,9 +25,9 @@ func label_hide():
 	self_modulate.a = 0.0
 	
 	
-func label_show():
+func label_show(tweens_speed := 1.0):
 	var original_position_x = position.x
-	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).set_speed_scale(tweens_speed)
 	tween.tween_property(self, "position:x", original_position_x, 0.25).from(-get_viewport_rect().size.x)
 	tween.parallel().tween_property(self, "self_modulate:a", 1.0, 0.25).from(0.0)
 	await tween.finished
