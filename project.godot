@@ -31,6 +31,10 @@ window/size/window_height_override=960
 window/stretch/mode="viewport"
 window/handheld/orientation=1
 
+[editor]
+
+movie_writer/movie_file="/Users/fernando.guillen/Downloads/cocoandfrogy_movie/movie.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/trail_2d/plugin.cfg")

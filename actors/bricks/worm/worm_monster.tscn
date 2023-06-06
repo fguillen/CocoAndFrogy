@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://8xbi6pm8gvsf" path="res://actors/bricks/worm/worm_body_brick.tscn" id="4_uy83u"]
 
 [sub_resource type="Curve2D" id="Curve2D_rwntr"]
+bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 131, -1, 0, 0, 0, 0, 960, 0, 0, 0, 0, 0, 960, 192, 0, 0, 0, 0, 128, 192, 0, 0, 0, 0, 128, 384, 0, 0, 0, 0, 960, 384, 0, 0, 0, 0, 960, 576, 0, 0, 0, 0, 128, 576, 0, 0, 0, 0, 128, 768, 0, 0, 0, 0, 960, 768, 0, 0, 0, 0, 960, 512, 0, 0, 0, 0, 128, 512, 0, 0, 0, 0, 128, 320, 0, 0, 0, 0, 960, 320, 0, 0, 0, 0, 960, 128, 0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 128, 0)
 }
@@ -30,42 +31,34 @@ position = Vector2(872, 0)
 [node name="WormBodyBrick" parent="WormBody" instance=ExtResource("4_uy83u")]
 z_index = 17
 position = Vector2(736, 0)
-health = 1
 
 [node name="WormBodyBrick2" parent="WormBody" instance=ExtResource("4_uy83u")]
 z_index = 16
 position = Vector2(632, 0)
-health = 1
 
 [node name="WormBodyBrick3" parent="WormBody" instance=ExtResource("4_uy83u")]
 z_index = 15
 position = Vector2(528, 0)
-health = 1
 
 [node name="WormBodyBrick4" parent="WormBody" instance=ExtResource("4_uy83u")]
 z_index = 14
 position = Vector2(408, 0)
-health = 1
 
 [node name="WormBodyBrick5" parent="WormBody" instance=ExtResource("4_uy83u")]
 z_index = 13
 position = Vector2(320, 0)
-health = 1
 
 [node name="WormBodyBrick6" parent="WormBody" instance=ExtResource("4_uy83u")]
 z_index = 12
 position = Vector2(240, 0)
-health = 1
 
 [node name="WormBodyBrick7" parent="WormBody" instance=ExtResource("4_uy83u")]
 z_index = 11
 position = Vector2(168, 0)
-health = 1
 
 [node name="WormBodyBrick8" parent="WormBody" instance=ExtResource("4_uy83u")]
 z_index = 10
 position = Vector2(128, 16)
-health = 1
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_rwntr")

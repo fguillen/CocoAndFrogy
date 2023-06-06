@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dpwjub5d83qbr"]
+[gd_scene load_steps=27 format=3 uid="uid://dpwjub5d83qbr"]
 
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
 [ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
+[ext_resource type="Texture2D" uid="uid://shi2bx33gshu" path="res://actors/bricks/worm/worm_head.png" id="2_6k2k1"]
 [ext_resource type="PackedScene" uid="uid://c5h5fjah1nhda" path="res://effects/brick_explosion_particles_effect.tscn" id="3_m1uqe"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="4_wg5ix"]
 [ext_resource type="AudioStream" uid="uid://cfen3we5cntav" path="res://assets/sounds/brick_explosion.wav" id="5_pm3wv"]
@@ -77,6 +78,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_6k2k1")]
 }
 
 [sub_resource type="Animation" id="Animation_5kf1o"]
@@ -190,7 +203,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o25ww"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8j7q0"]
 _data = {
 "RESET": SubResource("Animation_s74jn"),
 "appear": SubResource("Animation_wv1k1"),
@@ -260,7 +273,7 @@ shape = SubResource("RectangleShape2D_5doon")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 libraries = {
-"": SubResource("AnimationLibrary_o25ww")
+"": SubResource("AnimationLibrary_8j7q0")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

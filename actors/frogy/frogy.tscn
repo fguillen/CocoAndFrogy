@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=29 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://b5ic5vd3h2ebj" path="res://assets/sounds/frogy_bouncing.wav" id="19_j8iuc"]
 [ext_resource type="AudioStream" uid="uid://d2apij8wcjem7" path="res://assets/sounds/frogy_speed_up.wav" id="20_me2fj"]
 [ext_resource type="AudioStream" uid="uid://hcwb4y1oykqs" path="res://assets/sounds/water_splash.wav" id="21_avugy"]
+[ext_resource type="PackedScene" uid="uid://cm5yp03y3eyox" path="res://actors/components/collision_debugger.tscn" id="21_l6jnr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
@@ -217,6 +218,8 @@ loop = true
 stream = ExtResource("21_avugy")
 volume_db = -8.0
 
+[node name="CollisionDebugger" parent="Effects" instance=ExtResource("21_l6jnr")]
+
 [connection signal="boosted" from="." to="Effects/HitStopEffectBig" method="perform"]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
@@ -227,6 +230,7 @@ volume_db = -8.0
 [connection signal="speed_changed" from="MovementManager" to="Effects/SpeedSmokeEffect" method="on_speed_changed"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceAnimationEffect" method="bounce"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceParticlesEffect" method="perform"]
+[connection signal="bounced" from="BouncingManager" to="Effects/CollisionDebugger" method="on_collision_found"]
 [connection signal="bounced_on_coco" from="BouncingManager" to="Effects/CocoBounceSoundEffect" method="perform"]
 [connection signal="bounced_on_other" from="BouncingManager" to="Effects/CocoBounceSoundEffect" method="perform"]
 [connection signal="death_finished" from="DeathManager" to="Effects/AppearEffect" method="perform"]

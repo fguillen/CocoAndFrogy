@@ -32,6 +32,8 @@ var _actual_position := 0.0
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
+	head.dissable_hurt()
+	
 	_init_moving_body_parts()
 	
 	
@@ -60,6 +62,7 @@ func _init_moving_body_part(body_part: PhysicsBody2D, path_follow_position: floa
 	path_follow.progress = path_follow_position
 	body_part.reparent(path_follow)
 	body_part.global_position = path_follow.global_position
+	body_part.hurt.connect(head.animate_hurt)
 	
 	var moving_body_part = MovingBodyPart.new(body_part, path_follow)
 	path_follow_position += bricks_distance
@@ -116,3 +119,7 @@ class MovingBodyPart:
 	
 
 
+
+
+func animate_hurt():
+	pass # Replace with function body.
