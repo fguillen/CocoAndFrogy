@@ -34,6 +34,14 @@ position = Vector2(350, 334)
 
 [node name="WormBodyBrick4" parent="WormBody" instance=ExtResource("4_uy83u")]
 
+[node name="WormBodyBrick5" parent="WormBody" instance=ExtResource("4_uy83u")]
+
+[node name="WormBodyBrick6" parent="WormBody" instance=ExtResource("4_uy83u")]
+
+[node name="WormBodyBrick7" parent="WormBody" instance=ExtResource("4_uy83u")]
+
+[node name="WormBodyBrick8" parent="WormBody" instance=ExtResource("4_uy83u")]
+
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_rwntr")
 metadata/_edit_group_ = true
