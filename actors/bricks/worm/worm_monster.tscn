@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cge27crb4b0dx"]
+
+[ext_resource type="PackedScene" uid="uid://cjyqhaglragrg" path="res://actors/bricks/worm/worm_head_brick.tscn" id="1_bhy52"]
+[ext_resource type="Script" path="res://actors/bricks/worm/worm_monster.gd" id="1_htoel"]
+[ext_resource type="PackedScene" uid="uid://8xbi6pm8gvsf" path="res://actors/bricks/worm/worm_body_brick.tscn" id="4_uy83u"]
+
+[sub_resource type="Curve2D" id="Curve2D_rwntr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 290, 751, 0, 0, 0, 0, 852, 742, 0, 0, 0, 0, 860, 1069, 0, 0, 0, 0, 294, 1067)
+}
+point_count = 4
+
+[node name="WormMonster" type="Node2D" node_paths=PackedStringArray("head", "body", "path")]
+script = ExtResource("1_htoel")
+head = NodePath("WormHead/WormHeadBrick")
+body = NodePath("WormBody")
+path = NodePath("Path2D")
+
+[node name="WormHead" type="Node2D" parent="."]
+
+[node name="WormHeadBrick" parent="WormHead" instance=ExtResource("1_bhy52")]
+position = Vector2(350, 334)
+health = 2
+score = 5
+auto_start = true
+
+[node name="WormBody" type="Node2D" parent="."]
+
+[node name="WormBodyBrick" parent="WormBody" instance=ExtResource("4_uy83u")]
+health = 2
+score = 5
+auto_start = true
+
+[node name="WormBodyBrick2" parent="WormBody" instance=ExtResource("4_uy83u")]
+position = Vector2(558, 334)
+health = 2
+score = 5
+auto_start = true
+
+[node name="WormBodyBrick3" parent="WormBody" instance=ExtResource("4_uy83u")]
+position = Vector2(653, 334)
+health = 2
+score = 5
+auto_start = true
+
+[node name="WormBodyBrick4" parent="WormBody" instance=ExtResource("4_uy83u")]
+position = Vector2(750, 334)
+health = 2
+score = 5
+auto_start = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_rwntr")

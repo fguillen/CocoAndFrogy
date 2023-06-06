@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjyqhaglragrg"]
+
+[ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_i0w2u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14rbi"]
+resource_local_to_scene = true
+size = Vector2(120, 145)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ryqa1"]
+
+[node name="WormHeadBrick" instance=ExtResource("1_i0w2u")]
+health = null
+score = null
+auto_start = null
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_14rbi")
+
+[node name="AnimationTree" parent="." index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ryqa1")
