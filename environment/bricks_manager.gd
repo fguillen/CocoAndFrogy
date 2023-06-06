@@ -24,7 +24,7 @@ func _ready():
 # -- 16 public methods
 # -- 17 private methods
 func _show_bricks():
-	var bricks = get_children()
+	var bricks = get_tree().get_nodes_in_group("bricks")
 	
 	for brick in bricks:
 		brick.auto_start = false

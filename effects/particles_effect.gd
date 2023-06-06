@@ -10,6 +10,7 @@ extends CPUParticles2D
 # -- 07 constants
 # -- 08 exported variables
 @export var reparent_on_ready := false
+@export var reparent_on_perform := false
 
 
 # -- 09 public variables
@@ -26,6 +27,9 @@ func _ready():
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform():
+	if reparent_on_perform:
+		reparent(get_tree().current_scene, true)
+		
 	print("XXX BrickExplosionParticlesEffect.perform()")
 	emitting = true
 	await get_tree().create_timer(2.0).timeout
