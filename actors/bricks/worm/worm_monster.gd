@@ -66,14 +66,8 @@ func _init_moving_body_part(body_part: PhysicsBody2D, path_follow_position: floa
 	
 	
 func _move_moving_body_parts(delta):
-	print("XXX: move_moving_body_parts")
 	for moving_body_part in _moving_body_parts:
 		moving_body_part.path_follow.progress += speed * delta
-#		var distance = moving_body_part.body_part.global_position.distance_to(moving_body_part.path_follow.global_position)
-#		if distance > 2.0: 
-#			var brick_direction = moving_body_part.body_part.global_position.direction_to(moving_body_part.path_follow.global_position)
-#			print("XXX: brick_direction: " , brick_direction)
-#			moving_body_part.body_part.move_and_collide(brick_direction * 100 * delta)
 #
 #
 # -- 18 signal listeners
