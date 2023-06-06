@@ -186,6 +186,11 @@ node = NodePath("../../Visuals/Sprite2D")
 node = NodePath("../../MovementManager")
 animation_player = NodePath("../../AnimationPlayer")
 
+[node name="HitStopEffectBig" parent="Effects" node_paths=PackedStringArray("node", "animation_player") instance=ExtResource("12_8wh8b")]
+node = NodePath("../../MovementManager")
+animation_player = NodePath("../../AnimationPlayer")
+time = 0.2
+
 [node name="DeathEffect" parent="Effects" instance=ExtResource("14_b8v4m")]
 z_index = 10
 
@@ -212,7 +217,7 @@ loop = true
 stream = ExtResource("21_avugy")
 volume_db = -8.0
 
-[connection signal="boosted" from="." to="Effects/HitStopEffect" method="perform" binds= [0.2]]
+[connection signal="boosted" from="." to="Effects/HitStopEffectBig" method="perform"]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="DeathManager" method="on_collision_found"]

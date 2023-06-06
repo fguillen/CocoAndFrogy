@@ -28,27 +28,35 @@ position = Vector2(872, 0)
 
 [node name="WormBodyBrick" parent="WormBody" instance=ExtResource("4_uy83u")]
 position = Vector2(736, 0)
+health = 1
 
 [node name="WormBodyBrick2" parent="WormBody" instance=ExtResource("4_uy83u")]
 position = Vector2(632, 0)
+health = 1
 
 [node name="WormBodyBrick3" parent="WormBody" instance=ExtResource("4_uy83u")]
 position = Vector2(528, 0)
+health = 1
 
 [node name="WormBodyBrick4" parent="WormBody" instance=ExtResource("4_uy83u")]
 position = Vector2(408, 0)
+health = 1
 
 [node name="WormBodyBrick5" parent="WormBody" instance=ExtResource("4_uy83u")]
 position = Vector2(320, 0)
+health = 1
 
 [node name="WormBodyBrick6" parent="WormBody" instance=ExtResource("4_uy83u")]
 position = Vector2(240, 0)
+health = 1
 
 [node name="WormBodyBrick7" parent="WormBody" instance=ExtResource("4_uy83u")]
 position = Vector2(168, 0)
+health = 1
 
 [node name="WormBodyBrick8" parent="WormBody" instance=ExtResource("4_uy83u")]
 position = Vector2(128, 16)
+health = 1
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_rwntr")
