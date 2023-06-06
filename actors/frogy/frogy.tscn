@@ -227,6 +227,6 @@ volume_db = -8.0
 [connection signal="death_finished" from="DeathManager" to="Effects/AppearEffect" method="perform"]
 [connection signal="death_started" from="DeathManager" to="Effects/DeathEffect" method="perform"]
 [connection signal="death_started" from="DeathManager" to="Effects/DeadSoundEffect" method="perform"]
-[connection signal="collision_found" from="BricksImpacter" to="Effects/HitStopEffect" method="perform" binds= [0.1]]
+[connection signal="collision_found" from="BricksImpacter" to="Effects/HitStopEffect" method="perform"]
 [connection signal="emit_finished" from="Effects/SpeedSmokeEffect" to="Effects/SpeedUpSoundEffect" method="finish"]
 [connection signal="emit_started" from="Effects/SpeedSmokeEffect" to="Effects/SpeedUpSoundEffect" method="perform"]

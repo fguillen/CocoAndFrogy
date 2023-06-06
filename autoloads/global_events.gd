@@ -19,6 +19,7 @@ signal bump_perfect_performed()
 signal bounce_performed()
 signal game_over()
 signal score_changed(previous: int, actual: int)
+signal brick_impacted(brick: Brick)
 
 # -- 06 enums
 # -- 07 constants
@@ -84,6 +85,10 @@ func emit_game_over():
 
 func emit_score_changed(previous: int, actual: int):
 	score_changed.emit(previous, actual)
+	
+	
+func emit_brick_impacted(brick: Brick):
+	brick_impacted.emit(brick)
 	
 	
 

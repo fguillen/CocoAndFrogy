@@ -1,5 +1,6 @@
 # -- 01 @tool
 # -- 02 class_name
+class_name HitStopEffect
 # -- 03 extends
 extends Node
 
@@ -11,6 +12,7 @@ extends Node
 # -- 08 exported variables
 @export var node: Node
 @export var animation_player: AnimationPlayer
+@export var time := 0.1
 
 
 # -- 09 public variables
@@ -26,8 +28,7 @@ var _is_animation_player_paused := false
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func perform(time: float):
-	print("HitStopEffect.perform(%d)" % time)
+func perform():
 	await get_tree().process_frame
 	
 	if node: 
