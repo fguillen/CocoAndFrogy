@@ -1,17 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://8xbi6pm8gvsf"]
+[gd_scene load_steps=5 format=3 uid="uid://8xbi6pm8gvsf"]
 
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_ho1lj"]
+[ext_resource type="Texture2D" uid="uid://dbgcfd2s1olf5" path="res://actors/bricks/worm/worm_body.png" id="2_6dgrf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehkyr"]
-resource_local_to_scene = true
-size = Vector2(120, 145)
+[sub_resource type="CircleShape2D" id="CircleShape2D_odlpv"]
+radius = 71.1425
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_o0vtm"]
 
 [node name="WormBodyBrick" instance=ExtResource("1_ho1lj")]
 
+[node name="Sprite2D" parent="Visuals" index="0"]
+position = Vector2(3, 4)
+scale = Vector2(0.7, 0.656)
+texture = ExtResource("2_6dgrf")
+
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_ehkyr")
+shape = SubResource("CircleShape2D_odlpv")
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_o0vtm")
