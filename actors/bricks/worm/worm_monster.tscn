@@ -6,15 +6,18 @@
 
 [sub_resource type="Curve2D" id="Curve2D_rwntr"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 290, 751, 0, 0, 0, 0, 852, 742, 0, 0, 0, 0, 860, 1069, 0, 0, 0, 0, 294, 1067)
+"points": PackedVector2Array(0, 0, 0, 0, 131, -1, 0, 0, 0, 0, 960, 0, 0, 0, 0, 0, 960, 192, 0, 0, 0, 0, 128, 192, 0, 0, 0, 0, 128, 384, 0, 0, 0, 0, 960, 384, 0, 0, 0, 0, 960, 576, 0, 0, 0, 0, 128, 576, 0, 0, 0, 0, 128, 768, 0, 0, 0, 0, 960, 768, 0, 0, 0, 0, 960, 512, 0, 0, 0, 0, 128, 512, 0, 0, 0, 0, 128, 320, 0, 0, 0, 0, 960, 320, 0, 0, 0, 0, 960, 128, 0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 128, 0)
 }
-point_count = 4
+point_count = 17
 
-[node name="WormMonster" type="Node2D" node_paths=PackedStringArray("head", "body", "path")]
+[node name="WormMonster" type="Node2D" node_paths=PackedStringArray("head", "body", "path", "path_follow_template")]
 script = ExtResource("1_htoel")
 head = NodePath("WormHead/WormHeadBrick")
 body = NodePath("WormBody")
+speed = 300.0
+bricks_distance = 150.0
 path = NodePath("Path2D")
+path_follow_template = NodePath("Path2D/PathFollow2DTemplate")
 
 [node name="WormHead" type="Node2D" parent="."]
 
@@ -27,27 +30,18 @@ auto_start = true
 [node name="WormBody" type="Node2D" parent="."]
 
 [node name="WormBodyBrick" parent="WormBody" instance=ExtResource("4_uy83u")]
-health = 2
-score = 5
-auto_start = true
 
 [node name="WormBodyBrick2" parent="WormBody" instance=ExtResource("4_uy83u")]
-position = Vector2(558, 334)
-health = 2
-score = 5
-auto_start = true
 
 [node name="WormBodyBrick3" parent="WormBody" instance=ExtResource("4_uy83u")]
-position = Vector2(653, 334)
-health = 2
-score = 5
-auto_start = true
 
 [node name="WormBodyBrick4" parent="WormBody" instance=ExtResource("4_uy83u")]
-position = Vector2(750, 334)
-health = 2
-score = 5
-auto_start = true
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_rwntr")
+metadata/_edit_group_ = true
+
+[node name="PathFollow2DTemplate" type="PathFollow2D" parent="Path2D"]
+position = Vector2(131, -1)
+rotation = -0.0160129
+rotates = false
