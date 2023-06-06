@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=34 format=3 uid="uid://djjttvn3vr14t"]
 
+[ext_resource type="PackedScene" uid="uid://bmx77lbk2ub2e" path="res://autoloads/level_manager.tscn" id="1_pgtsg"]
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
 [ext_resource type="Script" path="res://environment/parallax_background.gd" id="1_ueekc"]
@@ -42,6 +43,8 @@ size = Vector2(1376, 135.5)
 size = Vector2(1188, 74)
 
 [node name="Level01Scene" type="Node2D"]
+
+[node name="LevelManager" parent="." instance=ExtResource("1_pgtsg")]
 
 [node name="Camera" parent="." instance=ExtResource("1_pvwu1")]
 
