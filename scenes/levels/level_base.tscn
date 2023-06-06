@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=31 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="PackedScene" uid="uid://bmx77lbk2ub2e" path="res://autoloads/level_manager.tscn" id="1_pgtsg"]
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
@@ -21,13 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://dxtvkmwjy1fs8" path="res://actors/coco/coco.tscn" id="11_xi2mx"]
 [ext_resource type="PackedScene" uid="uid://biey47xajkipj" path="res://environment/vegetable_front_01.tscn" id="12_iivfa"]
 [ext_resource type="PackedScene" uid="uid://dxswaxn55u0cv" path="res://environment/vegetable_front_02.tscn" id="13_o0bcp"]
-[ext_resource type="PackedScene" uid="uid://dkwu2n1ck0gnf" path="res://actors/bricks/grasshopper/grasshopper_brick.tscn" id="14_2ok84"]
 [ext_resource type="PackedScene" uid="uid://b4t25gkmm47ld" path="res://environment/vegetable_front_03.tscn" id="14_woyfk"]
 [ext_resource type="PackedScene" uid="uid://ddpd3x6doacdu" path="res://environment/vegetable_front_04.tscn" id="15_bvct5"]
 [ext_resource type="Script" path="res://environment/wall_death.gd" id="16_fydbq"]
 [ext_resource type="PackedScene" uid="uid://b2ewbis3ifr1b" path="res://environment/vegetable_front_05.tscn" id="16_hbsdw"]
-[ext_resource type="Script" path="res://environment/bricks_manager.gd" id="18_27s7g"]
-[ext_resource type="PackedScene" uid="uid://b77aigryso4i5" path="res://actors/bricks/fly/fly_brick.tscn" id="20_t8jla"]
 [ext_resource type="PackedScene" uid="uid://baq303h7ydbfg" path="res://ui/ui.tscn" id="29_wih55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
@@ -42,7 +39,7 @@ size = Vector2(1376, 135.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj4gh"]
 size = Vector2(1188, 74)
 
-[node name="Level01Scene" type="Node2D"]
+[node name="LevelBase" type="Node2D"]
 
 [node name="LevelManager" parent="." instance=ExtResource("1_pgtsg")]
 
@@ -158,43 +155,6 @@ script = ExtResource("16_fydbq")
 position = Vector2(566, 27)
 shape = SubResource("RectangleShape2D_uj4gh")
 
-[node name="Bricks" type="Node2D" parent="."]
-position = Vector2(0, -144)
-script = ExtResource("18_27s7g")
-
-[node name="GrasshopperBrick" parent="Bricks" instance=ExtResource("14_2ok84")]
-position = Vector2(571, 470)
-
-[node name="FlyBrick" parent="Bricks" instance=ExtResource("20_t8jla")]
-position = Vector2(241, 676)
-
-[node name="FlyBrick2" parent="Bricks" instance=ExtResource("20_t8jla")]
-position = Vector2(447, 676)
-
-[node name="FlyBrick3" parent="Bricks" instance=ExtResource("20_t8jla")]
-position = Vector2(657, 676)
-
-[node name="FlyBrick4" parent="Bricks" instance=ExtResource("20_t8jla")]
-position = Vector2(867, 676)
-
-[node name="GrasshopperBrick2" parent="Bricks" instance=ExtResource("14_2ok84")]
-position = Vector2(348, 857)
-
-[node name="GrasshopperBrick3" parent="Bricks" instance=ExtResource("14_2ok84")]
-position = Vector2(764, 857)
-
-[node name="FlyBrick5" parent="Bricks" instance=ExtResource("20_t8jla")]
-position = Vector2(867, 1057)
-
-[node name="FlyBrick6" parent="Bricks" instance=ExtResource("20_t8jla")]
-position = Vector2(677, 1057)
-
-[node name="FlyBrick7" parent="Bricks" instance=ExtResource("20_t8jla")]
-position = Vector2(448, 1057)
-
-[node name="FlyBrick8" parent="Bricks" instance=ExtResource("20_t8jla")]
-position = Vector2(248, 1057)
-
 [node name="EnvironmentFront" type="Node2D" parent="."]
 z_index = 10
 
@@ -236,7 +196,3 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_x8jhi")
 
 [node name="UI" parent="." instance=ExtResource("29_wih55")]
-
-[connection signal="dying" from="Bricks/GrasshopperBrick" to="Bricks/GrasshopperBrick/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
-[connection signal="dying" from="Bricks/GrasshopperBrick2" to="Bricks/GrasshopperBrick2/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
-[connection signal="dying" from="Bricks/GrasshopperBrick3" to="Bricks/GrasshopperBrick3/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]

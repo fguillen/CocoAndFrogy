@@ -100,10 +100,11 @@ func _animate_buttons():
 	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.2).from(0.0)
 	await tween.finished
 	retry_button.grab_focus()
+	
 		
 # -- 18 signal listeners
 func _on_retry_button_pressed():
-	SceneSwitcher.switch_to("level_01_scene")
+	SceneSwitcher.switch_to("levels/level_01")
 
 
 func _on_menu_button_pressed():

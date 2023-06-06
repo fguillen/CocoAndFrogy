@@ -67,7 +67,7 @@ func _animate_buttons():
 		
 # -- 18 signal listeners
 func _on_play_button_pressed():
-	SceneSwitcher.switch_to("level_01_scene")
+	SceneSwitcher.switch_to("levels/level_01")
 
 
 func _on_quit_button_pressed():

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://ehodofmfsevb"]
+
+[ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_umsf4"]
+[ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_0546d"]
+[ext_resource type="PackedScene" uid="uid://dkwu2n1ck0gnf" path="res://actors/bricks/grasshopper/grasshopper_brick.tscn" id="3_61bdn"]
+[ext_resource type="PackedScene" uid="uid://b77aigryso4i5" path="res://actors/bricks/fly/fly_brick.tscn" id="4_gmkpb"]
+
+[node name="Level_01" type="Node2D"]
+
+[node name="LevelBase" parent="." instance=ExtResource("1_umsf4")]
+
+[node name="Bricks" type="Node2D" parent="."]
+position = Vector2(0, -144)
+script = ExtResource("2_0546d")
+
+[node name="GrasshopperBrick" parent="Bricks" instance=ExtResource("3_61bdn")]
+position = Vector2(571, 470)
+
+[node name="FlyBrick" parent="Bricks" instance=ExtResource("4_gmkpb")]
+position = Vector2(241, 676)
+
+[node name="FlyBrick2" parent="Bricks" instance=ExtResource("4_gmkpb")]
+position = Vector2(447, 676)
+
+[node name="FlyBrick3" parent="Bricks" instance=ExtResource("4_gmkpb")]
+position = Vector2(657, 676)
+
+[node name="FlyBrick4" parent="Bricks" instance=ExtResource("4_gmkpb")]
+position = Vector2(867, 676)
+
+[node name="GrasshopperBrick2" parent="Bricks" instance=ExtResource("3_61bdn")]
+position = Vector2(348, 857)
+
+[node name="GrasshopperBrick3" parent="Bricks" instance=ExtResource("3_61bdn")]
+position = Vector2(764, 857)
+
+[node name="FlyBrick5" parent="Bricks" instance=ExtResource("4_gmkpb")]
+position = Vector2(867, 1057)
+
+[node name="FlyBrick6" parent="Bricks" instance=ExtResource("4_gmkpb")]
+position = Vector2(677, 1057)
+
+[node name="FlyBrick7" parent="Bricks" instance=ExtResource("4_gmkpb")]
+position = Vector2(448, 1057)
+
+[node name="FlyBrick8" parent="Bricks" instance=ExtResource("4_gmkpb")]
+position = Vector2(248, 1057)
+
+[connection signal="dying" from="Bricks/GrasshopperBrick" to="Bricks/GrasshopperBrick/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
+[connection signal="dying" from="Bricks/GrasshopperBrick2" to="Bricks/GrasshopperBrick2/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
+[connection signal="dying" from="Bricks/GrasshopperBrick3" to="Bricks/GrasshopperBrick3/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
