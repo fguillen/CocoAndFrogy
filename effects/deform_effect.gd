@@ -39,7 +39,6 @@ func _ready():
 		
 # -- 16 public methods
 func perform():
-	print("DeformEffect.perform()")
 	if _is_active:
 		_reset()
 	
@@ -55,7 +54,6 @@ func perform():
 	
 # -- 17 private methods
 func _reset():
-	print("DeformEffect._reset()")
 	_tween.kill()
 	target.material = _previous_material
 	_is_active = false
