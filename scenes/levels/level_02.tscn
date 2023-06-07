@@ -20,4 +20,3 @@ position = Vector2(0, 392)
 
 [node name="HitStopEffect" parent="." node_paths=PackedStringArray("node") instance=ExtResource("4_vfd2j")]
 node = NodePath("../Bricks/WormMonster")
-time = 0.5

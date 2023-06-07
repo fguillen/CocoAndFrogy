@@ -31,11 +31,12 @@ func perform():
 		node_to_hide_2.visible = false 
 	
 	var coco: Coco = GroupsUtils.coco
-	if not coco.frogy_handler:
-		await Global.coco_ready_finished
-		coco = GroupsUtils.coco
-	
-	GroupsUtils.frogy.attached_to(GroupsUtils.coco.frogy_handler)
+	if coco:
+		if not coco.frogy_handler:
+			await Global.coco_ready_finished
+			coco = GroupsUtils.coco
+		
+		GroupsUtils.frogy.attached_to(GroupsUtils.coco.frogy_handler)
 	
 	animation_player.play("show")
 

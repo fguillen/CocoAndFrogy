@@ -60,8 +60,8 @@ func _init_moving_body_part(body_part: PhysicsBody2D, path_follow_position: floa
 	var path_follow = path_follow_template.duplicate()
 	path.add_child(path_follow)
 	path_follow.progress = path_follow_position
-	body_part.reparent(path_follow)
-	body_part.global_position = path_follow.global_position
+#	body_part.reparent(path_follow)
+#	body_part.global_position = path_follow.global_position
 	body_part.hurt.connect(head.animate_hurt)
 	
 	var moving_body_part = MovingBodyPart.new(body_part, path_follow)
@@ -74,6 +74,7 @@ func _init_moving_body_part(body_part: PhysicsBody2D, path_follow_position: floa
 func _move_moving_body_parts(delta):
 	for moving_body_part in _moving_body_parts:
 		moving_body_part.path_follow.progress += speed * delta
+		moving_body_part.body_part.global_position = moving_body_part.path_follow.global_position
 
 
 func _rejoin_moving_body_parts(delta):
