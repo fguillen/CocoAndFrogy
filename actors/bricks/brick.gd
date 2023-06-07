@@ -2,7 +2,7 @@
 # -- 02 class_name
 class_name Brick
 # -- 03 extends
-extends AnimatableBody2D
+extends StaticBody2D
 
 # -- 04 # docstring
 #

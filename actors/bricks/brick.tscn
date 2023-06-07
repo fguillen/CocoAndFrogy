@@ -253,7 +253,7 @@ transitions = ["idle", "hurt", SubResource("AnimationNodeStateMachineTransition_
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6shlp"]
 
-[node name="Brick" type="AnimatableBody2D" groups=["bricks"]]
+[node name="Brick" type="StaticBody2D" groups=["bricks"]]
 position = Vector2(440, 334)
 collision_layer = 4
 collision_mask = 2

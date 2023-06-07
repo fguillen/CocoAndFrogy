@@ -24,7 +24,6 @@ extends Node2D
 # -- 09 public variables
 # -- 10 private variables
 var _moving_body_parts: Array[MovingBodyPart]
-var _actual_position := 0.0
 
 # -- 11 onready variables
 #
@@ -74,7 +73,9 @@ func _init_moving_body_part(body_part: PhysicsBody2D, path_follow_position: floa
 func _move_moving_body_parts(delta):
 	for moving_body_part in _moving_body_parts:
 		moving_body_part.path_follow.progress += speed * delta
-		moving_body_part.body_part.global_position = moving_body_part.path_follow.global_position
+#		moving_body_part.body_part.global_position = moving_body_part.path_follow.global_position
+		var movement = moving_body_part.path_follow.global_position - moving_body_part.body_part.global_position
+		moving_body_part.body_part.move_and_collide(movement)
 
 
 func _rejoin_moving_body_parts(delta):

@@ -23,11 +23,12 @@ signal collision_found(collision: KinematicCollision2D)
 @export var infinite_decceleration := false
 @export var character: CharacterBody2D
 @export_enum("Slide", "Collide") var collision_mode: String = "Slide" 
+@export var direction := Vector2.ZERO : set = _set_direction
+@export var initial_speed := 0.0
 
 
 # -- 09 public variables
-var direction := Vector2.ZERO : set = _set_direction
-var initial_speed: float
+
 
 # -- 10 private variables
 var _is_stoped := false
@@ -99,7 +100,10 @@ func _move(delta):
 	if collision_mode == "Slide":
 		character.move_and_slide()
 	else:
+		var previous_position = character.global_position
+		var previous_velocity = character.velocity
 		var collision = character.move_and_collide(character.velocity * delta)
+		print("XXX: previous_velocity: %s, velocity: %s, distance_moved: %f" % [previous_velocity, character.velocity, character.global_position.distance_to(previous_position)])
 		if collision:
 			collision_found.emit(collision)
 			

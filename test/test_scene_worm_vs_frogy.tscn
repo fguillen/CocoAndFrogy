@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://du8h8rlxwe56v"]
+
+[ext_resource type="PackedScene" uid="uid://cge27crb4b0dx" path="res://actors/bricks/worm/worm_monster.tscn" id="1_6b7ps"]
+[ext_resource type="PackedScene" uid="uid://htth304txoc3" path="res://actors/components/engine_speed_manipulator_component.tscn" id="1_b53mv"]
+[ext_resource type="PackedScene" uid="uid://8rlt50bjqrnr" path="res://actors/frogy/frogy.tscn" id="2_yfaya"]
+
+[node name="TestSceneWormVSFrogy" type="Node2D"]
+
+[node name="EngineSpeedManipulatorComponent" parent="." instance=ExtResource("1_b53mv")]
+duration = -1.0
+auto_start = true
+
+[node name="WormMonster" parent="." instance=ExtResource("1_6b7ps")]
+speed = 200.0
+
+[node name="Frogy" parent="." instance=ExtResource("2_yfaya")]
+position = Vector2(432, 192)
+
+[node name="MovementManager" parent="Frogy" index="2"]
+direction = Vector2(1, 0)
+
+[node name="BouncingManager" parent="Frogy" index="3"]
+time_between_bounces_with_same_node = 10.0
+
+[editable path="Frogy"]

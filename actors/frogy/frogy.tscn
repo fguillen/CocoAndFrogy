@@ -140,6 +140,7 @@ collision_mode = "Collide"
 script = ExtResource("4_hwckh")
 character = NodePath("..")
 movement_manager = NodePath("../MovementManager")
+time_between_bounces_with_same_node = 0.2
 
 [node name="DeathManager" type="Node" parent="." node_paths=PackedStringArray("movement_manager", "collision_shape_2d", "animation_player")]
 script = ExtResource("5_r5ak0")
@@ -224,10 +225,10 @@ volume_db = -8.0
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
 [connection signal="collision_found" from="MovementManager" to="DeathManager" method="on_collision_found"]
-[connection signal="collision_found" from="MovementManager" to="BricksImpacter" method="on_collision_found"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/RotateNodeEffect" method="on_direction_changed"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/SpeedSmokeEffect" method="on_direction_changed"]
 [connection signal="speed_changed" from="MovementManager" to="Effects/SpeedSmokeEffect" method="on_speed_changed"]
+[connection signal="bounced" from="BouncingManager" to="BricksImpacter" method="on_collision_found"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceAnimationEffect" method="bounce"]
 [connection signal="bounced" from="BouncingManager" to="Effects/BounceParticlesEffect" method="perform"]
 [connection signal="bounced" from="BouncingManager" to="Effects/CollisionDebugger" method="on_collision_found"]

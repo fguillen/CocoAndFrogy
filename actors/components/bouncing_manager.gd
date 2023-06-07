@@ -17,10 +17,13 @@ signal bounced_on_other()
 @export var character: CharacterBody2D
 @export var movement_manager: MovementManager
 @export var min_angle := 40.0
+@export var time_between_bounces_with_same_node := 0.05
 
 # -- 09 public variables
 # -- 10 private variables
 var _min_angle_rad: float
+var _last_bounce_at: float
+var _last_bounce_with: Node
 
 # -- 11 onready variables
 #
@@ -81,10 +84,27 @@ func _collision_with_other(collision: KinematicCollision2D) -> Vector2:
 	print("XXX: normal: %s, direction: %s" % [normal, result])
 	
 	return result
+	
+func _is_collision_too_quick(collision: KinematicCollision2D):
+	var time_since_last_bounce = (Time.get_ticks_msec() - _last_bounce_at) / 1000.0
+	print("XXX: time_since_last_bounce: ", time_since_last_bounce)
+	if _last_bounce_with == collision.get_collider() and time_since_last_bounce < time_between_bounces_with_same_node:
+		return true
+	else:
+		return false
+	
 
 
 # -- 18 signal listeners
 func on_collision_found(collision: KinematicCollision2D):
+	if _is_collision_too_quick(collision):
+		print("XXX: collision_too_quick")
+		return
+	print("XXX: collision_no_quick")
+	
+	_last_bounce_at = Time.get_ticks_msec()
+	_last_bounce_with = collision.get_collider()
+	
 	var direction_result := Vector2.ZERO
 	
 	if collision.get_collider().is_in_group("coco"):		
@@ -108,7 +128,6 @@ func on_collision_found(collision: KinematicCollision2D):
 		return
 		
 	direction_result = _filter_flat_direction_angle(direction_result)
-	print("XXX: direction_result: ", direction_result)
 	movement_manager.direction = direction_result
 	bounced.emit(collision)
 	

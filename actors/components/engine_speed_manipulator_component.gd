@@ -11,6 +11,8 @@ extends Node
 # -- 08 exported variables
 @export var factor := 1.0
 @export var duration := 1.0
+@export var auto_start := false
+
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
@@ -20,6 +22,11 @@ extends Node
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
+func _ready():
+	if auto_start:
+		start()
+		
+		
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func start():
