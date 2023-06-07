@@ -25,6 +25,7 @@ path_follow_template = NodePath("Path2D/PathFollow2DTemplate")
 [node name="WormHeadBrick" parent="WormHead" instance=ExtResource("1_bhy52")]
 z_index = 18
 position = Vector2(872, 0)
+health = 4
 
 [node name="WormBody" type="Node2D" parent="."]
 

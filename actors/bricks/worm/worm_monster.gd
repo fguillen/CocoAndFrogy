@@ -102,7 +102,10 @@ func _rejoin_moving_body_part(moving_body_part_ini, distance, delta):
 		
 func _remove_moving_body_part(moving_body_part: MovingBodyPart):
 	_moving_body_parts.erase(moving_body_part)
-#
+	
+	if _moving_body_parts.size() <= 1:
+		head.enable_hurt()
+		
 
 # -- 18 signal listeners
 func _on_body_part_queued(moving_body_part: MovingBodyPart):
@@ -118,10 +121,4 @@ class MovingBodyPart:
 		self.body_part = body_part
 		self.path_follow = path_follow
 		
-	
 
-
-
-
-func animate_hurt():
-	pass # Replace with function body.

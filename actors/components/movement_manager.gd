@@ -103,7 +103,7 @@ func _move(delta):
 		var previous_position = character.global_position
 		var previous_velocity = character.velocity
 		var collision = character.move_and_collide(character.velocity * delta)
-		print("XXX: previous_velocity: %s, velocity: %s, distance_moved: %f" % [previous_velocity, character.velocity, character.global_position.distance_to(previous_position)])
+#		print("XXX: previous_velocity: %s, velocity: %s, distance_moved: %f" % [previous_velocity, character.velocity, character.global_position.distance_to(previous_position)])
 		if collision:
 			collision_found.emit(collision)
 			
