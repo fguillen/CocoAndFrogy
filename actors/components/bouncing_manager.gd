@@ -77,8 +77,10 @@ func _collision_with_coco(collision: KinematicCollision2D) -> Vector2:
 
 func _collision_with_other(collision: KinematicCollision2D) -> Vector2:	
 	var normal = collision.get_normal()
+	var result = movement_manager.direction.bounce(normal)
+	print("XXX: normal: %s, direction: %s" % [normal, result])
 	
-	return movement_manager.direction.bounce(normal)
+	return result
 
 
 # -- 18 signal listeners
@@ -106,6 +108,7 @@ func on_collision_found(collision: KinematicCollision2D):
 		return
 		
 	direction_result = _filter_flat_direction_angle(direction_result)
+	print("XXX: direction_result: ", direction_result)
 	movement_manager.direction = direction_result
 	bounced.emit(collision)
 	

@@ -44,7 +44,6 @@ func perform():
 # -- 17 private methods
 # -- 18 signal listeners
 func _on_timer_timeout():
-	print("HitStopEffect.timeout()")
 	if node: 
 		node.set_process(true)
 		node.set_physics_process(true)

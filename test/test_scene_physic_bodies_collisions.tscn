@@ -1,0 +1,356 @@
+[gd_scene load_steps=13 format=3 uid="uid://dcesgmmpxady5"]
+
+[ext_resource type="Script" path="res://test/test_scene_worm.gd" id="1_hxdcf"]
+[ext_resource type="PackedScene" uid="uid://htth304txoc3" path="res://actors/components/engine_speed_manipulator_component.tscn" id="3_r0efu"]
+[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="4_mfbga"]
+[ext_resource type="Texture2D" uid="uid://dbgcfd2s1olf5" path="res://actors/bricks/worm/worm_body.png" id="4_pkdva"]
+[ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="5_f8pp6"]
+[ext_resource type="Texture2D" uid="uid://82qacr635msu" path="res://actors/components/collision_debugger/circle.png" id="6_hoci7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4thm"]
+size = Vector2(111, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6k34"]
+size = Vector2(135, 135)
+
+[sub_resource type="Animation" id="Animation_v2vxt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_td283"]
+resource_name = "play"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1138, -28)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6els"]
+_data = {
+"RESET": SubResource("Animation_v2vxt"),
+"play": SubResource("Animation_td283")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7855"]
+size = Vector2(115, 133)
+
+[node name="TestScenePhysicBodiesCollisions" type="Node2D"]
+script = ExtResource("1_hxdcf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="EngineSpeedManipulatorComponent" parent="." instance=ExtResource("3_r0efu")]
+factor = 0.5
+duration = -1.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 69.0
+offset_right = 459.0
+offset_bottom = 213.0
+theme_override_font_sizes/font_size = 40
+text = "CB2D VS AB2D moved 
+by changing
+global_position"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(534, 140)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mfbga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_l4thm")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(941, 117)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_pkdva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 247.0
+offset_right = 395.0
+offset_bottom = 343.0
+theme_override_font_sizes/font_size = 40
+text = "CB2D VS CB2D moved 
+by move_and_collide"
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(568, 293)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mfbga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_l4thm")
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+position = Vector2(926, 292)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mfbga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_l4thm")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 41.0
+offset_top = 410.0
+offset_right = 409.0
+offset_bottom = 506.0
+theme_override_font_sizes/font_size = 40
+text = "AB2D VS  CB2D moved 
+by move_and_collide"
+
+[node name="AnimatableBody2D2" type="AnimatableBody2D" parent="."]
+position = Vector2(580, 471)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D2"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_pkdva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D2"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[node name="CharacterBody2D4" type="CharacterBody2D" parent="."]
+position = Vector2(941, 463)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D4"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mfbga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D4"]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_l4thm")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 589.0
+offset_right = 418.0
+offset_bottom = 733.0
+theme_override_font_sizes/font_size = 40
+text = "CB2D VS  AB2D moved 
+by animator changing
+global_position"
+
+[node name="CharacterBody2D5" type="CharacterBody2D" parent="."]
+position = Vector2(581, 649)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D5"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mfbga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D5"]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_l4thm")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(960, 639)
+
+[node name="AnimatableBody2D3" type="AnimatableBody2D" parent="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/AnimatableBody2D3"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_pkdva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AnimatableBody2D3"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "play"
+playback_process_mode = 0
+libraries = {
+"": SubResource("AnimationLibrary_g6els")
+}
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 766.0
+offset_right = 432.0
+offset_bottom = 910.0
+theme_override_font_sizes/font_size = 40
+text = "RB2D VS  AB2D moved 
+by script changing
+global_position"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(584, 842)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_f8pp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_n7855")
+
+[node name="AnimatableBody2D4" type="AnimatableBody2D" parent="."]
+position = Vector2(937, 814)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D4"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_pkdva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D4"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 54.0
+offset_top = 943.0
+offset_right = 422.0
+offset_bottom = 1087.0
+theme_override_font_sizes/font_size = 40
+text = "AB2D VS  AB2D moved 
+by changing
+global_position"
+
+[node name="AnimatableBody2D5" type="AnimatableBody2D" parent="."]
+position = Vector2(623, 1010)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D5"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_pkdva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D5"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[node name="AnimatableBody2D6" type="AnimatableBody2D" parent="."]
+position = Vector2(942, 1010)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D6"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_pkdva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D6"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 1109.0
+offset_right = 467.0
+offset_bottom = 1349.0
+theme_override_font_sizes/font_size = 40
+text = "CB2D moved by 
+move_and_collide VS AB2D 
+moved by changing
+global_position"
+
+[node name="CharacterBody2D6" type="CharacterBody2D" parent="."]
+position = Vector2(623, 1198)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D6"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mfbga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D6"]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_l4thm")
+
+[node name="AnimatableBody2D3" type="AnimatableBody2D" parent="."]
+position = Vector2(946, 1199)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D3"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_pkdva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D3"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 34.0
+offset_top = 1340.0
+offset_right = 461.0
+offset_bottom = 1580.0
+theme_override_font_sizes/font_size = 40
+text = "CB2D moved by 
+move_and_collide VS SB2D 
+moved by changing
+global_position"
+
+[node name="CharacterBody2D7" type="CharacterBody2D" parent="."]
+position = Vector2(620, 1435)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D7"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mfbga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D7"]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_l4thm")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="."]
+position = Vector2(943, 1436)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D7"]
+scale = Vector2(15, 15)
+texture = ExtResource("6_hoci7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 31.0
+offset_top = 1565.0
+offset_right = 458.0
+offset_bottom = 1805.0
+theme_override_font_sizes/font_size = 40
+text = "CB2D  VS SB2D 
+moved by move_and_collide"
+
+[node name="CharacterBody2D8" type="CharacterBody2D" parent="."]
+position = Vector2(617, 1660)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D8"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mfbga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D8"]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_l4thm")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="."]
+position = Vector2(940, 1661)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D8"]
+scale = Vector2(15, 15)
+texture = ExtResource("6_hoci7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8"]
+shape = SubResource("RectangleShape2D_r6k34")
+
+[connection signal="timeout" from="Timer" to="." method="reload"]
+[connection signal="ready" from="EngineSpeedManipulatorComponent" to="EngineSpeedManipulatorComponent" method="start"]
