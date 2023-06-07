@@ -63,6 +63,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wv1k1"]
 resource_name = "appear"
@@ -260,6 +272,7 @@ collision_mask = 2
 script = ExtResource("1_yivv7")
 
 [node name="Visuals" type="Node2D" parent="."]
+position = Vector2(-2, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 scale = Vector2(0.523062, 0.525625)

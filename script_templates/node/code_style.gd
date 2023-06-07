@@ -23,4 +23,4 @@ extends _BASE_
 # -- 16 public methods
 # -- 17 private methods
 # -- 18 signal listeners
-# -- 19 subclasses
+# -- 19 innerclasses
