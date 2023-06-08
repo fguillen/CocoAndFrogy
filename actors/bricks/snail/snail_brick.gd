@@ -20,7 +20,7 @@ signal hurt_with_shield()
 var _is_head_out := false
 
 # -- 11 onready variables
-@onready var head_collision: CollisionShape2D = $HeadCollisionShape2D
+@onready var head_collision: CollisionShape2D = $CollisionShape2D
 @onready var timer_show_head = $TimerShowHead
 @onready var timer_hide_head = $TimerHideHead
 
@@ -29,6 +29,8 @@ var _is_head_out := false
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
+	super()
+	print("XXX: Snail._ready()")
 	_hide_head()
 
 
@@ -60,7 +62,10 @@ func _impact_when_no_head_out():
 func _hide_head():
 	print("XXX: _hide_head()")
 	head_collision.disabled = true
-	animation_state_machine.travel("hide_head")
+	
+	if _is_head_out:
+		animation_state_machine.travel("hide_head")
+
 	timer_show_head.start(randf_range(head_showing_interval.x, head_showing_interval.y))
 	_is_head_out = false
 
@@ -81,8 +86,18 @@ func _on_timer_show_head_timeout():
 func _on_timer_hide_head_timeout():
 	_hide_head()
 	
+	
+func _on_animation_tree_animation_started(anim_name):
+	print("XXX: animation_tree: ", anim_name)
 # -- 19 subclasses
 
 
 
 
+
+
+
+
+
+func _on_animation_player_animation_started(anim_name):
+	print("XXX: animation_player: ", anim_name)
