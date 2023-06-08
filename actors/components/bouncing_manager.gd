@@ -105,23 +105,27 @@ func on_collision_found(collision: KinematicCollision2D):
 	_last_bounce_at = Time.get_ticks_msec()
 	_last_bounce_with = collision.get_collider()
 	
+	var collider = collision.get_collider()
 	var direction_result := Vector2.ZERO
 	
-	if collision.get_collider().is_in_group("coco"):		
+	if collider.has_method("impacted_by"):
+		collider.impacted_by(character)
+	
+	if collider.is_in_group("coco"):		
 		direction_result = _collision_with_coco(collision)
 		GlobalEvents.emit_impact_with_coco_occurred()
 		GlobalEvents.emit_bounce_performed()
 		bounced_on_coco.emit()
 		
-	elif collision.get_collider().is_in_group("bricks"):
+	elif collider.is_in_group("bricks"):
 		direction_result = _collision_with_other(collision)
 		GlobalEvents.emit_impact_with_brick_occurred()
 		GlobalEvents.emit_bounce_performed()
 		bounced_on_brick.emit()
 		
-	elif collision.get_collider().is_in_group("walls"): 
+	elif collider.is_in_group("walls"): 
 		direction_result = _collision_with_other(collision)
-		GlobalEvents.emit_bounce_performed()
+		GlobalEvents.emit_bounce_performed()			
 		bounced_on_other.emit()
 		
 	else: 

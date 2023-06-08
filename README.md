@@ -6,3 +6,4 @@ grasshopper sounds: https://freesound.org/people/SamuelGremaud/sounds/517803/
 other sounds: https://freesound.org/people/klankbeeld/sounds/580680/
 music jingles: https://www.kenney.nl/assets/music-jingles
 water splash: https://freesound.org/people/InspectorJ/sounds/421184/
+snail shield: https://freesound.org/people/suzenako/sounds/320905/

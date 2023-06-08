@@ -1,15 +1,18 @@
-[gd_scene load_steps=37 format=3 uid="uid://dlgw8lgrttu6f"]
+[gd_scene load_steps=44 format=3 uid="uid://dlgw8lgrttu6f"]
 
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_6oucr"]
 [ext_resource type="Script" path="res://actors/bricks/snail/snail_brick.gd" id="2_jxcsv"]
 [ext_resource type="Texture2D" uid="uid://chxve60axhvj0" path="res://actors/bricks/snail/snail.png" id="3_yl12u"]
+[ext_resource type="Script" path="res://actors/bricks/snail/shield.gd" id="4_x38qn"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="5_au7n8"]
+[ext_resource type="AudioStream" uid="uid://b0dohby7remrx" path="res://assets/sounds/snail_shield.wav" id="6_tvq4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shyd5"]
-size = Vector2(149, 102.75)
+size = Vector2(184, 125.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1cvg"]
 resource_local_to_scene = true
-size = Vector2(149.5, 70)
+size = Vector2(184, 81)
 
 [sub_resource type="Animation" id="Animation_s74jn"]
 length = 0.001
@@ -225,35 +228,6 @@ tracks/2/keys = {
 "values": [6, 5]
 }
 
-[sub_resource type="Animation" id="Animation_kjimv"]
-resource_name = "hurt_with_shield"
-length = 0.26
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.22, 0.26),
-"transitions": PackedFloat32Array(0.287175, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.01, 1.01), Vector2(1.01, 1.01), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15, 0.17, 0.19, 0.21),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_yef2m"]
 resource_name = "idle"
 length = 0.7
@@ -353,6 +327,76 @@ tracks/2/keys = {
 "values": [5]
 }
 
+[sub_resource type="Animation" id="Animation_kjimv"]
+resource_name = "hurt_in_shield"
+length = 0.26
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.22, 0.26),
+"transitions": PackedFloat32Array(0.287175, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.01, 1.01), Vector2(1.01, 1.01), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15, 0.17, 0.19, 0.21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-4, 0), Vector2(4, 0), Vector2(-4, 0), Vector2(4, 0), Vector2(-4, 0), Vector2(4, 0), Vector2(-4, 0), Vector2(4, 0), Vector2(-4, 0), Vector2(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v2bj0"]
+resource_name = "hurt_in_shield_with_head_out"
+length = 0.26
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.22, 0.26),
+"transitions": PackedFloat32Array(0.287175, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.01, 1.01), Vector2(1.01, 1.01), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15, 0.17, 0.19, 0.21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-4, 0), Vector2(4, 0), Vector2(-4, 0), Vector2(4, 0), Vector2(-4, 0), Vector2(4, 0), Vector2(-4, 0), Vector2(4, 0), Vector2(-4, 0), Vector2(4, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tourm"]
 _data = {
 "RESET": SubResource("Animation_s74jn"),
@@ -360,7 +404,8 @@ _data = {
 "die": SubResource("Animation_5kf1o"),
 "hide_head": SubResource("Animation_klcxj"),
 "hurt": SubResource("Animation_mamw3"),
-"hurt_with_shield": SubResource("Animation_kjimv"),
+"hurt_in_shield": SubResource("Animation_kjimv"),
+"hurt_in_shield_with_head_out": SubResource("Animation_v2bj0"),
 "idle": SubResource("Animation_yef2m"),
 "idle_with_head": SubResource("Animation_2af3g"),
 "show_head": SubResource("Animation_5m8df")
@@ -378,8 +423,11 @@ animation = &"hide_head"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pjfq8"]
 animation = &"hurt"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0t0r3"]
-animation = &"hurt_with_shield"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gljn3"]
+animation = &"hurt_in_shield"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_su531"]
+animation = &"hurt_in_shield_with_head_out"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_leggm"]
 animation = &"idle"
@@ -399,12 +447,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dycjr"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rcwem"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e0vin"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7m24i"]
 switch_mode = 2
 advance_mode = 2
@@ -423,6 +465,18 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j10ue"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_onqny"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dtwq3"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xaj0q"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mqq78"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mtegt"]
 states/Start/position = Vector2(258, 59)
 states/appear/node = SubResource("AnimationNodeAnimation_r44vo")
@@ -433,15 +487,17 @@ states/hide_head/node = SubResource("AnimationNodeAnimation_wiv6n")
 states/hide_head/position = Vector2(814, -44)
 states/hurt/node = SubResource("AnimationNodeAnimation_pjfq8")
 states/hurt/position = Vector2(573, -280)
-states/hurt_with_shield/node = SubResource("AnimationNodeAnimation_0t0r3")
-states/hurt_with_shield/position = Vector2(457, 208)
+states/hurt_in_shield/node = SubResource("AnimationNodeAnimation_gljn3")
+states/hurt_in_shield/position = Vector2(599, 197)
+states/hurt_in_shield_with_head_out/node = SubResource("AnimationNodeAnimation_su531")
+states/hurt_in_shield_with_head_out/position = Vector2(373, -258)
 states/idle/node = SubResource("AnimationNodeAnimation_leggm")
-states/idle/position = Vector2(564, 67)
+states/idle/position = Vector2(573, 48)
 states/idle_with_head/node = SubResource("AnimationNodeAnimation_g2dpg")
-states/idle_with_head/position = Vector2(585, -173)
+states/idle_with_head/position = Vector2(578, -174)
 states/show_head/node = SubResource("AnimationNodeAnimation_i6ogy")
 states/show_head/position = Vector2(573, -44)
-transitions = ["Start", "appear", SubResource("AnimationNodeStateMachineTransition_s0fix"), "appear", "idle", SubResource("AnimationNodeStateMachineTransition_hs076"), "idle", "show_head", SubResource("AnimationNodeStateMachineTransition_dycjr"), "idle", "hurt_with_shield", SubResource("AnimationNodeStateMachineTransition_rcwem"), "hurt_with_shield", "idle", SubResource("AnimationNodeStateMachineTransition_e0vin"), "show_head", "idle_with_head", SubResource("AnimationNodeStateMachineTransition_7m24i"), "hide_head", "idle", SubResource("AnimationNodeStateMachineTransition_mq7cc"), "idle_with_head", "hide_head", SubResource("AnimationNodeStateMachineTransition_0gns8"), "idle_with_head", "hurt", SubResource("AnimationNodeStateMachineTransition_52obj"), "hurt", "idle_with_head", SubResource("AnimationNodeStateMachineTransition_m3vux"), "idle_with_head", "die", SubResource("AnimationNodeStateMachineTransition_j10ue")]
+transitions = ["Start", "appear", SubResource("AnimationNodeStateMachineTransition_s0fix"), "appear", "idle", SubResource("AnimationNodeStateMachineTransition_hs076"), "idle", "show_head", SubResource("AnimationNodeStateMachineTransition_dycjr"), "show_head", "idle_with_head", SubResource("AnimationNodeStateMachineTransition_7m24i"), "hide_head", "idle", SubResource("AnimationNodeStateMachineTransition_mq7cc"), "idle_with_head", "hide_head", SubResource("AnimationNodeStateMachineTransition_0gns8"), "idle_with_head", "hurt", SubResource("AnimationNodeStateMachineTransition_52obj"), "hurt", "idle_with_head", SubResource("AnimationNodeStateMachineTransition_m3vux"), "idle_with_head", "die", SubResource("AnimationNodeStateMachineTransition_j10ue"), "idle", "hurt_in_shield", SubResource("AnimationNodeStateMachineTransition_onqny"), "hurt_in_shield", "idle", SubResource("AnimationNodeStateMachineTransition_dtwq3"), "idle_with_head", "hurt_in_shield_with_head_out", SubResource("AnimationNodeStateMachineTransition_xaj0q"), "hurt_in_shield_with_head_out", "idle_with_head", SubResource("AnimationNodeStateMachineTransition_mqq78")]
 graph_offset = Vector2(-142, -338)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_5spoc"]
@@ -459,21 +515,22 @@ one_shot = true
 one_shot = true
 
 [node name="Sprite2D" parent="Visuals" index="0"]
-scale = Vector2(1.6, 1.6)
+scale = Vector2(2, 2)
 texture = ExtResource("3_yl12u")
 offset = Vector2(0, 0)
-hframes = 7
+hframes = 8
 
 [node name="Shield" type="StaticBody2D" parent="." index="3" groups=["walls"]]
 collision_layer = 8
 collision_mask = 2
+script = ExtResource("4_x38qn")
 
 [node name="ShieldCollisionShape2D" type="CollisionShape2D" parent="Shield" index="0"]
-position = Vector2(5, 33)
+position = Vector2(6, 44.3125)
 shape = SubResource("RectangleShape2D_shyd5")
 
 [node name="CollisionShape2D" parent="." index="4"]
-position = Vector2(6, -44)
+position = Vector2(6, -49)
 shape = SubResource("RectangleShape2D_p1cvg")
 
 [node name="AnimationPlayer" parent="." index="5"]
@@ -484,9 +541,13 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="6"]
 tree_root = SubResource("AnimationNodeStateMachine_mtegt")
-active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_5spoc")
 
+[node name="ShileldSoundEffect" parent="Effects" index="4" instance=ExtResource("5_au7n8")]
+stream = ExtResource("6_tvq4y")
+random_pitch = true
+
+[connection signal="hurt_with_shield" from="." to="Effects/ShileldSoundEffect" method="perform"]
 [connection signal="timeout" from="TimerShowHead" to="." method="_on_timer_show_head_timeout"]
 [connection signal="timeout" from="TimerHideHead" to="." method="_on_timer_hide_head_timeout"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

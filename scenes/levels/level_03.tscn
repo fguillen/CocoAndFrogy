@@ -13,4 +13,19 @@ position = Vector2(0, -144)
 script = ExtResource("3_aq6ni")
 
 [node name="SnailBrick" parent="Bricks" instance=ExtResource("4_ibjgr")]
-position = Vector2(504, 816)
+position = Vector2(304, 688)
+
+[node name="SnailBrick5" parent="Bricks" instance=ExtResource("4_ibjgr")]
+position = Vector2(528, 688)
+
+[node name="SnailBrick6" parent="Bricks" instance=ExtResource("4_ibjgr")]
+position = Vector2(752, 688)
+
+[node name="SnailBrick2" parent="Bricks" instance=ExtResource("4_ibjgr")]
+position = Vector2(304, 912)
+
+[node name="SnailBrick7" parent="Bricks" instance=ExtResource("4_ibjgr")]
+position = Vector2(528, 912)
+
+[node name="SnailBrick8" parent="Bricks" instance=ExtResource("4_ibjgr")]
+position = Vector2(752, 912)

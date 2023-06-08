@@ -36,27 +36,13 @@ func _ready():
 
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func impact():
-	if _is_head_out:
-		_impact_when_head_out()
-	else:
-		_impact_when_no_head_out()
-		
-		
-# -- 17 private methods
-func _impact_when_head_out():
-	health -= 1
-	hurt.emit()
-
-	if health <= 0:
-		_die()
-	else:
-		animation_state_machine.travel("hurt")
-
-
-func _impact_when_no_head_out():
+func hurt_in_shield():
 	hurt_with_shield.emit()
-	animation_state_machine.travel("hurt_with_shield")
+	
+	if _is_head_out:
+		animation_state_machine.travel("hurt_in_shield_with_head_out")
+	else:
+		animation_state_machine.travel("hurt_in_shield")
 		
 		
 func _hide_head():
