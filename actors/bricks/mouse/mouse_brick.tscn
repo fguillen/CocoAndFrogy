@@ -1,0 +1,334 @@
+[gd_scene load_steps=20 format=3 uid="uid://dtsfpur506jc4"]
+
+[ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_tu00a"]
+[ext_resource type="Texture2D" uid="uid://by88pvqiwhmfs" path="res://actors/bricks/mouse/mouse_tongue.png" id="2_5wd7p"]
+[ext_resource type="Script" path="res://actors/bricks/mouse/mouse_brick.gd" id="2_nq1ra"]
+[ext_resource type="Texture2D" uid="uid://bwti5v125pmpi" path="res://actors/bricks/mouse/mouse_body.png" id="2_sdcqx"]
+[ext_resource type="PackedScene" uid="uid://bhrtawg6meta0" path="res://actors/bricks/mouse/walnut_brick.tscn" id="3_mjtmi"]
+[ext_resource type="Texture2D" uid="uid://d0t1ctlhl16fl" path="res://actors/bricks/mouse/mouse_eyes.png" id="4_51p0y"]
+[ext_resource type="Texture2D" uid="uid://d0mm75ucg44jn" path="res://actors/bricks/mouse/mouse_eyes_hurt.png" id="5_uxkrb"]
+
+[sub_resource type="Curve2D" id="Curve2D_ayq2q"]
+_data = {
+"points": PackedVector2Array(-1.33484, -24.6945, 1.33484, 24.6945, -249, 122, -48, -20, 48, 20, -123, 206, -47, 2, 47, -2, -2, 223, -59, 41, 59, -41, 158, 184, -8.67646, 34.0384, 8.67646, -34.0384, 241, 103)
+}
+point_count = 5
+
+[sub_resource type="Animation" id="Animation_y75pp"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2r5ho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p13s2"]
+_data = {
+"RESET": SubResource("Animation_2r5ho"),
+"move": SubResource("Animation_y75pp")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3jomp"]
+radius = 230.157
+
+[sub_resource type="Animation" id="Animation_s74jn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wv1k1"]
+resource_name = "appear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.175, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yef2m"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.112), Vector2(0.95, 1.089)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b5o77"]
+resource_name = "hurt"
+length = 0.26
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.16, 0.23, 0.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.057, 1.139), Vector2(1, 1), Vector2(1.057, 1.139), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.014, 0.05, 0.17, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0872665, -0.0872665, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Eyes:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_uxkrb"), ExtResource("4_51p0y")]
+}
+
+[sub_resource type="Animation" id="Animation_plcxl"]
+resource_name = "die"
+length = 0.45
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.75), Vector2(0.8, 0.75), Vector2(1.1, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.08, 0.13, 0.18, 0.23, 0.27, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/Eyes:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_uxkrb")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ej6ni"]
+_data = {
+"RESET": SubResource("Animation_s74jn"),
+"appear": SubResource("Animation_wv1k1"),
+"die": SubResource("Animation_plcxl"),
+"hurt": SubResource("Animation_b5o77"),
+"idle": SubResource("Animation_yef2m")
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_esiin"]
+
+[node name="MouseBrick" instance=ExtResource("1_tu00a")]
+position = Vector2(491, 77)
+script = ExtResource("2_nq1ra")
+walnuts_interval = Vector2(0.5, 2)
+walnut_template = ExtResource("3_mjtmi")
+walnut_impulse = 500.0
+health = 5
+
+[node name="Timer" type="Timer" parent="." index="0"]
+one_shot = true
+
+[node name="Tongue" type="Node2D" parent="Visuals" index="0"]
+position = Vector2(0, -2)
+
+[node name="Path2D" type="Path2D" parent="Visuals/Tongue" index="0"]
+curve = SubResource("Curve2D_ayq2q")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Visuals/Tongue/Path2D" index="0"]
+position = Vector2(225.617, 133.76)
+rotation = -0.840103
+progress = 530.394
+
+[node name="TongueSprite2D" type="Sprite2D" parent="Visuals/Tongue/Path2D/PathFollow2D" index="0"]
+unique_name_in_owner = true
+position = Vector2(3.97678, 29.8031)
+texture = ExtResource("2_5wd7p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/Tongue" index="1"]
+autoplay = "move"
+libraries = {
+"": SubResource("AnimationLibrary_p13s2")
+}
+
+[node name="Sprite2D" parent="Visuals" index="1"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_sdcqx")
+
+[node name="Eyes" type="Sprite2D" parent="Visuals" index="2"]
+texture = ExtResource("4_51p0y")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_3jomp")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_ej6ni")
+}
+
+[node name="AnimationTree" parent="." index="4"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_esiin")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

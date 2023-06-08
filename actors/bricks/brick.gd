@@ -2,7 +2,7 @@
 # -- 02 class_name
 class_name Brick
 # -- 03 extends
-extends StaticBody2D
+extends PhysicsBody2D
 
 # -- 04 # docstring
 #
@@ -35,7 +35,7 @@ func _ready():
 	print("XXX: Brick._ready()")
 	_setup.call_deferred()
 	
-	GlobalEvents.emit_brick_ready(self)
+	_global_signal_emit_brick_ready()
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -66,6 +66,13 @@ func _die():
 	dying.emit()
 	animation_state_machine.travel("die")
 
+
+func _global_signal_emit_brick_queued():
+	GlobalEvents.emit_brick_queued(self)
+	
+
+func _global_signal_emit_brick_ready():
+	GlobalEvents.emit_brick_ready(self)
 	
 	
 # -- 18 signal listeners
@@ -75,7 +82,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		
 	elif anim_name == "die":
 		died.emit()
-		GlobalEvents.emit_brick_queued(self)
+		_global_signal_emit_brick_queued()
 		queue_free()
 		
 		

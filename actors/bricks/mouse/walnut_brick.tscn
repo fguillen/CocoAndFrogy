@@ -1,16 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://dpwjub5d83qbr"]
+[gd_scene load_steps=27 format=3 uid="uid://bhrtawg6meta0"]
 
-[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
-[ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
-[ext_resource type="PackedScene" uid="uid://c5h5fjah1nhda" path="res://effects/brick_explosion_particles_effect.tscn" id="3_m1uqe"]
-[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="4_wg5ix"]
-[ext_resource type="AudioStream" uid="uid://cfen3we5cntav" path="res://assets/sounds/brick_explosion.wav" id="5_pm3wv"]
-[ext_resource type="AudioStream" uid="uid://d4bxfpgft2v72" path="res://assets/sounds/fly_01.wav" id="5_uicjb"]
-[ext_resource type="AudioStream" uid="uid://cj4hyh3w46meg" path="res://assets/sounds/brick_appears.wav" id="6_tv0sl"]
+[ext_resource type="Script" path="res://actors/bricks/mouse/walnut_brick.gd" id="1_i84qv"]
+[ext_resource type="Texture2D" uid="uid://kebsdo3uhh3c" path="res://actors/bricks/mouse/mouse_walnut.png" id="2_3kqmi"]
+[ext_resource type="PackedScene" uid="uid://c5h5fjah1nhda" path="res://effects/brick_explosion_particles_effect.tscn" id="4_u4r3i"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="5_yv2rh"]
+[ext_resource type="AudioStream" uid="uid://d4bxfpgft2v72" path="res://assets/sounds/fly_01.wav" id="6_4gdsf"]
+[ext_resource type="AudioStream" uid="uid://cfen3we5cntav" path="res://assets/sounds/brick_explosion.wav" id="7_aajf4"]
+[ext_resource type="AudioStream" uid="uid://cj4hyh3w46meg" path="res://assets/sounds/brick_appears.wav" id="8_boa3m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5doon"]
-resource_local_to_scene = true
-size = Vector2(120, 145)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yqejq"]
+bounce = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uyns3"]
+radius = 59.0085
 
 [sub_resource type="Animation" id="Animation_s74jn"]
 length = 0.001
@@ -250,22 +252,24 @@ states/idle/node = SubResource("AnimationNodeAnimation_leggm")
 states/idle/position = Vector2(565, 59)
 transitions = ["idle", "hurt", SubResource("AnimationNodeStateMachineTransition_oecw7"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_eacw6"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_wfllo"), "Start", "appear", SubResource("AnimationNodeStateMachineTransition_s0fix"), "appear", "idle", SubResource("AnimationNodeStateMachineTransition_hs076")]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6shlp"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1mv1r"]
 
-[node name="Brick" type="StaticBody2D" groups=["bricks"]]
+[node name="WalnutBrick" type="RigidBody2D" groups=["bricks"]]
 collision_layer = 4
-collision_mask = 2
-script = ExtResource("1_yivv7")
+collision_mask = 10
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_yqejq")
+gravity_scale = 0.0
+script = ExtResource("1_i84qv")
+health = 1
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-scale = Vector2(0.523062, 0.525625)
-texture = ExtResource("1_wpish")
+texture = ExtResource("2_3kqmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 7.5)
-shape = SubResource("RectangleShape2D_5doon")
+shape = SubResource("CircleShape2D_uyns3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -276,28 +280,28 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_jase1")
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6shlp")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_1mv1r")
 
 [node name="Effects" type="Node2D" parent="."]
 
-[node name="BrickExplosionParticlesEffect" parent="Effects" instance=ExtResource("3_m1uqe")]
+[node name="BrickExplosionParticlesEffect" parent="Effects" instance=ExtResource("4_u4r3i")]
 z_index = 100
 reparent_on_perform = true
 
-[node name="ImpactSoundEffect" parent="Effects" instance=ExtResource("4_wg5ix")]
-stream = ExtResource("5_uicjb")
+[node name="ImpactSoundEffect" parent="Effects" instance=ExtResource("5_yv2rh")]
+stream = ExtResource("6_4gdsf")
 
-[node name="ExplosionSoundEffect" parent="Effects" instance=ExtResource("4_wg5ix")]
-stream = ExtResource("5_pm3wv")
+[node name="ExplosionSoundEffect" parent="Effects" instance=ExtResource("5_yv2rh")]
+stream = ExtResource("7_aajf4")
 random_pitch = true
 reparent_on_ready = true
 
-[node name="AppearedSoundEffect" parent="Effects" instance=ExtResource("4_wg5ix")]
-stream = ExtResource("6_tv0sl")
+[node name="AppearedSoundEffect" parent="Effects" instance=ExtResource("5_yv2rh")]
+stream = ExtResource("8_boa3m")
 random_pitch = true
 
 [connection signal="appeared" from="." to="Effects/AppearedSoundEffect" method="perform"]
 [connection signal="died" from="." to="Effects/BrickExplosionParticlesEffect" method="perform"]
 [connection signal="died" from="." to="Effects/ExplosionSoundEffect" method="perform"]
 [connection signal="hurt" from="." to="Effects/ImpactSoundEffect" method="perform"]
-[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished" flags=18]
