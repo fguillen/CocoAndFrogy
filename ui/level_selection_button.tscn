@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbindn4lhgg5u"]
+
+[ext_resource type="Texture2D" uid="uid://sy3h7e50hnw5" path="res://ui/button_transparent.png" id="1_dfnac"]
+[ext_resource type="Texture2D" uid="uid://cxhwr2vl5f6ma" path="res://actors/bricks/grasshopper/grasshopper.png" id="2_ymfni"]
+[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="3_ey66j"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="4_f4llc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bbeue"]
+texture = ExtResource("1_dfnac")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.2, 0.203922, 0.203922, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rk15j"]
+texture = ExtResource("1_dfnac")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.929412, 0.403922, 0.054902, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dwit5"]
+resource_local_to_scene = true
+noise_type = 0
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6y485"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 1000
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[node name="LevelSelectionButton" type="Button"]
+custom_minimum_size = Vector2(300, 300)
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 310.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_bbeue")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rk15j")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rk15j")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rk15j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Container" type="Container" parent="MarginContainer"]
+show_behind_parent = true
+clip_contents = true
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="MarginContainer/Container"]
+position = Vector2(38, 70)
+texture = ExtResource("2_ymfni")
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/Container"]
+position = Vector2(134, 198)
+texture = ExtResource("3_ey66j")
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_f4llc")]
+target = NodePath("../../MarginContainer/Container/Sprite2D2")
+auto_start = true
+duration = 0.0
+max_offset = Vector2(5, 5)
+frequency = 15.0
+noise = SubResource("FastNoiseLite_dwit5")
+
+[node name="ShakeEffect2" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_f4llc")]
+target = NodePath("../../MarginContainer/Container/Sprite2D")
+auto_start = true
+duration = 0.0
+max_offset = Vector2(5, 5)
+frequency = 15.0
+noise = SubResource("FastNoiseLite_6y485")
