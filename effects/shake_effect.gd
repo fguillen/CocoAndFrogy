@@ -15,8 +15,9 @@ extends Node
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
-@export_group("Target")
+@export_group("Main")
 @export var target: Node
+@export var auto_start := false
 
 @export_group("Shake")
 @export var duration := 0.5
@@ -49,6 +50,9 @@ func _ready():
 	
 	_actual_duration = duration
 	_actual_frequency = frequency
+	
+	if auto_start:
+		perform()
 
 
 # -- 15 remaining built-in virtual methods
@@ -63,7 +67,9 @@ func perform(new_duration: float = duration, new_frequency: float = frequency, a
 	_actual_frequency = max(_actual_frequency, new_frequency)
 	_amplitude_multiplier = max(_amplitude_multiplier, amplitude_multiplier)
 	
-	_timer.start(_actual_duration)
+	if _actual_duration > 0:
+		_timer.start(_actual_duration)
+		
 	_current_shake_percentage = 1.0
 	
 	
@@ -82,7 +88,8 @@ func _shake(delta):
 	target.offset = offset
 	
 	# decay
-	_current_shake_percentage = remap(_timer.time_left, 0, _actual_duration, 0.0, 1.0)
+	if _actual_duration > 0:
+		_current_shake_percentage = remap(_timer.time_left, 0, _actual_duration, 0.0, 1.0)
 	
 # -- 18 signal listeners
 # -- 19 subclasses

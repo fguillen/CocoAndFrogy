@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://nd6uy7i4uijl"]
+[gd_scene load_steps=11 format=3 uid="uid://nd6uy7i4uijl"]
 
 [ext_resource type="Script" path="res://scenes/menu_scene/menu_scene.gd" id="1_l0q4v"]
-[ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="2_mwpvr"]
-[ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="3_ag4l4"]
+[ext_resource type="PackedScene" uid="uid://itbch783ke16" path="res://ui/menu_background.tscn" id="2_vt1hf"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="4_54xmy"]
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="5_2kj5k"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="7_wu2gu"]
@@ -10,45 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="9_r1woh"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="10_sr33k"]
 
-[sub_resource type="Animation" id="Animation_k5g02"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ski02:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(404, 161)]
-}
-
-[sub_resource type="Animation" id="Animation_dg3y4"]
-resource_name = "idle"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ski02:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1.56917, 1.46409, 1),
-"update": 0,
-"values": [Vector2(404, 161), Vector2(600, 161), Vector2(404, 161)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vul6"]
-_data = {
-"RESET": SubResource("Animation_k5g02"),
-"idle": SubResource("Animation_dg3y4")
-}
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wsjqs"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8onla"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -56,7 +17,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_l8yx2"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mxjb6"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -68,23 +29,7 @@ fractal_lacunarity = 1.0
 rotation = -0.00209449
 script = ExtResource("1_l0q4v")
 
-[node name="Background" type="Node2D" parent="."]
-
-[node name="Ski01" type="Sprite2D" parent="Background"]
-position = Vector2(384, 1323)
-rotation = 3.14159
-scale = Vector2(1, 1.39564)
-texture = ExtResource("2_mwpvr")
-
-[node name="Ski02" type="Sprite2D" parent="Background"]
-position = Vector2(404, 161)
-texture = ExtResource("3_ag4l4")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
-autoplay = "idle"
-libraries = {
-"": SubResource("AnimationLibrary_7vul6")
-}
+[node name="MenuBackground" parent="." instance=ExtResource("2_vt1hf")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -162,13 +107,13 @@ text = "Quit"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_wu2gu")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_wsjqs")
+noise = SubResource("FastNoiseLite_8onla")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_wu2gu")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_l8yx2")
+noise = SubResource("FastNoiseLite_mxjb6")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_h1dsg")]
 stream = ExtResource("9_r1woh")

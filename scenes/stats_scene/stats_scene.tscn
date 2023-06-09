@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://db68hv73lc5v3"]
+[gd_scene load_steps=13 format=3 uid="uid://db68hv73lc5v3"]
 
 [ext_resource type="Script" path="res://scenes/stats_scene/stats_scene.gd" id="1_7rgjh"]
-[ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_f8m8j"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_tuuey"]
-[ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_x25fh"]
+[ext_resource type="PackedScene" uid="uid://itbch783ke16" path="res://ui/menu_background.tscn" id="2_chsjk"]
 [ext_resource type="PackedScene" uid="uid://c6350tcnthofh" path="res://scenes/stats_scene/stats_title.tscn" id="5_00c1i"]
 [ext_resource type="PackedScene" uid="uid://cnqeoqxisixkt" path="res://scenes/stats_scene/stats_number.tscn" id="5_it5o2"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="7_f17px"]
@@ -12,45 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="10_xlk1t"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="11_crb03"]
 
-[sub_resource type="Animation" id="Animation_k5g02"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ski02:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(404, 161)]
-}
-
-[sub_resource type="Animation" id="Animation_dg3y4"]
-resource_name = "idle"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ski02:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1.56917, 1.46409, 1),
-"update": 0,
-"values": [Vector2(404, 161), Vector2(600, 161), Vector2(404, 161)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vul6"]
-_data = {
-"RESET": SubResource("Animation_k5g02"),
-"idle": SubResource("Animation_dg3y4")
-}
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_q52p2"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ap7om"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -58,7 +19,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xu6sm"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2v21s"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -72,23 +33,8 @@ script = ExtResource("1_7rgjh")
 label_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTitle")])
 number_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTimeNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsEarlyBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsLateBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsPerfectBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsBouncesNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsScoreNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTotalScoreNumber")])
 
-[node name="Background" type="Node2D" parent="."]
-
-[node name="Ski01" type="Sprite2D" parent="Background"]
-position = Vector2(384, 1323)
-rotation = 3.14159
-scale = Vector2(1, 1.39564)
-texture = ExtResource("1_f8m8j")
-
-[node name="Ski02" type="Sprite2D" parent="Background"]
-position = Vector2(404, 161)
-texture = ExtResource("2_x25fh")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
-autoplay = "idle"
-libraries = {
-"": SubResource("AnimationLibrary_7vul6")
-}
+[node name="MenuBackground" parent="." instance=ExtResource("2_chsjk")]
+position = Vector2(17.9916, 4.03769)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -237,13 +183,13 @@ layout_mode = 2
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_q52p2")
+noise = SubResource("FastNoiseLite_ap7om")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_xu6sm")
+noise = SubResource("FastNoiseLite_2v21s")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_ms0k7")]
 stream = ExtResource("10_xlk1t")
