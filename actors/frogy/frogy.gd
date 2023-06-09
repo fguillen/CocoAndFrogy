@@ -1,4 +1,5 @@
 # -- 01 @tool
+@icon("res://actors/frogy/frogy.png")
 # -- 02 class_name
 class_name Frogy
 # -- 03 extends

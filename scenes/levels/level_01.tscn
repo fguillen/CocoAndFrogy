@@ -14,38 +14,38 @@ position = Vector2(0, -144)
 script = ExtResource("2_0546d")
 
 [node name="GrasshopperBrick" parent="Bricks" instance=ExtResource("3_61bdn")]
-position = Vector2(571, 470)
+position = Vector2(544, 464)
 
 [node name="FlyBrick" parent="Bricks" instance=ExtResource("4_gmkpb")]
-position = Vector2(241, 676)
+position = Vector2(232, 672)
 
 [node name="FlyBrick2" parent="Bricks" instance=ExtResource("4_gmkpb")]
-position = Vector2(447, 676)
+position = Vector2(440, 672)
 
 [node name="FlyBrick3" parent="Bricks" instance=ExtResource("4_gmkpb")]
-position = Vector2(657, 676)
+position = Vector2(648, 672)
 
 [node name="FlyBrick4" parent="Bricks" instance=ExtResource("4_gmkpb")]
-position = Vector2(867, 676)
-
-[node name="GrasshopperBrick2" parent="Bricks" instance=ExtResource("3_61bdn")]
-position = Vector2(348, 857)
+position = Vector2(856, 672)
 
 [node name="GrasshopperBrick3" parent="Bricks" instance=ExtResource("3_61bdn")]
-position = Vector2(764, 857)
+position = Vector2(752, 872)
+
+[node name="GrasshopperBrick2" parent="Bricks" instance=ExtResource("3_61bdn")]
+position = Vector2(320, 872)
 
 [node name="FlyBrick5" parent="Bricks" instance=ExtResource("4_gmkpb")]
-position = Vector2(867, 1057)
+position = Vector2(856, 1080)
 
 [node name="FlyBrick6" parent="Bricks" instance=ExtResource("4_gmkpb")]
-position = Vector2(677, 1057)
+position = Vector2(648, 1080)
 
 [node name="FlyBrick7" parent="Bricks" instance=ExtResource("4_gmkpb")]
-position = Vector2(448, 1057)
+position = Vector2(440, 1080)
 
 [node name="FlyBrick8" parent="Bricks" instance=ExtResource("4_gmkpb")]
-position = Vector2(248, 1057)
+position = Vector2(232, 1080)
 
 [connection signal="dying" from="Bricks/GrasshopperBrick" to="Bricks/GrasshopperBrick/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
-[connection signal="dying" from="Bricks/GrasshopperBrick2" to="Bricks/GrasshopperBrick2/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
 [connection signal="dying" from="Bricks/GrasshopperBrick3" to="Bricks/GrasshopperBrick3/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]
+[connection signal="dying" from="Bricks/GrasshopperBrick2" to="Bricks/GrasshopperBrick2/Effects/BrickExplosionParticlesEffect" method="perform" flags=18]

@@ -9,17 +9,18 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8gx7"]
 resource_local_to_scene = true
-size = Vector2(383, 145)
+size = Vector2(391.5, 145)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_4fsgr"]
 
 [node name="GrasshopperBrick" instance=ExtResource("1_45dvw")]
 
 [node name="Sprite2D" parent="Visuals" index="0"]
+scale = Vector2(1, 1)
 texture = ExtResource("2_ale0j")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0.5, 30.5)
+position = Vector2(5.25, 18)
 shape = SubResource("RectangleShape2D_b8gx7")
 
 [node name="AnimationTree" parent="." index="3"]

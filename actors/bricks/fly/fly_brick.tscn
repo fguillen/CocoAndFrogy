@@ -5,14 +5,18 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2vnx"]
 resource_local_to_scene = true
-size = Vector2(120, 145)
+size = Vector2(149, 157)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_0nlny"]
 
 [node name="FlyBrick" instance=ExtResource("1_ymx10")]
 health = 1
 
+[node name="Sprite2D" parent="Visuals" index="0"]
+scale = Vector2(1, 1)
+
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-4.5, 1.5)
 shape = SubResource("RectangleShape2D_a2vnx")
 
 [node name="AnimationTree" parent="." index="3"]

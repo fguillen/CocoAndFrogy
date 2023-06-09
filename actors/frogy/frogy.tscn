@@ -122,7 +122,6 @@ movement_manager = NodePath("MovementManager")
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ciw1k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
