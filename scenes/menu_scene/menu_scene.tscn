@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://nd6uy7i4uijl"]
+[gd_scene load_steps=12 format=3 uid="uid://nd6uy7i4uijl"]
 
 [ext_resource type="Script" path="res://scenes/menu_scene/menu_scene.gd" id="1_l0q4v"]
 [ext_resource type="PackedScene" uid="uid://itbch783ke16" path="res://ui/menu_background.tscn" id="2_vt1hf"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="5_2kj5k"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="7_wu2gu"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="8_h1dsg"]
+[ext_resource type="PackedScene" uid="uid://b1bk3qsgbv20l" path="res://effects/device_vibration_effect.tscn" id="9_d2xir"]
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="9_r1woh"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="10_sr33k"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8onla"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_auvj1"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -17,7 +18,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_mxjb6"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a12vq"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -107,13 +108,13 @@ text = "Quit"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_wu2gu")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_8onla")
+noise = SubResource("FastNoiseLite_auvj1")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_wu2gu")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_mxjb6")
+noise = SubResource("FastNoiseLite_a12vq")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_h1dsg")]
 stream = ExtResource("9_r1woh")
@@ -123,5 +124,8 @@ random_pitch = true
 stream = ExtResource("10_sr33k")
 random_pitch = true
 
+[node name="DeviceVibrationEffect" parent="Effects" instance=ExtResource("9_d2xir")]
+
+[connection signal="title_animation_finished" from="." to="Effects/DeviceVibrationEffect" method="perform"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]

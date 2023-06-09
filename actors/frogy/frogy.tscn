@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://8rlt50bjqrnr"]
+[gd_scene load_steps=30 format=3 uid="uid://8rlt50bjqrnr"]
 
 [ext_resource type="Script" path="res://actors/frogy/frogy.gd" id="1_2fmqe"]
 [ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="1_ciw1k"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://d2apij8wcjem7" path="res://assets/sounds/frogy_speed_up.wav" id="20_me2fj"]
 [ext_resource type="AudioStream" uid="uid://hcwb4y1oykqs" path="res://assets/sounds/water_splash.wav" id="21_avugy"]
 [ext_resource type="PackedScene" uid="uid://cm5yp03y3eyox" path="res://actors/components/collision_debugger.tscn" id="21_l6jnr"]
+[ext_resource type="PackedScene" uid="uid://b1bk3qsgbv20l" path="res://effects/device_vibration_effect.tscn" id="22_5876s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
@@ -112,11 +113,10 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.603636, 1)
 colors = PackedColorArray(0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.65098, 0)
 
-[node name="Frogy" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["frogy"]]
+[node name="Frogy" type="CharacterBody2D" groups=["frogy"]]
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_2fmqe")
-movement_manager = NodePath("MovementManager")
 
 [node name="Visuals" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -220,6 +220,8 @@ volume_db = -8.0
 
 [node name="CollisionDebugger" parent="Effects" instance=ExtResource("21_l6jnr")]
 
+[node name="DeviceVibrationEffect" parent="Effects" instance=ExtResource("22_5876s")]
+
 [connection signal="boosted" from="." to="Effects/HitStopEffectBig" method="perform"]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]
 [connection signal="collision_found" from="MovementManager" to="BouncingManager" method="on_collision_found"]
@@ -236,6 +238,7 @@ volume_db = -8.0
 [connection signal="death_finished" from="DeathManager" to="Effects/AppearEffect" method="perform"]
 [connection signal="death_started" from="DeathManager" to="Effects/DeathEffect" method="perform"]
 [connection signal="death_started" from="DeathManager" to="Effects/DeadSoundEffect" method="perform"]
+[connection signal="death_started" from="DeathManager" to="Effects/DeviceVibrationEffect" method="perform"]
 [connection signal="collision_found" from="BricksImpacter" to="Effects/HitStopEffect" method="perform"]
 [connection signal="emit_finished" from="Effects/SpeedSmokeEffect" to="Effects/SpeedUpSoundEffect" method="finish"]
 [connection signal="emit_started" from="Effects/SpeedSmokeEffect" to="Effects/SpeedUpSoundEffect" method="perform"]
