@@ -36,6 +36,7 @@ func _process(_delta):
 		bump_received.emit()
 		
 	if _get_dash():
+		print("XXX: InputManager.dash_received")
 		dash_received.emit()
 		
 	
