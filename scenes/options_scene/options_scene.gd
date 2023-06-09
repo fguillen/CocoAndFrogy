@@ -15,7 +15,7 @@ signal title_animation_finished()
 # -- 10 private variables
 # -- 11 onready variables
 @onready var title_label = %Title
-@onready var play_button = %PlayButton
+@onready var menu_button = %MenuButton
 @onready var buttons = %Buttons
 @onready var music_slider = %MusicSlider
 @onready var sfx_slider = %SFXSlider
@@ -66,7 +66,7 @@ func _animate_buttons():
 	tween.tween_property(buttons, "global_position:y", original_position_y, 0.2).from(get_viewport_rect().size.y + 300)
 	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.2).from(0.0)
 	await tween.finished
-	play_button.grab_focus()
+	menu_button.grab_focus()
 	
 	
 func _update_display():

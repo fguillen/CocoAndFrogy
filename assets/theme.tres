@@ -1,7 +1,35 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://t4fnqfcts68g"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://t4fnqfcts68g"]
 
 [ext_resource type="FontFile" uid="uid://dvjdap1osrug5" path="res://assets/LondrinaSolid-Regular.ttf" id="1_023s6"]
+[ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="1_58v72"]
 [ext_resource type="Texture2D" uid="uid://byr6u2pvwv4f1" path="res://ui/slider_grabber.png" id="1_rnk76"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxopx"]
+texture = ExtResource("1_58v72")
+texture_margin_left = 23.0
+texture_margin_top = 27.0
+texture_margin_right = 25.0
+texture_margin_bottom = 21.0
+region_rect = Rect2(-3, -3, 440, 158)
+modulate_color = Color(0.929412, 0.403922, 0.054902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ihl8"]
+texture = ExtResource("1_58v72")
+texture_margin_left = 23.0
+texture_margin_top = 27.0
+texture_margin_right = 25.0
+texture_margin_bottom = 21.0
+region_rect = Rect2(-3, -3, 440, 158)
+modulate_color = Color(0.2, 0.203922, 0.203922, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4iyje"]
+texture = ExtResource("1_58v72")
+texture_margin_left = 23.0
+texture_margin_top = 27.0
+texture_margin_right = 25.0
+texture_margin_bottom = 21.0
+region_rect = Rect2(-3, -3, 440, 158)
+modulate_color = Color(0.2, 0.203922, 0.203922, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3wrb"]
 content_margin_left = 4.0
@@ -45,6 +73,9 @@ anti_aliasing = false
 [resource]
 default_font = ExtResource("1_023s6")
 Button/font_sizes/font_size = 100
+Button/styles/hover = SubResource("StyleBoxTexture_oxopx")
+Button/styles/normal = SubResource("StyleBoxTexture_3ihl8")
+Button/styles/pressed = SubResource("StyleBoxTexture_4iyje")
 HSlider/icons/grabber = ExtResource("1_rnk76")
 HSlider/icons/grabber_disabled = ExtResource("1_rnk76")
 HSlider/icons/grabber_highlight = ExtResource("1_rnk76")
