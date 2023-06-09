@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://dn5i2ucgtue3j"]
+[gd_scene load_steps=12 format=3 uid="uid://dn5i2ucgtue3j"]
 
 [ext_resource type="Script" path="res://scenes/options_scene/options_scene.gd" id="1_w6cjh"]
-[ext_resource type="PackedScene" uid="uid://itbch783ke16" path="res://ui/menu_background.tscn" id="2_8axqt"]
+[ext_resource type="PackedScene" path="res://ui/menu_background.tscn" id="2_8axqt"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="3_vq6ll"]
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="4_7eiak"]
+[ext_resource type="PackedScene" uid="uid://d07gfha14uvoy" path="res://ui/slider_with_effects.tscn" id="4_np0ix"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="5_kd5b6"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="6_dn6i5"]
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="7_3hc0t"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="8_jamt6"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_myinl"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ylsgn"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -17,7 +18,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_lhad5"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_esenj"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -91,13 +92,23 @@ theme_override_colors/font_color = Color(0.929412, 0.403922, 0.054902, 1)
 theme_override_font_sizes/font_size = 80
 text = "Music"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer"]
+[node name="MusicSlider" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer" instance=ExtResource("4_np0ix")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.01
-value = 0.5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_vq6ll")
+theme_override_colors/font_color = Color(0.929412, 0.403922, 0.054902, 1)
+theme_override_font_sizes/font_size = 80
+text = "Sound Effects"
+
+[node name="SFXSlider" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer2" instance=ExtResource("4_np0ix")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Buttons" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -132,13 +143,13 @@ text = "Quit"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("5_kd5b6")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_myinl")
+noise = SubResource("FastNoiseLite_ylsgn")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("5_kd5b6")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_lhad5")
+noise = SubResource("FastNoiseLite_esenj")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("6_dn6i5")]
 stream = ExtResource("7_3hc0t")
@@ -148,5 +159,6 @@ random_pitch = true
 stream = ExtResource("8_jamt6")
 random_pitch = true
 
+[connection signal="value_changed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer2/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]

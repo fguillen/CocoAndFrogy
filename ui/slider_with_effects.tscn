@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d07gfha14uvoy"]
+
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="1_s23i0"]
+[ext_resource type="AudioStream" uid="uid://c8gr4xbmhdogm" path="res://assets/sounds/slider_step.ogg" id="2_5dpri"]
+
+[node name="MusicSlider" type="HSlider"]
+offset_right = 800.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="SoundEffect" parent="Effects" instance=ExtResource("1_s23i0")]
+stream = ExtResource("2_5dpri")
+debouce_time = 0.1
+
+[connection signal="value_changed" from="." to="Effects/SoundEffect" method="perform" unbinds=1]

@@ -17,6 +17,8 @@ signal title_animation_finished()
 @onready var title_label = %Title
 @onready var play_button = %PlayButton
 @onready var buttons = %Buttons
+@onready var music_slider = %MusicSlider
+@onready var sfx_slider = %SFXSlider
 
 
 
@@ -26,6 +28,7 @@ signal title_animation_finished()
 # -- 14 built-in virtual _ready method
 func _ready():
 	_show.call_deferred()
+	_update_display()
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -64,17 +67,21 @@ func _animate_buttons():
 	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.2).from(0.0)
 	await tween.finished
 	play_button.grab_focus()
+	
+	
+func _update_display():
+	music_slider.value = GlobalOptionsManager.get_volume_music()
+	sfx_slider.value = GlobalOptionsManager.get_volume_sfx()
+	
 		
 # -- 18 signal listeners
-func _on_play_button_pressed():
-	SceneSwitcher.switch_to("levels/level_01")
+func _on_sfx_slider_value_changed(value):
+	GlobalOptionsManager.set_volume_sfx(value)
 
 
-func _on_quit_button_pressed():
-	get_tree().quit()
-	
+func _on_music_slider_value_changed(value):
+	GlobalOptionsManager.set_volume_music(value)
+
 # -- 19 subclasses
-
-
 
 
