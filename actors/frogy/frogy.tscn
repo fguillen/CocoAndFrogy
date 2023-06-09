@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://d2apij8wcjem7" path="res://assets/sounds/frogy_speed_up.wav" id="20_me2fj"]
 [ext_resource type="AudioStream" uid="uid://hcwb4y1oykqs" path="res://assets/sounds/water_splash.wav" id="21_avugy"]
 [ext_resource type="PackedScene" uid="uid://cm5yp03y3eyox" path="res://actors/components/collision_debugger.tscn" id="21_l6jnr"]
-[ext_resource type="PackedScene" uid="uid://b1bk3qsgbv20l" path="res://effects/device_vibration_effect.tscn" id="22_5876s"]
+[ext_resource type="PackedScene" uid="uid://b77wrtegsi335" path="res://effects/device_vibration_effect.tscn" id="22_5876s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3lg5"]
 radius = 57.0
@@ -113,10 +113,11 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.603636, 1)
 colors = PackedColorArray(0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.65098, 0)
 
-[node name="Frogy" type="CharacterBody2D" groups=["frogy"]]
+[node name="Frogy" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["frogy"]]
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_2fmqe")
+movement_manager = NodePath("MovementManager")
 
 [node name="Visuals" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -221,6 +222,7 @@ volume_db = -8.0
 [node name="CollisionDebugger" parent="Effects" instance=ExtResource("21_l6jnr")]
 
 [node name="DeviceVibrationEffect" parent="Effects" instance=ExtResource("22_5876s")]
+duration = 0.4
 
 [connection signal="boosted" from="." to="Effects/HitStopEffectBig" method="perform"]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]

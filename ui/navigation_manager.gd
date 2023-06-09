@@ -37,6 +37,11 @@ var _scenes = {
 # -- 16 public methods
 func go_to(name: String):
 	SceneSwitcher.switch_to(_scenes[name])
+
+
+func quit():
+	get_tree().quit()
+	
 	
 # -- 17 private methods
 # -- 18 signal listeners

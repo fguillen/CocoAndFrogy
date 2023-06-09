@@ -29,7 +29,7 @@ var _is_active := false
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
-func _unhandled_input(event):
+func _input(event):
 	if _is_active:
 		return
 		

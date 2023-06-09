@@ -14,6 +14,7 @@ extends Node
 @export var weak_maginitude := 0.2
 @export var strong_maginitude := 0.1
 @export var duration := 0.15
+@export var times := 1
 
 # -- 09 public variables
 # -- 10 private variables
@@ -26,10 +27,16 @@ extends Node
 # -- 16 public methods
 func perform():
 	print("DeviceVibrationEffect.perform()")
-	Input.start_joy_vibration(device, weak_maginitude, strong_maginitude, duration)
-	Input.vibrate_handheld(duration * 1000)
+	for i in times:
+		Input.start_joy_vibration(device, weak_maginitude, strong_maginitude, duration)
+		Input.vibrate_handheld(duration * 1000)
+		await get_tree().create_timer(duration + 0.2).timeout
+	
 	
 # -- 17 private methods
-# -- 18 signal listeners
+# -- 18 signal listeners	
 # -- 19 innerclasses
+
+
+
 

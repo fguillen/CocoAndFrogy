@@ -66,13 +66,6 @@ func _animate_buttons():
 	play_button.grab_focus()
 		
 # -- 18 signal listeners
-func _on_play_button_pressed():
-	SceneSwitcher.switch_to("levels/level_01")
-
-
-func _on_quit_button_pressed():
-	get_tree().quit()
-	
 # -- 19 subclasses
 
 
