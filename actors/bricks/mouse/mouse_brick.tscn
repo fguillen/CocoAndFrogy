@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtsfpur506jc4"]
+[gd_scene load_steps=21 format=3 uid="uid://dtsfpur506jc4"]
 
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_tu00a"]
 [ext_resource type="Texture2D" uid="uid://by88pvqiwhmfs" path="res://actors/bricks/mouse/mouse_tongue.png" id="2_5wd7p"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhrtawg6meta0" path="res://actors/bricks/mouse/walnut_brick.tscn" id="3_mjtmi"]
 [ext_resource type="Texture2D" uid="uid://d0t1ctlhl16fl" path="res://actors/bricks/mouse/mouse_eyes.png" id="4_51p0y"]
 [ext_resource type="Texture2D" uid="uid://d0mm75ucg44jn" path="res://actors/bricks/mouse/mouse_eyes_hurt.png" id="5_uxkrb"]
+[ext_resource type="AudioStream" uid="uid://dpc1xngu5rovh" path="res://assets/sounds/mouse.wav" id="8_7x33f"]
 
 [sub_resource type="Curve2D" id="Curve2D_ayq2q"]
 _data = {
@@ -330,5 +331,8 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="4"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_esiin")
+
+[node name="ImpactSoundEffect" parent="Effects" index="1"]
+stream = ExtResource("8_7x33f")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
