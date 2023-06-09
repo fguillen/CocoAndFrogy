@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn5i2ucgtue3j"]
+
+[ext_resource type="Script" path="res://scenes/options_scene/options_scene.gd" id="1_w6cjh"]
+[ext_resource type="PackedScene" uid="uid://itbch783ke16" path="res://ui/menu_background.tscn" id="2_8axqt"]
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="3_vq6ll"]
+[ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="4_7eiak"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="5_kd5b6"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="6_dn6i5"]
+[ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="7_3hc0t"]
+[ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="8_jamt6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_myinl"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lhad5"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[node name="OptionsScene" type="Node2D"]
+rotation = -0.00209449
+script = ExtResource("1_w6cjh")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_8axqt")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("3_vq6ll")
+
+[node name="Title" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Title"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_vq6ll")
+theme_override_font_sizes/font_size = 180
+text = "Options"
+horizontal_alignment = 1
+
+[node name="Body" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vq6ll")
+theme_override_colors/font_color = Color(0.2, 0.203922, 0.203922, 1)
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vq6ll")
+theme_override_colors/font_color = Color(0.929412, 0.403922, 0.054902, 1)
+theme_override_font_sizes/font_size = 80
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Buttons" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PlayButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer" instance=ExtResource("4_7eiak")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="QuitButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer" instance=ExtResource("4_7eiak")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Quit"
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("5_kd5b6")]
+target = NodePath("../../CanvasLayer")
+frequency = 300.0
+noise = SubResource("FastNoiseLite_myinl")
+
+[node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("5_kd5b6")]
+target = NodePath("../../CanvasLayer")
+duration = 1.0
+frequency = 400.0
+noise = SubResource("FastNoiseLite_lhad5")
+
+[node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("6_dn6i5")]
+stream = ExtResource("7_3hc0t")
+random_pitch = true
+
+[node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("6_dn6i5")]
+stream = ExtResource("8_jamt6")
+random_pitch = true
+
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]
