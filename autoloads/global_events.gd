@@ -91,6 +91,8 @@ func emit_brick_impacted(brick: Brick):
 	brick_impacted.emit(brick)
 	
 	
+	
+	
 
 # -- 17 private methods
 # -- 18 signal listeners

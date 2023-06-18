@@ -27,18 +27,20 @@ var _is_locked := true
 # -- 14 built-in virtual _ready method
 func _ready():
 	pressed.connect(_on_pressed)
-	_check_if_unlocked()
+	_check_if_unlocked.call_deferred()
 	
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 # -- 17 private methods
 func _check_if_unlocked():
+	print("XXX: _check_if_unlocked(): ", Global.cleaned_levels, ", level_num: ", level_num)
 	if Global.cleaned_levels.find(level_num) != -1:
 		_unlock()
 	
 	
 func _unlock():
+	print("XXX: _unlock")
 	_is_locked = false
 	lock_sprite.visible = false
 	

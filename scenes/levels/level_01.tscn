@@ -8,6 +8,7 @@
 [node name="Level_01" type="Node2D"]
 
 [node name="LevelBase" parent="." instance=ExtResource("1_umsf4")]
+level_num = 1
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)

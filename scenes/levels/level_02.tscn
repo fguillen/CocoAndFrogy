@@ -10,6 +10,7 @@
 script = ExtResource("1_dl2ls")
 
 [node name="LevelBase" parent="." instance=ExtResource("1_j3245")]
+level_num = 2
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)

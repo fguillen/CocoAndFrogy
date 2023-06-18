@@ -27,14 +27,14 @@ texture_margin_right = 24.0
 texture_margin_bottom = 22.0
 modulate_color = Color(0.929412, 0.403922, 0.054902, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_s7u42"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_exqob"]
 resource_local_to_scene = true
 noise_type = 0
 frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_d8y4t"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xby8x"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 1000
@@ -42,19 +42,19 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_se8hc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_83anb"]
 resource_local_to_scene = true
 shader = ExtResource("6_jfa7u")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_85ecs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vd0gl"]
 resource_local_to_scene = true
 shader = ExtResource("6_jfa7u")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u57si"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vav2s"]
 resource_local_to_scene = true
 shader = ExtResource("6_jfa7u")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
@@ -112,7 +112,7 @@ auto_start = true
 duration = 0.0
 max_offset = Vector2(5, 5)
 frequency = 15.0
-noise = SubResource("FastNoiseLite_s7u42")
+noise = SubResource("FastNoiseLite_exqob")
 
 [node name="ShakeEffect2" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_f4llc")]
 target = NodePath("../../MarginContainer/Control/Sprite2D")
@@ -120,19 +120,19 @@ auto_start = true
 duration = 0.0
 max_offset = Vector2(5, 5)
 frequency = 15.0
-noise = SubResource("FastNoiseLite_d8y4t")
+noise = SubResource("FastNoiseLite_xby8x")
 
 [node name="BlinkEffect" parent="Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_m8jej")]
 canvas_item = NodePath("../..")
-material = SubResource("ShaderMaterial_se8hc")
+material = SubResource("ShaderMaterial_83anb")
 
 [node name="BlinkEffect2" parent="Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_m8jej")]
 canvas_item = NodePath("../../MarginContainer/Control/Sprite2D2")
-material = SubResource("ShaderMaterial_85ecs")
+material = SubResource("ShaderMaterial_vd0gl")
 
 [node name="BlinkEffect3" parent="Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_m8jej")]
 canvas_item = NodePath("../../MarginContainer/Control/Sprite2D")
-material = SubResource("ShaderMaterial_u57si")
+material = SubResource("ShaderMaterial_vav2s")
 
 [node name="SoundEffect" parent="Effects" instance=ExtResource("7_fk4yr")]
 stream = ExtResource("8_4r8ve")

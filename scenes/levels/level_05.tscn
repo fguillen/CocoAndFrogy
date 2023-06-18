@@ -7,6 +7,7 @@
 [node name="Level_05" type="Node2D"]
 
 [node name="LevelBase" parent="." instance=ExtResource("1_81ord")]
+level_num = 5
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)

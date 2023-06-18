@@ -16,17 +16,16 @@ signal frogy_ready_finished()
 var coco: Coco
 var frogy: Frogy
 var cleaned_levels: Array[int]
+var lifes := 3
 
 # -- 10 private variables
-var _lifes := 3
-
-
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
+	add_to_group("persist")
 	GlobalEvents.level_clear.connect(_on_level_cleared)
 	
 	
@@ -42,12 +41,22 @@ func frogy_ready(_frogy: Frogy):
 	frogy_ready_finished.emit()
 	
 	
+func serialize() -> Dictionary:
+	return {
+		"cleaned_levels": cleaned_levels
+	}
+	
+	
+func deserialize(data: Dictionary):
+	cleaned_levels.assign(data.cleaned_levels)
+	
 	
 # -- 17 private methods
 
 # -- 18 signal listeners
 func _on_level_cleared(level_num: int):
 	cleaned_levels.append(level_num)
+	DataPersister.save_data()
 	
 # -- 19 subclasses
 
