@@ -21,14 +21,14 @@ texture_margin_right = 24.0
 texture_margin_bottom = 22.0
 modulate_color = Color(0.929412, 0.403922, 0.054902, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_dwit5"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jn6fk"]
 resource_local_to_scene = true
 noise_type = 0
 frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6y485"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qqxh4"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 1000
@@ -81,7 +81,7 @@ auto_start = true
 duration = 0.0
 max_offset = Vector2(5, 5)
 frequency = 15.0
-noise = SubResource("FastNoiseLite_dwit5")
+noise = SubResource("FastNoiseLite_jn6fk")
 
 [node name="ShakeEffect2" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_f4llc")]
 target = NodePath("../../MarginContainer/Container/Sprite2D")
@@ -89,4 +89,4 @@ auto_start = true
 duration = 0.0
 max_offset = Vector2(5, 5)
 frequency = 15.0
-noise = SubResource("FastNoiseLite_6y485")
+noise = SubResource("FastNoiseLite_qqxh4")

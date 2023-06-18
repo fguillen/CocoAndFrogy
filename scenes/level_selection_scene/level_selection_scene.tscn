@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="7_rbam7"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_tvlqt"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4f1kj"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_16ygl"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -18,7 +18,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_n7o4l"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vmfe3"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -120,13 +120,13 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_4f1kj")
+noise = SubResource("FastNoiseLite_16ygl")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_n7o4l")
+noise = SubResource("FastNoiseLite_vmfe3")
 
 [node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("7_rbam7")]
 stream = ExtResource("9_tvlqt")
