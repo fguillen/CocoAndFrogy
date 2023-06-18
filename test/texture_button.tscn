@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpsov3ie1na66"]
+[gd_scene load_steps=14 format=3 uid="uid://dpsov3ie1na66"]
 
 [ext_resource type="Texture2D" uid="uid://sy3h7e50hnw5" path="res://ui/button_transparent.png" id="1_2gra2"]
 [ext_resource type="Texture2D" uid="uid://cxhwr2vl5f6ma" path="res://actors/bricks/grasshopper/grasshopper.png" id="2_dcjid"]
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="3_g67gd"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="4_ml7dm"]
+[ext_resource type="PackedScene" uid="uid://dinlfgaorw876" path="res://effects/blink/blink_effect.tscn" id="5_fuj06"]
+[ext_resource type="Shader" path="res://effects/blink/blink_effect.gdshader" id="6_gut4m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_po520"]
 texture = ExtResource("1_2gra2")
@@ -21,20 +23,38 @@ texture_margin_right = 24.0
 texture_margin_bottom = 22.0
 modulate_color = Color(0.929412, 0.403922, 0.054902, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7jj76"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g4228"]
 resource_local_to_scene = true
 noise_type = 0
 frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_n6un7"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aka2i"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 1000
 frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_if6tr"]
+resource_local_to_scene = true
+shader = ExtResource("6_gut4m")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca1me"]
+resource_local_to_scene = true
+shader = ExtResource("6_gut4m")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc602"]
+resource_local_to_scene = true
+shader = ExtResource("6_gut4m")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
 
 [node name="Node" type="Node"]
 
@@ -74,18 +94,34 @@ texture = ExtResource("3_g67gd")
 
 [node name="Effects" type="Node2D" parent="Button"]
 
-[node name="ShakeEffect" parent="Button/Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_ml7dm")]
+[node name="WavyShakeEffect" parent="Button/Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_ml7dm")]
 target = NodePath("../../MarginContainer/Container/Sprite2D2")
 auto_start = true
 duration = 0.0
 max_offset = Vector2(5, 5)
 frequency = 15.0
-noise = SubResource("FastNoiseLite_7jj76")
+noise = SubResource("FastNoiseLite_g4228")
 
-[node name="ShakeEffect2" parent="Button/Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_ml7dm")]
+[node name="WavyShakeEffect2" parent="Button/Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_ml7dm")]
 target = NodePath("../../MarginContainer/Container/Sprite2D")
 auto_start = true
 duration = 0.0
 max_offset = Vector2(5, 5)
 frequency = 15.0
-noise = SubResource("FastNoiseLite_n6un7")
+noise = SubResource("FastNoiseLite_aka2i")
+
+[node name="BlinkEffect" parent="Button/Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_fuj06")]
+canvas_item = NodePath("../..")
+material = SubResource("ShaderMaterial_if6tr")
+
+[node name="BlinkEffect2" parent="Button/Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_fuj06")]
+canvas_item = NodePath("../../MarginContainer/Container/Sprite2D2")
+material = SubResource("ShaderMaterial_ca1me")
+
+[node name="BlinkEffect3" parent="Button/Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_fuj06")]
+canvas_item = NodePath("../../MarginContainer/Container/Sprite2D")
+material = SubResource("ShaderMaterial_vc602")
+
+[connection signal="button_down" from="Button" to="Button/Effects/BlinkEffect" method="perform"]
+[connection signal="button_down" from="Button" to="Button/Effects/BlinkEffect2" method="perform"]
+[connection signal="button_down" from="Button" to="Button/Effects/BlinkEffect3" method="perform"]

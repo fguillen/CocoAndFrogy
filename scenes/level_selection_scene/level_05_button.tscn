@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2kf3jgdg0kod"]
+
+[ext_resource type="PackedScene" uid="uid://cbindn4lhgg5u" path="res://ui/level_selection_button.tscn" id="1_0ilcd"]
+[ext_resource type="Texture2D" uid="uid://bwti5v125pmpi" path="res://actors/bricks/mouse/mouse_body.png" id="2_ooj8r"]
+[ext_resource type="Texture2D" uid="uid://d0t1ctlhl16fl" path="res://actors/bricks/mouse/mouse_eyes.png" id="3_kc2hd"]
+[ext_resource type="Shader" path="res://effects/blink/blink_effect.gdshader" id="4_mhga5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fk4en"]
+resource_local_to_scene = true
+noise_type = 0
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_54mw7"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 1000
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41nqg"]
+resource_local_to_scene = true
+shader = ExtResource("4_mhga5")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atjyr"]
+resource_local_to_scene = true
+shader = ExtResource("4_mhga5")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bih4x"]
+resource_local_to_scene = true
+shader = ExtResource("4_mhga5")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[node name="Level05Button" instance=ExtResource("1_0ilcd")]
+
+[node name="Sprite2D2" parent="MarginContainer/Container" index="0"]
+position = Vector2(150, 99.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ooj8r")
+
+[node name="Sprite2D" parent="MarginContainer/Container" index="1"]
+position = Vector2(142, 107.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_kc2hd")
+
+[node name="ShakeEffect" parent="Effects" index="0"]
+noise = SubResource("FastNoiseLite_fk4en")
+
+[node name="ShakeEffect2" parent="Effects" index="1"]
+noise = SubResource("FastNoiseLite_54mw7")
+
+[node name="BlinkEffect" parent="Effects" index="2"]
+material = SubResource("ShaderMaterial_41nqg")
+
+[node name="BlinkEffect2" parent="Effects" index="3"]
+material = SubResource("ShaderMaterial_atjyr")
+
+[node name="BlinkEffect3" parent="Effects" index="4"]
+material = SubResource("ShaderMaterial_bih4x")

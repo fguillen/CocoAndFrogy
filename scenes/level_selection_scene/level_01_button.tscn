@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7xoj20b8udje"]
+
+[ext_resource type="PackedScene" uid="uid://cbindn4lhgg5u" path="res://ui/level_selection_button.tscn" id="1_kvcqr"]
+[ext_resource type="Shader" path="res://effects/blink/blink_effect.gdshader" id="2_hh75u"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fk4en"]
+resource_local_to_scene = true
+noise_type = 0
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_54mw7"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 1000
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41nqg"]
+resource_local_to_scene = true
+shader = ExtResource("2_hh75u")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atjyr"]
+resource_local_to_scene = true
+shader = ExtResource("2_hh75u")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bih4x"]
+resource_local_to_scene = true
+shader = ExtResource("2_hh75u")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[node name="Level01Button" instance=ExtResource("1_kvcqr")]
+
+[node name="ShakeEffect" parent="Effects" index="0"]
+noise = SubResource("FastNoiseLite_fk4en")
+
+[node name="ShakeEffect2" parent="Effects" index="1"]
+noise = SubResource("FastNoiseLite_54mw7")
+
+[node name="BlinkEffect" parent="Effects" index="2"]
+material = SubResource("ShaderMaterial_41nqg")
+
+[node name="BlinkEffect2" parent="Effects" index="3"]
+material = SubResource("ShaderMaterial_atjyr")
+
+[node name="BlinkEffect3" parent="Effects" index="4"]
+material = SubResource("ShaderMaterial_bih4x")
