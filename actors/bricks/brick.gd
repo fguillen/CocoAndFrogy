@@ -67,8 +67,8 @@ func _die():
 	animation_state_machine.travel("die")
 
 
-func _global_signal_emit_brick_queued():
-	GlobalEvents.emit_brick_queued(self)
+func _global_signal_emit_brick_freed():
+	GlobalEvents.emit_brick_freed(self)
 	
 
 func _global_signal_emit_brick_ready():
@@ -82,7 +82,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		
 	elif anim_name == "die":
 		died.emit()
-		_global_signal_emit_brick_queued()
+		_global_signal_emit_brick_freed()
 		queue_free()
 		
 		

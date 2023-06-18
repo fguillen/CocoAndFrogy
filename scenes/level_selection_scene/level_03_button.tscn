@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpbvkd3416mh2"]
+[gd_scene load_steps=8 format=3 uid="uid://dpbvkd3416mh2"]
 
 [ext_resource type="PackedScene" uid="uid://cbindn4lhgg5u" path="res://ui/level_selection_button.tscn" id="1_gpqf4"]
-[ext_resource type="Texture2D" uid="uid://chxve60axhvj0" path="res://actors/bricks/snail/snail.png" id="2_bl1tn"]
 [ext_resource type="Shader" path="res://effects/blink/blink_effect.gdshader" id="4_2yaae"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fk4en"]
@@ -38,20 +37,7 @@ shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
 [node name="Level03Button" instance=ExtResource("1_gpqf4")]
-
-[node name="Sprite2D2" parent="MarginContainer/Container" index="0"]
-position = Vector2(86, 94)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("2_bl1tn")
-hframes = 8
-frame = 5
-
-[node name="Sprite2D" parent="MarginContainer/Container" index="1"]
-position = Vector2(190, 182)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("2_bl1tn")
-hframes = 8
-frame = 6
+level_num = 3
 
 [node name="ShakeEffect" parent="Effects" index="0"]
 noise = SubResource("FastNoiseLite_fk4en")

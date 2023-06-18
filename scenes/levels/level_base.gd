@@ -1,7 +1,8 @@
 # -- 01 @tool
 # -- 02 class_name
+class_name Level
 # -- 03 extends
-extends Node
+extends Node2D
 
 # -- 04 # docstring
 #
@@ -13,12 +14,12 @@ signal game_over()
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
+@export var level_num: int
+
 # -- 09 public variables
 var bricks: Array[Brick]
 
 # -- 10 private variables
-var _lifes := 3
-
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
@@ -26,10 +27,10 @@ var _lifes := 3
 # -- 14 built-in virtual _ready method
 func _ready():
 	GlobalEvents.brick_ready.connect(_add_brick)
-	GlobalEvents.brick_queued.connect(_remove_brick)
+	GlobalEvents.brick_freed.connect(_remove_brick)
 	GlobalEvents.frogy_died.connect(_remove_life)
 	
-	GlobalEvents.emit_level_started()
+	GlobalEvents.emit_level_started(level_num)
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -43,21 +44,20 @@ func _remove_brick(brick: Brick):
 	bricks.erase(brick)
 	
 	if bricks.is_empty():
-		GlobalEvents.emit_level_clear()
+		GlobalEvents.emit_level_clear(level_num)
 		await get_tree().create_timer(0.5).timeout
 		level_cleared.emit()
 		SceneSwitcher.switch_to("stats_scene/stats_scene")
 		
 		
 func _remove_life():
-	_lifes -= 1
+	Global.lifes -= 1
 	
-	if _lifes <= 0:
+	if Global.lifes <= 0:
 		GlobalEvents.emit_game_over()
 		await get_tree().create_timer(0.5).timeout
 		game_over.emit()
 		SceneSwitcher.switch_to("game_over_scene/game_over_scene")
-		
 		
 
 # -- 18 signal listeners

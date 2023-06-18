@@ -10,9 +10,9 @@ signal impact_with_coco_occurred()
 signal impact_with_brick_occurred()
 signal frogy_died()
 signal brick_ready(brick: Brick)
-signal brick_queued(brick: Brick)
-signal level_started()
-signal level_clear()
+signal brick_freed(brick: Brick)
+signal level_started(level_num: int)
+signal level_clear(level_num: int)
 signal bump_early_performed()
 signal bump_late_performed()
 signal bump_perfect_performed()
@@ -46,21 +46,21 @@ func emit_impact_with_brick_occurred():
 func emit_frogy_died():
 	frogy_died.emit()
 	
-	
+
 func emit_brick_ready(brick: Brick):
 	brick_ready.emit(brick)
 
 
-func emit_brick_queued(brick: Brick):
-	brick_queued.emit(brick)
+func emit_brick_freed(brick: Brick):
+	brick_freed.emit(brick)
 
 
-func emit_level_started():
-	level_started.emit()
+func emit_level_started(level_num: int):
+	level_started.emit(level_num)
 		
 	
-func emit_level_clear():
-	level_clear.emit()
+func emit_level_clear(level_num: int):
+	level_clear.emit(level_num)
 	
 	
 func emit_bump_early_performed():

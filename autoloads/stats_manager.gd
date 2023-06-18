@@ -28,13 +28,13 @@ var _started_time := 0.0
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
-	GlobalEvents.brick_queued.connect(_increase_bricks_destroyed)
+	GlobalEvents.brick_freed.connect(_increase_bricks_destroyed)
 	GlobalEvents.bump_early_performed.connect(_increase_bumps_early)
 	GlobalEvents.bump_late_performed.connect(_increase_bumps_late)
 	GlobalEvents.bump_perfect_performed.connect(_increase_bumps_perfect)
 	GlobalEvents.bounce_performed.connect(_increase_bounces)
-	GlobalEvents.level_started.connect(_reset)
-	GlobalEvents.level_clear.connect(_calculate_stats)
+	GlobalEvents.level_started.connect(_reset.unbind(1))
+	GlobalEvents.level_clear.connect(_calculate_stats.unbind(1))
 	
 	
 # -- 15 remaining built-in virtual methods

@@ -23,7 +23,7 @@ extends Brick
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 # -- 17 private methods
-func _global_signal_emit_brick_queued():
+func _global_signal_emit_brick_freed():
 	pass
 
 func _global_signal_emit_brick_ready():
