@@ -1,0 +1,51 @@
+# -- 01 @tool
+# -- 02 class_name
+# -- 03 extends
+extends Node
+
+# -- 04 # docstring
+#
+# -- 05 signals
+# -- 06 enums
+# -- 07 constants
+# -- 08 exported variables
+@export var target: Node
+@export var target_scale := Vector2(1.5, 1.5)
+@export var time := 0.2
+@export var curve: Curve
+
+
+# -- 09 public variables
+# -- 10 private variables
+var _previous_scale: Vector2
+var _is_playing := false
+
+# -- 11 onready variables
+#
+# -- 12 optional built-in virtual _init method
+# -- 13 optional built-in virtual _enter_tree() method
+# -- 14 built-in virtual _ready method
+# -- 15 remaining built-in virtual methods
+# -- 16 public methods
+func perform():
+	if _is_playing:
+		return
+		
+	_is_playing = true
+	_previous_scale = target.scale
+	
+	var tween = get_tree().create_tween()
+	tween.tween_method(_interpolation, 0.0, 1.0, time)
+	tween.tween_property(target, "scale", target_scale, time)
+	await tween.finished
+	_is_playing = false
+	
+	
+# -- 17 private methods
+func _interpolation(t):
+	var scale_result = lerp(_previous_scale, target_scale, curve.sample_baked(t))
+	target.scale = scale_result
+	
+# -- 18 signal listeners
+# -- 19 innerclasses
+
