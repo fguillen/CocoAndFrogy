@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b2kf3jgdg0kod" path="res://scenes/level_selection_scene/level_05_button.tscn" id="9_m7wvj"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_tvlqt"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_sqr5t"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jcq4p"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -22,7 +22,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jj7ts"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ex5ei"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -87,16 +87,19 @@ theme_override_constants/v_separation = 50
 columns = 2
 
 [node name="Level01Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer" instance=ExtResource("5_snu67")]
+process_mode = 0
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="Level02Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer" instance=ExtResource("6_r21xo")]
+process_mode = 0
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="Level03Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer" instance=ExtResource("7_8vdxr")]
+process_mode = 0
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
@@ -105,6 +108,7 @@ size_flags_vertical = 1
 layout_mode = 2
 
 [node name="Level05Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer" instance=ExtResource("9_m7wvj")]
+process_mode = 0
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
@@ -132,19 +136,20 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_sqr5t")
+noise = SubResource("FastNoiseLite_jcq4p")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_jj7ts")
+noise = SubResource("FastNoiseLite_ex5ei")
 
 [node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("7_rbam7")]
 stream = ExtResource("9_tvlqt")
 random_pitch = true
 
 [connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
+[connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button" to="NavigationManager" method="go_to" binds= ["level_01"]]
 [connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level02Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level02Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
 [connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level03Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level03Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
 [connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level05Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level05Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]

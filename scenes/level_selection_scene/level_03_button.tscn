@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpbvkd3416mh2"]
+[gd_scene load_steps=12 format=3 uid="uid://dpbvkd3416mh2"]
 
 [ext_resource type="PackedScene" uid="uid://cbindn4lhgg5u" path="res://ui/level_selection_button.tscn" id="1_gpqf4"]
+[ext_resource type="Texture2D" uid="uid://chxve60axhvj0" path="res://actors/bricks/snail/snail.png" id="2_5h44c"]
 [ext_resource type="Shader" path="res://effects/blink/blink_effect.gdshader" id="4_2yaae"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fk4en"]
@@ -36,8 +37,40 @@ shader = ExtResource("4_2yaae")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
+[sub_resource type="Curve" id="Curve_vlylf"]
+resource_local_to_scene = true
+max_value = 1.2
+_data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_qe08b"]
+resource_local_to_scene = true
+max_value = 1.2
+_data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_wwj4k"]
+resource_local_to_scene = true
+max_value = 1.2
+_data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
+point_count = 5
+
 [node name="Level03Button" instance=ExtResource("1_gpqf4")]
 level_num = 3
+
+[node name="Sprite2D2" parent="MarginContainer/Control" index="0"]
+position = Vector2(72, 72)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_5h44c")
+hframes = 8
+frame = 2
+
+[node name="Sprite2D" parent="MarginContainer/Control" index="1"]
+position = Vector2(160, 184)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_5h44c")
+hframes = 8
+frame = 6
 
 [node name="ShakeEffect" parent="Effects" index="0"]
 noise = SubResource("FastNoiseLite_fk4en")
@@ -53,3 +86,12 @@ material = SubResource("ShaderMaterial_atjyr")
 
 [node name="BlinkEffect3" parent="Effects" index="4"]
 material = SubResource("ShaderMaterial_bih4x")
+
+[node name="ScaleElasticEffectFocused" parent="Effects" index="7"]
+curve = SubResource("Curve_vlylf")
+
+[node name="ScaleElasticEffectReset" parent="Effects" index="8"]
+curve = SubResource("Curve_qe08b")
+
+[node name="ScaleElasticEffectMouseDown" parent="Effects" index="9"]
+curve = SubResource("Curve_wwj4k")

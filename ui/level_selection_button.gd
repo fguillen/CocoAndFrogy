@@ -9,6 +9,7 @@ extends BaseButton
 # -- 05 signals
 signal clicked()
 signal clicked_when_locked()
+signal clicked_with_pause()
 
 # -- 06 enums
 # -- 07 constants
@@ -34,6 +35,10 @@ func _ready():
 	
 	
 # -- 15 remaining built-in virtual methods
+func _process(delta):
+	print("XXX")
+	
+	
 # -- 16 public methods
 # -- 17 private methods
 func _check_if_unlocked():
@@ -54,6 +59,8 @@ func _on_pressed():
 		clicked_when_locked.emit()
 	else:
 		clicked.emit()
+		await get_tree().create_timer(0.4).timeout
+		clicked_with_pause.emit()
 	
 	
 	
