@@ -17,6 +17,8 @@ extends Node
 # 09. public variables
 # 10. private variables
 var _tween: Tween
+var _previous_material: Material
+
 # 11. onready variables
 #
 # 12. optional built-in virtual _init method
@@ -27,17 +29,19 @@ var _tween: Tween
 func perform():
 	if _tween != null and _tween.is_valid():
 		_tween.kill()
+		_recover_material()
 	
-	var original_material = canvas_item.material
+	_previous_material = canvas_item.material
 	canvas_item.material = material
 	(canvas_item.material as ShaderMaterial).set_shader_parameter("percent", 1.0)
 	_tween = create_tween()
 	_tween.tween_property(canvas_item.material, "shader_parameter/percent", 0.0, time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-	_tween.tween_callback(_recover_material.bind(original_material))
+	await _tween.finished
+	_recover_material()
 
 	
 # 17. private methods
-func _recover_material(original_material: Material):
-	canvas_item.material = original_material
+func _recover_material():
+	canvas_item.material = _previous_material
 # 18. signal listeners
 # 19. subclasses

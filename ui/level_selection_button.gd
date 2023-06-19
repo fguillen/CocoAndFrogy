@@ -7,6 +7,9 @@ extends BaseButton
 # -- 04 # docstring
 #
 # -- 05 signals
+signal clicked()
+signal clicked_when_locked()
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -47,7 +50,10 @@ func _unlock():
 	
 # -- 18 signal listeners
 func _on_pressed():
-	print("_on_pressed()")
+	if _is_locked:
+		clicked_when_locked.emit()
+	else:
+		clicked.emit()
 	
 	
 	

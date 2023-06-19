@@ -6,6 +6,8 @@ extends Node
 # -- 04 # docstring
 #
 # -- 05 signals
+signal finished()
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -13,6 +15,7 @@ extends Node
 @export var target_scale := Vector2(1.5, 1.5)
 @export var time := 0.2
 @export var curve: Curve
+@export var revert := false
 
 
 # -- 09 public variables
@@ -36,15 +39,16 @@ func perform():
 	
 	var tween = get_tree().create_tween()
 	tween.tween_method(_interpolation, 0.0, 1.0, time)
-	tween.tween_property(target, "scale", target_scale, time)
 	await tween.finished
 	_is_playing = false
+	finished.emit()
 	
 	
 # -- 17 private methods
 func _interpolation(t):
 	var scale_result = lerp(_previous_scale, target_scale, curve.sample_baked(t))
 	target.scale = scale_result
+	
 	
 # -- 18 signal listeners
 # -- 19 innerclasses

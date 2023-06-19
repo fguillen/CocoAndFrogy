@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b2kf3jgdg0kod" path="res://scenes/level_selection_scene/level_05_button.tscn" id="9_m7wvj"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_tvlqt"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_e3ptb"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sqr5t"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -22,7 +22,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_nrtkg"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jj7ts"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -132,16 +132,20 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_e3ptb")
+noise = SubResource("FastNoiseLite_sqr5t")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_nrtkg")
+noise = SubResource("FastNoiseLite_jj7ts")
 
 [node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("7_rbam7")]
 stream = ExtResource("9_tvlqt")
 random_pitch = true
 
+[connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
+[connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level02Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level02Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
+[connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level03Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level03Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
+[connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level05Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level05Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]
