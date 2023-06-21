@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce0jl3uwwb0h"]
+
+[ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_y0py6"]
+[ext_resource type="Script" path="res://actors/bricks/stone/stone_brick.gd" id="2_keiym"]
+[ext_resource type="Texture2D" uid="uid://dvwektlrudmh5" path="res://actors/bricks/stone/stone.png" id="3_jomus"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="3_yx1fx"]
+[ext_resource type="AudioStream" uid="uid://b0dohby7remrx" path="res://assets/sounds/snail_shield.wav" id="4_3d2re"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ql2i"]
+resource_local_to_scene = true
+size = Vector2(161, 135)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_4rao0"]
+
+[node name="StoneBrick" instance=ExtResource("1_y0py6")]
+script = ExtResource("2_keiym")
+health = 3
+score = 10
+
+[node name="Sprite2D" parent="Visuals" index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("3_jomus")
+hframes = 3
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-1.5, -1.5)
+shape = SubResource("RectangleShape2D_4ql2i")
+
+[node name="AnimationTree" parent="." index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_4rao0")
+
+[node name="ShileldSoundEffect" parent="Effects" index="4" instance=ExtResource("3_yx1fx")]
+stream = ExtResource("4_3d2re")
+random_pitch = true
+
+[connection signal="not_enough_speed_impacted" from="." to="Effects/ShileldSoundEffect" method="perform"]
