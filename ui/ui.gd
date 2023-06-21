@@ -25,6 +25,7 @@ extends CanvasLayer
 func _ready():
 	GlobalEvents.frogy_died.connect(_remove_life)
 	GlobalEvents.score_changed.connect(_on_score_changed)
+	_ini_lifes()
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -38,7 +39,12 @@ func _remove_life():
 		return
 		
 	ui_lifes_full.back().set_empty()
-	
+
+
+func _ini_lifes():
+	for i in 3 - Global.lifes:
+		_remove_life()
+		
 	
 # -- 18 signal listeners
 func _on_score_changed(_previous: int, actual: int):

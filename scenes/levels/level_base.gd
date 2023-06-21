@@ -52,7 +52,7 @@ func _remove_brick(brick: Brick):
 func _remove_life():
 	Global.lifes -= 1
 	
-	if Global.lifes <= 0:
+	if Global.lifes <= -1:
 		GlobalEvents.emit_game_over()
 		await get_tree().create_timer(0.5).timeout
 		game_over.emit()
