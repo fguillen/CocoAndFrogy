@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cbindn4lhgg5u"]
+[gd_scene load_steps=26 format=3 uid="uid://cbindn4lhgg5u"]
 
 [ext_resource type="Texture2D" uid="uid://sy3h7e50hnw5" path="res://ui/button_transparent.png" id="1_dfnac"]
 [ext_resource type="Script" path="res://ui/level_selection_button.gd" id="2_bn371"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://7x1s480d4qp2" path="res://assets/sounds/level_button.wav" id="8_4r8ve"]
 [ext_resource type="AudioStream" uid="uid://2lfq2k6eyijq" path="res://assets/sounds/level_button_locked.wav" id="11_eqv6n"]
 [ext_resource type="PackedScene" uid="uid://bc5o4k20rp7ac" path="res://effects/scale_elastic/scale_elastic_effect.tscn" id="11_wupsx"]
+[ext_resource type="AudioStream" uid="uid://s2jk7oa17ktx" path="res://assets/sounds/button_appears.wav" id="12_e40jn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bbeue"]
 texture = ExtResource("1_dfnac")
@@ -29,14 +30,14 @@ texture_margin_right = 24.0
 texture_margin_bottom = 22.0
 modulate_color = Color(0.929412, 0.403922, 0.054902, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8knl7"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_awj43"]
 resource_local_to_scene = true
 noise_type = 0
 frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ogefw"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_62qkt"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 1000
@@ -44,49 +45,49 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_25vr7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfohy"]
 resource_local_to_scene = true
 shader = ExtResource("6_jfa7u")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eolvk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_orxfq"]
 resource_local_to_scene = true
 shader = ExtResource("6_jfa7u")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lt6np"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jv377"]
 resource_local_to_scene = true
 shader = ExtResource("6_jfa7u")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jb88w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1cft"]
 resource_local_to_scene = true
 shader = ExtResource("6_jfa7u")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/percent = 0.0
 
-[sub_resource type="Curve" id="Curve_jnqm7"]
+[sub_resource type="Curve" id="Curve_1j68n"]
 resource_local_to_scene = true
 max_value = 1.2
 _data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="Curve" id="Curve_pb1r0"]
+[sub_resource type="Curve" id="Curve_mig35"]
 resource_local_to_scene = true
 max_value = 1.2
 _data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="Curve" id="Curve_fenyj"]
+[sub_resource type="Curve" id="Curve_thues"]
 resource_local_to_scene = true
 max_value = 1.2
 _data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_btts7"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qc2q2"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -94,7 +95,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[node name="LevelSelectionButton" type="Button"]
+[node name="LevelSelectionButton" type="Button" groups=["level_selection_buttons"]]
 process_mode = 3
 custom_minimum_size = Vector2(300, 300)
 offset_right = 300.0
@@ -151,7 +152,7 @@ auto_start = true
 duration = 0.0
 max_offset = Vector2(5, 5)
 frequency = 15.0
-noise = SubResource("FastNoiseLite_8knl7")
+noise = SubResource("FastNoiseLite_awj43")
 
 [node name="ShakeEffect2" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_f4llc")]
 target = NodePath("../../MarginContainer/Control/CharacterSprite02")
@@ -159,23 +160,23 @@ auto_start = true
 duration = 0.0
 max_offset = Vector2(5, 5)
 frequency = 15.0
-noise = SubResource("FastNoiseLite_ogefw")
+noise = SubResource("FastNoiseLite_62qkt")
 
 [node name="BlinkEffect" parent="Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_m8jej")]
 canvas_item = NodePath("../..")
-material = SubResource("ShaderMaterial_25vr7")
+material = SubResource("ShaderMaterial_wfohy")
 
 [node name="BlinkEffect2" parent="Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_m8jej")]
 canvas_item = NodePath("../../MarginContainer/Control/CharacterSprite01")
-material = SubResource("ShaderMaterial_eolvk")
+material = SubResource("ShaderMaterial_orxfq")
 
 [node name="BlinkEffect3" parent="Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_m8jej")]
 canvas_item = NodePath("../../MarginContainer/Control/CharacterSprite02")
-material = SubResource("ShaderMaterial_lt6np")
+material = SubResource("ShaderMaterial_jv377")
 
 [node name="LockBlinkEffect" parent="Effects" node_paths=PackedStringArray("canvas_item") instance=ExtResource("5_m8jej")]
 canvas_item = NodePath("../../MarginContainer/Control/LockSprite2D")
-material = SubResource("ShaderMaterial_jb88w")
+material = SubResource("ShaderMaterial_r1cft")
 
 [node name="SoundClickedEffect" parent="Effects" instance=ExtResource("7_fk4yr")]
 stream = ExtResource("8_4r8ve")
@@ -185,27 +186,32 @@ volume_db = -10.0
 stream = ExtResource("11_eqv6n")
 volume_db = -10.0
 
+[node name="SoundAppearEffect" parent="Effects" instance=ExtResource("7_fk4yr")]
+stream = ExtResource("12_e40jn")
+volume_db = -10.0
+random_pitch = true
+
 [node name="ScaleElasticEffectFocused" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("11_wupsx")]
 target = NodePath("../..")
 target_scale = Vector2(1.2, 1.2)
-curve = SubResource("Curve_jnqm7")
+curve = SubResource("Curve_1j68n")
 
 [node name="ScaleElasticEffectReset" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("11_wupsx")]
 target = NodePath("../..")
 target_scale = Vector2(1, 1)
-curve = SubResource("Curve_pb1r0")
+curve = SubResource("Curve_mig35")
 
 [node name="ScaleElasticEffectMouseDown" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("11_wupsx")]
 target = NodePath("../..")
 target_scale = Vector2(1.1, 1.1)
-curve = SubResource("Curve_fenyj")
+curve = SubResource("Curve_thues")
 
 [node name="LockShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("4_f4llc")]
 target = NodePath("../../MarginContainer/Control/LockSprite2D")
 duration = 0.2
 max_offset = Vector2(50, 20)
 frequency = 500.0
-noise = SubResource("FastNoiseLite_btts7")
+noise = SubResource("FastNoiseLite_qc2q2")
 
 [connection signal="button_down" from="." to="Effects/BlinkEffect" method="perform"]
 [connection signal="button_down" from="." to="Effects/BlinkEffect2" method="perform"]
@@ -218,5 +224,7 @@ noise = SubResource("FastNoiseLite_btts7")
 [connection signal="clicked_when_locked" from="." to="Effects/LockShakeEffect" method="perform"]
 [connection signal="focus_entered" from="." to="Effects/ScaleElasticEffectFocused" method="perform"]
 [connection signal="focus_exited" from="." to="Effects/ScaleElasticEffectReset" method="perform"]
+[connection signal="just_appeared" from="." to="Effects/SoundAppearEffect" method="perform"]
+[connection signal="just_appeared" from="." to="Effects/ScaleElasticEffectReset" method="perform"]
 [connection signal="mouse_entered" from="." to="Effects/ScaleElasticEffectFocused" method="perform"]
 [connection signal="mouse_exited" from="." to="Effects/ScaleElasticEffectReset" method="perform"]

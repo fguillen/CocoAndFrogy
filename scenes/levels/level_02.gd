@@ -1,7 +1,7 @@
 # -- 01 @tool
 # -- 02 class_name
 # -- 03 extends
-extends Level
+extends Node2D
 
 # -- 04 # docstring
 #
@@ -19,7 +19,6 @@ extends Level
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
-	super()
 	GlobalEvents.brick_impacted.connect(_on_brick_impacted)
 	
 

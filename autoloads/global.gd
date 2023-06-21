@@ -46,7 +46,8 @@ func frogy_ready(_frogy: Frogy):
 	
 func serialize() -> Dictionary:
 	return {
-		"cleaned_levels": cleaned_levels
+		"cleaned_levels": cleaned_levels,
+		"last_level_played": last_level_played
 	}
 	
 	
@@ -66,6 +67,7 @@ func _on_level_cleared(level_num: int):
 
 func _on_level_started(level_num: int):
 	last_level_played = level_num
+	DataPersister.save_data()
 	
 	
 	

@@ -89,14 +89,14 @@ material = SubResource("ShaderMaterial_bih4x")
 [node name="LockBlinkEffect" parent="Effects" index="5"]
 material = SubResource("ShaderMaterial_4m5nw")
 
-[node name="ScaleElasticEffectFocused" parent="Effects" index="8"]
+[node name="ScaleElasticEffectFocused" parent="Effects" index="9"]
 curve = SubResource("Curve_4by8x")
 
-[node name="ScaleElasticEffectReset" parent="Effects" index="9"]
+[node name="ScaleElasticEffectReset" parent="Effects" index="10"]
 curve = SubResource("Curve_cfn4y")
 
-[node name="ScaleElasticEffectMouseDown" parent="Effects" index="10"]
+[node name="ScaleElasticEffectMouseDown" parent="Effects" index="11"]
 curve = SubResource("Curve_nuhto")
 
-[node name="LockShakeEffect" parent="Effects" index="11"]
+[node name="LockShakeEffect" parent="Effects" index="12"]
 noise = SubResource("FastNoiseLite_jtnnk")

@@ -10,6 +10,8 @@ extends BaseButton
 signal clicked()
 signal clicked_when_locked()
 signal clicked_with_pause()
+signal just_appeared()
+
 
 # -- 06 enums
 # -- 07 constants
@@ -41,6 +43,11 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func appear():
+	scale = Vector2.ZERO
+	just_appeared.emit()
+	
+	
 # -- 17 private methods
 func _check_if_unlocked():
 	print("XXX: _check_if_unlocked(): ", Global.cleaned_levels, ", level_num: ", level_num)
