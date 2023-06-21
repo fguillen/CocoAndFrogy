@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmr3umr5361k5"]
+[gd_scene load_steps=15 format=3 uid="uid://cmr3umr5361k5"]
 
 [ext_resource type="PackedScene" uid="uid://cbindn4lhgg5u" path="res://ui/level_selection_button.tscn" id="1_bc4va"]
 [ext_resource type="Texture2D" uid="uid://dbgcfd2s1olf5" path="res://actors/bricks/worm/worm_body.png" id="2_23s6o"]
@@ -38,6 +38,12 @@ shader = ExtResource("2_kfvu2")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bahgh"]
+resource_local_to_scene = true
+shader = ExtResource("2_kfvu2")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
+
 [sub_resource type="Curve" id="Curve_g3imu"]
 resource_local_to_scene = true
 max_value = 1.2
@@ -56,14 +62,22 @@ max_value = 1.2
 _data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
 point_count = 5
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tx7mp"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
 [node name="Level02Button" instance=ExtResource("1_bc4va")]
 level_num = 2
 
-[node name="Sprite2D2" parent="MarginContainer/Control" index="0"]
-position = Vector2(72, 96)
+[node name="CharacterSprite01" parent="MarginContainer/Control" index="0"]
+position = Vector2(72, 88)
 texture = ExtResource("2_23s6o")
 
-[node name="Sprite2D" parent="MarginContainer/Control" index="1"]
+[node name="CharacterSprite02" parent="MarginContainer/Control" index="1"]
 position = Vector2(176, 152)
 texture = ExtResource("3_vggig")
 
@@ -82,11 +96,17 @@ material = SubResource("ShaderMaterial_atjyr")
 [node name="BlinkEffect3" parent="Effects" index="4"]
 material = SubResource("ShaderMaterial_bih4x")
 
-[node name="ScaleElasticEffectFocused" parent="Effects" index="7"]
+[node name="LockBlinkEffect" parent="Effects" index="5"]
+material = SubResource("ShaderMaterial_bahgh")
+
+[node name="ScaleElasticEffectFocused" parent="Effects" index="9"]
 curve = SubResource("Curve_g3imu")
 
-[node name="ScaleElasticEffectReset" parent="Effects" index="8"]
+[node name="ScaleElasticEffectReset" parent="Effects" index="10"]
 curve = SubResource("Curve_l7ugi")
 
-[node name="ScaleElasticEffectMouseDown" parent="Effects" index="9"]
+[node name="ScaleElasticEffectMouseDown" parent="Effects" index="11"]
 curve = SubResource("Curve_85vmh")
+
+[node name="LockShakeEffect" parent="Effects" index="12"]
+noise = SubResource("FastNoiseLite_tx7mp")

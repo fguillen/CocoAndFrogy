@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=37 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_base.gd" id="1_id1vj"]
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cjsupsgoe5um5" path="res://environment/clouds_02.tscn" id="3_565kp"]
 [ext_resource type="Texture2D" uid="uid://vjltfx4oqcjy" path="res://assets/ground_01.png" id="3_uvg8y"]
 [ext_resource type="Texture2D" uid="uid://kewii7qnwrlb" path="res://assets/ground_02.png" id="5_27any"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="6_p7qcl"]
 [ext_resource type="PackedScene" uid="uid://dghb4ctrsrsc3" path="res://environment/vegetable_back_01.tscn" id="6_w4cht"]
 [ext_resource type="PackedScene" uid="uid://cahi8qp1m3055" path="res://environment/vegetable_back_02.tscn" id="7_hhk13"]
 [ext_resource type="Texture2D" uid="uid://cvog4gocwjgsf" path="res://assets/foreground_01.png" id="7_x8jhi"]
@@ -30,6 +31,14 @@
 [ext_resource type="AudioStream" uid="uid://bojo5kfbm7lxi" path="res://assets/sounds/level_clear.ogg" id="29_lok22"]
 [ext_resource type="PackedScene" uid="uid://baq303h7ydbfg" path="res://ui/ui.tscn" id="29_wih55"]
 [ext_resource type="AudioStream" uid="uid://divbjlofbt0f6" path="res://assets/sounds/game_over.ogg" id="30_c8220"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_llw0u"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
 size = Vector2(138, 1957)
@@ -71,12 +80,28 @@ motion_scale = Vector2(0.004, 0.004)
 position = Vector2(471, 839)
 texture = ExtResource("1_tlfj7")
 
+[node name="ShakeEffect" parent="EnvironmentBack/ParallaxBackground/Sky01ParallaxLayer/Ski01" node_paths=PackedStringArray("target") instance=ExtResource("6_p7qcl")]
+target = NodePath("..")
+auto_start = true
+duration = -1.0
+max_offset = Vector2(500, 0)
+frequency = 0.6
+noise = SubResource("FastNoiseLite_llw0u")
+
 [node name="Skay02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.005, 0.005)
 
 [node name="Ski02" type="Sprite2D" parent="EnvironmentBack/ParallaxBackground/Skay02ParallaxLayer"]
 position = Vector2(471, 839)
 texture = ExtResource("2_whclb")
+
+[node name="ShakeEffect" parent="EnvironmentBack/ParallaxBackground/Skay02ParallaxLayer/Ski02" node_paths=PackedStringArray("target") instance=ExtResource("6_p7qcl")]
+target = NodePath("..")
+auto_start = true
+duration = -1.0
+max_offset = Vector2(500, 0)
+frequency = 1.0
+noise = SubResource("FastNoiseLite_llw0u")
 
 [node name="Clouds01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.02, 0.02)
