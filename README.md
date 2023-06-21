@@ -8,4 +8,6 @@ music jingles: https://www.kenney.nl/assets/music-jingles
 water splash: https://freesound.org/people/InspectorJ/sounds/421184/
 snail shield: https://freesound.org/people/suzenako/sounds/320905/
 mouse sound: https://freesound.org/people/InspectorJ/sounds/339326/
+stone breaks: https://freesound.org/people/kwandalist/sounds/47496/
+stone impact: https://freesound.org/people/newlocknew/sounds/592581/
 
