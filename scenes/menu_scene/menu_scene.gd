@@ -36,7 +36,7 @@ func _show():
 	_hide_buttons()
 	
 	await _animate_title_label()
-	await get_tree().create_timer(1.0).timeout
+#	await get_tree().create_timer(1.0).timeout
 	
 	_animate_buttons()
 	
@@ -60,8 +60,8 @@ func _animate_title_label():
 func _animate_buttons():
 	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var original_position_y = buttons.global_position.y
-	tween.tween_property(buttons, "global_position:y", original_position_y, 0.2).from(get_viewport_rect().size.y + 300)
-	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.2).from(0.0)
+	tween.tween_property(buttons, "global_position:y", original_position_y, 0.5).from(get_viewport_rect().size.y + 300)
+	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.5).from(0.0)
 	await tween.finished
 	play_button.grab_focus()
 		

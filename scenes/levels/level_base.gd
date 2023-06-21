@@ -44,8 +44,8 @@ func _remove_brick(brick: Brick):
 	bricks.erase(brick)
 	
 	if bricks.is_empty():
-		GlobalEvents.emit_level_clear(level_num)
 		await get_tree().create_timer(0.5).timeout
+		GlobalEvents.emit_level_clear(level_num)
 		level_cleared.emit()
 		
 		
