@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwx0xblbbojg6"]
 
-[ext_resource type="Script" path="res://effects/shake_effect.gd" id="1_4voqt"]
+[ext_resource type="Script" path="res://effects/shake/shake_effect.gd" id="1_4voqt"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3qyc2"]
 resource_local_to_scene = true

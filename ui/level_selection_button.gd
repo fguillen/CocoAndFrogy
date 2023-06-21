@@ -23,6 +23,8 @@ var _is_locked := true
 
 
 # -- 11 onready variables
+@onready var character_sprite_01 = %CharacterSprite01
+@onready var character_sprite_02 = %CharacterSprite02
 @onready var lock_sprite = %LockSprite2D
 
 #
@@ -31,19 +33,20 @@ var _is_locked := true
 # -- 14 built-in virtual _ready method
 func _ready():
 	pressed.connect(_on_pressed)
+	character_sprite_01.visible = false
+	character_sprite_02.visible = false
+	
 	_check_if_unlocked.call_deferred()
 	
 	
 # -- 15 remaining built-in virtual methods
-func _process(delta):
-	print("XXX")
-	
-	
 # -- 16 public methods
 # -- 17 private methods
 func _check_if_unlocked():
 	print("XXX: _check_if_unlocked(): ", Global.cleaned_levels, ", level_num: ", level_num)
-	if Global.cleaned_levels.find(level_num) != -1:
+	
+	# Level 01 always unlocked
+	if (level_num == 1) or (Global.cleaned_levels.find(level_num - 1) != -1):
 		_unlock()
 	
 	
@@ -51,6 +54,8 @@ func _unlock():
 	print("XXX: _unlock")
 	_is_locked = false
 	lock_sprite.visible = false
+	character_sprite_01.visible = true
+	character_sprite_02.visible = true
 	
 	
 # -- 18 signal listeners

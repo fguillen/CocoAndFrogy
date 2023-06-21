@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3mh2452jmoyf"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_ltjst"]
-[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="2_x46hk"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="2_x46hk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_s1xg0"]
 resource_local_to_scene = true

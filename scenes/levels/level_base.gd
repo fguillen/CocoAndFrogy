@@ -47,7 +47,6 @@ func _remove_brick(brick: Brick):
 		GlobalEvents.emit_level_clear(level_num)
 		await get_tree().create_timer(0.5).timeout
 		level_cleared.emit()
-		SceneSwitcher.switch_to("stats_scene/stats_scene")
 		
 		
 func _remove_life():
@@ -57,7 +56,6 @@ func _remove_life():
 		GlobalEvents.emit_game_over()
 		await get_tree().create_timer(0.5).timeout
 		game_over.emit()
-		SceneSwitcher.switch_to("game_over_scene/game_over_scene")
 		
 
 # -- 18 signal listeners

@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="5_tfj4w"]
 [ext_resource type="PackedScene" uid="uid://cbindn4lhgg5u" path="res://ui/level_selection_button.tscn" id="5_xp2ah"]
 [ext_resource type="PackedScene" uid="uid://cmr3umr5361k5" path="res://scenes/level_selection_scene/level_02_button.tscn" id="6_r21xo"]
-[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="6_sq1kb"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="6_sq1kb"]
 [ext_resource type="PackedScene" uid="uid://dpbvkd3416mh2" path="res://scenes/level_selection_scene/level_03_button.tscn" id="7_8vdxr"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="7_rbam7"]
 [ext_resource type="PackedScene" uid="uid://b2kf3jgdg0kod" path="res://scenes/level_selection_scene/level_05_button.tscn" id="9_m7wvj"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_tvlqt"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jcq4p"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gslep"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -22,7 +22,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ex5ei"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dx5dr"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -136,13 +136,13 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_jcq4p")
+noise = SubResource("FastNoiseLite_gslep")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_ex5ei")
+noise = SubResource("FastNoiseLite_dx5dr")
 
 [node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("7_rbam7")]
 stream = ExtResource("9_tvlqt")
@@ -151,6 +151,9 @@ random_pitch = true
 [connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
 [connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button" to="NavigationManager" method="go_to" binds= ["level_01"]]
 [connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level02Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level02Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
+[connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level02Button" to="NavigationManager" method="go_to" binds= ["level_02"]]
 [connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level03Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level03Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
+[connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level03Button" to="NavigationManager" method="go_to" binds= ["level_03"]]
 [connection signal="button_down" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level05Button" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level05Button/Effects/ScaleElasticEffectReset" method="perform" flags=18]
+[connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level05Button" to="NavigationManager" method="go_to" binds= ["level_05"]]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://sy3h7e50hnw5" path="res://ui/button_transparent.png" id="1_2gra2"]
 [ext_resource type="Texture2D" uid="uid://cxhwr2vl5f6ma" path="res://actors/bricks/grasshopper/grasshopper.png" id="2_dcjid"]
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="3_g67gd"]
-[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="4_ml7dm"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="4_ml7dm"]
 [ext_resource type="PackedScene" uid="uid://dinlfgaorw876" path="res://effects/blink/blink_effect.tscn" id="5_fuj06"]
 [ext_resource type="Shader" path="res://effects/blink/blink_effect.gdshader" id="6_gut4m"]
 

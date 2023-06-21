@@ -1,17 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://db68hv73lc5v3"]
+[gd_scene load_steps=14 format=3 uid="uid://db68hv73lc5v3"]
 
 [ext_resource type="Script" path="res://scenes/stats_scene/stats_scene.gd" id="1_7rgjh"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_tuuey"]
-[ext_resource type="PackedScene" uid="uid://itbch783ke16" path="res://ui/menu_background.tscn" id="2_chsjk"]
+[ext_resource type="PackedScene" path="res://ui/menu_background.tscn" id="2_chsjk"]
+[ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_hj0r2"]
 [ext_resource type="PackedScene" uid="uid://c6350tcnthofh" path="res://scenes/stats_scene/stats_title.tscn" id="5_00c1i"]
 [ext_resource type="PackedScene" uid="uid://cnqeoqxisixkt" path="res://scenes/stats_scene/stats_number.tscn" id="5_it5o2"]
-[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="7_f17px"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="7_f17px"]
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="7_pluhc"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="8_ms0k7"]
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="10_xlk1t"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="11_crb03"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ap7om"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bkvpj"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -19,7 +20,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2v21s"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ybo8t"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -32,6 +33,8 @@ rotation = -0.00209449
 script = ExtResource("1_7rgjh")
 label_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsTitle"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTitle")])
 number_paths = Array[NodePath]([NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTimeNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/EarlyBumpsStatsLine/StatsEarlyBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/LateBumpsStatsLine/StatsLateBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/PerfectBumpsStatsLine/StatsPerfectBumpsNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BallBouncesStatsLine/StatsBouncesNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/Score/StatsScoreNumber"), NodePath("CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTotalScoreNumber")])
+
+[node name="NavigationManager" parent="." instance=ExtResource("2_hj0r2")]
 
 [node name="MenuBackground" parent="." instance=ExtResource("2_chsjk")]
 position = Vector2(17.9916, 4.03769)
@@ -183,13 +186,13 @@ layout_mode = 2
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_ap7om")
+noise = SubResource("FastNoiseLite_bkvpj")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_2v21s")
+noise = SubResource("FastNoiseLite_ybo8t")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_ms0k7")]
 stream = ExtResource("10_xlk1t")
@@ -199,6 +202,7 @@ random_pitch = true
 stream = ExtResource("11_crb03")
 random_pitch = true
 
+[connection signal="go_to_level" from="." to="NavigationManager" method="go_to_level"]
 [connection signal="stats_label_animated" from="." to="Effects/ShakeLabelSoundEffect" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeNumberSoundEffect" method="perform"]

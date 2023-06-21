@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_bjk5r"]
 [ext_resource type="PackedScene" uid="uid://bc5o4k20rp7ac" path="res://effects/scale_elastic/scale_elastic_effect.tscn" id="2_booj6"]
 
-[sub_resource type="Curve" id="Curve_nxm4n"]
+[sub_resource type="Curve" id="Curve_1egdm"]
 resource_local_to_scene = true
 max_value = 1.2
 _data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="Curve" id="Curve_na3ii"]
+[sub_resource type="Curve" id="Curve_mj8uu"]
 resource_local_to_scene = true
 max_value = 1.2
 _data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
@@ -32,12 +32,12 @@ texture = ExtResource("1_bjk5r")
 
 [node name="ScaleElasticEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("2_booj6")]
 target = NodePath("../../Sprite2D")
-curve = SubResource("Curve_nxm4n")
+curve = SubResource("Curve_1egdm")
 
 [node name="ScaleElasticEffectRevert" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("2_booj6")]
 target = NodePath("../../Sprite2D")
 target_scale = Vector2(1, 1)
-curve = SubResource("Curve_na3ii")
+curve = SubResource("Curve_mj8uu")
 
 [connection signal="button_down" from="Button" to="Effects/ScaleElasticEffectBig" method="perform"]
 [connection signal="button_up" from="Button" to="Effects/ScaleElasticEffectRevert" method="perform"]

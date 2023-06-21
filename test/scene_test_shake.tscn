@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://boxhymnwtqtmp"]
 
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_w5qtc"]
-[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="2_ae8ex"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="2_ae8ex"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_f1s6y"]
 resource_local_to_scene = true

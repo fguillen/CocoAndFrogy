@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://csvw45erjb0uw"]
+
+[ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_ro6s8"]
+[ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_dofjc"]
+[ext_resource type="PackedScene" uid="uid://b77aigryso4i5" path="res://actors/bricks/fly/fly_brick.tscn" id="3_45qqx"]
+
+[node name="LevelTest" type="Node2D"]
+
+[node name="LevelBase" parent="." instance=ExtResource("1_ro6s8")]
+level_num = 1
+
+[node name="Bricks" type="Node2D" parent="."]
+position = Vector2(0, -144)
+script = ExtResource("2_dofjc")
+
+[node name="FlyBrick" parent="Bricks" instance=ExtResource("3_45qqx")]
+position = Vector2(232, 672)

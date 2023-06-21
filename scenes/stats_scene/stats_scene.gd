@@ -8,6 +8,7 @@ extends Node2D
 # -- 05 signals
 signal stats_number_animated()
 signal stats_label_animated()
+signal go_to_level(level_num: int)
 
 # -- 06 enums
 # -- 07 constants
@@ -45,7 +46,8 @@ func _input(event):
 	
 # -- 16 public methods
 func next():
-	SceneSwitcher.switch_to("levels/level_01")
+	go_to_level.emit(Global.last_level_played + 1)
+	
 	
 # -- 17 private methods
 func _show():

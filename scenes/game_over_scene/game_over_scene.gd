@@ -9,6 +9,7 @@ extends Node2D
 signal title_animation_finished()
 signal stats_label_animated()
 signal stats_number_animated()
+signal go_to_level(level_num: int)
 
 # -- 06 enums
 # -- 07 constants
@@ -104,13 +105,13 @@ func _animate_buttons():
 		
 # -- 18 signal listeners
 func _on_retry_button_pressed():
-	SceneSwitcher.switch_to("levels/level_01")
-
-
-func _on_menu_button_pressed():
-	SceneSwitcher.switch_to("menu_scene/menu_scene")
+	go_to_level.emit(Global.last_level_played)
+	
 	
 # -- 19 subclasses
+
+
+
 
 
 

@@ -16,7 +16,8 @@ extends Node
 var _scenes = {
 	"menu": "res://scenes/menu_scene/menu_scene.tscn",
 	"options": "res://scenes/options_scene/options_scene.tscn",
-	"levels": "",
+	"levels": "res://scenes/level_selection_scene/level_selection_scene.tscn",
+	"tutorial": "",
 	"credits": "",
 	"level_01": "res://scenes/levels/level_01.tscn",
 	"level_02": "res://scenes/levels/level_02.tscn",
@@ -39,6 +40,17 @@ func go_to(name: String):
 	SceneSwitcher.switch_to(_scenes[name])
 
 
+func go_to_level(level_num: int):
+	var level_name = "level_%02d" % level_num
+	
+	print("XXX level_name: ", level_name)
+	
+	if _scenes.has(level_name):
+		go_to(level_name)
+	else:
+		go_to("end")
+
+
 func quit():
 	get_tree().quit()
 	
@@ -46,4 +58,3 @@ func quit():
 # -- 17 private methods
 # -- 18 signal listeners
 # -- 19 innerclasses
-

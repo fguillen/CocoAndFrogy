@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" path="res://ui/menu_background.tscn" id="2_vt1hf"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="4_54xmy"]
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="5_2kj5k"]
-[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="7_wu2gu"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="7_wu2gu"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="8_h1dsg"]
 [ext_resource type="PackedScene" uid="uid://b77wrtegsi335" path="res://effects/device_vibration_effect.tscn" id="9_d2xir"]
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="9_r1woh"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="10_sr33k"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_fhqg6"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ny160"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -19,7 +19,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_asv6i"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_08hye"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -96,6 +96,26 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="LevelsButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer3" instance=ExtResource("5_2kj5k")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Levels"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="OptionsButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer2" instance=ExtResource("5_2kj5k")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Options"
+
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
@@ -111,13 +131,13 @@ text = "Quit"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_wu2gu")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_fhqg6")
+noise = SubResource("FastNoiseLite_ny160")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_wu2gu")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_asv6i")
+noise = SubResource("FastNoiseLite_08hye")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_h1dsg")]
 stream = ExtResource("9_r1woh")
@@ -131,4 +151,6 @@ random_pitch = true
 
 [connection signal="title_animation_finished" from="." to="Effects/DeviceVibrationEffect" method="perform"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/PlayButton" to="NavigationManager" method="go_to" binds= ["level_01"]]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer3/LevelsButton" to="NavigationManager" method="go_to" binds= ["levels"]]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer2/OptionsButton" to="NavigationManager" method="go_to" binds= ["options"]]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer/QuitButton" to="NavigationManager" method="quit"]

@@ -19,9 +19,9 @@ var time := 0
 var score := 0 : set = _set_score
 var total_score := 0
 
-
 # -- 10 private variables
 var _started_time := 0.0
+
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
@@ -108,6 +108,7 @@ func _set_score(value: int):
 	var previous_score = score
 	score = value
 	GlobalEvents.emit_score_changed(previous_score, score)
+	
 	
 # -- 18 signal listeners
 # -- 19 subclasses

@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=35 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_base.gd" id="1_id1vj"]
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
 [ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_tlfj7"]
 [ext_resource type="Script" path="res://environment/parallax_background.gd" id="1_ueekc"]
+[ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_hp3m2"]
 [ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_whclb"]
 [ext_resource type="PackedScene" uid="uid://dv2fe0trni1n5" path="res://environment/clouds_01.tscn" id="3_7wkae"]
 [ext_resource type="PackedScene" uid="uid://cjsupsgoe5um5" path="res://environment/clouds_02.tscn" id="3_565kp"]
@@ -25,7 +26,10 @@
 [ext_resource type="PackedScene" uid="uid://ddpd3x6doacdu" path="res://environment/vegetable_front_04.tscn" id="15_bvct5"]
 [ext_resource type="Script" path="res://environment/wall_death.gd" id="16_fydbq"]
 [ext_resource type="PackedScene" uid="uid://b2ewbis3ifr1b" path="res://environment/vegetable_front_05.tscn" id="16_hbsdw"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="28_2b2nu"]
+[ext_resource type="AudioStream" uid="uid://bojo5kfbm7lxi" path="res://assets/sounds/level_clear.ogg" id="29_lok22"]
 [ext_resource type="PackedScene" uid="uid://baq303h7ydbfg" path="res://ui/ui.tscn" id="29_wih55"]
+[ext_resource type="AudioStream" uid="uid://divbjlofbt0f6" path="res://assets/sounds/game_over.ogg" id="30_c8220"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oav07"]
 size = Vector2(138, 1957)
@@ -41,6 +45,8 @@ size = Vector2(1188, 74)
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_id1vj")
+
+[node name="NavigationManager" parent="." instance=ExtResource("2_hp3m2")]
 
 [node name="Camera" parent="." instance=ExtResource("1_pvwu1")]
 
@@ -195,3 +201,16 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_x8jhi")
 
 [node name="UI" parent="." instance=ExtResource("29_wih55")]
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="LevelClearedSoundEffect" parent="Effects" instance=ExtResource("28_2b2nu")]
+stream = ExtResource("29_lok22")
+
+[node name="GameOverSoundEffect" parent="Effects" instance=ExtResource("28_2b2nu")]
+stream = ExtResource("30_c8220")
+
+[connection signal="game_over" from="." to="Effects/GameOverSoundEffect" method="perform"]
+[connection signal="game_over" from="." to="NavigationManager" method="go_to" binds= ["game_over"]]
+[connection signal="level_cleared" from="." to="Effects/LevelClearedSoundEffect" method="perform"]
+[connection signal="level_cleared" from="." to="NavigationManager" method="go_to" binds= ["stats"]]
