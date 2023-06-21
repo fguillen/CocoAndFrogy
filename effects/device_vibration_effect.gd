@@ -29,7 +29,7 @@ func perform():
 	print("DeviceVibrationEffect.perform()")
 	for i in times:
 		Input.start_joy_vibration(device, weak_maginitude, strong_maginitude, duration)
-		Input.vibrate_handheld(duration * 1000)
+		Input.vibrate_handheld(int(duration * 1000))
 		await get_tree().create_timer(duration + 0.2).timeout
 	
 	

@@ -58,7 +58,7 @@ func get_stat_by_name(stat_name: String) -> int:
 		"total_score":
 			return total_score
 		_:
-			assert(false, "StatsManager.get_stat_by_name(), name no supported: '%s'" % name)
+			push_error("StatsManager.get_stat_by_name(), name no supported: '%s'" % name)
 			return 0
 	
 	

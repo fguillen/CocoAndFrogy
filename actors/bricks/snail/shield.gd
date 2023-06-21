@@ -18,7 +18,7 @@ extends StaticBody2D
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func impacted_by(node: CharacterBody2D):
+func impacted_by(_node: CharacterBody2D):
 	owner.hurt_in_shield()
 # -- 17 private methods
 # -- 18 signal listeners

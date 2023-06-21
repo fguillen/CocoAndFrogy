@@ -36,8 +36,8 @@ var _scenes = {
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func go_to(name: String):
-	SceneSwitcher.switch_to(_scenes[name])
+func go_to(scene_name: String):
+	SceneSwitcher.switch_to(_scenes[scene_name])
 
 
 func go_to_level(level_num: int):

@@ -117,8 +117,8 @@ class MovingBodyPart:
 	var body_part: PhysicsBody2D
 	var path_follow: PathFollow2D
 	
-	func _init(body_part: PhysicsBody2D, path_follow: PathFollow2D):
-		self.body_part = body_part
-		self.path_follow = path_follow
+	func _init(body_part_ini: PhysicsBody2D, path_follow_ini: PathFollow2D):
+		self.body_part = body_part_ini
+		self.path_follow = path_follow_ini
 		
 

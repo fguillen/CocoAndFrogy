@@ -26,7 +26,7 @@ func _ready():
 # -- 16 public methods
 # -- 17 private methods
 # -- 18 signal listeners
-func _on_brick_impacted(brick: Brick):
+func _on_brick_impacted(_brick: Brick):
 	hit_stop_effect.perform()
 	
 # -- 19 subclasses
