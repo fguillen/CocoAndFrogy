@@ -198,7 +198,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dw3g1"]
 resource_name = "curtain_close"
-length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -206,7 +205,7 @@ tracks/0/path = NodePath("Curtain:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(538, -396), Vector2(538, 2274)]
@@ -214,7 +213,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fwkyb"]
 resource_name = "curtain_open"
-length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -222,7 +220,7 @@ tracks/0/path = NodePath("Curtain:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(538, 2274), Vector2(538, 4767)]
@@ -241,7 +239,7 @@ layer = 100
 script = ExtResource("1_xxhsh")
 
 [node name="Curtain" type="Node2D" parent="."]
-position = Vector2(538, 4767)
+position = Vector2(538, -396)
 
 [node name="TopAnimated" type="AnimatedSprite2D" parent="Curtain"]
 unique_name_in_owner = true
