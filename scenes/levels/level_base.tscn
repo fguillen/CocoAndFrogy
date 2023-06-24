@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=38 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_base.gd" id="1_id1vj"]
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
@@ -32,7 +32,15 @@
 [ext_resource type="PackedScene" uid="uid://baq303h7ydbfg" path="res://ui/ui.tscn" id="29_wih55"]
 [ext_resource type="AudioStream" uid="uid://divbjlofbt0f6" path="res://assets/sounds/game_over.ogg" id="30_c8220"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_llw0u"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w3mbs"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c7f5f"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -77,7 +85,7 @@ color = Color(1, 1, 0.8, 1)
 motion_scale = Vector2(0.004, 0.004)
 
 [node name="Ski01" type="Sprite2D" parent="EnvironmentBack/ParallaxBackground/Sky01ParallaxLayer"]
-position = Vector2(471, 839)
+position = Vector2(471, 928)
 texture = ExtResource("1_tlfj7")
 
 [node name="ShakeEffect" parent="EnvironmentBack/ParallaxBackground/Sky01ParallaxLayer/Ski01" node_paths=PackedStringArray("target") instance=ExtResource("6_p7qcl")]
@@ -86,13 +94,13 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 0.6
-noise = SubResource("FastNoiseLite_llw0u")
+noise = SubResource("FastNoiseLite_w3mbs")
 
 [node name="Skay02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.005, 0.005)
 
 [node name="Ski02" type="Sprite2D" parent="EnvironmentBack/ParallaxBackground/Skay02ParallaxLayer"]
-position = Vector2(471, 839)
+position = Vector2(471, 769)
 texture = ExtResource("2_whclb")
 
 [node name="ShakeEffect" parent="EnvironmentBack/ParallaxBackground/Skay02ParallaxLayer/Ski02" node_paths=PackedStringArray("target") instance=ExtResource("6_p7qcl")]
@@ -101,63 +109,63 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 1.0
-noise = SubResource("FastNoiseLite_llw0u")
+noise = SubResource("FastNoiseLite_c7f5f")
 
 [node name="Clouds01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.02, 0.02)
 
 [node name="Clouds_02" parent="EnvironmentBack/ParallaxBackground/Clouds01ParallaxLayer" instance=ExtResource("3_565kp")]
-position = Vector2(503, 1148)
+position = Vector2(503, 1078)
 
 [node name="Clouds02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.03, 0.03)
 
 [node name="Clouds_01" parent="EnvironmentBack/ParallaxBackground/Clouds02ParallaxLayer" instance=ExtResource("3_7wkae")]
-position = Vector2(536, 1292)
+position = Vector2(536, 1222)
 
 [node name="GroundParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.05, 0.05)
 
 [node name="Ground01" type="Sprite2D" parent="EnvironmentBack/ParallaxBackground/GroundParallaxLayer"]
-position = Vector2(573, 1639)
+position = Vector2(573, 1569)
 texture = ExtResource("3_uvg8y")
 
 [node name="Vegetables01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
 
 [node name="VegetableBack05" parent="EnvironmentBack/ParallaxBackground/Vegetables01ParallaxLayer" instance=ExtResource("10_3mqng")]
-position = Vector2(364, 1461)
+position = Vector2(364, 1391)
 
 [node name="VegetableBack06" parent="EnvironmentBack/ParallaxBackground/Vegetables01ParallaxLayer" instance=ExtResource("11_j3qwv")]
-position = Vector2(691, 1474)
+position = Vector2(691, 1404)
 
 [node name="Vegetables02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.15, 0.15)
 
 [node name="VegetableBack03" parent="EnvironmentBack/ParallaxBackground/Vegetables02ParallaxLayer" instance=ExtResource("8_kjf1w")]
-position = Vector2(586, 1504)
+position = Vector2(586, 1434)
 
 [node name="VegetableBack04" parent="EnvironmentBack/ParallaxBackground/Vegetables02ParallaxLayer" instance=ExtResource("9_jkh7v")]
-position = Vector2(799, 1517)
+position = Vector2(799, 1447)
 
 [node name="Vegetables03ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.18, 0.18)
 
 [node name="VegetableBack01" parent="EnvironmentBack/ParallaxBackground/Vegetables03ParallaxLayer" instance=ExtResource("6_w4cht")]
-position = Vector2(191, 1546)
+position = Vector2(191, 1476)
 
 [node name="VegetableBack02" parent="EnvironmentBack/ParallaxBackground/Vegetables03ParallaxLayer" instance=ExtResource("7_hhk13")]
-position = Vector2(483, 1562)
+position = Vector2(483, 1492)
 
 [node name="Ground02" type="Sprite2D" parent="EnvironmentBack"]
-position = Vector2(491, 1764)
+position = Vector2(491, 1694)
 texture = ExtResource("5_27any")
 
 [node name="Frogy" parent="." instance=ExtResource("11_ggtky")]
 position = Vector2(503, 1245)
 
 [node name="Coco" parent="." instance=ExtResource("11_xi2mx")]
-position = Vector2(529, 1659)
+position = Vector2(529, 1563)
 
 [node name="Walls" type="StaticBody2D" parent="." groups=["walls"]]
 collision_layer = 8
@@ -193,7 +201,7 @@ position = Vector2(535, 984)
 texture = ExtResource("8_4h3vp")
 
 [node name="VegetablesFront" type="Node2D" parent="EnvironmentFront"]
-position = Vector2(529, 1783)
+position = Vector2(532.6, 1684.4)
 
 [node name="VegetableFront01" parent="EnvironmentFront/VegetablesFront" instance=ExtResource("12_iivfa")]
 position = Vector2(-455, 101)
@@ -221,7 +229,7 @@ rotation = 0.41783
 scale = Vector2(0.7, 0.7)
 
 [node name="Foreground01" type="Sprite2D" parent="EnvironmentFront"]
-position = Vector2(542, 1935)
+position = Vector2(545.6, 1836.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_x8jhi")
 
