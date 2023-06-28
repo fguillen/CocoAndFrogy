@@ -356,8 +356,6 @@ random_pitch = true
 [connection signal="direction_changed" from="MovementManager" to="Effects/OscilatorTowardsDirectionEffect" method="on_direction_changed"]
 [connection signal="bump_received" from="InputManager" to="BumpManager" method="bump"]
 [connection signal="direction_changed" from="InputManager" to="MovementManager" method="on_direction_changed"]
-[connection signal="bump_received" from="InputManagerTouch" to="BumpManager" method="bump"]
-[connection signal="direction_changed" from="InputManagerTouch" to="MovementManager" method="on_direction_changed"]
 [connection signal="bump_message" from="BumpManager" to="Effects/TextFloatingEffect" method="perform"]
 [connection signal="bumped" from="BumpManager" to="AnimationManager" method="on_bumped"]
 [connection signal="bumped" from="BumpManager" to="Effects/BumpSoundEffect" method="perform"]

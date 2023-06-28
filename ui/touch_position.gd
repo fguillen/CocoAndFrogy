@@ -27,10 +27,6 @@ func _input(event):
 	
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		event_position = event.position
-#	elif event is InputEventMouseButton:
-#		event_position = event.position
-#	elif event is InputEventMouseMotion:
-#		event_position = event.position
 	
 	if event_position != previous_position:
 		position_changed.emit(event_position)

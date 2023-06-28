@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmu6tua0mbef0"]
+[gd_scene load_steps=2 format=3 uid="uid://bmu6tua0mbef0"]
 
 [ext_resource type="Script" path="res://actors/components/input_manager_touch.gd" id="1_8jl4m"]
-[ext_resource type="PackedScene" uid="uid://bac3aon04bm1m" path="res://ui/touch_position.tscn" id="2_pubv4"]
 
-[node name="InputManagerTouch" type="Node"]
+[node name="InputManagerTouch" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_8jl4m")
-
-[node name="TouchPosition" parent="." instance=ExtResource("2_pubv4")]
-
-[connection signal="position_changed" from="TouchPosition" to="." method="touch_position_changed"]
