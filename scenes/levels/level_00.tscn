@@ -1,0 +1,315 @@
+[gd_scene load_steps=15 format=3 uid="uid://c22f20qkjjdka"]
+
+[ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_8jt15"]
+[ext_resource type="Script" path="res://scenes/levels/level_00.gd" id="1_luijp"]
+[ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_uihu5"]
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="3_gus8n"]
+[ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="3_l8ga6"]
+[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="4_dwg0g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g2rlg"]
+texture = ExtResource("3_l8ga6")
+texture_margin_left = 19.0
+texture_margin_top = 25.0
+texture_margin_right = 26.0
+texture_margin_bottom = 25.0
+modulate_color = Color(0.2, 0.203922, 0.203922, 1)
+
+[sub_resource type="Animation" id="Animation_cbfic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 1800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%MoveCoco:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-920, 120)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%MoveCoco:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%LaunchFrogy:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-807.68, 130.816)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%BumpFrogy:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%BumpFrogy:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-848, 240)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%LaunchFrogy:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qc8fq"]
+resource_name = "finger_side_to_side"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.9, 1.2, 1.7, 1.9, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(576, 1800), Vector2(136, 1800), Vector2(136, 1800), Vector2(968, 1800), Vector2(968, 1800), Vector2(136, 1800), Vector2(136, 1800), Vector2(576, 1800)]
+}
+
+[sub_resource type="Animation" id="Animation_gc3np"]
+resource_name = "finger_slide_up"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1.4, 1.6, 2, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(528, 1800), Vector2(528, 1616), Vector2(528, 1616), Vector2(528, 1800), Vector2(528, 1616), Vector2(528, 1616), Vector2(528, 1800)]
+}
+
+[sub_resource type="Animation" id="Animation_0d1ku"]
+resource_name = "label_move_coco_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MoveCoco:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-920, 120), Vector2(160, 224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%MoveCoco:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.123918]
+}
+
+[sub_resource type="Animation" id="Animation_y0tni"]
+resource_name = "label_launch_frogy_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%LaunchFrogy:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-920, 120), Vector2(160, 224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%LaunchFrogy:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.0628319]
+}
+
+[sub_resource type="Animation" id="Animation_7fqcu"]
+resource_name = "label_bump_frogy_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%BumpFrogy:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-920, 120), Vector2(160, 224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%BumpFrogy:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.0628319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0pvt"]
+_data = {
+"RESET": SubResource("Animation_cbfic"),
+"finger_side_to_side": SubResource("Animation_qc8fq"),
+"finger_slide_up": SubResource("Animation_gc3np"),
+"label_bump_frogy_in": SubResource("Animation_7fqcu"),
+"label_launch_frogy_in": SubResource("Animation_y0tni"),
+"label_move_coco_in": SubResource("Animation_0d1ku")
+}
+
+[node name="Level_00" type="Node2D"]
+script = ExtResource("1_luijp")
+
+[node name="LevelBase" parent="." instance=ExtResource("1_8jt15")]
+level_num = 1
+
+[node name="Bricks" type="Node2D" parent="."]
+position = Vector2(0, -144)
+script = ExtResource("2_uihu5")
+
+[node name="TutorialElements" type="CanvasLayer" parent="."]
+
+[node name="MoveCoco" type="PanelContainer" parent="TutorialElements"]
+unique_name_in_owner = true
+offset_left = -920.0
+offset_top = 120.0
+offset_right = -144.0
+offset_bottom = 408.0
+pivot_offset = Vector2(388, 144)
+theme_override_styles/panel = SubResource("StyleBoxTexture_g2rlg")
+
+[node name="Label01" type="Label" parent="TutorialElements/MoveCoco"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_gus8n")
+theme_override_colors/font_color = Color(0.929412, 0.403922, 0.054902, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.203922, 0.203922, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 100
+text = "Move Coco from
+side to side"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LaunchFrogy" type="PanelContainer" parent="TutorialElements"]
+unique_name_in_owner = true
+offset_left = -807.68
+offset_top = 130.816
+offset_right = -31.68
+offset_bottom = 418.816
+theme_override_styles/panel = SubResource("StyleBoxTexture_g2rlg")
+
+[node name="Label02" type="Label" parent="TutorialElements/LaunchFrogy"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_gus8n")
+theme_override_colors/font_color = Color(0.929412, 0.403922, 0.054902, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.203922, 0.203922, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 100
+text = "Launch Frogy
+into the air"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BumpFrogy" type="PanelContainer" parent="TutorialElements"]
+unique_name_in_owner = true
+offset_left = -848.0
+offset_top = 240.0
+offset_right = -72.0
+offset_bottom = 528.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g2rlg")
+
+[node name="Label03" type="Label" parent="TutorialElements/BumpFrogy"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_gus8n")
+theme_override_colors/font_color = Color(0.929412, 0.403922, 0.054902, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.203922, 0.203922, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 100
+text = "Bump Frogy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialElements"]
+position = Vector2(576, 1800)
+texture = ExtResource("4_dwg0g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialElements"]
+libraries = {
+"": SubResource("AnimationLibrary_y0pvt")
+}

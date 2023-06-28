@@ -9,6 +9,7 @@ extends Character
 #
 # -- 05 signals
 signal boosted()
+signal detached()
 
 # -- 06 enums
 # -- 07 constants
@@ -44,6 +45,8 @@ func detach():
 	_attached_to = null
 	movement_manager.direction = Vector2.UP
 	movement_manager.set_physics_process(true)
+	detached.emit()
+	GlobalEvents.frogy_detached.emit()
 	
 	
 func boost(factor: float):

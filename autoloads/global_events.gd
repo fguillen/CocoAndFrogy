@@ -9,6 +9,7 @@ extends Node
 signal impact_with_coco_occurred()
 signal impact_with_brick_occurred()
 signal frogy_died()
+signal frogy_detached()
 signal brick_ready(brick: Brick)
 signal brick_freed(brick: Brick)
 signal level_started(level_num: int)
