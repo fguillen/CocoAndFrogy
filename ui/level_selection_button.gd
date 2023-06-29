@@ -52,8 +52,8 @@ func appear():
 func _check_if_unlocked():
 	print("XXX: _check_if_unlocked(): ", Global.cleaned_levels, ", level_num: ", level_num)
 	
-	# Level 01 always unlocked
-	if (level_num == 1) or (Global.cleaned_levels.find(level_num - 1) != -1):
+	# Level 00 always unlocked
+	if (level_num == 0) or (Global.cleaned_levels.find(level_num - 1) != -1):
 		_unlock()
 	
 	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cl81wgjqas0l0"]
+[gd_scene load_steps=17 format=3 uid="uid://cl81wgjqas0l0"]
 
 [ext_resource type="Script" path="res://scenes/level_selection_scene/level_selection_scene.gd" id="1_tej4d"]
 [ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_jhsma"]
 [ext_resource type="PackedScene" path="res://ui/menu_background.tscn" id="3_ll5xs"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="4_j4dfv"]
+[ext_resource type="PackedScene" uid="uid://b4orjqol5nnf0" path="res://scenes/level_selection_scene/level_00_button.tscn" id="5_81b3l"]
 [ext_resource type="PackedScene" uid="uid://b7xoj20b8udje" path="res://scenes/level_selection_scene/level_01_button.tscn" id="5_snu67"]
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="5_tfj4w"]
 [ext_resource type="PackedScene" uid="uid://cmr3umr5361k5" path="res://scenes/level_selection_scene/level_02_button.tscn" id="6_r21xo"]
@@ -14,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b2kf3jgdg0kod" path="res://scenes/level_selection_scene/level_05_button.tscn" id="9_m7wvj"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_tvlqt"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6i74y"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vx4wj"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -22,7 +23,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1fa1x"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mwxj2"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -86,6 +87,9 @@ theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
 columns = 2
 
+[node name="Level00Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer" instance=ExtResource("5_81b3l")]
+layout_mode = 2
+
 [node name="Level01Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer" instance=ExtResource("5_snu67")]
 process_mode = 0
 layout_mode = 2
@@ -136,18 +140,19 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_6i74y")
+noise = SubResource("FastNoiseLite_vx4wj")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_sq1kb")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_1fa1x")
+noise = SubResource("FastNoiseLite_mwxj2")
 
 [node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("7_rbam7")]
 stream = ExtResource("9_tvlqt")
 random_pitch = true
 
+[connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level00Button" to="NavigationManager" method="go_to_level" binds= [0]]
 [connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level01Button" to="NavigationManager" method="go_to" binds= ["level_01"]]
 [connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level02Button" to="NavigationManager" method="go_to" binds= ["level_02"]]
 [connection signal="clicked_with_pause" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/GridContainer/Level03Button" to="NavigationManager" method="go_to" binds= ["level_03"]]

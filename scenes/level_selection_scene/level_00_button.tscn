@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=3 uid="uid://b4orjqol5nnf0"]
+
+[ext_resource type="PackedScene" uid="uid://cbindn4lhgg5u" path="res://ui/level_selection_button.tscn" id="1_2w4qx"]
+[ext_resource type="Texture2D" uid="uid://bgyn4hloj7bdw" path="res://actors/frogy/frogy.png" id="2_2uwev"]
+[ext_resource type="Shader" path="res://effects/blink/blink_effect.gdshader" id="2_eoook"]
+[ext_resource type="Texture2D" uid="uid://c51eitc20yuqa" path="res://assets/coco/coco_01.png" id="3_6vd4k"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fk4en"]
+resource_local_to_scene = true
+noise_type = 0
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_54mw7"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 1000
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41nqg"]
+resource_local_to_scene = true
+shader = ExtResource("2_eoook")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atjyr"]
+resource_local_to_scene = true
+shader = ExtResource("2_eoook")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bih4x"]
+resource_local_to_scene = true
+shader = ExtResource("2_eoook")
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4m5nw"]
+resource_local_to_scene = true
+shader = ExtResource("2_eoook")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="Curve" id="Curve_4by8x"]
+resource_local_to_scene = true
+max_value = 1.2
+_data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_cfn4y"]
+resource_local_to_scene = true
+max_value = 1.2
+_data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_nuhto"]
+resource_local_to_scene = true
+max_value = 1.2
+_data = [Vector2(0, 0), 0.0, 5.98055, 0, 0, Vector2(0.38, 1.2), -1.7978, -1.7978, 0, 0, Vector2(0.52137, 0.907786), 0.668702, 0.668702, 0, 0, Vector2(0.741644, 1.14962), -1.39961, -1.39961, 0, 0, Vector2(1, 1), 0.0291636, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jtnnk"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[node name="Level00Button" instance=ExtResource("1_2w4qx")]
+
+[node name="CharacterSprite01" parent="MarginContainer/Control" index="0"]
+position = Vector2(136, 88)
+texture = ExtResource("2_2uwev")
+
+[node name="CharacterSprite02" parent="MarginContainer/Control" index="1"]
+position = Vector2(160, 200)
+scale = Vector2(0.507937, 0.507937)
+texture = ExtResource("3_6vd4k")
+
+[node name="ShakeEffect" parent="Effects" index="0"]
+noise = SubResource("FastNoiseLite_fk4en")
+
+[node name="ShakeEffect2" parent="Effects" index="1"]
+noise = SubResource("FastNoiseLite_54mw7")
+
+[node name="BlinkEffect" parent="Effects" index="2"]
+material = SubResource("ShaderMaterial_41nqg")
+
+[node name="BlinkEffect2" parent="Effects" index="3"]
+material = SubResource("ShaderMaterial_atjyr")
+
+[node name="BlinkEffect3" parent="Effects" index="4"]
+material = SubResource("ShaderMaterial_bih4x")
+
+[node name="LockBlinkEffect" parent="Effects" index="5"]
+material = SubResource("ShaderMaterial_4m5nw")
+
+[node name="ScaleElasticEffectFocused" parent="Effects" index="9"]
+curve = SubResource("Curve_4by8x")
+
+[node name="ScaleElasticEffectReset" parent="Effects" index="10"]
+curve = SubResource("Curve_cfn4y")
+
+[node name="ScaleElasticEffectMouseDown" parent="Effects" index="11"]
+curve = SubResource("Curve_nuhto")
+
+[node name="LockShakeEffect" parent="Effects" index="12"]
+noise = SubResource("FastNoiseLite_jtnnk")
