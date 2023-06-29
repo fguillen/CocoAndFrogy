@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_8jt15"]
 [ext_resource type="Script" path="res://scenes/levels/level_00.gd" id="1_luijp"]
-[ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_uihu5"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="3_gus8n"]
 [ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="3_l8ga6"]
 [ext_resource type="Texture2D" uid="uid://c6c0j1e2dyv8x" path="res://assets/finger_side_to_side.png" id="6_65sov"]
+[ext_resource type="Texture2D" uid="uid://dicj2em47sqwm" path="res://assets/finger_up.png" id="7_sgoai"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g2rlg"]
 texture = ExtResource("3_l8ga6")
@@ -185,6 +185,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("FingerSprite:hframes")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="Animation" id="Animation_qc8fq"]
 resource_name = "finger_side_to_side"
@@ -238,10 +250,22 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FingerSprite:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
 
 [sub_resource type="Animation" id="Animation_gc3np"]
 resource_name = "finger_slide_up"
-length = 4.0
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -250,10 +274,10 @@ tracks/0/path = NodePath("FingerSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 1.4, 1.6, 2, 2.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(528, 1800), Vector2(528, 1616), Vector2(528, 1616), Vector2(528, 1800), Vector2(528, 1616), Vector2(528, 1616), Vector2(528, 1800)]
+"values": [Vector2(688, 1688)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -266,6 +290,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FingerSprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_sgoai")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FingerSprite:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FingerSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_7fqcu"]
@@ -425,10 +485,6 @@ script = ExtResource("1_luijp")
 
 [node name="LevelBase" parent="." instance=ExtResource("1_8jt15")]
 
-[node name="Bricks" type="Node2D" parent="."]
-position = Vector2(0, -144)
-script = ExtResource("2_uihu5")
-
 [node name="TutorialElements" type="CanvasLayer" parent="."]
 
 [node name="MoveCoco" type="PanelContainer" parent="TutorialElements"]
@@ -541,7 +597,7 @@ vertical_alignment = 1
 visible = false
 position = Vector2(576, 1800)
 texture = ExtResource("6_65sov")
-hframes = 5
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialElements"]
 libraries = {
