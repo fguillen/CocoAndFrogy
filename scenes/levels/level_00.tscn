@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_uihu5"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="3_gus8n"]
 [ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="3_l8ga6"]
-[ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="4_dwg0g"]
+[ext_resource type="Texture2D" uid="uid://c6c0j1e2dyv8x" path="res://assets/finger_side_to_side.png" id="6_65sov"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g2rlg"]
 texture = ExtResource("3_l8ga6")
@@ -161,22 +161,46 @@ tracks/11/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("FingerSprite:texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_65sov")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("FingerSprite:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_qc8fq"]
 resource_name = "finger_side_to_side"
-length = 4.0
-loop_mode = 1
+length = 0.5
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("FingerSprite:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.9, 1.2, 1.7, 1.9, 2.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(576, 1800), Vector2(136, 1800), Vector2(136, 1800), Vector2(968, 1800), Vector2(968, 1800), Vector2(136, 1800), Vector2(136, 1800), Vector2(576, 1800)]
+"values": [Vector2(696, 1824), Vector2(696, 1768)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -189,6 +213,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FingerSprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_65sov")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FingerSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
 }
 
 [sub_resource type="Animation" id="Animation_gc3np"]
@@ -492,7 +540,8 @@ vertical_alignment = 1
 [node name="FingerSprite" type="Sprite2D" parent="TutorialElements"]
 visible = false
 position = Vector2(576, 1800)
-texture = ExtResource("4_dwg0g")
+texture = ExtResource("6_65sov")
+hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialElements"]
 libraries = {
