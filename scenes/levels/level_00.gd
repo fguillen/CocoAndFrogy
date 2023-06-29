@@ -20,6 +20,9 @@ var _label_make_perfect_visible := false
 
 # -- 11 onready variables
 @onready var animation_player = $TutorialElements/AnimationPlayer
+@onready var animation_player_fingers = $TutorialElements/AnimationPlayerFingers
+@onready var finger_sprite = $TutorialElements/FingerSprite
+
 @onready var level_base = $LevelBase
 
 
@@ -45,26 +48,32 @@ func _tutorial():
 	await get_tree().create_timer(1.0).timeout
 	animation_player.play("label_move_coco_in")
 	await get_tree().create_timer(1.0).timeout
-	animation_player.play("finger_side_to_side")
+	animation_player_fingers.play("finger_side_to_side")
 	await coco_collided_both_walls
+	animation_player_fingers.stop()
+	finger_sprite.visible = false	
 	animation_player.play_backwards("label_move_coco_in")
 	
 	# Launch Frogy
 	await get_tree().create_timer(2.0).timeout
 	animation_player.play("label_launch_frogy_in")
 	await get_tree().create_timer(1.0).timeout
-	animation_player.play("finger_slide_up")
+	animation_player_fingers.play("finger_slide_up")
 	_coco.bump_manager.disabled = false
 	await GlobalEvents.frogy_detached
+	animation_player_fingers.stop()
+	finger_sprite.visible = false
 	animation_player.play_backwards("label_launch_frogy_in")
 	
 	# Bump Frogy
 	await get_tree().create_timer(2.0).timeout
 	animation_player.play("label_bump_frogy_in")
-	_step_bump_frogy = true
 	await get_tree().create_timer(1.0).timeout
-	animation_player.play("finger_slide_up")
+	animation_player_fingers.play("finger_slide_up")
+	_step_bump_frogy = true
 	await GlobalEvents.bump_perfect_performed
+	animation_player_fingers.stop()
+	finger_sprite.visible = false
 	_step_bump_frogy = false
 	if _label_make_perfect_visible:
 		animation_player.play_backwards("label_make_perfect_in")
