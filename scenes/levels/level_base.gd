@@ -35,6 +35,10 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func set_level_cleared():
+	GlobalEvents.emit_level_clear(level_num)
+	level_cleared.emit()
+	
 # -- 17 private methods
 func _add_brick(brick: Brick):
 	bricks.append(brick)
@@ -45,8 +49,7 @@ func _remove_brick(brick: Brick):
 	
 	if bricks.is_empty():
 		await get_tree().create_timer(0.5).timeout
-		GlobalEvents.emit_level_clear(level_num)
-		level_cleared.emit()
+		set_level_cleared()
 		
 		
 func _remove_life():

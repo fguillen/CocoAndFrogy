@@ -84,7 +84,6 @@ func _emit_input_action_directions(direction: Vector2):
 	Input.parse_input_event(event_ui_down)
 	
 	
-
 func _emit_input_action_bump():
 	var event = InputEventAction.new()
 	event.action = "bump"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c22f20qkjjdka"]
+[gd_scene load_steps=17 format=3 uid="uid://c22f20qkjjdka"]
 
 [ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_8jt15"]
 [ext_resource type="Script" path="res://scenes/levels/level_00.gd" id="1_luijp"]
@@ -100,6 +100,54 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%MakePerfect:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-840, 384)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%MakePerfect:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("%KickBugs:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-904, 368)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("%KickBugs:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0628319]
 }
 
 [sub_resource type="Animation" id="Animation_qc8fq"]
@@ -220,13 +268,71 @@ tracks/1/keys = {
 "values": [0.0, -0.0628319]
 }
 
+[sub_resource type="Animation" id="Animation_kuui1"]
+resource_name = "label_make_perfect_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MakePerfect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-840, 384), Vector2(216, 384)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%MakePerfect:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0298852]
+}
+
+[sub_resource type="Animation" id="Animation_e14be"]
+resource_name = "label_kick_bugs_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%KickBugs:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-904, 536), Vector2(152, 512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%KickBugs:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.0628319]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y0pvt"]
 _data = {
 "RESET": SubResource("Animation_cbfic"),
 "finger_side_to_side": SubResource("Animation_qc8fq"),
 "finger_slide_up": SubResource("Animation_gc3np"),
 "label_bump_frogy_in": SubResource("Animation_7fqcu"),
+"label_kick_bugs_in": SubResource("Animation_e14be"),
 "label_launch_frogy_in": SubResource("Animation_y0tni"),
+"label_make_perfect_in": SubResource("Animation_kuui1"),
 "label_move_coco_in": SubResource("Animation_0d1ku")
 }
 
@@ -234,7 +340,6 @@ _data = {
 script = ExtResource("1_luijp")
 
 [node name="LevelBase" parent="." instance=ExtResource("1_8jt15")]
-level_num = 1
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)
@@ -289,8 +394,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 offset_left = -848.0
 offset_top = 240.0
-offset_right = -72.0
-offset_bottom = 528.0
+offset_right = -24.0
+offset_bottom = 480.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g2rlg")
 
 [node name="Label03" type="Label" parent="TutorialElements/BumpFrogy"]
@@ -302,6 +407,49 @@ theme_override_colors/font_outline_color = Color(0.2, 0.203922, 0.203922, 1)
 theme_override_constants/outline_size = 14
 theme_override_font_sizes/font_size = 100
 text = "Bump Frogy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MakePerfect" type="PanelContainer" parent="TutorialElements"]
+unique_name_in_owner = true
+offset_left = -840.0
+offset_top = 384.0
+offset_right = -64.0
+offset_bottom = 553.0
+pivot_offset = Vector2(388, 84)
+theme_override_styles/panel = SubResource("StyleBoxTexture_g2rlg")
+
+[node name="Label03" type="Label" parent="TutorialElements/MakePerfect"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_gus8n")
+theme_override_colors/font_color = Color(0.929412, 0.403922, 0.054902, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.203922, 0.203922, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 100
+text = "make a \"Perfect\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KickBugs" type="PanelContainer" parent="TutorialElements"]
+unique_name_in_owner = true
+offset_left = -904.0
+offset_top = 368.0
+offset_right = -80.0
+offset_bottom = 656.0
+rotation = -0.0628319
+theme_override_styles/panel = SubResource("StyleBoxTexture_g2rlg")
+
+[node name="Label03" type="Label" parent="TutorialElements/KickBugs"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_gus8n")
+theme_override_colors/font_color = Color(0.929412, 0.403922, 0.054902, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.203922, 0.203922, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 100
+text = "Let's kick
+some bugs"
 horizontal_alignment = 1
 vertical_alignment = 1
 

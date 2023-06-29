@@ -23,10 +23,13 @@ signal bumped()
 
 
 # -- 09 public variables
+var disabled := false
+
 # -- 10 private variables
 var _bump_frogy_position := Vector2.ZERO
 var _bump_collision_position := Vector2.ZERO
 var _cooling_down := false
+
 
 # -- 11 onready variables
 @onready var _timer = $Timer
@@ -39,6 +42,9 @@ var _cooling_down := false
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func bump():
+	if disabled:
+		return
+		
 	# cooling down section
 	if _cooling_down:
 		return
@@ -54,6 +60,7 @@ func bump():
 		
 	if frogy._attached_to:
 		bumped.emit()
+		GlobalEvents.bump_performed.emit()
 		bumped_achieved.emit()
 		frogy.detach()
 		return
@@ -88,6 +95,7 @@ func bump():
 	else: 
 		bump_message.emit("No way")
 		
+	GlobalEvents.bump_performed.emit()
 	bumped.emit()
 	
 	

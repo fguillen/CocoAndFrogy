@@ -14,6 +14,7 @@ extends Character
 # -- 10 private variables
 # -- 11 onready variables
 @onready var frogy_handler: CanvasItem = $FrogyHandler
+@onready var bump_manager = $BumpManager
 
 #
 # -- 12 optional built-in virtual _init method
