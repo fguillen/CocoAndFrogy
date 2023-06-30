@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="10_xlk1t"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="11_crb03"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bkvpj"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bawfn"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -20,7 +20,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ybo8t"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yujgn"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -171,28 +171,42 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 120
 stats_property = "total_score"
 
-[node name="Controls" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+[node name="Buttons" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 50
 
-[node name="NextButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls" instance=ExtResource("7_pluhc")]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons"]
 layout_mode = 2
+
+[node name="NextButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer" instance=ExtResource("7_pluhc")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+
+[node name="MenuButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer" instance=ExtResource("7_pluhc")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Back to Menu"
 
 [node name="Effects" type="Node2D" parent="."]
 
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_bkvpj")
+noise = SubResource("FastNoiseLite_bawfn")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_ybo8t")
+noise = SubResource("FastNoiseLite_yujgn")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_ms0k7")]
 stream = ExtResource("10_xlk1t")
@@ -207,6 +221,7 @@ random_pitch = true
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffect" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeNumberSoundEffect" method="perform"]
 [connection signal="animation_finished" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TotalScore/StatsTotalScoreNumber" to="Effects/ShakeEffectBig" method="perform"]
-[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Controls/NextButton" to="." method="next"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/NextButton" to="." method="next"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer/MenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]
 
 [editable path="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/TimeStatsLine/StatsTimeNumber"]

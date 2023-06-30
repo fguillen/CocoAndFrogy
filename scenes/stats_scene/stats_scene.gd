@@ -27,7 +27,7 @@ var _tweens_speed := 1.0
 
 # -- 11 onready variables
 @onready var stats_title_label = %StatsTitle
-@onready var next_button = %NextButton
+@onready var buttons = %Buttons
 
 
 #
@@ -40,7 +40,11 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 func _input(event):
+	print("XXX: event: ", event.to_string())
 	if event.is_action_pressed("ui_accept") and _is_still_animating:
+		_accelerate()
+		
+	if event is InputEventScreenTouch and event.double_tap and _is_still_animating:
 		_accelerate()
 		
 	
@@ -54,14 +58,14 @@ func _show():
 	_hide_stats_title_label()
 	_hide_labels()
 	_hide_numbers()
-	_hide_next_button()
+	_hide_buttons()
 	
 	await _animate_stats_title_label()
 	await _animate_labels()
 	await _animate_numbers()
 	await get_tree().create_timer(1.0).timeout
 	
-	_animate_next_button()
+	_animate_buttons()
 	
 	_is_still_animating = false
 	
@@ -80,8 +84,8 @@ func _hide_numbers():
 		number.self_modulate.a = 0.0
 
 
-func _hide_next_button():
-	next_button.self_modulate.a = 0.0
+func _hide_buttons():
+	buttons.modulate.a = 0.0
 	
 
 func _animate_stats_title_label():
@@ -106,13 +110,13 @@ func _animate_numbers():
 		stats_number_animated.emit()
 
 
-func _animate_next_button():
+func _animate_buttons():
 	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_speed_scale(_tweens_speed)
-	var original_position_y = next_button.global_position.y
-	tween.tween_property(next_button, "global_position:y", original_position_y, 0.2).from(get_viewport_rect().size.y + 300)
-	tween.parallel().tween_property(next_button, "self_modulate:a", 1.0, 0.2).from(0.0)
+	var original_position_y = buttons.global_position.y
+	tween.tween_property(buttons, "global_position:y", original_position_y, 0.2).from(get_viewport_rect().size.y + 300)
+	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.2).from(0.0)
 	await tween.finished
-	next_button.grab_focus()
+	buttons.grab_focus()
 
 
 func _accelerate():
