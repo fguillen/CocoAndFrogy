@@ -11,7 +11,7 @@ extends Node
 # -- 07 constants
 # -- 08 exported variables
 @export var bumping_sensitivity := 1000.0
-@export var dashing_sensitivity := 6000.0
+@export var dashing_sensitivity := 3000.0
 @export var moving_sensitivity := 100.0
 
 # -- 09 public variables
@@ -33,6 +33,7 @@ func _input(event):
 		_touch_position_changed(event.position)
 			
 	if event is InputEventScreenDrag:
+		print("XXX: event.velocity: ", event.velocity)
 		_check_if_bumping(event.velocity)
 		_check_if_dashing(event.velocity)
 
@@ -85,6 +86,10 @@ func _emit_input_action_directions(direction: Vector2):
 	
 	
 func _emit_input_action_bump():
+	print("InputManagerTouch._emit_input_action_bump(%s)" % Input.is_action_pressed("bump"))
+	if Input.is_action_pressed("bump"):
+		return
+	
 	var event = InputEventAction.new()
 	event.action = "bump"
 	
@@ -93,12 +98,16 @@ func _emit_input_action_bump():
 	Input.parse_input_event(event)
 	
 	# Relase in next frame
-	await get_tree().process_frame
+	await get_tree().create_timer(0.2).timeout
 	event.pressed = false
 	Input.parse_input_event(event)
 	
 	
 func _emit_input_action_dash():
+	print("InputManagerTouch._emit_input_action_dash(%s)" % Input.is_action_pressed("dash"))
+	if Input.is_action_pressed("dash"):
+		return
+		
 	var event = InputEventAction.new()
 	event.action = "dash"
 	
@@ -107,7 +116,7 @@ func _emit_input_action_dash():
 	Input.parse_input_event(event)
 	
 	# Relase in next frame
-	await get_tree().process_frame
+	await get_tree().create_timer(0.2).timeout
 	event.pressed = false
 	Input.parse_input_event(event)
 	

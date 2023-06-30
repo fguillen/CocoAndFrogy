@@ -43,6 +43,7 @@ var _cooling_down := false
 # -- 16 public methods
 func bump():
 	if disabled:
+		print("BumpManager.bump.disabled: ", disabled)
 		return
 		
 	# cooling down section
@@ -102,6 +103,7 @@ func bump():
 # -- 17 private methods
 # -- 18 signal listeners
 func on_bump_input_received():
+	print("BumpManage.on_bump_input_received()")
 	bump()
 	
 func _on_timer_timeout():
