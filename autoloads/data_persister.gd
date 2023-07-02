@@ -55,6 +55,8 @@ func load_data():
 		
 	var file = FileAccess.open(DATA_PATH, FileAccess.READ)
 	var game_data = JSON.parse_string(file.get_as_text())
+	print("DataPersister.game_data: ", game_data)
+	
 	for node_data in game_data:
 		var node = get_node_or_null(node_data.node_path)
 		if not node:

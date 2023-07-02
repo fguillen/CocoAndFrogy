@@ -40,7 +40,6 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 func _input(event):
-	print("XXX: event: ", event.to_string())
 	if event.is_action_pressed("ui_accept") and _is_still_animating:
 		_accelerate()
 		

@@ -16,7 +16,7 @@ signal frogy_ready_finished()
 var coco: Coco
 var frogy: Frogy
 var cleaned_levels: Array[int]
-var last_level_played: int
+var last_level_played := 0
 var lifes := 3
 
 
@@ -30,6 +30,7 @@ func _ready():
 	add_to_group("persist")
 	GlobalEvents.level_started.connect(_on_level_started)
 	GlobalEvents.level_clear.connect(_on_level_cleared)
+	GlobalEvents.game_over.connect(_on_game_over)
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -68,7 +69,10 @@ func _on_level_cleared(level_num: int):
 func _on_level_started(level_num: int):
 	last_level_played = level_num
 	DataPersister.save_data()
-	
+
+
+func _on_game_over():
+	lifes = 3	
 	
 	
 # -- 19 subclasses
