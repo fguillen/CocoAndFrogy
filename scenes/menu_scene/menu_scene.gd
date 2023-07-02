@@ -7,6 +7,7 @@ extends Node2D
 #
 # -- 05 signals
 signal title_animation_finished()
+signal go_to_level(level: int)
 
 # -- 06 enums
 # -- 07 constants
@@ -30,6 +31,10 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func play_last_level():
+	go_to_level.emit(Global.last_level_played)
+	
+	
 # -- 17 private methods
 func _show():
 	_hide_title_label()

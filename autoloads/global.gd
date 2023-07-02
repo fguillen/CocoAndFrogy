@@ -77,6 +77,7 @@ func _on_level_started(level_num: int):
 
 func _on_game_over():
 	lifes = 3	
+	DataPersister.save_data()
 	
 	
 # -- 19 subclasses
