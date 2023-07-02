@@ -110,7 +110,7 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_217si"]
 offsets = PackedFloat32Array(0, 0.603636, 1)
-colors = PackedColorArray(0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.65098, 1, 0.490196, 0.670588, 0.65098, 0)
+colors = PackedColorArray(0.929412, 0.403922, 0.054902, 1, 0.929412, 0.403922, 0.054902, 1, 0.929412, 0.403922, 0.054902, 0)
 
 [node name="Frogy" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["frogy"]]
 collision_layer = 2
