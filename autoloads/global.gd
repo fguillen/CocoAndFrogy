@@ -56,6 +56,10 @@ func deserialize(data: Dictionary):
 	cleaned_levels.assign(data.cleaned_levels)
 	
 	
+func reset_levels_advance():
+	cleaned_levels.clear()
+	last_level_played = 0
+	
 # -- 17 private methods
 
 # -- 18 signal listeners
