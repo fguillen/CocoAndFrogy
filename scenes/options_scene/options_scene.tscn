@@ -170,4 +170,5 @@ random_pitch = true
 
 [connection signal="value_changed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer2/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer/ResetLevels" to="." method="reset_levels_advance"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]

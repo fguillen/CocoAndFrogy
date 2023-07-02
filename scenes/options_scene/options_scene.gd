@@ -36,6 +36,7 @@ func _ready():
 func reset_levels_advance():
 	Global.reset_levels_advance()
 	
+	
 # -- 17 private methods
 func _show():
 	_hide_title_label()
