@@ -27,6 +27,7 @@ signal go_to_level(level: int)
 # -- 14 built-in virtual _ready method
 func _ready():
 	_show.call_deferred()
+	StatsManager.reset_total_score()
 	
 	
 # -- 15 remaining built-in virtual methods

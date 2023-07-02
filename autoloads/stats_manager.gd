@@ -33,8 +33,9 @@ func _ready():
 	GlobalEvents.bump_late_performed.connect(_increase_bumps_late)
 	GlobalEvents.bump_perfect_performed.connect(_increase_bumps_perfect)
 	GlobalEvents.bounce_performed.connect(_increase_bounces)
-	GlobalEvents.level_started.connect(_reset.unbind(1))
+	GlobalEvents.level_started.connect(_reset_level.unbind(1))
 	GlobalEvents.level_clear.connect(_calculate_stats.unbind(1))
+	GlobalEvents.game_over.connect(_on_game_over)
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -62,8 +63,12 @@ func get_stat_by_name(stat_name: String) -> int:
 			return 0
 	
 	
+func reset_total_score():
+	total_score = 0
+	
+	
 # -- 17 private methods
-func _reset():
+func _reset_level():
 	bricks_destroyed = 0
 	bumps_early = 0
 	bumps_late = 0
@@ -111,5 +116,7 @@ func _set_score(value: int):
 	
 	
 # -- 18 signal listeners
+func _on_game_over():
+	reset_total_score()
 # -- 19 subclasses
 
