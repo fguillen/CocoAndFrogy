@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://itbch783ke16"]
+[gd_scene load_steps=5 format=3 uid="uid://vd8sr235031v"]
 
 [ext_resource type="Texture2D" uid="uid://b7wfwcbveppvd" path="res://ui/menu_bacground_01.png" id="1_fnawl"]
 [ext_resource type="Texture2D" uid="uid://dbgmaw1epir5l" path="res://ui/menu_background_02.png" id="2_dqbsr"]
-[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake_effect.tscn" id="3_hhlqp"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="3_hhlqp"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bjpmf"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b2jdn"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -13,6 +13,7 @@ fractal_octaves = 1
 fractal_lacunarity = 1.0
 
 [node name="MenuBackground" type="Node2D"]
+process_mode = 3
 
 [node name="Background_01" type="Sprite2D" parent="."]
 position = Vector2(-112.589, -196.522)
@@ -32,4 +33,4 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(90, 50)
 frequency = 10.0
-noise = SubResource("FastNoiseLite_bjpmf")
+noise = SubResource("FastNoiseLite_b2jdn")

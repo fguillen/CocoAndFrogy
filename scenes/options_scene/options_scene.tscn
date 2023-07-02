@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dn5i2ucgtue3j"]
 
 [ext_resource type="Script" path="res://scenes/options_scene/options_scene.gd" id="1_w6cjh"]
-[ext_resource type="PackedScene" path="res://ui/menu_background.tscn" id="2_8axqt"]
+[ext_resource type="PackedScene" uid="uid://vd8sr235031v" path="res://ui/menu_background.tscn" id="2_8axqt"]
 [ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_ish1w"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="3_vq6ll"]
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="4_7eiak"]
@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="7_3hc0t"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="8_jamt6"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vvxiy"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nn3br"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -19,7 +19,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_b1nhj"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w6hxx"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -152,13 +152,13 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("5_kd5b6")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_vvxiy")
+noise = SubResource("FastNoiseLite_nn3br")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("5_kd5b6")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_b1nhj")
+noise = SubResource("FastNoiseLite_w6hxx")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("6_dn6i5")]
 stream = ExtResource("7_3hc0t")
