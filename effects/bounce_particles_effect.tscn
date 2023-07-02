@@ -1,16 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://6q5tp048wk3s"]
 
 [ext_resource type="Texture2D" uid="uid://cay42v48ylgpl" path="res://assets/bump/bump_spritesheet.png" id="1_1j0te"]
+[ext_resource type="Material" uid="uid://bs6emwyl3d4v5" path="res://effects/bounce_particles_effect_material.tres" id="1_lv653"]
 [ext_resource type="Script" path="res://effects/bounce_particles_effect.gd" id="2_ulxge"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c1bnd"]
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 7
-particles_anim_loop = false
-
 [node name="BounceParticlesEffect" type="CPUParticles2D"]
-material = SubResource("CanvasItemMaterial_c1bnd")
+material = ExtResource("1_lv653")
 emitting = false
 amount = 2
 lifetime = 0.3

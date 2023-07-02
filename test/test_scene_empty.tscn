@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bavwclbuxic5m"]
 
 [ext_resource type="PackedScene" uid="uid://8rlt50bjqrnr" path="res://actors/frogy/frogy.tscn" id="2_5113m"]
-[ext_resource type="PackedScene" uid="uid://b6ha4rdfqdob1" path="res://actors/coco/coco.tscn" id="3_xcddv"]
+[ext_resource type="PackedScene" uid="uid://dxtvkmwjy1fs8" path="res://actors/coco/coco.tscn" id="3_xcddv"]
 
 [node name="TestScene" type="Node2D"]
 

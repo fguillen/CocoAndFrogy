@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.0", "GL Compatibility")
 
 [autoload]
 
+PreloadMaterials="*res://autoloads/preload_materials.tscn"
 GroupsUtils="*res://autoloads/groups_utils.gd"
 Global="*res://autoloads/global.gd"
 GlobalEvents="*res://autoloads/global_events.gd"
