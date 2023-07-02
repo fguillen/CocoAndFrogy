@@ -43,7 +43,7 @@ func _show():
 	_hide_buttons()
 	
 	await _animate_title_label()
-	await get_tree().create_timer(1.0).timeout
+#	await get_tree().create_timer(1.0).timeout
 	
 	_animate_buttons()
 	
