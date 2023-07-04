@@ -1,6 +1,5 @@
-[gd_scene load_steps=59 format=3 uid="uid://dxtvkmwjy1fs8"]
+[gd_scene load_steps=57 format=3 uid="uid://dxtvkmwjy1fs8"]
 
-[ext_resource type="Texture2D" uid="uid://bqa3krndu8fn7" path="res://coco.png" id="1_jbxnx"]
 [ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
 [ext_resource type="Shader" path="res://effects/deform_effect.gdshader" id="2_cye3n"]
 [ext_resource type="PackedScene" path="res://actors/components/movement_manager.tscn" id="2_hpak8"]
@@ -26,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://d1417rgjwelp2" path="res://assets/coco/coco_15.png" id="21_vw5h5"]
 [ext_resource type="Script" path="res://actors/coco/animation_manager.gd" id="22_nnq4m"]
 [ext_resource type="Script" path="res://actors/coco/effects_manager.gd" id="24_ktap8"]
-[ext_resource type="PackedScene" uid="uid://w331wjf5af75" path="res://effects/lean_towards_direction_effect.tscn" id="24_qa5ke"]
 [ext_resource type="PackedScene" uid="uid://dlus5sud1rv0v" path="res://effects/oscillator_towards_direction_effect.tscn" id="27_2kk1s"]
 [ext_resource type="PackedScene" uid="uid://dl28skw65bhlw" path="res://effects/deform_effect.tscn" id="28_le3f5"]
 [ext_resource type="Script" path="res://effects/oscillator_towards_direction_effect.gd" id="28_qyybc"]
@@ -127,10 +125,10 @@ tracks/0/path = NodePath("Visuals/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3, 0.33, 0.36, 0.39, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3, 0.33, 0.36, 0.39),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("19_f0yv3"), ExtResource("18_xb1np"), ExtResource("17_k80sv"), ExtResource("16_hy7xn"), ExtResource("15_r06t0"), ExtResource("14_6gqnj"), ExtResource("13_qqmq0"), ExtResource("12_3rjtw"), ExtResource("11_1dhqg"), ExtResource("10_ud8ix"), ExtResource("9_7akyx"), ExtResource("8_l38ie"), ExtResource("7_4a7en"), ExtResource("6_fj6qd"), ExtResource("1_jbxnx")]
+"values": [ExtResource("19_f0yv3"), ExtResource("18_xb1np"), ExtResource("17_k80sv"), ExtResource("16_hy7xn"), ExtResource("15_r06t0"), ExtResource("14_6gqnj"), ExtResource("13_qqmq0"), ExtResource("12_3rjtw"), ExtResource("11_1dhqg"), ExtResource("10_ud8ix"), ExtResource("9_7akyx"), ExtResource("8_l38ie"), ExtResource("7_4a7en"), ExtResource("6_fj6qd")]
 }
 
 [sub_resource type="Animation" id="Animation_pvqae"]
@@ -144,10 +142,10 @@ tracks/0/path = NodePath("Visuals/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3, 0.33, 0.36, 0.39, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3, 0.33, 0.36, 0.39),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("6_fj6qd"), ExtResource("7_4a7en"), ExtResource("8_l38ie"), ExtResource("9_7akyx"), ExtResource("10_ud8ix"), ExtResource("11_1dhqg"), ExtResource("12_3rjtw"), ExtResource("13_qqmq0"), ExtResource("14_6gqnj"), ExtResource("15_r06t0"), ExtResource("16_hy7xn"), ExtResource("17_k80sv"), ExtResource("18_xb1np"), ExtResource("19_f0yv3"), ExtResource("1_jbxnx")]
+"values": [ExtResource("6_fj6qd"), ExtResource("7_4a7en"), ExtResource("8_l38ie"), ExtResource("9_7akyx"), ExtResource("10_ud8ix"), ExtResource("11_1dhqg"), ExtResource("12_3rjtw"), ExtResource("13_qqmq0"), ExtResource("14_6gqnj"), ExtResource("15_r06t0"), ExtResource("16_hy7xn"), ExtResource("17_k80sv"), ExtResource("18_xb1np"), ExtResource("19_f0yv3")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rulpw"]
@@ -325,10 +323,6 @@ script = ExtResource("24_ktap8")
 [node name="TextFloatingEffect" parent="Effects" instance=ExtResource("6_2sdkg")]
 position = Vector2(0, -99)
 
-[node name="LeanTowardsDirectionEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("24_qa5ke")]
-process_mode = 4
-target = NodePath("../../Visuals")
-
 [node name="OscilatorTowardsDirectionEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("27_2kk1s")]
 script = ExtResource("28_qyybc")
 target = NodePath("../../Visuals")
@@ -352,7 +346,6 @@ stream = ExtResource("33_ypj67")
 random_pitch = true
 
 [connection signal="direction_changed" from="MovementManager" to="AnimationManager" method="on_change_direction"]
-[connection signal="direction_changed" from="MovementManager" to="Effects/LeanTowardsDirectionEffect" method="on_direction_changed"]
 [connection signal="direction_changed" from="MovementManager" to="Effects/OscilatorTowardsDirectionEffect" method="on_direction_changed"]
 [connection signal="bump_received" from="InputManager" to="BumpManager" method="bump"]
 [connection signal="direction_changed" from="InputManager" to="MovementManager" method="on_direction_changed"]

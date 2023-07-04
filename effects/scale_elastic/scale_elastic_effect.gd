@@ -22,6 +22,7 @@ signal finished()
 # -- 10 private variables
 var _previous_scale: Vector2
 var _is_playing := false
+var _tween: Tween
 
 # -- 11 onready variables
 #
@@ -34,12 +35,16 @@ func perform():
 	if _is_playing:
 		return
 		
+	if not is_inside_tree():
+		print("ScaleElasticEffect.perform when not in tree :?")
+		return
+		
 	_is_playing = true
 	_previous_scale = target.scale
 	
-	var tween = get_tree().create_tween()
-	tween.tween_method(_interpolation, 0.0, 1.0, time)
-	await tween.finished
+	_tween = get_tree().create_tween()
+	_tween.tween_method(_interpolation, 0.0, 1.0, time)
+	await _tween.finished
 	_is_playing = false
 	finished.emit()
 	
@@ -49,6 +54,11 @@ func _interpolation(t):
 	var scale_result = lerp(_previous_scale, target_scale, curve.sample_baked(t))
 	target.scale = scale_result
 	
+
+func _notification(what):
+	if (what == NOTIFICATION_PREDELETE):
+		if _tween is Tween and _tween.is_running():
+			_tween.stop()
 	
 # -- 18 signal listeners
 # -- 19 innerclasses
