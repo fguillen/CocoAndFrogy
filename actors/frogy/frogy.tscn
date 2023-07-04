@@ -219,7 +219,8 @@ stream = ExtResource("21_avugy")
 volume_db = -8.0
 
 [node name="DeviceVibrationEffect" parent="Effects" instance=ExtResource("22_5876s")]
-duration = 0.4
+duration = 0.2
+times = 2
 
 [connection signal="boosted" from="." to="Effects/HitStopEffectBig" method="perform"]
 [connection signal="ready" from="." to="Effects/AppearEffect" method="perform"]

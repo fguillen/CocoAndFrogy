@@ -15,6 +15,7 @@ extends Node
 @export var strong_maginitude := 0.1
 @export var duration := 0.15
 @export var times := 1
+@export var time_in_between := 0.2
 
 # -- 09 public variables
 # -- 10 private variables
@@ -30,7 +31,7 @@ func perform():
 	for i in times:
 		Input.start_joy_vibration(device, weak_maginitude, strong_maginitude, duration)
 		Input.vibrate_handheld(int(duration * 1000))
-		await get_tree().create_timer(duration + 0.2).timeout
+		await get_tree().create_timer(duration + time_in_between).timeout
 	
 	
 # -- 17 private methods

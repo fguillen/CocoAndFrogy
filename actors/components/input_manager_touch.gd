@@ -33,7 +33,6 @@ func _input(event):
 		_touch_position_changed(event.position)
 			
 	if event is InputEventScreenDrag:
-		print("XXX: event.velocity: ", event.velocity)
 		_check_if_bumping(event.velocity)
 		_check_if_dashing(event.velocity)
 

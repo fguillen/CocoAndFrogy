@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbgmaw1epir5l" path="res://ui/menu_background_02.png" id="2_dqbsr"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="3_hhlqp"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_b2jdn"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_01s7q"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -33,4 +33,4 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(90, 50)
 frequency = 10.0
-noise = SubResource("FastNoiseLite_b2jdn")
+noise = SubResource("FastNoiseLite_01s7q")

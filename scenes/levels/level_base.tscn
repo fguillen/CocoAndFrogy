@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://baq303h7ydbfg" path="res://ui/ui.tscn" id="29_wih55"]
 [ext_resource type="AudioStream" uid="uid://divbjlofbt0f6" path="res://assets/sounds/game_over.ogg" id="30_c8220"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_w8dqq"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8rwoc"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -40,7 +40,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_hjplp"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r7x8s"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -94,7 +94,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 0.6
-noise = SubResource("FastNoiseLite_w8dqq")
+noise = SubResource("FastNoiseLite_8rwoc")
 
 [node name="Skay02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.005, 0.005)
@@ -109,7 +109,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 1.0
-noise = SubResource("FastNoiseLite_hjplp")
+noise = SubResource("FastNoiseLite_r7x8s")
 
 [node name="Clouds01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.02, 0.02)
