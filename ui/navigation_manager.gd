@@ -26,7 +26,7 @@ var _scenes = {
 	"level_05": "res://scenes/levels/level_05.tscn",
 	"stats": "res://scenes/stats_scene/stats_scene.tscn",
 	"game_over": "res://scenes/game_over_scene/game_over_scene.tscn",
-	"end": "",
+	"end": "res://scenes/end_scene/end_scene.tscn",
 }
 
 # -- 11 onready variables

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/stats_scene/stats_scene.gd" id="1_7rgjh"]
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="1_tuuey"]
-[ext_resource type="PackedScene" path="res://ui/menu_background.tscn" id="2_chsjk"]
+[ext_resource type="PackedScene" uid="uid://vd8sr235031v" path="res://ui/menu_background.tscn" id="2_chsjk"]
 [ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_hj0r2"]
 [ext_resource type="PackedScene" uid="uid://c6350tcnthofh" path="res://scenes/stats_scene/stats_title.tscn" id="5_00c1i"]
 [ext_resource type="PackedScene" uid="uid://cnqeoqxisixkt" path="res://scenes/stats_scene/stats_number.tscn" id="5_it5o2"]
@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="10_xlk1t"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="11_crb03"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bawfn"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g45gm"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -20,7 +20,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_yujgn"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ehva8"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -200,13 +200,13 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_bawfn")
+noise = SubResource("FastNoiseLite_g45gm")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("7_f17px")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_yujgn")
+noise = SubResource("FastNoiseLite_ehva8")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("8_ms0k7")]
 stream = ExtResource("10_xlk1t")
