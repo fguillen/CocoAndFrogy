@@ -66,7 +66,7 @@ shader_parameter/percent = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgkj6"]
 resource_local_to_scene = true
 shader = ExtResource("6_jfa7u")
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
 shader_parameter/percent = 0.0
 
 [sub_resource type="Curve" id="Curve_olesj"]

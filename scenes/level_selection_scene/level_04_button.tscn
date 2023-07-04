@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c352qyin6q4v1"]
+[gd_scene load_steps=13 format=3 uid="uid://c352qyin6q4v1"]
 
 [ext_resource type="PackedScene" uid="uid://cbindn4lhgg5u" path="res://ui/level_selection_button.tscn" id="1_dgiqr"]
 [ext_resource type="Texture2D" uid="uid://dvwektlrudmh5" path="res://actors/bricks/stone/stone.png" id="2_v0iq0"]
@@ -35,12 +35,6 @@ shader_parameter/percent = 0.0
 resource_local_to_scene = true
 shader = ExtResource("3_nrulj")
 shader_parameter/color = Color(0.929412, 0.403922, 0.054902, 1)
-shader_parameter/percent = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a45cc"]
-resource_local_to_scene = true
-shader = ExtResource("3_nrulj")
-shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/percent = 0.0
 
 [sub_resource type="Curve" id="Curve_vlylf"]
@@ -96,9 +90,6 @@ material = SubResource("ShaderMaterial_atjyr")
 
 [node name="BlinkEffect3" parent="Effects" index="4"]
 material = SubResource("ShaderMaterial_bih4x")
-
-[node name="LockBlinkEffect" parent="Effects" index="5"]
-material = SubResource("ShaderMaterial_a45cc")
 
 [node name="ScaleElasticEffectFocused" parent="Effects" index="9"]
 curve = SubResource("Curve_vlylf")
