@@ -22,14 +22,14 @@ texture_margin_bottom = 21.0
 region_rect = Rect2(-3, -3, 440, 158)
 modulate_color = Color(0.2, 0.203922, 0.203922, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4iyje"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qyu60"]
 texture = ExtResource("1_58v72")
 texture_margin_left = 23.0
 texture_margin_top = 27.0
 texture_margin_right = 25.0
 texture_margin_bottom = 21.0
 region_rect = Rect2(-3, -3, 440, 158)
-modulate_color = Color(0.2, 0.203922, 0.203922, 1)
+modulate_color = Color(0.682353, 0.286275, 0.0117647, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3wrb"]
 content_margin_left = 4.0
@@ -75,7 +75,7 @@ default_font = ExtResource("1_023s6")
 Button/font_sizes/font_size = 100
 Button/styles/hover = SubResource("StyleBoxTexture_oxopx")
 Button/styles/normal = SubResource("StyleBoxTexture_3ihl8")
-Button/styles/pressed = SubResource("StyleBoxTexture_4iyje")
+Button/styles/pressed = SubResource("StyleBoxTexture_qyu60")
 HSlider/icons/grabber = ExtResource("1_rnk76")
 HSlider/icons/grabber_disabled = ExtResource("1_rnk76")
 HSlider/icons/grabber_highlight = ExtResource("1_rnk76")

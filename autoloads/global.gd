@@ -59,6 +59,7 @@ func deserialize(data: Dictionary):
 func reset_levels_advance():
 	cleaned_levels.clear()
 	last_level_played = 0
+	DataPersister.save_data()
 	
 # -- 17 private methods
 
