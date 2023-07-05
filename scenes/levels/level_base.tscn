@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://djjttvn3vr14t"]
+[gd_scene load_steps=39 format=3 uid="uid://djjttvn3vr14t"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_base.gd" id="1_id1vj"]
 [ext_resource type="PackedScene" uid="uid://d3mh2452jmoyf" path="res://camera.tscn" id="1_pvwu1"]
@@ -31,8 +31,9 @@
 [ext_resource type="AudioStream" uid="uid://bojo5kfbm7lxi" path="res://assets/sounds/level_clear.ogg" id="29_lok22"]
 [ext_resource type="PackedScene" uid="uid://baq303h7ydbfg" path="res://ui/ui.tscn" id="29_wih55"]
 [ext_resource type="AudioStream" uid="uid://divbjlofbt0f6" path="res://assets/sounds/game_over.ogg" id="30_c8220"]
+[ext_resource type="AudioStream" uid="uid://bpf7v7o44fsbe" path="res://assets/music/Bass-Invaders.mp3" id="32_qcth1"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_q4woq"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6m562"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -40,7 +41,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3g6qx"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gyi2n"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -94,7 +95,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 0.6
-noise = SubResource("FastNoiseLite_q4woq")
+noise = SubResource("FastNoiseLite_6m562")
 
 [node name="Skay02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.005, 0.005)
@@ -109,7 +110,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 1.0
-noise = SubResource("FastNoiseLite_3g6qx")
+noise = SubResource("FastNoiseLite_gyi2n")
 
 [node name="Clouds01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.02, 0.02)
@@ -242,6 +243,11 @@ stream = ExtResource("29_lok22")
 
 [node name="GameOverSoundEffect" parent="Effects" instance=ExtResource("28_2b2nu")]
 stream = ExtResource("30_c8220")
+
+[node name="BackgroundMusic" parent="Effects" instance=ExtResource("28_2b2nu")]
+stream = ExtResource("32_qcth1")
+autoplay = true
+loop = true
 
 [connection signal="game_over" from="." to="Effects/GameOverSoundEffect" method="perform"]
 [connection signal="game_over" from="." to="NavigationManager" method="go_to" binds= ["game_over"]]

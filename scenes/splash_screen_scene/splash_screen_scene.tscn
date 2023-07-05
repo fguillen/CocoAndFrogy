@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://lr416k33kc2j"]
+
+[ext_resource type="Texture2D" uid="uid://nmmcvh6owqgu" path="res://scenes/splash_screen_scene/arturito_productions.png" id="1_ooxmf"]
+
+[node name="SplashScreenScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Control"]
+custom_minimum_size = Vector2(700, 300)
+layout_mode = 2
+offset_left = -350.0
+offset_top = -150.0
+offset_right = 350.0
+offset_bottom = 150.0
+texture = ExtResource("1_ooxmf")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CenterContainer/Control"]
+layout_mode = 2
+offset_left = 93.0
+offset_right = 442.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 70
+text = "Presents"
