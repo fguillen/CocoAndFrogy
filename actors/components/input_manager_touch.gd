@@ -17,6 +17,8 @@ extends Node
 # -- 09 public variables
 # -- 10 private variables
 var _character: Node2D
+var _last_drag_position := Vector2.ZERO
+var _last_drag_time := 0.0
 
 # -- 11 onready variables
 #
@@ -29,20 +31,58 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 func _input(event):
-	if event is InputEventScreenTouch or event is InputEventScreenDrag:
-		_touch_position_changed(event.position)
+	print("XXX: event: ", event)
+	if event is InputEventScreenTouch:
+		if event.pressed == true:
+			_touch_position_changed(event.position)
+		
+		if event.pressed == false:
+			_last_drag_position = Vector2.ZERO
 			
 	if event is InputEventScreenDrag:
-		_check_if_bumping(event.velocity)
-		_check_if_dashing(event.velocity)
+		_calculate_direction_based_on_drag(event.relative)
+		
+		var drag_velocity = _calculate_drag_velocity(event.position)
+		_check_if_bumping(drag_velocity)
+		_check_if_dashing(drag_velocity)
+		
+		
 
 
 # -- 16 public methods
 		
 	
 # -- 17 private methods
+func _calculate_drag_velocity(event_position: Vector2) -> Vector2:
+	var result = Vector2.ZERO
+		
+	if _last_drag_position != Vector2.ZERO:
+		var drag_positions_interval = Time.get_unix_time_from_system() - _last_drag_time
+		var drag_distance = event_position - _last_drag_position
+		result = drag_distance / drag_positions_interval
+		
+	_last_drag_position = event_position
+	_last_drag_time = Time.get_unix_time_from_system()
+	
+	return result
+	
+	
+func _calculate_direction_based_on_drag(drag_direction: Vector2):
+	_emit_input_action_directions(drag_direction.normalized())
+	
+	
+	
 func _touch_position_changed(touch_position: Vector2):
 	var direction = touch_position - _character.position
+	
+	if abs(direction.x) < moving_sensitivity:
+		direction.x = 0
+		
+	if abs(direction.y) < moving_sensitivity:
+		direction.y = 0
+		
+	direction = direction.normalized()
+		
 	_emit_input_action_directions(direction)
 
 
@@ -62,25 +102,25 @@ func _emit_input_action_directions(direction: Vector2):
 	# ui_left
 	var event_ui_left = InputEventAction.new()
 	event_ui_left.action = "ui_left"
-	event_ui_left.pressed = direction.x < 0 and abs(direction.x) > moving_sensitivity
+	event_ui_left.pressed = direction.x < 0
 	Input.parse_input_event(event_ui_left)
 	
 	# ui_right
 	var event_ui_right = InputEventAction.new()
 	event_ui_right.action = "ui_right"
-	event_ui_right.pressed = direction.x > 0 and abs(direction.x) > moving_sensitivity
+	event_ui_right.pressed = direction.x > 0
 	Input.parse_input_event(event_ui_right)
 	
 	# ui_up
 	var event_ui_up = InputEventAction.new()
 	event_ui_up.action = "ui_up"
-	event_ui_up.pressed = direction.y < 0 and abs(direction.y) > moving_sensitivity
+	event_ui_up.pressed = direction.y < 0
 	Input.parse_input_event(event_ui_up)
 	
 	# ui_down
 	var event_ui_down = InputEventAction.new()
 	event_ui_down.action = "ui_down"
-	event_ui_down.pressed = direction.y > 0 and abs(direction.y) > moving_sensitivity
+	event_ui_down.pressed = direction.y > 0
 	Input.parse_input_event(event_ui_down)
 	
 	
