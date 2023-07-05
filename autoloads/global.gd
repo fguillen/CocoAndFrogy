@@ -54,6 +54,7 @@ func serialize() -> Dictionary:
 	
 func deserialize(data: Dictionary):
 	cleaned_levels.assign(data.cleaned_levels)
+	last_level_played = data.last_level_played
 	
 	
 func reset_levels_advance():
