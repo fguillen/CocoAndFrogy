@@ -31,7 +31,6 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 func _input(event):
-	print("XXX: event: ", event)
 	if event is InputEventScreenTouch:
 		if event.pressed == true:
 			_touch_position_changed(event.position)

@@ -35,7 +35,6 @@ func _ready():
 	GlobalEvents.bounce_performed.connect(_increase_bounces)
 	GlobalEvents.level_started.connect(_reset_level.unbind(1))
 	GlobalEvents.level_clear.connect(_calculate_stats.unbind(1))
-	GlobalEvents.game_over.connect(_on_game_over)
 	
 	
 # -- 15 remaining built-in virtual methods

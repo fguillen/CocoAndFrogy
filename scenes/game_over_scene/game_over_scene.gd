@@ -105,6 +105,7 @@ func _animate_buttons():
 		
 # -- 18 signal listeners
 func _on_retry_button_pressed():
+	StatsManager.reset_total_score()
 	go_to_level.emit(Global.last_level_played)
 	
 	
