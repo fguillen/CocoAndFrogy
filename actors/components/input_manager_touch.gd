@@ -46,11 +46,7 @@ func _input(event):
 		_check_if_dashing(drag_velocity)
 		
 		
-
-
 # -- 16 public methods
-		
-	
 # -- 17 private methods
 func _calculate_drag_velocity(event_position: Vector2) -> Vector2:
 	var result = Vector2.ZERO
