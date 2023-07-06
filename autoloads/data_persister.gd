@@ -13,6 +13,8 @@ const DATA_PATH = "user://savegame.json"
 # -- 08 exported variables
 # -- 09 public variables
 # -- 10 private variables
+var _is_saving := false
+
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
@@ -27,6 +29,12 @@ func _ready():
 # -- 16 public methods
 func save_data():
 	print("DataPersister.save_data(%s)" % DATA_PATH)
+	
+	if _is_saving:
+		push_warning("DataPersister.saving blocked because already in saving")
+		return
+		
+	_is_saving = true
 	var result = []
 	
 	var save_nodes = get_tree().get_nodes_in_group("persist")
@@ -45,6 +53,7 @@ func save_data():
 		
 	var file = FileAccess.open(DATA_PATH, FileAccess.WRITE)
 	file.store_line(JSON.stringify(result, "  "))
+	_is_saving = false
 	
 	
 func load_data():
