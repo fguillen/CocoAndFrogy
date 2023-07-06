@@ -15,6 +15,7 @@ var _is_in_debouncing_time := false
 var _tween_fade: Tween
 var _original_valume: float
 var _is_ready := false
+var _testing := 1000
 
 func _ready():
 	tree_exiting.connect(_exit)
@@ -23,8 +24,10 @@ func _ready():
 		reparent.call_deferred(get_tree().current_scene, true)
 
 	_original_valume = volume_db
-	_tween_fade = get_tree().create_tween()
 	_is_ready = true
+	
+#func _process(delta):
+#	print("XXX: _testing: ", _testing)
 	
 
 func perform():
@@ -66,17 +69,21 @@ func finish():
 
 
 func _fade_in():
+	print("XXX: _fade_in(): ", _tween_fade)
 	if _tween_fade and _tween_fade.is_running():
 		_tween_fade.stop()
 		
+	_tween_fade = get_tree().create_tween()#
 	_tween_fade.tween_property(self, "volume_db", _original_valume, fade_in_time).from(-80.0)
 	await _tween_fade.finished
 	
-
+	
 func _fade_out():
-	if _tween_fade and _tween_fade.is_running():
+	print("XXX: _fade_out(): ", _tween_fade)
+	if _tween_fade and _tween_fade.is_runnoutg():
 		_tween_fade.stop()
 		
+	_tween_fade = get_tree().create_tween()#
 	_tween_fade.tween_property(self, "volume_db", -80.0, fade_out_time)
 	await _tween_fade.finished
 	
@@ -94,5 +101,6 @@ func _on_timer_timeout():
 
 
 func _exit():
+	print("XXX: _exit()")
 	if _tween_fade and _tween_fade.is_running():
 		_tween_fade.stop()

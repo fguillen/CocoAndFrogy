@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ehodofmfsevb"]
+[gd_scene load_steps=6 format=3 uid="uid://ehodofmfsevb"]
 
 [ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_umsf4"]
 [ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_0546d"]
+[ext_resource type="AudioStream" uid="uid://c35sldvpcfjtl" path="res://assets/music/The-Ant-Hill-Gang-Strikes-Again_Looping.mp3" id="2_ms83p"]
 [ext_resource type="PackedScene" uid="uid://dkwu2n1ck0gnf" path="res://actors/bricks/grasshopper/grasshopper_brick.tscn" id="3_61bdn"]
 [ext_resource type="PackedScene" uid="uid://b77aigryso4i5" path="res://actors/bricks/fly/fly_brick.tscn" id="4_gmkpb"]
 
@@ -9,6 +10,7 @@
 
 [node name="LevelBase" parent="." instance=ExtResource("1_umsf4")]
 level_num = 1
+music = ExtResource("2_ms83p")
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)

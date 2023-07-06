@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b26q3l5smg8fs"]
+[gd_scene load_steps=7 format=3 uid="uid://b26q3l5smg8fs"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_02.gd" id="1_dl2ls"]
 [ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_j3245"]
 [ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_3bje5"]
 [ext_resource type="PackedScene" uid="uid://cge27crb4b0dx" path="res://actors/bricks/worm/worm_monster.tscn" id="3_uq3pb"]
+[ext_resource type="AudioStream" uid="uid://bpf7v7o44fsbe" path="res://assets/music/Bass-Invaders.mp3" id="3_y0im5"]
 [ext_resource type="PackedScene" uid="uid://bb66i7ypf3x22" path="res://effects/hit_stop_effect.tscn" id="4_vfd2j"]
 
 [node name="Level_02" type="Node2D"]
@@ -11,6 +12,7 @@ script = ExtResource("1_dl2ls")
 
 [node name="LevelBase" parent="." instance=ExtResource("1_j3245")]
 level_num = 2
+music = ExtResource("3_y0im5")
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)
