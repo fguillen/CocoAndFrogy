@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci4fh3obsus13"]
+[gd_scene load_steps=5 format=3 uid="uid://ci4fh3obsus13"]
 
 [ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_81ord"]
 [ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_437t3"]
+[ext_resource type="AudioStream" uid="uid://7yxnv6m46n7e" path="res://assets/music/Monsters-P.I.mp3" id="2_kgw1l"]
 [ext_resource type="PackedScene" uid="uid://dtsfpur506jc4" path="res://actors/bricks/mouse/mouse_brick.tscn" id="3_cswnw"]
 
 [node name="Level_05" type="Node2D"]
 
 [node name="LevelBase" parent="." instance=ExtResource("1_81ord")]
 level_num = 5
+music = ExtResource("2_kgw1l")
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)

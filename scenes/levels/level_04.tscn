@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://5bbah1fgxke7"]
+[gd_scene load_steps=5 format=3 uid="uid://5bbah1fgxke7"]
 
 [ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_4827n"]
+[ext_resource type="AudioStream" uid="uid://boo6hf1f68iru" path="res://assets/music/Plastered-by-Lunch-Time_Looping.mp3" id="2_7dpca"]
 [ext_resource type="Script" path="res://environment/bricks_manager.gd" id="2_7353c"]
 [ext_resource type="PackedScene" uid="uid://ce0jl3uwwb0h" path="res://actors/bricks/stone/stone_brick.tscn" id="3_ra2mm"]
 
@@ -8,6 +9,7 @@
 
 [node name="LevelBase" parent="." instance=ExtResource("1_4827n")]
 level_num = 4
+music = ExtResource("2_7dpca")
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)

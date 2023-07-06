@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyswnyix8k8r6"]
+[gd_scene load_steps=5 format=3 uid="uid://cyswnyix8k8r6"]
 
 [ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="2_4vxnr"]
+[ext_resource type="AudioStream" uid="uid://bywq4f1hc3w14" path="res://assets/music/Blob-Monsters-on-the-Loose.mp3" id="2_p8qlr"]
 [ext_resource type="Script" path="res://environment/bricks_manager.gd" id="3_aq6ni"]
 [ext_resource type="PackedScene" uid="uid://dlgw8lgrttu6f" path="res://actors/bricks/snail/snail_brick.tscn" id="4_ibjgr"]
 
@@ -8,6 +9,7 @@
 
 [node name="LevelBase" parent="." instance=ExtResource("2_4vxnr")]
 level_num = 3
+music = ExtResource("2_p8qlr")
 
 [node name="Bricks" type="Node2D" parent="."]
 position = Vector2(0, -144)

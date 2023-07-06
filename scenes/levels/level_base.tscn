@@ -33,7 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://divbjlofbt0f6" path="res://assets/sounds/game_over.ogg" id="30_c8220"]
 [ext_resource type="AudioStream" uid="uid://bpf7v7o44fsbe" path="res://assets/music/Bass-Invaders.mp3" id="32_qcth1"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_l3yrh"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cedpk"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -41,7 +41,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_orol1"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uecto"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -95,7 +95,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 0.6
-noise = SubResource("FastNoiseLite_l3yrh")
+noise = SubResource("FastNoiseLite_cedpk")
 
 [node name="Skay02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.005, 0.005)
@@ -110,7 +110,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 1.0
-noise = SubResource("FastNoiseLite_orol1")
+noise = SubResource("FastNoiseLite_uecto")
 
 [node name="Clouds01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.02, 0.02)
@@ -248,7 +248,7 @@ stream = ExtResource("30_c8220")
 stream = ExtResource("32_qcth1")
 bus = &"music"
 loop = true
-fade_in_time = 0.5
+fade_in_time = 2.0
 fade_out_time = 0.5
 
 [connection signal="game_over" from="." to="Effects/GameOverSoundEffect" method="perform"]
