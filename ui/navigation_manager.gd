@@ -17,7 +17,7 @@ var _scenes = {
 	"menu": "res://scenes/menu_scene/menu_scene.tscn",
 	"options": "res://scenes/options_scene/options_scene.tscn",
 	"levels": "res://scenes/level_selection_scene/level_selection_scene.tscn",
-	"credits": "",
+	"credits": "res://scenes/credits_scene/credits_scene.tscn",
 	"level_00": "res://scenes/levels/level_00.tscn",
 	"level_01": "res://scenes/levels/level_01.tscn",
 	"level_02": "res://scenes/levels/level_02.tscn",

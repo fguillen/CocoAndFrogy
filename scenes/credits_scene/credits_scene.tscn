@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://dty0kb8cwnqgp"]
+
+[ext_resource type="Script" path="res://scenes/credits_scene/credits_scene.gd" id="1_mbsly"]
+[ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_t4mcr"]
+[ext_resource type="PackedScene" uid="uid://vd8sr235031v" path="res://ui/menu_background.tscn" id="3_uhj4q"]
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="4_prqrk"]
+[ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="5_cc3er"]
+[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="6_2bu3q"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="7_8l068"]
+[ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="8_74wch"]
+[ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_aqore"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7ma47"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jcae6"]
+resource_local_to_scene = true
+noise_type = 0
+seed = 3
+frequency = 0.029
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+
+[node name="CreditsScene" type="Node2D"]
+rotation = -0.00209449
+script = ExtResource("1_mbsly")
+
+[node name="NavigationManager" parent="." instance=ExtResource("2_t4mcr")]
+
+[node name="MenuBackground" parent="." instance=ExtResource("3_uhj4q")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2285.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_prqrk")
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+layout_mode = 2
+theme = ExtResource("4_prqrk")
+theme_override_font_sizes/font_size = 180
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Body" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_prqrk")
+theme_override_colors/default_color = Color(0.2, 0.203922, 0.203922, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[center][u]Art, design & programming[/u]
+[b]Alberto Bueno[/b]
+(https://arturitoproductions.itch.io)
+
+[u]Music[/u]
+[b]Eric Matyas[/b]
+(https://www.soundimage.org)
+
+[u]Sound Effects[/u]
+[b]FreeSound[/b]
+(https://freesound.org/)
+
+[u]Source Code[/u]
+(https://github.com/fguillen/CocoAndFrogy)
+
+
+[/center]
+"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="BackToMenuButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer" instance=ExtResource("5_cc3er")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back to Menu"
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_2bu3q")]
+target = NodePath("../../CanvasLayer")
+frequency = 300.0
+noise = SubResource("FastNoiseLite_7ma47")
+
+[node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_2bu3q")]
+target = NodePath("../../CanvasLayer")
+duration = 1.0
+frequency = 400.0
+noise = SubResource("FastNoiseLite_jcae6")
+
+[node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_8l068")]
+stream = ExtResource("8_74wch")
+random_pitch = true
+
+[node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("7_8l068")]
+stream = ExtResource("9_aqore")
+random_pitch = true
+
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/BackToMenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]
