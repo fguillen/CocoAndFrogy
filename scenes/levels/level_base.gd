@@ -9,18 +9,23 @@ extends Node2D
 # -- 05 signals
 signal level_cleared()
 signal game_over()
+signal level_finishing()
 
 
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
 @export var level_num: int
+@export var music: AudioStream
+
 
 # -- 09 public variables
 var bricks: Array[Brick]
 
 # -- 10 private variables
 # -- 11 onready variables
+@onready var background_music = $Effects/BackgroundMusic
+
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
@@ -31,6 +36,8 @@ func _ready():
 	GlobalEvents.frogy_died.connect(_remove_life)
 	
 	GlobalEvents.emit_level_started(level_num)
+	
+	background_music.stream = music
 	
 	
 # -- 15 remaining built-in virtual methods
@@ -48,6 +55,7 @@ func _remove_brick(brick: Brick):
 	bricks.erase(brick)
 	
 	if bricks.is_empty():
+		level_finishing.emit()
 		await get_tree().create_timer(0.5).timeout
 		set_level_cleared()
 		
@@ -57,6 +65,7 @@ func _remove_life():
 	
 	if Global.lifes <= -1:
 		GlobalEvents.emit_game_over()
+		level_finishing.emit()
 		await get_tree().create_timer(0.5).timeout
 		game_over.emit()
 		
