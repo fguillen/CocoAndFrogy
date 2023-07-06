@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dn5i2ucgtue3j"]
+[gd_scene load_steps=9 format=3 uid="uid://dn5i2ucgtue3j"]
 
 [ext_resource type="Script" path="res://scenes/options_scene/options_scene.gd" id="1_w6cjh"]
 [ext_resource type="PackedScene" uid="uid://vd8sr235031v" path="res://ui/menu_background.tscn" id="2_8axqt"]
@@ -6,27 +6,8 @@
 [ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="3_vq6ll"]
 [ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="4_7eiak"]
 [ext_resource type="PackedScene" uid="uid://d07gfha14uvoy" path="res://ui/slider_with_effects.tscn" id="4_np0ix"]
-[ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="5_kd5b6"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="6_dn6i5"]
-[ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="7_3hc0t"]
-[ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="8_jamt6"]
 [ext_resource type="AudioStream" uid="uid://bv38cocliut30" path="res://assets/music/Monkey-Island-Puzzler.mp3" id="11_lr7gs"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_fx6y2"]
-resource_local_to_scene = true
-noise_type = 0
-seed = 3
-frequency = 0.029
-fractal_octaves = 1
-fractal_lacunarity = 1.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3824r"]
-resource_local_to_scene = true
-noise_type = 0
-seed = 3
-frequency = 0.029
-fractal_octaves = 1
-fractal_lacunarity = 1.0
 
 [node name="OptionsScene" type="Node2D"]
 rotation = -0.00209449
@@ -149,27 +130,6 @@ layout_mode = 2
 text = "Back to Menu"
 
 [node name="Effects" type="Node2D" parent="."]
-
-[node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("5_kd5b6")]
-target = NodePath("../../CanvasLayer")
-frequency = 300.0
-noise = SubResource("FastNoiseLite_fx6y2")
-
-[node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("5_kd5b6")]
-target = NodePath("../../CanvasLayer")
-duration = 1.0
-frequency = 400.0
-noise = SubResource("FastNoiseLite_3824r")
-
-[node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("6_dn6i5")]
-process_mode = 4
-stream = ExtResource("7_3hc0t")
-random_pitch = true
-
-[node name="ShakeLabelSoundEffect" parent="Effects" instance=ExtResource("6_dn6i5")]
-process_mode = 4
-stream = ExtResource("8_jamt6")
-random_pitch = true
 
 [node name="BackgroundMusicEffect" parent="Effects" instance=ExtResource("6_dn6i5")]
 stream = ExtResource("11_lr7gs")

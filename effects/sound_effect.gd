@@ -15,7 +15,7 @@ var _is_in_debouncing_time := false
 var _tween_fade: Tween
 var _original_valume: float
 var _is_ready := false
-var _testing := 1000
+
 
 func _ready():
 	tree_exiting.connect(_exit)
