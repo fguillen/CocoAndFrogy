@@ -17,11 +17,6 @@ signal title_animation_finished()
 @onready var title_label = %Title
 @onready var back_to_menu_button = %BackToMenuButton
 @onready var body = %Body
-@onready var title_2 = %Title2
-@onready var title_2_control = %Title2Control
-@onready var v_box_container = %VBoxContainer
-@onready var margin_container = %MarginContainer
-@onready var ui = %UI
 
 #
 # -- 12 optional built-in virtual _init method
@@ -55,8 +50,6 @@ func _hide_body():
 func _animate_title_label():
 	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var original_position_y = title_label.global_position.y
-	print("XXX: position: ", title_label.position.y)
-	print("XXX: original_position_y: ", original_position_y)
 	tween.tween_property(title_label, "global_position:y", original_position_y, 0.5).from(-375.0)
 	tween.parallel().tween_property(title_label, "self_modulate:a", 1.0, 0.5).from(0.0)
 	await tween.finished

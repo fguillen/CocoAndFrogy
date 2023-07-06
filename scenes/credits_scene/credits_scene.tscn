@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="8_74wch"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_aqore"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7ma47"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kr2o3"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -18,7 +18,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jcae6"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lucyc"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -87,18 +87,18 @@ theme_override_font_sizes/bold_font_size = 80
 bbcode_enabled = true
 text = "[center][u]Art, design & programming[/u]
 [b]Alberto Bueno[/b]
-(https://arturitoproductions.itch.io)
+([url]https://arturitoproductions.itch.io[/url])
 
 [u]Music[/u]
 [b]Eric Matyas[/b]
-(https://www.soundimage.org)
+([url]https://www.soundimage.org[/url])
 
 [u]Sound Effects[/u]
 [b]FreeSound[/b]
-(https://freesound.org/)
+([url]https://freesound.org/[/url])
 
 [u]Source Code[/u]
-(https://github.com/fguillen/CocoAndFrogy)
+([url]https://github.com/fguillen/CocoAndFrogy[/url])
 
 
 [/center]
@@ -117,13 +117,13 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_2bu3q")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_7ma47")
+noise = SubResource("FastNoiseLite_kr2o3")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_2bu3q")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_jcae6")
+noise = SubResource("FastNoiseLite_lucyc")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_8l068")]
 stream = ExtResource("8_74wch")
