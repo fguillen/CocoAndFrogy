@@ -74,8 +74,8 @@ func _animate_buttons():
 	
 	
 func _update_display():
-	music_slider.value = GlobalOptionsManager.get_volume_music()
-	sfx_slider.value = GlobalOptionsManager.get_volume_sfx()
+	music_slider.set_value_no_signal(GlobalOptionsManager.get_volume_music())
+	sfx_slider.set_value_no_signal(GlobalOptionsManager.get_volume_sfx())
 	
 		
 # -- 18 signal listeners

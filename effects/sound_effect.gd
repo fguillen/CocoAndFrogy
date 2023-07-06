@@ -26,6 +26,9 @@ func _ready():
 	_original_valume = volume_db
 	_is_ready = true
 	
+	if fade_in_time > 0:
+		volume_db = -80.0
+	
 #func _process(delta):
 #	print("XXX: _testing: ", _testing)
 	
@@ -69,7 +72,6 @@ func finish():
 
 
 func _fade_in():
-	print("XXX: _fade_in(): ", _tween_fade)
 	if _tween_fade and _tween_fade.is_running():
 		_tween_fade.stop()
 		
@@ -79,7 +81,6 @@ func _fade_in():
 	
 	
 func _fade_out():
-	print("XXX: _fade_out(): ", _tween_fade)
 	if _tween_fade and _tween_fade.is_runnoutg():
 		_tween_fade.stop()
 		
@@ -101,6 +102,5 @@ func _on_timer_timeout():
 
 
 func _exit():
-	print("XXX: _exit()")
 	if _tween_fade and _tween_fade.is_running():
 		_tween_fade.stop()
