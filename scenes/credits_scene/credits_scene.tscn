@@ -82,8 +82,8 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("4_prqrk")
 theme_override_colors/default_color = Color(0.2, 0.203922, 0.203922, 1)
-theme_override_font_sizes/normal_font_size = 40
-theme_override_font_sizes/bold_font_size = 80
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 90
 bbcode_enabled = true
 text = "[center][u]Art, design & programming[/u]
 [b]Alberto Bueno[/b]
