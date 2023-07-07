@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sy3h7e50hnw5"
-path.s3tc="res://.godot/imported/button_transparent.png-76f2d129907c17ff71f1d73074f33b5a.s3tc.ctex"
-path.etc2="res://.godot/imported/button_transparent.png-76f2d129907c17ff71f1d73074f33b5a.etc2.ctex"
+uid="uid://wlvpm82kj84i"
+path.s3tc="res://.godot/imported/leaf_pattern.png-3614a8a5ebc55317cf67347109c2c1b8.s3tc.ctex"
+path.etc2="res://.godot/imported/leaf_pattern.png-3614a8a5ebc55317cf67347109c2c1b8.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://ui/button_transparent.png"
-dest_files=["res://.godot/imported/button_transparent.png-76f2d129907c17ff71f1d73074f33b5a.s3tc.ctex", "res://.godot/imported/button_transparent.png-76f2d129907c17ff71f1d73074f33b5a.etc2.ctex"]
+source_file="res://assets/leaf_pattern.png"
+dest_files=["res://.godot/imported/leaf_pattern.png-3614a8a5ebc55317cf67347109c2c1b8.s3tc.ctex", "res://.godot/imported/leaf_pattern.png-3614a8a5ebc55317cf67347109c2c1b8.etc2.ctex"]
 
 [params]
 

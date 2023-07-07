@@ -1,11 +1,11 @@
 [gd_resource type="Theme" load_steps=12 format=3 uid="uid://t4fnqfcts68g"]
 
-[ext_resource type="FontFile" uid="uid://dvjdap1osrug5" path="res://assets/LondrinaSolid-Regular.ttf" id="1_023s6"]
-[ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="1_58v72"]
-[ext_resource type="Texture2D" uid="uid://byr6u2pvwv4f1" path="res://ui/slider_grabber.png" id="1_rnk76"]
+[ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="1_875gr"]
+[ext_resource type="Texture2D" uid="uid://byr6u2pvwv4f1" path="res://ui/slider_grabber.png" id="2_ceeph"]
+[ext_resource type="FontFile" uid="uid://dvjdap1osrug5" path="res://assets/LondrinaSolid-Regular.ttf" id="3_e8hmm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxopx"]
-texture = ExtResource("1_58v72")
+texture = ExtResource("1_875gr")
 texture_margin_left = 23.0
 texture_margin_top = 27.0
 texture_margin_right = 25.0
@@ -14,7 +14,7 @@ region_rect = Rect2(-3, -3, 440, 158)
 modulate_color = Color(0.929412, 0.403922, 0.054902, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ihl8"]
-texture = ExtResource("1_58v72")
+texture = ExtResource("1_875gr")
 texture_margin_left = 23.0
 texture_margin_top = 27.0
 texture_margin_right = 25.0
@@ -23,7 +23,7 @@ region_rect = Rect2(-3, -3, 440, 158)
 modulate_color = Color(0.2, 0.203922, 0.203922, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qyu60"]
-texture = ExtResource("1_58v72")
+texture = ExtResource("1_875gr")
 texture_margin_left = 23.0
 texture_margin_top = 27.0
 texture_margin_right = 25.0
@@ -71,14 +71,14 @@ border_color = Color(1, 1, 0.8, 1)
 anti_aliasing = false
 
 [resource]
-default_font = ExtResource("1_023s6")
+default_font = ExtResource("3_e8hmm")
 Button/font_sizes/font_size = 100
 Button/styles/hover = SubResource("StyleBoxTexture_oxopx")
 Button/styles/normal = SubResource("StyleBoxTexture_3ihl8")
 Button/styles/pressed = SubResource("StyleBoxTexture_qyu60")
-HSlider/icons/grabber = ExtResource("1_rnk76")
-HSlider/icons/grabber_disabled = ExtResource("1_rnk76")
-HSlider/icons/grabber_highlight = ExtResource("1_rnk76")
+HSlider/icons/grabber = ExtResource("2_ceeph")
+HSlider/icons/grabber_disabled = ExtResource("2_ceeph")
+HSlider/icons/grabber_highlight = ExtResource("2_ceeph")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_o3wrb")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_osoiu")
 HSlider/styles/slider = SubResource("StyleBoxFlat_ah0qv")
