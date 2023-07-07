@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://t4fnqfcts68g"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://t4fnqfcts68g"]
 
 [ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="1_875gr"]
 [ext_resource type="Texture2D" uid="uid://byr6u2pvwv4f1" path="res://ui/slider_grabber.png" id="2_ceeph"]
 [ext_resource type="FontFile" uid="uid://dvjdap1osrug5" path="res://assets/LondrinaSolid-Regular.ttf" id="3_e8hmm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wp61"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxopx"]
 texture = ExtResource("1_875gr")
@@ -73,6 +75,7 @@ anti_aliasing = false
 [resource]
 default_font = ExtResource("3_e8hmm")
 Button/font_sizes/font_size = 100
+Button/styles/focus = SubResource("StyleBoxEmpty_6wp61")
 Button/styles/hover = SubResource("StyleBoxTexture_oxopx")
 Button/styles/normal = SubResource("StyleBoxTexture_3ihl8")
 Button/styles/pressed = SubResource("StyleBoxTexture_qyu60")
