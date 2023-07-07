@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://lr416k33kc2j"]
+
+[ext_resource type="Texture2D" uid="uid://nmmcvh6owqgu" path="res://scenes/logo_scene/arturito_productions.png" id="1_lwcbt"]
+[ext_resource type="PackedScene" uid="uid://dwyt4t7x4qswg" path="res://elements/label_typewriter/label_typewriter.tscn" id="2_7xr8a"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="3_k7h0t"]
+[ext_resource type="AudioStream" uid="uid://cj4hyh3w46meg" path="res://assets/sounds/brick_appears.wav" id="4_tq7np"]
+
+[sub_resource type="Animation" id="Animation_2dvgw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Control/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n3it5"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Control/TextureRect:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Control/LabelTypewriter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"perform"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fl1u5"]
+_data = {
+"RESET": SubResource("Animation_2dvgw"),
+"show": SubResource("Animation_n3it5")
+}
+
+[node name="LogoScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.203922, 0.203922, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Control"]
+custom_minimum_size = Vector2(700, 300)
+layout_mode = 2
+offset_left = -350.0
+offset_top = -150.0
+offset_right = 350.0
+offset_bottom = 150.0
+texture = ExtResource("1_lwcbt")
+stretch_mode = 4
+
+[node name="LabelTypewriter" parent="CenterContainer/Control" instance=ExtResource("2_7xr8a")]
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+layout_mode = 0
+offset_left = 101.0
+offset_top = -7.0
+offset_right = 501.0
+offset_bottom = 112.0
+text = "Presents"
+auto_perform = false
+
+[node name="KeySoundEffect" parent="CenterContainer/Control/LabelTypewriter" instance=ExtResource("3_k7h0t")]
+stream = ExtResource("4_tq7np")
+max_polyphony = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "show"
+libraries = {
+"": SubResource("AnimationLibrary_fl1u5")
+}
+
+[connection signal="key" from="CenterContainer/Control/LabelTypewriter" to="CenterContainer/Control/LabelTypewriter/KeySoundEffect" method="perform"]

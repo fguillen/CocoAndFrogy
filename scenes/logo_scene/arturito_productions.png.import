@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nmmcvh6owqgu"
-path="res://.godot/imported/arturito_productions.png-6c1ea9a61fe2e50f3265291943c7b68a.ctex"
+path="res://.godot/imported/arturito_productions.png-9f35e3728ee216005f16ac59f96e4ba2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/splash_screen_scene/arturito_productions.png"
-dest_files=["res://.godot/imported/arturito_productions.png-6c1ea9a61fe2e50f3265291943c7b68a.ctex"]
+source_file="res://scenes/logo_scene/arturito_productions.png"
+dest_files=["res://.godot/imported/arturito_productions.png-9f35e3728ee216005f16ac59f96e4ba2.ctex"]
 
 [params]
 
