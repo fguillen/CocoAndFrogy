@@ -1,0 +1,155 @@
+[gd_scene load_steps=19 format=3 uid="uid://c1d6y5l5cehpr"]
+
+[ext_resource type="Script" path="res://scenes/godot_wink_scene/godot_wink_scene.gd" id="1_pirnc"]
+[ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_0tcs5"]
+[ext_resource type="Texture2D" uid="uid://cy17n5e14sikj" path="res://scenes/godot_wink_scene/godot_wink_bn.png" id="2_ecnfx"]
+[ext_resource type="PackedScene" uid="uid://dwyt4t7x4qswg" path="res://elements/label_typewriter/label_typewriter.tscn" id="3_h7b73"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="4_cfhjs"]
+[ext_resource type="AudioStream" uid="uid://cj4hyh3w46meg" path="res://assets/sounds/brick_appears.wav" id="5_foo6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xla0m"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxnjl"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(33, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctwnv"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(66, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18c8e"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(99, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y04gf"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(132, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ejw3"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(165, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ae08"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(198, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2jxu"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(231, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkaap"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(264, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gng3"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(297, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_157pu"]
+atlas = ExtResource("2_ecnfx")
+region = Rect2(330, 0, 33, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srdxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xla0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxnjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctwnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18c8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y04gf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ejw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ae08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2jxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkaap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gng3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_157pu")
+}],
+"loop": false,
+"name": &"wink",
+"speed": 12.0
+}]
+
+[node name="GodotWinkScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pirnc")
+
+[node name="NavigationManager" parent="." instance=ExtResource("2_0tcs5")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.870588, 0.870588, 0.698039, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_srdxy")
+animation = &"wink"
+frame = 10
+frame_progress = 1.0
+
+[node name="LabelTypewriter" parent="CenterContainer/VBoxContainer" instance=ExtResource("3_h7b73")]
+unique_name_in_owner = true
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Made with Godot"
+horizontal_alignment = 1
+
+[node name="KeySoundEffect" parent="CenterContainer/VBoxContainer/LabelTypewriter" instance=ExtResource("4_cfhjs")]
+stream = ExtResource("5_foo6v")
+max_polyphony = 3
+
+[connection signal="animation_finished" from="CenterContainer/VBoxContainer/Control/AnimatedSprite2D" to="NavigationManager" method="go_to" binds= ["logo"]]
+[connection signal="finished" from="CenterContainer/VBoxContainer/LabelTypewriter" to="." method="wink"]
+[connection signal="key" from="CenterContainer/VBoxContainer/LabelTypewriter" to="CenterContainer/VBoxContainer/LabelTypewriter/KeySoundEffect" method="perform"]

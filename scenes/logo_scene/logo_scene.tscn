@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://lr416k33kc2j"]
+[gd_scene load_steps=9 format=3 uid="uid://lr416k33kc2j"]
 
+[ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="1_gmx5t"]
 [ext_resource type="Texture2D" uid="uid://nmmcvh6owqgu" path="res://scenes/logo_scene/arturito_productions.png" id="1_lwcbt"]
 [ext_resource type="PackedScene" uid="uid://dwyt4t7x4qswg" path="res://elements/label_typewriter/label_typewriter.tscn" id="2_7xr8a"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="3_k7h0t"]
@@ -63,6 +64,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="NavigationManager" parent="." instance=ExtResource("1_gmx5t")]
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -70,7 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2, 0.203922, 0.203922, 1)
+color = Color(0.870588, 0.870588, 0.698039, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -84,6 +87,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/Control"]
+self_modulate = Color(0.2, 0.203922, 0.203922, 1)
 custom_minimum_size = Vector2(700, 300)
 layout_mode = 2
 offset_left = -350.0
@@ -113,4 +117,5 @@ libraries = {
 "": SubResource("AnimationLibrary_fl1u5")
 }
 
+[connection signal="finished" from="CenterContainer/Control/LabelTypewriter" to="NavigationManager" method="go_to" binds= ["menu"]]
 [connection signal="key" from="CenterContainer/Control/LabelTypewriter" to="CenterContainer/Control/LabelTypewriter/KeySoundEffect" method="perform"]

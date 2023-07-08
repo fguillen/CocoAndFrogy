@@ -14,6 +14,8 @@ extends Node
 # -- 09 public variables
 # -- 10 private variables
 var _scenes = {
+	"splash": "res://scenes/godot_wink_scene/godot_wink_scene.tscn",
+	"logo": "res://scenes/logo_scene/logo_scene.tscn",
 	"menu": "res://scenes/menu_scene/menu_scene.tscn",
 	"options": "res://scenes/options_scene/options_scene.tscn",
 	"levels": "res://scenes/level_selection_scene/level_selection_scene.tscn",

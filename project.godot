@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Coco & Frogy"
-run/main_scene="res://scenes/menu_scene/menu_scene.tscn"
+run/main_scene="res://scenes/godot_wink_scene/godot_wink_scene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://assets/app_logo.png"
 
