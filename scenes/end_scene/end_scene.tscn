@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b2xy3u6mjasvr"]
+[gd_scene load_steps=31 format=3 uid="uid://b2xy3u6mjasvr"]
 
 [ext_resource type="Script" path="res://scenes/end_scene/end_scene.gd" id="1_c02ed"]
 [ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_7q6l2"]
@@ -28,8 +28,9 @@
 [ext_resource type="PackedScene" uid="uid://ddpd3x6doacdu" path="res://environment/vegetable_front_04.tscn" id="18_vsbtk"]
 [ext_resource type="PackedScene" uid="uid://b2ewbis3ifr1b" path="res://environment/vegetable_front_05.tscn" id="19_p0lum"]
 [ext_resource type="Texture2D" uid="uid://cvog4gocwjgsf" path="res://assets/foreground_01.png" id="20_6jlor"]
+[ext_resource type="AudioStream" uid="uid://bd6xdxq4uw0wu" path="res://assets/music/Carefree-Days-in-Groovyville_Looping.mp3" id="29_wn1ue"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_nrdln"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8d4fu"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -222,7 +223,7 @@ text = "Quit"
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_nrdln")
+noise = SubResource("FastNoiseLite_8d4fu")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
 stream = ExtResource("8_sdt80")
@@ -232,8 +233,14 @@ random_pitch = true
 stream = ExtResource("9_e8ngj")
 random_pitch = true
 
+[node name="BackgroundMusicSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
+stream = ExtResource("29_wn1ue")
+loop = true
+fade_in_time = 1.0
+
 [connection signal="stats_label_animated" from="." to="Effects/ShakeLabelSoundEffect" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffectBig" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeNumberSoundEffect" method="perform"]
+[connection signal="stats_number_animated" from="." to="Effects/BackgroundMusicSoundEffect" method="perform"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/BackToMenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer/QuitButton" to="NavigationManager" method="quit"]

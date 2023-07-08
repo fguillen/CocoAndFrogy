@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="8_74wch"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_aqore"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_eamus"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ugflv"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -18,7 +18,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vgiks"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iimjf"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -115,13 +115,13 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_2bu3q")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_eamus")
+noise = SubResource("FastNoiseLite_ugflv")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_2bu3q")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_vgiks")
+noise = SubResource("FastNoiseLite_iimjf")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_8l068")]
 stream = ExtResource("8_74wch")
