@@ -81,7 +81,7 @@ func _fade_in():
 	
 	
 func _fade_out():
-	if _tween_fade and _tween_fade.is_runnoutg():
+	if _tween_fade and _tween_fade.is_running():
 		_tween_fade.stop()
 		
 	_tween_fade = get_tree().create_tween()#

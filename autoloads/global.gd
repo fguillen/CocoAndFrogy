@@ -17,7 +17,9 @@ var coco: Coco
 var frogy: Frogy
 var cleaned_levels: Array[int]
 var last_level_played := 0
+var last_level_cleaned := 0
 var lifes := 3
+var levels_cleaned_in_a_row := 0
 
 
 # -- 10 private variables
@@ -60,12 +62,22 @@ func deserialize(data: Dictionary):
 func reset_levels_advance():
 	cleaned_levels.clear()
 	last_level_played = 0
+	last_level_cleaned = 0
+	levels_cleaned_in_a_row = 0
 	DataPersister.save_data()
 	
 # -- 17 private methods
 
 # -- 18 signal listeners
 func _on_level_cleared(level_num: int):
+	if last_level_cleaned == level_num - 1:
+		levels_cleaned_in_a_row += 1
+	else:
+		levels_cleaned_in_a_row = 0
+	
+	last_level_cleaned = level_num
+	print("XXX: levels_cleaned_in_a_row: ", levels_cleaned_in_a_row)
+		
 	if not cleaned_levels.has(level_num):
 		cleaned_levels.append(level_num)
 		DataPersister.save_data()
@@ -79,6 +91,7 @@ func _on_level_started(level_num: int):
 
 func _on_game_over():
 	lifes = 3	
+	levels_cleaned_in_a_row = 0
 	DataPersister.save_data()
 	
 	
