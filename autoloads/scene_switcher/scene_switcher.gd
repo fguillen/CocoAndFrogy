@@ -13,7 +13,7 @@ extends Node
 # -- 10 private variables
 # -- 11 onready variables
 @onready var top_animated = %TopAnimated
-@onready var bottom_animated = %BottomAnimated
+@onready var fluid_animated = %FluidAnimated
 @onready var animation_player = %AnimationPlayer
 
 #
@@ -37,12 +37,12 @@ func switch_to(scene_path):
 # -- 17 private methods
 func _stop_animations():
 	top_animated.stop()
-	bottom_animated.stop()
+	fluid_animated.stop()
 	
 	
 func _start_animations():
 	top_animated.play("default")
-	bottom_animated.play("default")
+	fluid_animated.play("default")
 	
 	
 # -- 18 signal listeners

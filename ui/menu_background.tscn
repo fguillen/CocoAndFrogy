@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://vd8sr235031v"]
+[gd_scene load_steps=6 format=3 uid="uid://vd8sr235031v"]
 
 [ext_resource type="Texture2D" uid="uid://b7wfwcbveppvd" path="res://ui/menu_bacground_01.png" id="1_fnawl"]
 [ext_resource type="Texture2D" uid="uid://dbgmaw1epir5l" path="res://ui/menu_background_02.png" id="2_dqbsr"]
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="3_hhlqp"]
+[ext_resource type="PackedScene" uid="uid://dif7ei5dj4irr" path="res://ui/fluid_animated.tscn" id="4_dqyms"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_01s7q"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qibuc"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -33,4 +34,8 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(90, 50)
 frequency = 10.0
-noise = SubResource("FastNoiseLite_01s7q")
+noise = SubResource("FastNoiseLite_qibuc")
+
+[node name="FluidAnimated" parent="." instance=ExtResource("4_dqyms")]
+position = Vector2(517, 278)
+autoplay = "default"
