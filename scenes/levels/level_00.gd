@@ -84,8 +84,7 @@ func _tutorial():
 	# Kick Bugs
 	await get_tree().create_timer(2.0).timeout
 	animation_player.play("label_kick_bugs_in")
-	await get_tree().create_timer(1.0).timeout
-	await GlobalEvents.bump_performed
+	await get_tree().create_timer(3.0).timeout
 	level_base.set_level_cleared()
 
 
