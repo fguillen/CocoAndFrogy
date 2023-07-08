@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://crru8eefyg3xk" path="res://assets/sounds/stats_shake.ogg" id="8_74wch"]
 [ext_resource type="AudioStream" uid="uid://cgonu5p44qvmj" path="res://assets/sounds/stats_shake_label.ogg" id="9_aqore"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_kr2o3"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eamus"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -18,7 +18,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_lucyc"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vgiks"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -72,7 +72,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body"]
@@ -99,8 +99,6 @@ text = "[center][u]Art, design & programming[/u]
 
 [u]Source Code[/u]
 ([url]https://github.com/fguillen/CocoAndFrogy[/url])
-
-
 [/center]
 "
 fit_content = true
@@ -117,13 +115,13 @@ text = "Back to Menu"
 [node name="ShakeEffect" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_2bu3q")]
 target = NodePath("../../CanvasLayer")
 frequency = 300.0
-noise = SubResource("FastNoiseLite_kr2o3")
+noise = SubResource("FastNoiseLite_eamus")
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_2bu3q")]
 target = NodePath("../../CanvasLayer")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_lucyc")
+noise = SubResource("FastNoiseLite_vgiks")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_8l068")]
 stream = ExtResource("8_74wch")
