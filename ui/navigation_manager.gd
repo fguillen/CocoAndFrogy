@@ -29,6 +29,7 @@ var _scenes = {
 	"stats": "res://scenes/stats_scene/stats_scene.tscn",
 	"game_over": "res://scenes/game_over_scene/game_over_scene.tscn",
 	"end": "res://scenes/end_scene/end_scene.tscn",
+	"backdoor": "res://scenes/backdoor_scene/backdoor_scene.tscn",
 }
 
 # -- 11 onready variables

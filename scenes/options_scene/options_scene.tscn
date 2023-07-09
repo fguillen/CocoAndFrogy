@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn5i2ucgtue3j"]
+[gd_scene load_steps=10 format=3 uid="uid://dn5i2ucgtue3j"]
 
 [ext_resource type="Script" path="res://scenes/options_scene/options_scene.gd" id="1_w6cjh"]
 [ext_resource type="PackedScene" uid="uid://vd8sr235031v" path="res://ui/menu_background.tscn" id="2_8axqt"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://d07gfha14uvoy" path="res://ui/slider_with_effects.tscn" id="4_np0ix"]
 [ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="6_dn6i5"]
 [ext_resource type="AudioStream" uid="uid://bv38cocliut30" path="res://assets/music/Monkey-Island-Puzzler.mp3" id="11_lr7gs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u3si0"]
 
 [node name="OptionsScene" type="Node2D"]
 rotation = -0.00209449
@@ -100,8 +102,9 @@ layout_mode = 2
 theme = ExtResource("3_vq6ll")
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_u3si0")
 
 [node name="Label2" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -120,6 +123,24 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Reset Levels Advance"
+
+[node name="Label3" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vq6ll")
+theme_override_colors/font_color = Color(0.2, 0.203922, 0.203922, 1)
+text = "Others"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 49
+theme_override_constants/margin_bottom = 40
+
+[node name="Backdoor" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer2" instance=ExtResource("4_7eiak")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Backdoor"
 
 [node name="Buttons" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -151,4 +172,5 @@ fade_in_time = 1.0
 [connection signal="value_changed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer2/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer/ResetLevels" to="." method="reset_levels_advance"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer2/Backdoor" to="NavigationManager" method="go_to" binds= ["backdoor"]]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]
