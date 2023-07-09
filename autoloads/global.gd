@@ -66,6 +66,13 @@ func reset_levels_advance():
 	levels_cleaned_in_a_row = 0
 	DataPersister.save_data()
 	
+
+func has_finished_all_leveles_in_a_row() -> bool:
+	if levels_cleaned_in_a_row >= 5:
+		return true
+	else:
+		return false
+	
 # -- 17 private methods
 
 # -- 18 signal listeners

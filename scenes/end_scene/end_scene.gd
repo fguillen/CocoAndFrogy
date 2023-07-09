@@ -9,6 +9,8 @@ extends Node2D
 signal title_animation_finished()
 signal stats_label_animated()
 signal stats_number_animated()
+signal end_scene_visible()
+signal end_scene_no_visible()
 
 # -- 06 enums
 # -- 07 constants
@@ -21,8 +23,12 @@ signal stats_number_animated()
 @onready var buttons = %Buttons
 @onready var total_score_title = %TotalScoreTitle
 @onready var total_score_number = %TotalScoreNumber
-
-
+@onready var title_animation = %Title/TitleAnimation
+@onready var title_no_end_scene_visibles = %Title/TitleNoEndSceneVisibles
+@onready var no_end_scene_visible = %NoEndSceneVisible
+@onready var end_animation = %EndAnimation
+@onready var body = %Body
+@onready var body_label = %Body/Label
 
 #
 # -- 12 optional built-in virtual _init method
@@ -37,15 +43,27 @@ func _ready():
 # -- 17 private methods
 func _show():
 	_hide_title_label()
+	_hide_body()
 	_hide_buttons()
 	
+	_setup_end_animation_visible()
+
 	await _animate_title_label()
-#	await get_tree().create_timer(1.0).timeout
+	await _animate_body()
+	await _animate_buttons()
 	
-	_animate_buttons()
+	if Global.has_finished_all_leveles_in_a_row():
+		end_scene_visible.emit()
+	else:
+		end_scene_no_visible.emit()
+	
 	
 func _hide_title_label():
 	title_label.self_modulate.a = 0.0
+	
+	
+func _hide_body():
+	body.modulate.a = 0.0
 	
 
 func _hide_buttons():
@@ -61,6 +79,14 @@ func _animate_title_label():
 	tween.parallel().tween_property(title_label, "self_modulate:a", 1.0, 0.5).from(0.0)
 	await tween.finished
 	title_animation_finished.emit()
+
+
+func _animate_body():
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var original_position_x = body.global_position.x
+	tween.tween_property(body, "global_position:x", original_position_x, 0.5).from(get_viewport_rect().size.x  + 500.0)
+	tween.parallel().tween_property(body, "modulate:a", 1.0, 0.5).from(0.0)
+	await tween.finished
 
 
 func _animate_buttons():
@@ -81,6 +107,22 @@ func _animate_buttons():
 	stats_number_animated.emit()
 	
 	
+func _setup_end_animation_visible():
+	if Global.has_finished_all_leveles_in_a_row():
+		title_animation.visible = true
+		title_no_end_scene_visibles.visible = false
+		no_end_scene_visible.visible = false
+		no_end_scene_visible.process_mode = Node.PROCESS_MODE_DISABLED
+		end_animation.visible = true
+		body_label.visible = false
+	else:
+		title_animation.visible = false
+		title_no_end_scene_visibles.visible = true
+		no_end_scene_visible.visible = true
+		end_animation.process_mode = Node.PROCESS_MODE_DISABLED
+		end_animation.visible = false
+		body_label.visible = true
+		
 		
 # -- 18 signal listeners
 # -- 19 subclasses

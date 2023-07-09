@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b2xy3u6mjasvr"]
+[gd_scene load_steps=43 format=3 uid="uid://b2xy3u6mjasvr"]
 
 [ext_resource type="Script" path="res://scenes/end_scene/end_scene.gd" id="1_c02ed"]
 [ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_7q6l2"]
@@ -22,15 +22,162 @@
 [ext_resource type="PackedScene" uid="uid://dghb4ctrsrsc3" path="res://environment/vegetable_back_01.tscn" id="11_vqbob"]
 [ext_resource type="PackedScene" uid="uid://cahi8qp1m3055" path="res://environment/vegetable_back_02.tscn" id="12_5itwl"]
 [ext_resource type="Texture2D" uid="uid://kewii7qnwrlb" path="res://assets/ground_02.png" id="13_61fh1"]
+[ext_resource type="Texture2D" uid="uid://dq75jduvjrlcb" path="res://assets/end_scene_animations/coco.png" id="15_0kole"]
+[ext_resource type="Script" path="res://scenes/end_scene/end_scene_animations.gd" id="15_lsmqr"]
 [ext_resource type="PackedScene" uid="uid://biey47xajkipj" path="res://environment/vegetable_front_01.tscn" id="15_xdefs"]
+[ext_resource type="Texture2D" uid="uid://bl0bsq75dn74o" path="res://assets/end_scene_animations/frogy.png" id="16_2bds2"]
 [ext_resource type="PackedScene" uid="uid://dxswaxn55u0cv" path="res://environment/vegetable_front_02.tscn" id="16_5mh6a"]
 [ext_resource type="PackedScene" uid="uid://b4t25gkmm47ld" path="res://environment/vegetable_front_03.tscn" id="17_pd4q1"]
 [ext_resource type="PackedScene" uid="uid://ddpd3x6doacdu" path="res://environment/vegetable_front_04.tscn" id="18_vsbtk"]
 [ext_resource type="PackedScene" uid="uid://b2ewbis3ifr1b" path="res://environment/vegetable_front_05.tscn" id="19_p0lum"]
 [ext_resource type="Texture2D" uid="uid://cvog4gocwjgsf" path="res://assets/foreground_01.png" id="20_6jlor"]
+[ext_resource type="PackedScene" uid="uid://vd8sr235031v" path="res://ui/menu_background.tscn" id="21_1kcgd"]
 [ext_resource type="AudioStream" uid="uid://bd6xdxq4uw0wu" path="res://assets/music/Carefree-Days-in-Groovyville_Looping.mp3" id="29_wn1ue"]
+[ext_resource type="AudioStream" uid="uid://bv38cocliut30" path="res://assets/music/Monkey-Island-Puzzler.mp3" id="31_s3rn4"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8d4fu"]
+[sub_resource type="Animation" id="Animation_fsmq1"]
+resource_name = "jump"
+length = 0.75
+loop_mode = 1
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coco:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frogy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_lsfk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coco:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frogy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvlom"]
+_data = {
+"RESET": SubResource("Animation_lsfk6"),
+"jump": SubResource("Animation_fsmq1")
+}
+
+[sub_resource type="Animation" id="Animation_kwkv2"]
+resource_name = "show"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-438, 1007), Vector2(514, 1044)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.192683, 0.180075, 0.0401638]
+}
+
+[sub_resource type="Animation" id="Animation_hpx25"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-423, 1011)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yml22"]
+resource_name = "waving"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(514, 1044), Vector2(549, 1046), Vector2(514, 1044)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhsn4"]
+_data = {
+"RESET": SubResource("Animation_hpx25"),
+"show": SubResource("Animation_kwkv2"),
+"waving": SubResource("Animation_yml22")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fcwx6"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -44,95 +191,125 @@ script = ExtResource("1_c02ed")
 
 [node name="NavigationManager" parent="." instance=ExtResource("2_7q6l2")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="EndAnimation" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+[node name="ColorRect" type="ColorRect" parent="EndAnimation"]
 offset_left = -42.0
 offset_top = -332.0
 offset_right = 1132.0
 offset_bottom = 1655.0
 color = Color(1, 1, 0.8, 1)
 
-[node name="Ski01" type="Sprite2D" parent="CanvasLayer2"]
+[node name="Ski01" type="Sprite2D" parent="EndAnimation"]
 position = Vector2(493, 626)
 texture = ExtResource("3_pp275")
 
-[node name="Ski02" type="Sprite2D" parent="CanvasLayer2"]
+[node name="Ski02" type="Sprite2D" parent="EndAnimation"]
 position = Vector2(493, 467)
 texture = ExtResource("4_w8vqa")
 
-[node name="Clouds_02" parent="CanvasLayer2" instance=ExtResource("5_gtjbf")]
+[node name="Clouds_02" parent="EndAnimation" instance=ExtResource("5_gtjbf")]
 position = Vector2(525, 776)
 
-[node name="Clouds_01" parent="CanvasLayer2" instance=ExtResource("6_6yhy7")]
+[node name="Clouds_01" parent="EndAnimation" instance=ExtResource("6_6yhy7")]
 position = Vector2(558, 920)
 
-[node name="Ground01" type="Sprite2D" parent="CanvasLayer2"]
+[node name="Ground01" type="Sprite2D" parent="EndAnimation"]
 position = Vector2(556.5, 1105)
 texture = ExtResource("7_sfof0")
 
-[node name="VegetableBack05" parent="CanvasLayer2" instance=ExtResource("7_4lf82")]
+[node name="VegetableBack05" parent="EndAnimation" instance=ExtResource("7_4lf82")]
 position = Vector2(347.5, 927)
 
-[node name="VegetableBack06" parent="CanvasLayer2" instance=ExtResource("8_ap40l")]
+[node name="VegetableBack06" parent="EndAnimation" instance=ExtResource("8_ap40l")]
 position = Vector2(674.5, 940)
 
-[node name="VegetableBack03" parent="CanvasLayer2" instance=ExtResource("9_yu4kt")]
+[node name="VegetableBack03" parent="EndAnimation" instance=ExtResource("9_yu4kt")]
 position = Vector2(569.5, 970)
 
-[node name="VegetableBack04" parent="CanvasLayer2" instance=ExtResource("10_r5k1w")]
+[node name="VegetableBack04" parent="EndAnimation" instance=ExtResource("10_r5k1w")]
 position = Vector2(782.5, 983)
 
-[node name="VegetableBack01" parent="CanvasLayer2" instance=ExtResource("11_vqbob")]
+[node name="VegetableBack01" parent="EndAnimation" instance=ExtResource("11_vqbob")]
 position = Vector2(174.5, 1012)
 
-[node name="VegetableBack02" parent="CanvasLayer2" instance=ExtResource("12_5itwl")]
+[node name="VegetableBack02" parent="EndAnimation" instance=ExtResource("12_5itwl")]
 position = Vector2(466.5, 1028)
 
-[node name="Ground02" type="Sprite2D" parent="CanvasLayer2"]
+[node name="Ground02" type="Sprite2D" parent="EndAnimation"]
 position = Vector2(513, 1246)
 texture = ExtResource("13_61fh1")
 
-[node name="VegetableFront01" parent="CanvasLayer2" instance=ExtResource("15_xdefs")]
+[node name="EndSceneAnimations" type="Node2D" parent="EndAnimation"]
+position = Vector2(-423, 1011)
+script = ExtResource("15_lsmqr")
+
+[node name="Coco" type="Sprite2D" parent="EndAnimation/EndSceneAnimations"]
+texture = ExtResource("15_0kole")
+hframes = 11
+
+[node name="Frogy" type="Sprite2D" parent="EndAnimation/EndSceneAnimations"]
+position = Vector2(12.1503, -413.655)
+texture = ExtResource("16_2bds2")
+hframes = 11
+
+[node name="JumpingAnimationPlayer" type="AnimationPlayer" parent="EndAnimation/EndSceneAnimations"]
+libraries = {
+"": SubResource("AnimationLibrary_yvlom")
+}
+
+[node name="ShowAnimationPlayer" type="AnimationPlayer" parent="EndAnimation/EndSceneAnimations"]
+libraries = {
+"": SubResource("AnimationLibrary_yhsn4")
+}
+
+[node name="VegetableFront01" parent="EndAnimation" instance=ExtResource("15_xdefs")]
 position = Vector2(78, 1253)
 rotation = 0.121798
 scale = Vector2(0.7, 0.7)
 
-[node name="VegetableFront02" parent="CanvasLayer2" instance=ExtResource("16_5mh6a")]
+[node name="VegetableFront02" parent="EndAnimation" instance=ExtResource("16_5mh6a")]
 position = Vector2(1001, 1262)
 rotation = -0.21888
 scale = Vector2(0.7, 0.7)
 
-[node name="VegetableFront03" parent="CanvasLayer2" instance=ExtResource("17_pd4q1")]
+[node name="VegetableFront03" parent="EndAnimation" instance=ExtResource("17_pd4q1")]
 position = Vector2(128, 1275)
 rotation = 0.19508
 scale = Vector2(0.7, 0.7)
 
-[node name="VegetableFront04" parent="CanvasLayer2" instance=ExtResource("18_vsbtk")]
+[node name="VegetableFront04" parent="EndAnimation" instance=ExtResource("18_vsbtk")]
 position = Vector2(1069, 1178)
 rotation = -0.271701
 scale = Vector2(0.7, 0.7)
 
-[node name="VegetableFront05" parent="CanvasLayer2" instance=ExtResource("19_p0lum")]
+[node name="VegetableFront05" parent="EndAnimation" instance=ExtResource("19_p0lum")]
 position = Vector2(-60, 1201)
 rotation = 0.41783
 scale = Vector2(0.7, 0.7)
 
-[node name="Foreground01" type="Sprite2D" parent="CanvasLayer2"]
+[node name="Foreground01" type="Sprite2D" parent="EndAnimation"]
 position = Vector2(545.6, 1240)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("20_6jlor")
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
+[node name="ColorRect2" type="ColorRect" parent="EndAnimation"]
 offset_left = -128.0
 offset_top = 1278.0
 offset_right = 1186.0
 offset_bottom = 2084.0
 color = Color(0.2, 0.203922, 0.203922, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="NoEndSceneVisible" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
 
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="MenuBackground" parent="NoEndSceneVisible" instance=ExtResource("21_1kcgd")]
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="Controls"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,7 +317,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
+[node name="MarginContainer" type="MarginContainer" parent="Controls/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,16 +326,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/UI/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("4_2rlbo")
 
-[node name="Title" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+[node name="Title" type="MarginContainer" parent="Controls/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 modulate = Color(0.929412, 0.403922, 0.054902, 1)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Title"]
-unique_name_in_owner = true
+[node name="TitleAnimation" type="Label" parent="Controls/UI/MarginContainer/VBoxContainer/Title"]
 layout_mode = 2
 theme = ExtResource("4_2rlbo")
 theme_override_font_sizes/font_size = 180
@@ -166,14 +343,29 @@ text = "Coco & Frogy
 are happy"
 horizontal_alignment = 1
 
-[node name="Body" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+[node name="TitleNoEndSceneVisibles" type="Label" parent="Controls/UI/MarginContainer/VBoxContainer/Title"]
+layout_mode = 2
+theme = ExtResource("4_2rlbo")
+theme_override_font_sizes/font_size = 180
+text = "All levels
+cleared"
+horizontal_alignment = 1
+
+[node name="Body" type="MarginContainer" parent="Controls/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 modulate = Color(0.2, 0.203922, 0.203922, 1)
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 
-[node name="Buttons" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Controls/UI/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+text = "Clear all the levels in a row to see the final scene"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Buttons" type="MarginContainer" parent="Controls/UI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 10
@@ -182,37 +374,37 @@ theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/UI/MarginContainer/VBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="TotalScore" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+[node name="TotalScore" type="HBoxContainer" parent="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
 modulate = Color(1, 1, 0.8, 1)
 layout_mode = 2
 
-[node name="TotalScoreTitle" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/TotalScore" instance=ExtResource("5_3wguu")]
+[node name="TotalScoreTitle" parent="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/TotalScore" instance=ExtResource("5_3wguu")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
 text = "Total Score"
 
-[node name="TotalScoreNumber" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/TotalScore" instance=ExtResource("6_c7vg2")]
+[node name="TotalScoreNumber" parent="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/TotalScore" instance=ExtResource("6_c7vg2")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
 stats_property = "total_score"
 
-[node name="BackToMenuButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer" instance=ExtResource("5_ttyjy")]
+[node name="BackToMenuButton" parent="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer" instance=ExtResource("5_ttyjy")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Back to Menu"
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
-[node name="QuitButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer" instance=ExtResource("5_ttyjy")]
+[node name="QuitButton" parent="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer" instance=ExtResource("5_ttyjy")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Quit"
@@ -220,10 +412,10 @@ text = "Quit"
 [node name="Effects" type="Node2D" parent="."]
 
 [node name="ShakeEffectBig" parent="Effects" node_paths=PackedStringArray("target") instance=ExtResource("6_fxyd2")]
-target = NodePath("../../CanvasLayer")
+target = NodePath("../../Controls")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_8d4fu")
+noise = SubResource("FastNoiseLite_fcwx6")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
 stream = ExtResource("8_sdt80")
@@ -233,14 +425,22 @@ random_pitch = true
 stream = ExtResource("9_e8ngj")
 random_pitch = true
 
-[node name="BackgroundMusicSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
+[node name="BackgroundEndSceneMusicSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
 stream = ExtResource("29_wn1ue")
 loop = true
 fade_in_time = 1.0
 
+[node name="BackgroundNoEndSceneMusicEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
+stream = ExtResource("31_s3rn4")
+bus = &"music"
+loop = true
+fade_in_time = 1.0
+
+[connection signal="end_scene_no_visible" from="." to="Effects/BackgroundNoEndSceneMusicEffect" method="perform"]
+[connection signal="end_scene_visible" from="." to="Effects/BackgroundEndSceneMusicSoundEffect" method="perform"]
+[connection signal="end_scene_visible" from="." to="EndAnimation/EndSceneAnimations" method="perform"]
 [connection signal="stats_label_animated" from="." to="Effects/ShakeLabelSoundEffect" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffectBig" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeNumberSoundEffect" method="perform"]
-[connection signal="stats_number_animated" from="." to="Effects/BackgroundMusicSoundEffect" method="perform"]
-[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/BackToMenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]
-[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer/QuitButton" to="NavigationManager" method="quit"]
+[connection signal="pressed" from="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/BackToMenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]
+[connection signal="pressed" from="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer/QuitButton" to="NavigationManager" method="quit"]
