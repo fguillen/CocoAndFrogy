@@ -11,13 +11,19 @@ signal go_to_end_scene()
 
 # -- 06 enums
 # -- 07 constants
+const PASSWORD = "cocococo"
 # -- 08 exported variables
 # -- 09 public variables
 # -- 10 private variables
+var _options_shown := false
+
 # -- 11 onready variables
 @onready var title_label = %Title
 @onready var menu_button = %MenuButton
 @onready var buttons = %Buttons
+@onready var password_line_edit:LineEdit = %PasswordLineEdit
+@onready var body_password = %BodyPassword
+@onready var body = %Body
 
 
 
@@ -26,6 +32,9 @@ signal go_to_end_scene()
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
+	body.visible = false
+	body.process_mode = Node.PROCESS_MODE_DISABLED
+	
 	_show.call_deferred()
 	
 	
@@ -42,6 +51,11 @@ func see_end_scene():
 	
 func immunity(value: bool):
 	Global.immunity = value
+	
+	
+func password_changed(value: String):
+	if value == PASSWORD:
+		_show_options()
 	
 	
 # -- 17 private methods
@@ -80,6 +94,14 @@ func _animate_buttons():
 	menu_button.grab_focus()
 	
 	
+func _show_options():
+	if _options_shown:
+		return
+		
+	_options_shown = true	
+	body_password.queue_free()
+	body.visible = true
+	body.process_mode = Node.PROCESS_MODE_INHERIT
 	
 		
 # -- 18 signal listeners

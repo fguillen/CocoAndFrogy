@@ -51,7 +51,29 @@ theme_override_font_sizes/font_size = 180
 text = "Backdoor"
 horizontal_alignment = 1
 
+[node name="BodyPassword" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="PasswordLineEdit" type="LineEdit" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/BodyPassword"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_auo22")
+theme_override_font_sizes/font_size = 100
+placeholder_text = "PASSWORD"
+alignment = 1
+max_length = 8
+context_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+caret_blink = true
+
 [node name="Body" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 100
@@ -116,6 +138,7 @@ loop = true
 fade_in_time = 1.0
 
 [connection signal="go_to_end_scene" from="." to="NavigationManager" method="go_to" binds= ["end"]]
+[connection signal="text_changed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/BodyPassword/PasswordLineEdit" to="." method="password_changed"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/ClearLevelsButton" to="." method="clear_all_levels"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/SeeEndSceneButton" to="." method="see_end_scene"]
 [connection signal="toggled" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/ImmunityCheckButton" to="." method="immunity"]
