@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bwx0xblbbojg6" path="res://effects/shake/shake_effect.tscn" id="3_hhlqp"]
 [ext_resource type="PackedScene" uid="uid://dif7ei5dj4irr" path="res://ui/fluid_animated.tscn" id="4_dqyms"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qibuc"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nxked"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -34,7 +34,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(90, 50)
 frequency = 10.0
-noise = SubResource("FastNoiseLite_qibuc")
+noise = SubResource("FastNoiseLite_nxked")
 
 [node name="FluidAnimated" parent="." instance=ExtResource("4_dqyms")]
 position = Vector2(517, 278)

@@ -20,7 +20,8 @@ var last_level_played := 0
 var last_level_cleaned := 0
 var lifes := 3
 var levels_cleaned_in_a_row := 0
-
+var immunity := false
+var see_final_scene_backdoor := false
 
 # -- 10 private variables
 # -- 11 onready variables
@@ -58,7 +59,18 @@ func deserialize(data: Dictionary):
 	cleaned_levels.assign(data.cleaned_levels)
 	last_level_played = data.last_level_played
 	
+
+func remove_life():
+	if immunity:
+		return 
+		
+	lifes -= 1
 	
+	
+func is_lifes_empty() -> bool:
+	return lifes == 0
+	
+
 func reset_levels_advance():
 	cleaned_levels.clear()
 	last_level_played = 0
@@ -68,10 +80,17 @@ func reset_levels_advance():
 	
 
 func has_finished_all_leveles_in_a_row() -> bool:
-	if levels_cleaned_in_a_row >= 5:
+	if levels_cleaned_in_a_row >= 5 or see_final_scene_backdoor:
 		return true
 	else:
 		return false
+		
+
+func mark_all_levels_as_cleared():
+	for i in 6:
+		cleaned_levels.append(i)
+	
+	DataPersister.save_data()	
 	
 # -- 17 private methods
 

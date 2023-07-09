@@ -177,7 +177,7 @@ _data = {
 "waving": SubResource("Animation_yml22")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_fcwx6"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bt6gd"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -186,6 +186,7 @@ fractal_octaves = 1
 fractal_lacunarity = 1.0
 
 [node name="EndScene" type="Node2D"]
+process_mode = 3
 rotation = -0.00209449
 script = ExtResource("1_c02ed")
 
@@ -415,7 +416,7 @@ text = "Quit"
 target = NodePath("../../Controls")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_fcwx6")
+noise = SubResource("FastNoiseLite_bt6gd")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
 stream = ExtResource("8_sdt80")
@@ -437,8 +438,8 @@ loop = true
 fade_in_time = 1.0
 
 [connection signal="end_scene_no_visible" from="." to="Effects/BackgroundNoEndSceneMusicEffect" method="perform"]
-[connection signal="end_scene_visible" from="." to="Effects/BackgroundEndSceneMusicSoundEffect" method="perform"]
 [connection signal="end_scene_visible" from="." to="EndAnimation/EndSceneAnimations" method="perform"]
+[connection signal="end_scene_visible" from="." to="Effects/BackgroundEndSceneMusicSoundEffect" method="perform"]
 [connection signal="stats_label_animated" from="." to="Effects/ShakeLabelSoundEffect" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeEffectBig" method="perform"]
 [connection signal="stats_number_animated" from="." to="Effects/ShakeNumberSoundEffect" method="perform"]

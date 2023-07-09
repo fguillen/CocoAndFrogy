@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxxgtdjis3vo7"]
+
+[ext_resource type="Script" path="res://scenes/backdoor_scene/backdoor_scene.gd" id="1_b3rxc"]
+[ext_resource type="PackedScene" uid="uid://dcceufutsw14x" path="res://ui/navigation_manager.tscn" id="2_1dtx2"]
+[ext_resource type="PackedScene" uid="uid://vd8sr235031v" path="res://ui/menu_background.tscn" id="3_rnxm6"]
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="4_auo22"]
+[ext_resource type="PackedScene" uid="uid://dx1cc3bi8pjqc" path="res://ui/button_with_effects.tscn" id="6_38lqk"]
+[ext_resource type="PackedScene" uid="uid://c817v2wc4m8jh" path="res://effects/sound_effect.tscn" id="7_4wlww"]
+[ext_resource type="AudioStream" uid="uid://y03r4dva0jah" path="res://assets/sounds/button.wav" id="7_hvt0d"]
+[ext_resource type="AudioStream" uid="uid://bv38cocliut30" path="res://assets/music/Monkey-Island-Puzzler.mp3" id="8_jojdi"]
+
+[node name="Backdoor" type="Node2D"]
+script = ExtResource("1_b3rxc")
+
+[node name="NavigationManager" parent="." instance=ExtResource("2_1dtx2")]
+
+[node name="MenuBackground" parent="." instance=ExtResource("3_rnxm6")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_auo22")
+
+[node name="Title" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Title"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_auo22")
+theme_override_font_sizes/font_size = 180
+text = "Backdoor"
+horizontal_alignment = 1
+
+[node name="Body" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_auo22")
+theme_override_colors/font_color = Color(0.2, 0.203922, 0.203922, 1)
+text = "Hacker options"
+horizontal_alignment = 1
+
+[node name="ClearLevelsButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer" instance=ExtResource("6_38lqk")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Clear all levels"
+
+[node name="SeeEndSceneButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer" instance=ExtResource("6_38lqk")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "See Final Scene"
+
+[node name="ImmunityCheckButton" type="CheckButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Immunity"
+alignment = 1
+
+[node name="Effects" type="Node" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/ImmunityCheckButton"]
+
+[node name="SoundEffect" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/ImmunityCheckButton/Effects" instance=ExtResource("7_4wlww")]
+stream = ExtResource("7_hvt0d")
+
+[node name="Buttons" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="MenuButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer" instance=ExtResource("6_38lqk")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back to Menu"
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="BackgroundMusicEffect" parent="Effects" instance=ExtResource("7_4wlww")]
+stream = ExtResource("8_jojdi")
+bus = &"music"
+loop = true
+fade_in_time = 1.0
+
+[connection signal="go_to_end_scene" from="." to="NavigationManager" method="go_to" binds= ["end"]]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/ClearLevelsButton" to="." method="clear_all_levels"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/SeeEndSceneButton" to="." method="see_end_scene"]
+[connection signal="toggled" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/ImmunityCheckButton" to="." method="immunity"]
+[connection signal="toggled" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/ImmunityCheckButton" to="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/ImmunityCheckButton/Effects/SoundEffect" method="perform" unbinds=1]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]

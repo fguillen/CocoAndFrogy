@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://t4fnqfcts68g"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://t4fnqfcts68g"]
 
 [ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="1_875gr"]
 [ext_resource type="Texture2D" uid="uid://byr6u2pvwv4f1" path="res://ui/slider_grabber.png" id="2_ceeph"]
+[ext_resource type="Texture2D" uid="uid://bb6mbvf4oo384" path="res://ui/check_handle.png" id="2_e184t"]
 [ext_resource type="FontFile" uid="uid://dvjdap1osrug5" path="res://assets/LondrinaSolid-Regular.ttf" id="3_e8hmm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wp61"]
@@ -25,6 +26,52 @@ region_rect = Rect2(-3, -3, 440, 158)
 modulate_color = Color(0.2, 0.203922, 0.203922, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qyu60"]
+texture = ExtResource("1_875gr")
+texture_margin_left = 23.0
+texture_margin_top = 27.0
+texture_margin_right = 25.0
+texture_margin_bottom = 21.0
+region_rect = Rect2(-3, -3, 440, 158)
+modulate_color = Color(0.682353, 0.286275, 0.0117647, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpxjy"]
+atlas = ExtResource("2_e184t")
+region = Rect2(14, 14, 122, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32eio"]
+atlas = ExtResource("2_e184t")
+region = Rect2(15, 110, 122, 76)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgoym"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnhig"]
+texture = ExtResource("1_875gr")
+texture_margin_left = 23.0
+texture_margin_top = 27.0
+texture_margin_right = 25.0
+texture_margin_bottom = 21.0
+region_rect = Rect2(-3, -3, 440, 158)
+modulate_color = Color(0.929412, 0.403922, 0.054902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_brb25"]
+texture = ExtResource("1_875gr")
+texture_margin_left = 23.0
+texture_margin_top = 27.0
+texture_margin_right = 25.0
+texture_margin_bottom = 21.0
+region_rect = Rect2(-3, -3, 440, 158)
+modulate_color = Color(0.682353, 0.286275, 0.0117647, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6csqo"]
+texture = ExtResource("1_875gr")
+texture_margin_left = 23.0
+texture_margin_top = 27.0
+texture_margin_right = 25.0
+texture_margin_bottom = 21.0
+region_rect = Rect2(-3, -3, 440, 158)
+modulate_color = Color(0.2, 0.203922, 0.203922, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ex4e8"]
 texture = ExtResource("1_875gr")
 texture_margin_left = 23.0
 texture_margin_top = 27.0
@@ -79,6 +126,14 @@ Button/styles/focus = SubResource("StyleBoxEmpty_6wp61")
 Button/styles/hover = SubResource("StyleBoxTexture_oxopx")
 Button/styles/normal = SubResource("StyleBoxTexture_3ihl8")
 Button/styles/pressed = SubResource("StyleBoxTexture_qyu60")
+CheckButton/constants/h_separation = 40
+CheckButton/icons/checked = SubResource("AtlasTexture_jpxjy")
+CheckButton/icons/unchecked = SubResource("AtlasTexture_32eio")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_bgoym")
+CheckButton/styles/hover = SubResource("StyleBoxTexture_qnhig")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_brb25")
+CheckButton/styles/normal = SubResource("StyleBoxTexture_6csqo")
+CheckButton/styles/pressed = SubResource("StyleBoxTexture_ex4e8")
 HSlider/icons/grabber = ExtResource("2_ceeph")
 HSlider/icons/grabber_disabled = ExtResource("2_ceeph")
 HSlider/icons/grabber_highlight = ExtResource("2_ceeph")

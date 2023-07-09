@@ -61,14 +61,13 @@ func _remove_brick(brick: Brick):
 		
 		
 func _remove_life():
-	Global.lifes -= 1
-	
-	if Global.lifes <= -1:
+	if Global.is_lifes_empty():
 		GlobalEvents.emit_game_over()
 		level_finishing.emit()
 		await get_tree().create_timer(0.5).timeout
 		game_over.emit()
-		
+	
+	Global.remove_life()	
 
 # -- 18 signal listeners
 # -- 19 subclasses
