@@ -70,11 +70,7 @@ func reset_levels_advance():
 
 # -- 18 signal listeners
 func _on_level_cleared(level_num: int):
-	if last_level_cleaned == level_num - 1:
-		levels_cleaned_in_a_row += 1
-	else:
-		levels_cleaned_in_a_row = 0
-	
+	levels_cleaned_in_a_row += 1
 	last_level_cleaned = level_num
 	print("XXX: levels_cleaned_in_a_row: ", levels_cleaned_in_a_row)
 		
