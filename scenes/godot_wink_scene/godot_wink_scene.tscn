@@ -150,6 +150,7 @@ horizontal_alignment = 1
 stream = ExtResource("5_foo6v")
 max_polyphony = 3
 
+[connection signal="accelerate" from="." to="NavigationManager" method="go_to" binds= ["menu"]]
 [connection signal="animation_finished" from="CenterContainer/VBoxContainer/Control/AnimatedSprite2D" to="NavigationManager" method="go_to" binds= ["logo"]]
 [connection signal="finished" from="CenterContainer/VBoxContainer/LabelTypewriter" to="." method="wink"]
 [connection signal="key" from="CenterContainer/VBoxContainer/LabelTypewriter" to="CenterContainer/VBoxContainer/LabelTypewriter/KeySoundEffect" method="perform"]

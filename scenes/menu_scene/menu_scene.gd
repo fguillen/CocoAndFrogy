@@ -38,7 +38,6 @@ func play_last_level():
 	
 # -- 17 private methods
 func _show():
-	print("XXX: original_position_y 1: ", title_label.global_position)s
 	_hide_title_label()
 	_hide_buttons()
 	
