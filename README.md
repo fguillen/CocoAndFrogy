@@ -12,7 +12,7 @@ Play it free in your browser here: https://arturitoproductions.itch.io/coco-and-
 
 ## Credits
 
-### ​Art, Design and Programming
+### ​Art, Design, and Programming
 
 by Alberto Bueno (https://arturitoproductions.itch.io​)
 
