@@ -17,3 +17,4 @@ script = ExtResource("2_437t3")
 
 [node name="MouseBrick" parent="Bricks" instance=ExtResource("3_cswnw")]
 position = Vector2(491, 312)
+health = 15

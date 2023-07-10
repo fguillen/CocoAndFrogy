@@ -28,6 +28,7 @@ var _tweens_speed := 1.0
 # -- 11 onready variables
 @onready var stats_title_label = %StatsTitle
 @onready var buttons = %Buttons
+@onready var next_button = %Buttons/VBoxContainer/NextButton
 
 
 #
@@ -85,6 +86,7 @@ func _hide_numbers():
 
 func _hide_buttons():
 	buttons.modulate.a = 0.0
+	buttons.process_mode = Node.PROCESS_MODE_DISABLED
 	
 
 func _animate_stats_title_label():
@@ -115,7 +117,8 @@ func _animate_buttons():
 	tween.tween_property(buttons, "global_position:y", original_position_y, 0.2).from(get_viewport_rect().size.y + 300)
 	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.2).from(0.0)
 	await tween.finished
-	buttons.grab_focus()
+	buttons.process_mode = Node.PROCESS_MODE_INHERIT
+	next_button.grab_focus()
 
 
 func _accelerate():
