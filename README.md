@@ -1,3 +1,15 @@
+# Coco & Frogy
+
+Coco and Frogy want to cross the river but a lot of bugs are on their way. Help them to kick the bugs out.
+
+Play it free in your browser here: https://arturitoproductions.itch.io/coco-and-frogy​
+
+## Controls
+
+- A and D or cursors for left and right
+- Space for bumping Frogy
+- Touch input also supported on mobile
+
 ## Credits
 
 ### Music 
