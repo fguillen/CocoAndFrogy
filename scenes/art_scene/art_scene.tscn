@@ -1,0 +1,168 @@
+[gd_scene load_steps=22 format=3 uid="uid://b2xy3u6mjasvr"]
+
+[ext_resource type="Texture2D" uid="uid://tso54yg1v1h5" path="res://assets/ski_01.png" id="1_pp1kq"]
+[ext_resource type="Texture2D" uid="uid://bdh6nvf8asyhq" path="res://assets/ski_02.png" id="2_dlprr"]
+[ext_resource type="PackedScene" uid="uid://cjsupsgoe5um5" path="res://environment/clouds_02.tscn" id="3_c0bpg"]
+[ext_resource type="PackedScene" uid="uid://dv2fe0trni1n5" path="res://environment/clouds_01.tscn" id="4_mcrnj"]
+[ext_resource type="Texture2D" uid="uid://vjltfx4oqcjy" path="res://assets/ground_01.png" id="5_cq2fq"]
+[ext_resource type="PackedScene" uid="uid://bf3cqqsb0w2xh" path="res://environment/vegetable_back_05.tscn" id="6_85app"]
+[ext_resource type="PackedScene" uid="uid://bpdm3ahetr17d" path="res://environment/vegetable_back_06.tscn" id="7_1asc0"]
+[ext_resource type="PackedScene" uid="uid://dnsnnb8m8dtvt" path="res://environment/vegetable_back_03.tscn" id="8_eoc8h"]
+[ext_resource type="PackedScene" uid="uid://inpgonisj736" path="res://environment/vegetable_back_04.tscn" id="9_6wn8n"]
+[ext_resource type="PackedScene" uid="uid://dghb4ctrsrsc3" path="res://environment/vegetable_back_01.tscn" id="10_6nj41"]
+[ext_resource type="PackedScene" uid="uid://cahi8qp1m3055" path="res://environment/vegetable_back_02.tscn" id="11_62mav"]
+[ext_resource type="Texture2D" uid="uid://kewii7qnwrlb" path="res://assets/ground_02.png" id="12_7pphu"]
+[ext_resource type="Texture2D" uid="uid://dq75jduvjrlcb" path="res://assets/end_scene_animations/coco.png" id="13_wfi6c"]
+[ext_resource type="Texture2D" uid="uid://bl0bsq75dn74o" path="res://assets/end_scene_animations/frogy.png" id="14_0in12"]
+[ext_resource type="PackedScene" uid="uid://biey47xajkipj" path="res://environment/vegetable_front_01.tscn" id="15_ualcw"]
+[ext_resource type="PackedScene" uid="uid://dxswaxn55u0cv" path="res://environment/vegetable_front_02.tscn" id="16_irgpe"]
+[ext_resource type="PackedScene" uid="uid://b4t25gkmm47ld" path="res://environment/vegetable_front_03.tscn" id="17_boydo"]
+[ext_resource type="PackedScene" uid="uid://ddpd3x6doacdu" path="res://environment/vegetable_front_04.tscn" id="18_ovt1a"]
+[ext_resource type="PackedScene" uid="uid://b2ewbis3ifr1b" path="res://environment/vegetable_front_05.tscn" id="19_vjyk4"]
+[ext_resource type="Texture2D" uid="uid://cvog4gocwjgsf" path="res://assets/foreground_01.png" id="20_w37vh"]
+[ext_resource type="Theme" uid="uid://t4fnqfcts68g" path="res://assets/theme.tres" id="21_y8ogi"]
+
+[node name="ArtScene" type="Node2D"]
+process_mode = 3
+rotation = -0.00209449
+
+[node name="EndAnimation" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="EndAnimation"]
+offset_left = -42.0
+offset_top = -332.0
+offset_right = 1132.0
+offset_bottom = 1655.0
+color = Color(1, 1, 0.8, 1)
+
+[node name="Ski01" type="Sprite2D" parent="EndAnimation"]
+position = Vector2(493, 626)
+texture = ExtResource("1_pp1kq")
+
+[node name="Ski02" type="Sprite2D" parent="EndAnimation"]
+position = Vector2(493, 467)
+texture = ExtResource("2_dlprr")
+
+[node name="Clouds_02" parent="EndAnimation" instance=ExtResource("3_c0bpg")]
+position = Vector2(525, 776)
+
+[node name="Clouds_01" parent="EndAnimation" instance=ExtResource("4_mcrnj")]
+position = Vector2(558, 920)
+
+[node name="ColorRect2" type="ColorRect" parent="EndAnimation"]
+offset_left = -128.0
+offset_top = 1278.0
+offset_right = 1186.0
+offset_bottom = 2084.0
+color = Color(0.2, 0.203922, 0.203922, 1)
+
+[node name="Node2D" type="Node2D" parent="EndAnimation"]
+
+[node name="Ground01" type="Sprite2D" parent="EndAnimation/Node2D"]
+position = Vector2(511.5, 658)
+texture = ExtResource("5_cq2fq")
+
+[node name="VegetableBack05" parent="EndAnimation/Node2D" instance=ExtResource("6_85app")]
+position = Vector2(302.5, 480)
+
+[node name="VegetableBack06" parent="EndAnimation/Node2D" instance=ExtResource("7_1asc0")]
+position = Vector2(629.5, 493)
+
+[node name="VegetableBack03" parent="EndAnimation/Node2D" instance=ExtResource("8_eoc8h")]
+position = Vector2(524.5, 523)
+
+[node name="VegetableBack04" parent="EndAnimation/Node2D" instance=ExtResource("9_6wn8n")]
+position = Vector2(737.5, 536)
+
+[node name="VegetableBack01" parent="EndAnimation/Node2D" instance=ExtResource("10_6nj41")]
+position = Vector2(129.5, 565)
+
+[node name="VegetableBack02" parent="EndAnimation/Node2D" instance=ExtResource("11_62mav")]
+position = Vector2(421.5, 581)
+
+[node name="Ground02" type="Sprite2D" parent="EndAnimation/Node2D"]
+position = Vector2(468, 799)
+texture = ExtResource("12_7pphu")
+
+[node name="EndSceneAnimations" type="Node2D" parent="EndAnimation/Node2D"]
+position = Vector2(539, 648)
+scale = Vector2(0.712836, 0.712836)
+
+[node name="Coco" type="Sprite2D" parent="EndAnimation/Node2D/EndSceneAnimations"]
+texture = ExtResource("13_wfi6c")
+hframes = 11
+
+[node name="Frogy" type="Sprite2D" parent="EndAnimation/Node2D/EndSceneAnimations"]
+position = Vector2(12.1503, -413.655)
+texture = ExtResource("14_0in12")
+hframes = 11
+
+[node name="VegetableFront01" parent="EndAnimation/Node2D" instance=ExtResource("15_ualcw")]
+position = Vector2(33, 806)
+rotation = 0.121798
+scale = Vector2(0.7, 0.7)
+
+[node name="VegetableFront02" parent="EndAnimation/Node2D" instance=ExtResource("16_irgpe")]
+position = Vector2(956, 815)
+rotation = -0.21888
+scale = Vector2(0.7, 0.7)
+
+[node name="VegetableFront03" parent="EndAnimation/Node2D" instance=ExtResource("17_boydo")]
+position = Vector2(83, 828)
+rotation = 0.19508
+scale = Vector2(0.7, 0.7)
+
+[node name="VegetableFront04" parent="EndAnimation/Node2D" instance=ExtResource("18_ovt1a")]
+position = Vector2(1024, 731)
+rotation = -0.271701
+scale = Vector2(0.7, 0.7)
+
+[node name="VegetableFront05" parent="EndAnimation/Node2D" instance=ExtResource("19_vjyk4")]
+position = Vector2(-105, 754)
+rotation = 0.41783
+scale = Vector2(0.7, 0.7)
+
+[node name="Foreground01" type="Sprite2D" parent="EndAnimation/Node2D"]
+position = Vector2(500.6, 793)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("20_w37vh")
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Controls"]
+position = Vector2(126, 6)
+scale = Vector2(0.763127, 0.763127)
+
+[node name="TitleAnimation2" type="Label" parent="Controls/Node2D"]
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+offset_left = -63.0
+offset_top = -23.0
+offset_right = 1017.0
+offset_bottom = 405.0
+theme = ExtResource("21_y8ogi")
+theme_override_font_sizes/font_size = 300
+text = "Coco"
+horizontal_alignment = 1
+
+[node name="TitleAnimation3" type="Label" parent="Controls/Node2D"]
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+offset_left = -162.0
+offset_top = 139.0
+offset_right = 918.0
+offset_bottom = 567.0
+theme = ExtResource("21_y8ogi")
+theme_override_font_sizes/font_size = 300
+text = "Frogy"
+horizontal_alignment = 1
+
+[node name="TitleAnimation4" type="Label" parent="Controls/Node2D"]
+modulate = Color(0.929412, 0.403922, 0.054902, 1)
+offset_left = 333.0
+offset_top = -20.0
+offset_right = 1413.0
+offset_bottom = 572.0
+theme = ExtResource("21_y8ogi")
+theme_override_font_sizes/font_size = 500
+text = "&"
+horizontal_alignment = 1
