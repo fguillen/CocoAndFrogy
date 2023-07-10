@@ -33,8 +33,9 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func reset_levels_advance():
-	Global.reset_levels_advance()
+func reset_persisted_data():
+	DataPersister.reset_persisted_data()
+	Global.reset_data()
 	
 	
 # -- 17 private methods

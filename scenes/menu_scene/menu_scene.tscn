@@ -125,7 +125,6 @@ bus = &"music"
 loop = true
 fade_in_time = 1.0
 
-[connection signal="go_to_level" from="." to="NavigationManager" method="go_to_level"]
 [connection signal="ready" from="." to="Effects/BackgroundMusicEffect" method="perform"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/PlayButton" to="." method="play_last_level"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer3/LevelsButton" to="NavigationManager" method="go_to" binds= ["levels"]]

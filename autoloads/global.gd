@@ -71,12 +71,11 @@ func is_lifes_empty() -> bool:
 	return lifes == 0
 	
 
-func reset_levels_advance():
+func reset_data():
 	cleaned_levels.clear()
 	last_level_played = 0
 	last_level_cleaned = 0
 	levels_cleaned_in_a_row = 0
-	DataPersister.save_data()
 	
 
 func has_finished_all_leveles_in_a_row() -> bool:

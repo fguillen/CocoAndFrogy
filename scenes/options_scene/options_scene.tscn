@@ -119,10 +119,10 @@ theme_override_constants/margin_left = 40
 theme_override_constants/margin_right = 49
 theme_override_constants/margin_bottom = 40
 
-[node name="ResetLevels" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer" instance=ExtResource("4_7eiak")]
+[node name="ResetSavedData" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer" instance=ExtResource("4_7eiak")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "Reset Levels Advance"
+text = "Reset Saved Data"
 
 [node name="Label3" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -171,6 +171,6 @@ fade_in_time = 1.0
 [connection signal="ready" from="." to="Effects/BackgroundMusicEffect" method="perform"]
 [connection signal="value_changed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/VBoxContainer2/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
-[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer/ResetLevels" to="." method="reset_levels_advance"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer/ResetSavedData" to="." method="reset_persisted_data"]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Body/VBoxContainer/MarginContainer2/Backdoor" to="NavigationManager" method="go_to" binds= ["backdoor"]]
 [connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MenuButton" to="NavigationManager" method="go_to" binds= ["menu"]]

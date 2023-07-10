@@ -64,6 +64,10 @@ func load_data():
 		
 	var file = FileAccess.open(DATA_PATH, FileAccess.READ)
 	var game_data = JSON.parse_string(file.get_as_text())
+	if game_data == null:
+		push_error("Error parsing user data: %s" % DATA_PATH)
+		return
+		
 	print("DataPersister.game_data: ", game_data)
 	
 	for node_data in game_data:
@@ -79,7 +83,11 @@ func load_data():
 		print("DataPersister.load_data().node_path: %s" % node_data.node_path)	
 		node.call("deserialize", node_data.data)
 		
-		
+
+func reset_persisted_data():
+	print("DataPersister.reset_persisted_data()")
+	DirAccess.remove_absolute(DATA_PATH)
+	
 # -- 17 private methods
 # -- 18 signal listeners
 # -- 19 innerclasses
