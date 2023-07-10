@@ -518,7 +518,7 @@ one_shot = true
 position = Vector2(-2, 0)
 
 [node name="Sprite2D" parent="Visuals" index="0"]
-scale = Vector2(2, 2)
+scale = Vector2(1, 1)
 texture = ExtResource("3_yl12u")
 hframes = 8
 
