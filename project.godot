@@ -13,7 +13,9 @@ config_version=5
 config/name="Coco & Frogy"
 run/main_scene="res://scenes/godot_wink_scene/godot_wink_scene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
+boot_splash/image="res://assets/splash_screen_2.png"
 config/icon="res://assets/app_logo.png"
+boot_splash/minimum_display_time=1000
 
 [autoload]
 
