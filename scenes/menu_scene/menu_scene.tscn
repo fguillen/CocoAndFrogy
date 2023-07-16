@@ -113,6 +113,7 @@ theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
 [node name="QuitButton" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer" instance=ExtResource("5_2kj5k")]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Quit"

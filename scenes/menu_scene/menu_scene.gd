@@ -17,6 +17,7 @@ signal title_animation_finished()
 @onready var title_label = %Title
 @onready var play_button = %PlayButton
 @onready var buttons = %Buttons
+@onready var quit_button = %QuitButton
 
 
 
@@ -27,6 +28,9 @@ signal title_animation_finished()
 func _ready():
 	_show.call_deferred()
 	StatsManager.reset_total_score()
+	
+	if OS.get_name() == "iOS":
+		quit_button.queue_free()
 	
 	
 # -- 15 remaining built-in virtual methods
