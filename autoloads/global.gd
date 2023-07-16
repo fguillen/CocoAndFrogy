@@ -25,6 +25,8 @@ var see_final_scene_backdoor := false
 
 # -- 10 private variables
 # -- 11 onready variables
+
+
 #
 # -- 12 optional built-in virtual _init method
 # -- 13 optional built-in virtual _enter_tree() method
@@ -116,5 +118,9 @@ func _on_game_over():
 	DataPersister.save_data()
 	
 	
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		get_tree().quit()
+		
 # -- 19 subclasses
 
