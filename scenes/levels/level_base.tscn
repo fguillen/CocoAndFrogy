@@ -33,7 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://divbjlofbt0f6" path="res://assets/sounds/game_over.ogg" id="32_6wu1l"]
 [ext_resource type="AudioStream" uid="uid://bpf7v7o44fsbe" path="res://assets/music/Bass-Invaders.mp3" id="33_hff8q"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7qk7l"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sttgf"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -41,7 +41,7 @@ frequency = 0.029
 fractal_octaves = 1
 fractal_lacunarity = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ye5ta"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d6bx6"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -95,7 +95,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 0.6
-noise = SubResource("FastNoiseLite_7qk7l")
+noise = SubResource("FastNoiseLite_sttgf")
 
 [node name="Skay02ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.005, 0.005)
@@ -110,7 +110,7 @@ auto_start = true
 duration = -1.0
 max_offset = Vector2(500, 0)
 frequency = 1.0
-noise = SubResource("FastNoiseLite_ye5ta")
+noise = SubResource("FastNoiseLite_d6bx6")
 
 [node name="Clouds01ParallaxLayer" type="ParallaxLayer" parent="EnvironmentBack/ParallaxBackground"]
 motion_scale = Vector2(0.02, 0.02)
@@ -253,8 +253,8 @@ fade_in_time = 2.0
 fade_out_time = 0.5
 
 [connection signal="game_over" from="." to="Effects/GameOverSoundEffect" method="perform"]
-[connection signal="game_over" from="." to="NavigationManager" method="go_to" binds= ["game_over"]]
+[connection signal="game_over" from="." to="NavigationManager" method="go_to_with_delay" binds= ["game_over"]]
 [connection signal="level_cleared" from="." to="Effects/LevelClearedSoundEffect" method="perform"]
-[connection signal="level_cleared" from="." to="NavigationManager" method="go_to" binds= ["stats"]]
+[connection signal="level_cleared" from="." to="NavigationManager" method="go_to_with_delay" binds= ["stats"]]
 [connection signal="level_finishing" from="." to="Effects/BackgroundMusic" method="finish"]
 [connection signal="ready" from="." to="Effects/BackgroundMusic" method="perform"]

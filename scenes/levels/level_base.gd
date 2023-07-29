@@ -66,8 +66,8 @@ func _remove_life():
 		level_finishing.emit()
 		await get_tree().create_timer(0.5).timeout
 		game_over.emit()
-	
-	Global.remove_life()	
+	else:
+		Global.remove_life()	
 
 # -- 18 signal listeners
 # -- 19 subclasses

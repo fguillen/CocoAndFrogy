@@ -43,6 +43,11 @@ func go_to(scene_name: String):
 	SceneSwitcher.switch_to(_scenes[scene_name])
 
 
+func go_to_with_delay(scene_name: String, delay: float = 1.0):
+	await get_tree().create_timer(delay).timeout
+	go_to(scene_name)
+	
+
 func go_to_level(level_num: int):
 	var level_name = "level_%02d" % level_num
 	

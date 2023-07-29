@@ -43,6 +43,10 @@ func _die():
 	
 	await animation_player.animation_finished
 	
+	# No re appear if no more lifes
+	if Global.is_game_over:
+		return
+	
 	movement_manager.resume()
 	movement_manager.reset()
 	collision_shape_2d.disabled = false

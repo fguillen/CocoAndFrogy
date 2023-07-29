@@ -22,6 +22,7 @@ var lifes := 3
 var levels_cleaned_in_a_row := 0
 var immunity := false
 var see_final_scene_backdoor := false
+var is_game_over := false
 
 # -- 10 private variables
 # -- 11 onready variables
@@ -104,15 +105,16 @@ func _on_level_cleared(level_num: int):
 	if not cleaned_levels.has(level_num):
 		cleaned_levels.append(level_num)
 		DataPersister.save_data()
-		
-	
+
 
 func _on_level_started(level_num: int):
+	is_game_over = false
 	last_level_played = level_num
 	DataPersister.save_data()
 
 
 func _on_game_over():
+	is_game_over = true
 	lifes = 3	
 	levels_cleaned_in_a_row = 0
 	DataPersister.save_data()
