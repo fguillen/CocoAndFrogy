@@ -13,4 +13,4 @@ text = "Next"
 [node name="SoundEffect" parent="Effects" instance=ExtResource("2_aay41")]
 stream = ExtResource("3_7y11t")
 
-[connection signal="pressed" from="." to="Effects/SoundEffect" method="perform"]
+[connection signal="button_down" from="." to="Effects/SoundEffect" method="perform"]
