@@ -37,6 +37,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
 layout_mode = 2
@@ -57,7 +58,6 @@ horizontal_alignment = 1
 [node name="Body" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Body"]
@@ -154,9 +154,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 200
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/Buttons"]
 layout_mode = 2
