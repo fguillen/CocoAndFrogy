@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dpwjub5d83qbr"]
+[gd_scene load_steps=25 format=3 uid="uid://dpwjub5d83qbr"]
 
 [ext_resource type="Texture2D" uid="uid://ci7lhdro3pmtj" path="res://actors/bricks/fly/fly.png" id="1_wpish"]
 [ext_resource type="Script" path="res://actors/bricks/brick.gd" id="1_yivv7"]
@@ -250,8 +250,6 @@ states/idle/node = SubResource("AnimationNodeAnimation_leggm")
 states/idle/position = Vector2(565, 59)
 transitions = ["idle", "hurt", SubResource("AnimationNodeStateMachineTransition_oecw7"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_eacw6"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_wfllo"), "Start", "appear", SubResource("AnimationNodeStateMachineTransition_s0fix"), "appear", "idle", SubResource("AnimationNodeStateMachineTransition_hs076")]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6shlp"]
-
 [node name="Brick" type="StaticBody2D" groups=["bricks"]]
 collision_layer = 4
 collision_mask = 2
@@ -276,7 +274,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_jase1")
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6shlp")
 
 [node name="Effects" type="Node2D" parent="."]
 
