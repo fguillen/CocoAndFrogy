@@ -81,13 +81,11 @@ func _collision_with_coco(collision: KinematicCollision2D) -> Vector2:
 func _collision_with_other(collision: KinematicCollision2D) -> Vector2:	
 	var normal = collision.get_normal()
 	var result = movement_manager.direction.bounce(normal)
-	print("XXX: normal: %s, direction: %s" % [normal, result])
 	
 	return result
 	
 func _is_collision_too_quick(collision: KinematicCollision2D):
 	var time_since_last_bounce = (Time.get_ticks_msec() - _last_bounce_at) / 1000.0
-	print("XXX: time_since_last_bounce: ", time_since_last_bounce)
 	if _last_bounce_with == collision.get_collider() and time_since_last_bounce < time_between_bounces_with_same_node:
 		return true
 	else:
@@ -98,9 +96,7 @@ func _is_collision_too_quick(collision: KinematicCollision2D):
 # -- 18 signal listeners
 func on_collision_found(collision: KinematicCollision2D):
 	if _is_collision_too_quick(collision):
-		print("XXX: collision_too_quick")
 		return
-	print("XXX: collision_no_quick")
 	
 	_last_bounce_at = Time.get_ticks_msec()
 	_last_bounce_with = collision.get_collider()

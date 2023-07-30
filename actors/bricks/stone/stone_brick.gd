@@ -49,7 +49,6 @@ func _is_frogy_fast_enough_to_produce_hurt() -> bool:
 	
 	var frogy_speed = frogy.movement_manager.speed
 	var result = frogy_speed >= _frogy_minimum_speed_to_cause_hurt
-	print("XXX: frogy_speed: %d, result: %s" % [frogy_speed, result])
 	return result
 	
 

@@ -62,7 +62,6 @@ func _calculate_drag_velocity(event_position: Vector2) -> Vector2:
 	
 	
 func _calculate_direction_based_on_drag(drag_velocity: Vector2):
-	print("XXX: drag_velocity.length(): ", drag_velocity.length())
 	if drag_velocity.length() > moving_sensitivity:
 		_emit_input_action_directions(drag_velocity.normalized())
 	else:

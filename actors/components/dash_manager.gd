@@ -35,7 +35,6 @@ func _input(event):
 		
 	if event is InputEventAction or event is InputEventKey:
 		if event.is_action_pressed("dash"):
-			print("XXX: DashManager.dash_received()")
 			_dash_start()
 	
 		

@@ -50,15 +50,12 @@ func appear():
 	
 # -- 17 private methods
 func _check_if_unlocked():
-	print("XXX: _check_if_unlocked(): ", Global.cleaned_levels, ", level_num: ", level_num)
-	
 	# Level 00 always unlocked
 	if (level_num == 0) or (Global.cleaned_levels.find(level_num - 1) != -1):
 		_unlock()
 	
 	
 func _unlock():
-	print("XXX: _unlock")
 	_is_locked = false
 	lock_sprite.visible = false
 	character_sprite_01.visible = true

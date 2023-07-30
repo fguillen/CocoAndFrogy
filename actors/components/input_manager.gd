@@ -32,11 +32,9 @@ func _process(_delta):
 		_last_direction = actual_direction
 	
 	if _get_bump():
-		print("XXX: InputManager.bump_received")
 		bump_received.emit()
 		
 	if _get_dash():
-		print("XXX: InputManager.dash_received")
 		dash_received.emit()
 		
 	

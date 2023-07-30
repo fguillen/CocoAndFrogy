@@ -30,7 +30,6 @@ var _is_head_out := false
 # -- 14 built-in virtual _ready method
 func _ready():
 	super()
-	print("XXX: Snail._ready()")
 	_hide_head()
 
 
@@ -46,7 +45,6 @@ func hurt_in_shield():
 		
 		
 func _hide_head():
-	print("XXX: _hide_head()")
 	head_collision.disabled = true
 	
 	if _is_head_out:
@@ -57,7 +55,6 @@ func _hide_head():
 
 
 func _show_head():
-	print("XXX: _show_head()")
 	head_collision.disabled = false
 	animation_state_machine.travel("show_head")
 	timer_hide_head.start(randf_range(head_showing_duration.x, head_showing_duration.y))
@@ -74,7 +71,6 @@ func _on_timer_hide_head_timeout():
 	
 	
 func _on_animation_tree_animation_started(anim_name):
-	print("XXX: animation_tree: ", anim_name)
 # -- 19 subclasses
 
 
@@ -86,4 +82,3 @@ func _on_animation_tree_animation_started(anim_name):
 
 
 func _on_animation_player_animation_started(anim_name):
-	print("XXX: animation_player: ", anim_name)

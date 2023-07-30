@@ -29,9 +29,6 @@ func _ready():
 	if fade_in_time > 0:
 		volume_db = -80.0
 	
-#func _process(delta):
-#	print("XXX: _testing: ", _testing)
-	
 
 func perform():
 	if not _is_ready:

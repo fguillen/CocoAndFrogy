@@ -51,8 +51,6 @@ func go_to_with_delay(scene_name: String, delay: float = 1.0):
 func go_to_level(level_num: int):
 	var level_name = "level_%02d" % level_num
 	
-	print("XXX level_name: ", level_name)
-	
 	if _scenes.has(level_name):
 		go_to(level_name)
 	else:

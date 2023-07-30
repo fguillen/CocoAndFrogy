@@ -32,7 +32,6 @@ signal died()
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready(): 
-	print("XXX: Brick._ready()")
 	_setup.call_deferred()
 	
 	_global_signal_emit_brick_ready()

@@ -122,7 +122,6 @@ func _animate_buttons():
 
 
 func _accelerate():
-	print("XXX: StatsScene._accelerate()")
 	_tweens_speed = 5.0
 
 		

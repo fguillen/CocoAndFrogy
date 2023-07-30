@@ -34,7 +34,6 @@ func _ready():
 # -- 16 public methods
 # -- 17 private methods
 func _shoot_walnut():
-	print("XXX: _shoot_walnut()")
 	var walnut: RigidBody2D = walnut_template.instantiate()
 	get_tree().root.add_child(walnut)
 	walnut.global_position = tongue.global_position

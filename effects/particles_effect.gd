@@ -30,7 +30,6 @@ func perform():
 	if reparent_on_perform:
 		reparent(get_tree().current_scene, true)
 		
-	print("XXX BrickExplosionParticlesEffect.perform()")
 	emitting = true
 	await get_tree().create_timer(2.0).timeout
 	queue_free()
