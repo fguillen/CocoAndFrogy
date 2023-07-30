@@ -12,7 +12,7 @@ extends Node
 # -- 08 exported variables
 @export var bumping_sensitivity := 1000.0
 @export var dashing_sensitivity := 3000.0
-@export var moving_sensitivity := 150.0
+@export var moving_sensitivity := 300.0
 
 # -- 09 public variables
 # -- 10 private variables
@@ -65,6 +65,8 @@ func _calculate_direction_based_on_drag(drag_velocity: Vector2):
 	print("XXX: drag_velocity.length(): ", drag_velocity.length())
 	if drag_velocity.length() > moving_sensitivity:
 		_emit_input_action_directions(drag_velocity.normalized())
+	else:
+		_emit_input_action_directions(Vector2.ZERO)
 	
 	
 	
