@@ -35,6 +35,33 @@
 [ext_resource type="AudioStream" uid="uid://bd6xdxq4uw0wu" path="res://assets/music/Carefree-Days-in-Groovyville_Looping.mp3" id="29_wn1ue"]
 [ext_resource type="AudioStream" uid="uid://bv38cocliut30" path="res://assets/music/Monkey-Island-Puzzler.mp3" id="31_s3rn4"]
 
+[sub_resource type="Animation" id="Animation_lsfk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coco:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frogy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_fsmq1"]
 resource_name = "jump"
 length = 0.75
@@ -65,37 +92,37 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
-[sub_resource type="Animation" id="Animation_lsfk6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvlom"]
+_data = {
+"RESET": SubResource("Animation_lsfk6"),
+"jump": SubResource("Animation_fsmq1")
+}
+
+[sub_resource type="Animation" id="Animation_hpx25"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Coco:frame")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector2(-423, 1011)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Frogy:frame")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvlom"]
-_data = {
-"RESET": SubResource("Animation_lsfk6"),
-"jump": SubResource("Animation_fsmq1")
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_kwkv2"]
@@ -126,33 +153,6 @@ tracks/1/keys = {
 "values": [0.0, -0.192683, 0.180075, 0.0401638]
 }
 
-[sub_resource type="Animation" id="Animation_hpx25"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-423, 1011)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="Animation" id="Animation_yml22"]
 resource_name = "waving"
 length = 1.5
@@ -177,7 +177,7 @@ _data = {
 "waving": SubResource("Animation_yml22")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bt6gd"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3s57u"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -416,7 +416,7 @@ text = "Quit"
 target = NodePath("../../Controls")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_bt6gd")
+noise = SubResource("FastNoiseLite_3s57u")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
 stream = ExtResource("8_sdt80")
