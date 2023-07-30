@@ -32,6 +32,7 @@ DataPersister="*res://autoloads/data_persister.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
+window/size/always_on_top=true
 window/size/window_width_override=540
 window/size/window_height_override=960
 window/stretch/mode="viewport"

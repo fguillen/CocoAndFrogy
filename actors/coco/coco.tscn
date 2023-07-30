@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dxtvkmwjy1fs8"]
+[gd_scene load_steps=56 format=3 uid="uid://dxtvkmwjy1fs8"]
 
 [ext_resource type="Script" path="res://actors/coco/coco.gd" id="1_m36m7"]
 [ext_resource type="Shader" path="res://effects/deform_effect.gdshader" id="2_cye3n"]
@@ -254,8 +254,6 @@ states/turn_right/node = SubResource("AnimationNodeAnimation_a422s")
 states/turn_right/position = Vector2(380, 158)
 transitions = ["Start", "turn_left", SubResource("AnimationNodeStateMachineTransition_freap"), "turn_left", "look_left", SubResource("AnimationNodeStateMachineTransition_v7w3m"), "turn_right", "look_right", SubResource("AnimationNodeStateMachineTransition_sddoi"), "Start", "turn_right", SubResource("AnimationNodeStateMachineTransition_3lgr0"), "look_right", "turn_left", SubResource("AnimationNodeStateMachineTransition_w276l"), "look_left", "turn_right", SubResource("AnimationNodeStateMachineTransition_cgwoq"), "turn_left", "turn_right", SubResource("AnimationNodeStateMachineTransition_ucr6p"), "turn_right", "turn_left", SubResource("AnimationNodeStateMachineTransition_oh1y0")]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ic23m"]
-
 [node name="Coco" type="CharacterBody2D" node_paths=PackedStringArray("movement_manager") groups=["coco"]]
 y_sort_enabled = true
 collision_mask = 10
@@ -315,7 +313,6 @@ libraries = {
 unique_name_in_owner = true
 tree_root = SubResource("AnimationNodeStateMachine_32kex")
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ic23m")
 
 [node name="Effects" type="Node2D" parent="."]
 script = ExtResource("24_ktap8")
