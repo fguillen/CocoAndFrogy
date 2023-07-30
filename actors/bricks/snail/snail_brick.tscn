@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dlgw8lgrttu6f"]
+[gd_scene load_steps=43 format=3 uid="uid://dlgw8lgrttu6f"]
 
 [ext_resource type="PackedScene" uid="uid://dpwjub5d83qbr" path="res://actors/bricks/brick.tscn" id="1_6oucr"]
 [ext_resource type="Script" path="res://actors/bricks/snail/snail_brick.gd" id="2_jxcsv"]
@@ -500,8 +500,6 @@ states/show_head/position = Vector2(573, -44)
 transitions = ["Start", "appear", SubResource("AnimationNodeStateMachineTransition_s0fix"), "appear", "idle", SubResource("AnimationNodeStateMachineTransition_hs076"), "idle", "show_head", SubResource("AnimationNodeStateMachineTransition_dycjr"), "show_head", "idle_with_head", SubResource("AnimationNodeStateMachineTransition_7m24i"), "hide_head", "idle", SubResource("AnimationNodeStateMachineTransition_mq7cc"), "idle_with_head", "hide_head", SubResource("AnimationNodeStateMachineTransition_0gns8"), "idle_with_head", "hurt", SubResource("AnimationNodeStateMachineTransition_52obj"), "hurt", "idle_with_head", SubResource("AnimationNodeStateMachineTransition_m3vux"), "idle_with_head", "die", SubResource("AnimationNodeStateMachineTransition_j10ue"), "idle", "hurt_in_shield", SubResource("AnimationNodeStateMachineTransition_onqny"), "hurt_in_shield", "idle", SubResource("AnimationNodeStateMachineTransition_dtwq3"), "idle_with_head", "hurt_in_shield_with_head_out", SubResource("AnimationNodeStateMachineTransition_xaj0q"), "hurt_in_shield_with_head_out", "idle_with_head", SubResource("AnimationNodeStateMachineTransition_mqq78")]
 graph_offset = Vector2(-142, -338)
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_5spoc"]
-
 [node name="SnailBrick" instance=ExtResource("1_6oucr")]
 position = Vector2(326, 233)
 script = ExtResource("2_jxcsv")
@@ -543,7 +541,6 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="6"]
 tree_root = SubResource("AnimationNodeStateMachine_mtegt")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_5spoc")
 
 [node name="ShileldSoundEffect" parent="Effects" index="4" instance=ExtResource("5_au7n8")]
 stream = ExtResource("6_tvq4y")
@@ -553,4 +550,3 @@ random_pitch = true
 [connection signal="timeout" from="TimerShowHead" to="." method="_on_timer_show_head_timeout"]
 [connection signal="timeout" from="TimerHideHead" to="." method="_on_timer_hide_head_timeout"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
-[connection signal="animation_started" from="AnimationTree" to="." method="_on_animation_tree_animation_started"]
