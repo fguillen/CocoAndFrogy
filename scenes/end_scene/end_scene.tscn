@@ -177,7 +177,7 @@ _data = {
 "waving": SubResource("Animation_yml22")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3s57u"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_frh8i"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -406,6 +406,7 @@ theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
 [node name="QuitButton" parent="Controls/UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/MarginContainer" instance=ExtResource("5_ttyjy")]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Quit"
@@ -416,7 +417,7 @@ text = "Quit"
 target = NodePath("../../Controls")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_3s57u")
+noise = SubResource("FastNoiseLite_frh8i")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
 stream = ExtResource("8_sdt80")

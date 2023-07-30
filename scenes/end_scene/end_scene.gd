@@ -29,6 +29,7 @@ signal end_scene_no_visible()
 @onready var end_animation = %EndAnimation
 @onready var body = %Body
 @onready var body_label = %Body/Label
+@onready var quit_button = %QuitButton
 
 #
 # -- 12 optional built-in virtual _init method
@@ -36,6 +37,9 @@ signal end_scene_no_visible()
 # -- 14 built-in virtual _ready method
 func _ready():
 	_show.call_deferred()
+	
+	if OS.get_name() == "iOS":
+		quit_button.queue_free()
 	
 	
 # -- 15 remaining built-in virtual methods
