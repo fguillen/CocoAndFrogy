@@ -2,7 +2,9 @@
 
 Coco and Frogy want to cross the river but a lot of bugs are on their way. Help them to kick the bugs out.
 
-Play it free in your browser here: https://arturitoproductions.itch.io/coco-and-frogy​
+- Play it free in your browser here: https://arturitoproductions.itch.io/coco-and-frogy​
+- Play it free in Android: https://play.google.com/store/apps/details?id=org.arturitoproductions.cocoandfrogy
+- Play it free in iPhone: https://apps.apple.com/us/app/coco-frogy/id6451356313
 
 ## Controls
 
@@ -16,7 +18,7 @@ Play it free in your browser here: https://arturitoproductions.itch.io/coco-and-
 
 by Alberto Bueno (https://arturitoproductions.itch.io​)
 
-### Music 
+### Music
 
 by Eric Matyas (https://soundimage.org/)
 
