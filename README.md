@@ -38,6 +38,10 @@ by Eric Matyas (https://soundimage.org/)
 - Stone impact: https://freesound.org/people/newlocknew/sounds/592581/
 - Other sounds: https://freesound.org/people/klankbeeld/sounds/580680/
 
+### Other
+
+- Godot wink versioned from: https://booty-kong.itch.io/godot-pixel-animation
+
 ### Acknowledgments
 
 ​To MrEliptik, for the amazing [YouTube channel](https://www.youtube.com/@MrEliptik/videos)​​ and ​inspirational [Udemy course​](https://www.udemy.com/course/learn-how-to-make-a-game-juicy-in-godot-4/).
