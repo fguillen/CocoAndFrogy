@@ -43,7 +43,6 @@ var _cooling_down := false
 # -- 16 public methods
 func bump():
 	if disabled:
-		print("BumpManager.bump.disabled: ", disabled)
 		return
 		
 	# cooling down section

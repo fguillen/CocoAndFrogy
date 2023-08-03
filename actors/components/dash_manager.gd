@@ -39,7 +39,6 @@ func _input(event):
 	
 		
 func _dash_start():
-	print("DashManager._dash_start()")
 	_is_active = true
 	timer.start(dash_duration)
 	dash_started.emit(dash_speed)
@@ -47,7 +46,6 @@ func _dash_start():
 	
 	
 func _dash_finish():
-	print("DashManager._dash_finish()")
 	_is_active = false
 	dash_finished.emit()
 	

@@ -116,11 +116,7 @@ func _set_direction(value: Vector2):
 
 
 func _set_speed(value: float):
-	var previous_speed = speed
-	
-	if value > max_speed:
-		print("MovememtManager._set_speed() clamped %d -> %d" % [value, max_speed])
-		
+	var previous_speed = speed		
 	speed = min(value, max_speed)
 	
 	if previous_speed != speed:

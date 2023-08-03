@@ -122,7 +122,6 @@ func _emit_input_action_directions(direction: Vector2):
 	
 	
 func _emit_input_action_bump():
-	print("InputManagerTouch._emit_input_action_bump(%s)" % Input.is_action_pressed("bump"))
 	if Input.is_action_pressed("bump"):
 		return
 	
@@ -140,7 +139,6 @@ func _emit_input_action_bump():
 	
 	
 func _emit_input_action_dash():
-	print("InputManagerTouch._emit_input_action_dash(%s)" % Input.is_action_pressed("dash"))
 	if Input.is_action_pressed("dash"):
 		return
 		
