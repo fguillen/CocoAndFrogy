@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c22f20qkjjdka"]
+[gd_scene load_steps=19 format=3 uid="uid://c22f20qkjjdka"]
 
 [ext_resource type="PackedScene" uid="uid://djjttvn3vr14t" path="res://scenes/levels/level_base.tscn" id="1_8jt15"]
 [ext_resource type="Script" path="res://scenes/levels/level_00.gd" id="1_luijp"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cbwqayiuykver" path="res://assets/music/The-Ant-Hill-Gang-Goes-West.mp3" id="3_hw0vs"]
 [ext_resource type="Texture2D" uid="uid://bp4nm0vq6tvug" path="res://ui/button.png" id="3_l8ga6"]
 [ext_resource type="Texture2D" uid="uid://c6c0j1e2dyv8x" path="res://assets/finger_side_to_side.png" id="6_65sov"]
+[ext_resource type="Texture2D" uid="uid://c0gfbjreydw0q" path="res://assets/finger_side_to_side_small.png" id="7_lanq5"]
 [ext_resource type="Texture2D" uid="uid://dicj2em47sqwm" path="res://assets/finger_up.png" id="7_sgoai"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g2rlg"]
@@ -198,6 +199,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [4]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("FingerSprite:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1.2)]
+}
 
 [sub_resource type="Animation" id="Animation_qc8fq"]
 resource_name = "finger_side_to_side"
@@ -213,7 +226,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(696, 1824), Vector2(696, 1768)]
+"values": [Vector2(736, 1928), Vector2(736, 1928)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -237,7 +250,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_65sov")]
+"values": [ExtResource("7_lanq5")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -262,6 +275,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FingerSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.3, 1.3)]
 }
 
 [sub_resource type="Animation" id="Animation_gc3np"]
@@ -327,6 +352,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FingerSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7fqcu"]
@@ -598,6 +635,7 @@ vertical_alignment = 1
 [node name="FingerSprite" type="Sprite2D" parent="TutorialElements"]
 visible = false
 position = Vector2(576, 1800)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("6_65sov")
 hframes = 4
 
