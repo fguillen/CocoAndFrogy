@@ -70,7 +70,7 @@ func _on_timer_hide_head_timeout():
 	_hide_head()
 	
 	
-func _on_animation_tree_animation_started(anim_name):
+func _on_animation_tree_animation_started(_anim_name):
 	pass
 # -- 19 subclasses
 
@@ -82,5 +82,5 @@ func _on_animation_tree_animation_started(anim_name):
 
 
 
-func _on_animation_player_animation_started(anim_name):
+func _on_animation_player_animation_started(_anim_name):
 	pass

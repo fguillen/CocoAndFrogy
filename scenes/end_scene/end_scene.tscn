@@ -177,7 +177,7 @@ _data = {
 "waving": SubResource("Animation_yml22")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_frh8i"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t2rl0"]
 resource_local_to_scene = true
 noise_type = 0
 seed = 3
@@ -417,7 +417,7 @@ text = "Quit"
 target = NodePath("../../Controls")
 duration = 1.0
 frequency = 400.0
-noise = SubResource("FastNoiseLite_frh8i")
+noise = SubResource("FastNoiseLite_t2rl0")
 
 [node name="ShakeNumberSoundEffect" parent="Effects" instance=ExtResource("7_v0vn7")]
 stream = ExtResource("8_sdt80")

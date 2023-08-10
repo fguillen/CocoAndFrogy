@@ -25,7 +25,7 @@ func perform():
 	show_animation_player.play("show")
 	await show_animation_player.animation_finished
 	show_animation_player.play("waving")
-	await get_tree().create_timer(0.2)
+	await get_tree().create_timer(0.2).timeout
 	jumping_animation_player.play("jump")
 
 # -- 17 private methods
