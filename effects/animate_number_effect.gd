@@ -19,6 +19,8 @@ signal finished()
 
 # -- 09 public variables
 # -- 10 private variables
+var _tween : Tween
+
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
@@ -27,9 +29,12 @@ signal finished()
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform(to: int):
-	var tween = get_tree().create_tween()
-	tween.tween_method(_update_number, int(target.text), to, duration)
-	await tween.finished
+	if _tween:
+		_tween.kill()
+		
+	_tween = create_tween()
+	_tween.tween_method(_update_number, int(target.text), to, duration)
+	await _tween.finished
 	finished.emit()
 	
 	

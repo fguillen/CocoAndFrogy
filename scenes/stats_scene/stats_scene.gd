@@ -90,7 +90,7 @@ func _hide_buttons():
 	
 
 func _animate_stats_title_label():
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_speed_scale(_tweens_speed)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_speed_scale(_tweens_speed)
 	var original_position_y = stats_title_label.global_position.y
 	tween.tween_property(stats_title_label, "global_position:y", original_position_y, 0.2).from(-375.0)
 	tween.parallel().tween_property(stats_title_label, "self_modulate:a", 1.0, 0.2).from(0.0)
@@ -112,7 +112,7 @@ func _animate_numbers():
 
 
 func _animate_buttons():
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_speed_scale(_tweens_speed)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_speed_scale(_tweens_speed)
 	var original_position_y = buttons.global_position.y
 	tween.tween_property(buttons, "global_position:y", original_position_y, 0.2).from(get_viewport_rect().size.y + 300)
 	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.2).from(0.0)

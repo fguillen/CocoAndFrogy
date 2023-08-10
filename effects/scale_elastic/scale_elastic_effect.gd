@@ -42,7 +42,7 @@ func perform():
 	_is_playing = true
 	_previous_scale = target.scale
 	
-	_tween = get_tree().create_tween()
+	_tween = create_tween()
 	_tween.tween_method(_interpolation, 0.0, 1.0, time)
 	await _tween.finished
 	_is_playing = false

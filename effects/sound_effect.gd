@@ -72,7 +72,7 @@ func _fade_in():
 	if _tween_fade and _tween_fade.is_running():
 		_tween_fade.stop()
 		
-	_tween_fade = get_tree().create_tween()#
+	_tween_fade = create_tween()#
 	_tween_fade.tween_property(self, "volume_db", _original_valume, fade_in_time).from(-80.0)
 	await _tween_fade.finished
 	
@@ -81,7 +81,7 @@ func _fade_out():
 	if _tween_fade and _tween_fade.is_running():
 		_tween_fade.stop()
 		
-	_tween_fade = get_tree().create_tween()#
+	_tween_fade = create_tween()#
 	_tween_fade.tween_property(self, "volume_db", -80.0, fade_out_time)
 	await _tween_fade.finished
 	

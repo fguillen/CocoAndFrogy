@@ -80,7 +80,7 @@ func _hide_buttons():
 	
 
 func _animate_title_label():
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var original_position_y = title_label.global_position.y
 	tween.tween_property(title_label, "global_position:y", original_position_y, 0.5).from(-375.0)
 	tween.parallel().tween_property(title_label, "modulate:a", 1.0, 0.5).from(0.0)
@@ -89,7 +89,7 @@ func _animate_title_label():
 
 
 func _animate_body():
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var original_position_x = body.global_position.x
 	tween.tween_property(body, "global_position:x", original_position_x, 0.5).from(get_viewport_rect().size.x  + 500.0)
 	tween.parallel().tween_property(body, "modulate:a", 1.0, 0.5).from(0.0)
@@ -97,7 +97,7 @@ func _animate_body():
 
 
 func _animate_buttons():
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var original_position_y = buttons.global_position.y
 	tween.tween_property(buttons, "global_position:y", original_position_y, 0.5).from(get_viewport_rect().size.y + 300)
 	tween.parallel().tween_property(buttons, "modulate:a", 1.0, 0.5).from(0.0)

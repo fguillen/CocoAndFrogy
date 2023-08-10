@@ -48,7 +48,7 @@ func _hide_body():
 	
 
 func _animate_title_label():
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var original_position_y = title_label.global_position.y
 	tween.tween_property(title_label, "global_position:y", original_position_y, 0.5).from(-375.0)
 	tween.parallel().tween_property(title_label, "self_modulate:a", 1.0, 0.5).from(0.0)
@@ -57,7 +57,7 @@ func _animate_title_label():
 
 
 func _animate_body():
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var original_position_y = body.global_position.y
 	tween.tween_property(body, "global_position:y", original_position_y, 0.5).from(get_viewport_rect().size.y + 300)
 	tween.parallel().tween_property(body, "modulate:a", 1.0, 0.5).from(0.0)

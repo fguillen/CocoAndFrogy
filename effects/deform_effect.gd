@@ -28,7 +28,7 @@ var _is_active = false
 # -- 14 built-in virtual _ready method
 func _ready():
 	print("DeformEffect._ready()")
-#	_tween = get_tree().create_tween()
+#	_tween = create_tween()
 	
 	
 # -- 15 remaining built-in virtual methods
